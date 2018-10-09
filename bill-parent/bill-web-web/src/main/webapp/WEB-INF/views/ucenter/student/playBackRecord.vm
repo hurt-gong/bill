@@ -11,7 +11,7 @@
         <ul>
 			#foreach($video in $videoPlayPage.records)
             <li>
-                <p><img src="http://edu.bjhd.gov.cn/img/course/videoDefault/demo.png" /></p>
+                <p><img src="/img/course/videoDefault/demo.png" /></p>
                 <p><b>$!video.videoName</b></p>
                 <p><span>主讲：$!video.speaker</span><em>$!video.date</em></p>
             </li>
@@ -24,7 +24,7 @@
 #end
 
 #override("javascript")
-	<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
-	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/ucenter/task_ranking.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+	<script type="text/javascript" src="/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="/js/ucenter/task_ranking.js" src="/js/lib/require/2.1.11/require.js"></script>
 #end                                          
 #extends("common/ucenter/student/index.vm")

@@ -2,12 +2,12 @@
 	#foreach($mooc in $moocPage.records)
         <dl>
             <dt>
-				<a href="/mooc/course/details.html?id=$!mooc.id&listenUrl=$!map.get($!mooc.id)[0].listenUrl"><img src='http://edu.bjhd.gov.cn/img/admin/banner_08.jpg'></a>
+				<a href="/mooc/course/details.html?id=$!mooc.id&listenUrl=$!map.get($!mooc.id)[0].listenUrl"><img src='/img/admin/banner_08.jpg'></a>
 			</dt>
             <dd>
                 <h3>$!mooc.title</h3>
                 <p>来源：$!mooc.schoolName</p>
-                <p style='border:none;'><span><a href="javascript:;">124</a><img src='http://edu.bjhd.gov.cn/img/admin/star_03.png'></span>127次播放</p>
+                <p style='border:none;'><span><a href="javascript:;">124</a><img src='/img/admin/star_03.png'></span>127次播放</p>
             </dd>
         </dl>
 	#end

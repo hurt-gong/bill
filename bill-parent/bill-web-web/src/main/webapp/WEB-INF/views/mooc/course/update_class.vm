@@ -163,15 +163,15 @@
         <div class="choose_wrap" >
             <div class="choose_con">
                 <ul>
-                    <li><a href="javascript:();"><img src="http://edu.bjhd.gov.cn/img/course/videoDefault/1.jpg" /></a></li>
-                    <li><a href="javascript:();"><img src="http://edu.bjhd.gov.cn/img/course/videoDefault/2.jpg" /></a></li>
-                    <li><a href="javascript:();"><img src="http://edu.bjhd.gov.cn/img/course/videoDefault/3.jpg" /></a></li>
-                    <li><a href="javascript:();"><img src="http://edu.bjhd.gov.cn/img/course/videoDefault/4.jpg" /></a></li>
-                    <li><a href="javascript:();"><img src="http://edu.bjhd.gov.cn/img/course/videoDefault/5.jpg" /></a></li>
-                    <li><a href="javascript:();"><img src="http://edu.bjhd.gov.cn/img/course/videoDefault/6.jpg" /></a></li>
-                    <li><a href="javascript:();"><img src="http://edu.bjhd.gov.cn/img/course/videoDefault/7.jpg" /></a></li>
-                    <li><a href="javascript:();"><img src="http://edu.bjhd.gov.cn/img/course/videoDefault/8.jpg" /></a></li>
-                    <li><a href="javascript:();"><img src="http://edu.bjhd.gov.cn/img/course/videoDefault/9.jpg" /></a></li>
+                    <li><a href="javascript:();"><img src="/img/course/videoDefault/1.jpg" /></a></li>
+                    <li><a href="javascript:();"><img src="/img/course/videoDefault/2.jpg" /></a></li>
+                    <li><a href="javascript:();"><img src="/img/course/videoDefault/3.jpg" /></a></li>
+                    <li><a href="javascript:();"><img src="/img/course/videoDefault/4.jpg" /></a></li>
+                    <li><a href="javascript:();"><img src="/img/course/videoDefault/5.jpg" /></a></li>
+                    <li><a href="javascript:();"><img src="/img/course/videoDefault/6.jpg" /></a></li>
+                    <li><a href="javascript:();"><img src="/img/course/videoDefault/7.jpg" /></a></li>
+                    <li><a href="javascript:();"><img src="/img/course/videoDefault/8.jpg" /></a></li>
+                    <li><a href="javascript:();"><img src="/img/course/videoDefault/9.jpg" /></a></li>
                 </ul>
                 <div class="sure_btn"><input type="button" value="确定" id="selectSysImg"></div>
             </div>
@@ -182,7 +182,7 @@
 
 #end
 #override("javascript")
-<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
-<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/mooc/course/update_class.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+<script type="text/javascript" src="/js/lib/jquery/1.12.3/jquery.js"></script>
+<script type="text/javascript" data-main="/js/mooc/course/update_class.js" src="/js/lib/require/2.1.11/require.js"></script>
 #end
 #extends("common/mooc/index.vm")

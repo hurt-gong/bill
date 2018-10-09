@@ -2,9 +2,9 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-            <link rel="stylesheet" type="text/css" href="http://edu.bjhd.gov.cn/css/admin/admin.css">
-			<link rel="stylesheet" type="text/css" href="http://edu.bjhd.gov.cn/css/common/jquery.datetimepicker.css">
-			<link rel="stylesheet" type="text/css" href="http://edu.bjhd.gov.cn/js/lib/kindeditor-4.1.10/themes/simple/simple.css">
+            <link rel="stylesheet" type="text/css" href="/css/admin/admin.css">
+			<link rel="stylesheet" type="text/css" href="/css/common/jquery.datetimepicker.css">
+			<link rel="stylesheet" type="text/css" href="/js/lib/kindeditor-4.1.10/themes/simple/simple.css">
                 <title>#block("title")#end</title>
 </head>
 <body>

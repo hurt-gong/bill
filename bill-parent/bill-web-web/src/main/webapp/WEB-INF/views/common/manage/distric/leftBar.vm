@@ -2,43 +2,43 @@
 	<ul>
 		#permission($permiConstant.districSchool)
 		<li class="leftIcon_1 #if($d_school_active) active #end">
-			<img src="http://edu.bjhd.gov.cn/img/common/leftbar-01.png"/>
+			<img src="/img/common/leftbar-01.png"/>
 			<a href="/manage/distric/school/list.html">校区管理</a>
 		</li>
 		#end
 		#permission($permiConstant.districDept)
 		<li class="leftIcon_2 #if($d_dept_active) active #end">
-			<img src="http://edu.bjhd.gov.cn/img/common/leftbar-02.png"/>
+			<img src="/img/common/leftbar-02.png"/>
 			<a href="/manage/distric/dept/list.html">区部门管理</a>
 		</li>
 		#end
 		#permission($permiConstant.districEdu)
 		<li class="leftIcon_3 #if($d_teach_active) active #end">
-			<img src="http://edu.bjhd.gov.cn/img/common/leftbar-03.png"/>
+			<img src="/img/common/leftbar-03.png"/>
 			<a href="/manage/distric/teach/list.html">区教学设置</a>
 		</li>
 		#end
 		#permission($permiConstant.districBook)
 		<li class="leftIcon_4 #if($d_book_active) active #end">
-			<img src="http://edu.bjhd.gov.cn/img/common/leftbar-04.png"/>
+			<img src="/img/common/leftbar-04.png"/>
 			<a href="/manage/distric/book/list.html">区教材管理</a>
 		</li>
 		#end
 		#permission($permiConstant.districUser)
 		<li class="leftIcon_5 #if($d_staff_active) active #end">
-			<img src="http://edu.bjhd.gov.cn/img/common/leftbar-05.png"/>
+			<img src="/img/common/leftbar-05.png"/>
 			<a href="/manage/distric/staff/list.html">区人员管理</a>
 		</li>
 		#end
 		#permission($permiConstant.districSource)
 		<li class="leftIcon_6 #if($d_schoolcourse_active) active #end">
-			<img src="http://edu.bjhd.gov.cn/img/common/leftbar-06.png"/>
+			<img src="/img/common/leftbar-06.png"/>
 			<a href="/mooc/course/schoolClass.html">区资源库管理</a>
 		</li>
 		#end
 		#permission($permiConstant.districStatistics)
 		<li class="leftIcon_7 #if($d_statistics_active) active #end">
-			<img src="http://edu.bjhd.gov.cn/img/common/leftbar-07.png"/>
+			<img src="/img/common/leftbar-07.png"/>
 			<a href="/manage/distric/statistics/listResource.html">资源使用统计</a>
 		</li>
 		#end
@@ -49,7 +49,7 @@
 		###end
 		#permission($permiConstant.districPermi)
 		<li class="leftIcon_9 #if($d_permi_active) active #end">
-			<img src="http://edu.bjhd.gov.cn/img/common/leftbar-08.png"/>
+			<img src="/img/common/leftbar-08.png"/>
 			<a href="/manage/distric/permission/user/list.html">区人员权限管理</a>
 		</li>
 		#end

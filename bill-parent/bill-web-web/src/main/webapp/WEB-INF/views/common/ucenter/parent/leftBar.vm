@@ -1,9 +1,9 @@
 <div class="conLeft">
     <ul>
-        <li class="#if($p_myCenter_active) hoveLi #end"><span><img src='http://edu.bjhd.gov.cn/img/admin/my_03.png'></span><a href="/ucenter/parent/index.html">个人中心</a></li>
-        <li class="#if($d_directcourse_active) hoveLi #end"><span><img src='http://edu.bjhd.gov.cn/img/admin/my_06.png'></span><a href="/mooc/course/directCourseToView.html">区级推荐课程</a></li>
-        <li class="#if($p_stuTask_active) hoveLi #end"><span><img src='http://edu.bjhd.gov.cn/img/admin/my_08.png'></span><a href="/ucenter/parent/stuTask.html">学习任务</a></li>
-		<li class="#if($d_evaluation_active) hoveLi #end"><span><img src='http://edu.bjhd.gov.cn/img/admin/my_10.png'></span><a href="/parent/evaluation.html?subjectName=全部">过程评价</a></li>
-        <li class="#if($p_playBackRecord_active) hoveLi #end"><span><img src='http://edu.bjhd.gov.cn/img/admin/my_10.png'></span><a href="/ucenter/parent/playBackRecord.html">播放记录</a></li>
+        <li class="#if($p_myCenter_active) hoveLi #end"><span><img src='/img/admin/my_03.png'></span><a href="/ucenter/parent/index.html">个人中心</a></li>
+        <li class="#if($d_directcourse_active) hoveLi #end"><span><img src='/img/admin/my_06.png'></span><a href="/mooc/course/directCourseToView.html">区级推荐课程</a></li>
+        <li class="#if($p_stuTask_active) hoveLi #end"><span><img src='/img/admin/my_08.png'></span><a href="/ucenter/parent/stuTask.html">学习任务</a></li>
+		<li class="#if($d_evaluation_active) hoveLi #end"><span><img src='/img/admin/my_10.png'></span><a href="/parent/evaluation.html?subjectName=全部">过程评价</a></li>
+        <li class="#if($p_playBackRecord_active) hoveLi #end"><span><img src='/img/admin/my_10.png'></span><a href="/ucenter/parent/playBackRecord.html">播放记录</a></li>
     </ul>
 </div>

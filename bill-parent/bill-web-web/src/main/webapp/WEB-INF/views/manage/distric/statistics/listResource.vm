@@ -136,11 +136,11 @@
         </div>
 #end #override("javascript")
 <script type="text/javascript"
-	src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	src="/js/lib/jquery/1.12.3/jquery.js"></script>
 	
 <script type="text/javascript"
-	data-main="http://edu.bjhd.gov.cn/js/admin/distric/statistics/list_statistics.js"
-	src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+	data-main="/js/admin/distric/statistics/list_statistics.js"
+	src="/js/lib/require/2.1.11/require.js"></script>
 
 	
 #end #extends("common/manage/distric/index.vm")

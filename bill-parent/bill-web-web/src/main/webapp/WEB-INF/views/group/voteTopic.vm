@@ -9,7 +9,7 @@
             <div class="roomContent">
                 <div class="roomBanner conDl cf">
                     <dl>
-                        <dt><img src="http://edu.bjhd.gov.cn/img/admin/class_03.jpg"></dt>
+                        <dt><img src="/img/admin/class_03.jpg"></dt>
                         <dd class='message'>
                             <h2>$!groupDto.klassName</h2>
                             <p><span class="preBum">群成员    <b>$!groupDto.memberNum</b></span><span class="num">帖子数    <b>$!groupDto.topicNum</b></span></p>
@@ -24,7 +24,7 @@
                     </dl>
                     <div class='textarea'>
                         <textarea class="announcementWords">$!{group.quotations}</textarea>
-                        <img src="http://edu.bjhd.gov.cn/img/admin/room_01.png">
+                        <img src="/img/admin/room_01.png">
 						<a href="javascript:;" value="$!group.id" class="announcement" ></a>
                     </div>
                 </div>
@@ -191,7 +191,7 @@
 	
 #end
 #override("javascript")
-    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
-	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/group/classrooms2.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+    <script type="text/javascript" src="/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="/js/group/classrooms2.js" src="/js/lib/require/2.1.11/require.js"></script>
 #end
 #extends("common/group/index.vm")

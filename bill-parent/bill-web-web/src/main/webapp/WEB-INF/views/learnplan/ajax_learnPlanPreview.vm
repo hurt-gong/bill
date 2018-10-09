@@ -19,10 +19,10 @@
     <!-- 页面主体部分 结束 -->
 	#end
 #override("javascript")
-<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
-##<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/flexpaper/js/flexpaper.js"></script>
-##<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/flexpaper/js/flexpaper_handlers.js"></script>
-<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/index/teacher.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+<script type="text/javascript" src="/js/lib/jquery/1.12.3/jquery.js"></script>
+##<script type="text/javascript" src="/js/lib/flexpaper/js/flexpaper.js"></script>
+##<script type="text/javascript" src="/js/lib/flexpaper/js/flexpaper_handlers.js"></script>
+<script type="text/javascript" data-main="/js/index/teacher.js" src="/js/lib/require/2.1.11/require.js"></script>
 #end 
 #if($user.type == 2)
 	#extends("common/ucenter/teacher/index.vm")

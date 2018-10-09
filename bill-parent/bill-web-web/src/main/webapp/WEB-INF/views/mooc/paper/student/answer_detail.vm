@@ -12,9 +12,9 @@
 							#if(${exam.typeId}==351||${exam.typeId}==352||${exam.typeId}==353)
 								<em class='right_cuo'>
     								#if(${exam.studentAnswer}==${exam.answer})
-    									<img src='http://edu.bjhd.gov.cn/img/admin/right_03.png'>
+    									<img src='/img/admin/right_03.png'>
     								#else
-    									<img src='http://edu.bjhd.gov.cn/img/admin/cuo_03.png'>
+    									<img src='/img/admin/cuo_03.png'>
     								#end
 								</em>
 							#end

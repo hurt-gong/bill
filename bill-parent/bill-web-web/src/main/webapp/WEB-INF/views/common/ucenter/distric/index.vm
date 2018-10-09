@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-            <link rel="stylesheet" type="text/css" href="http://edu.bjhd.gov.cn/css/admin/admin.css">
+            <link rel="stylesheet" type="text/css" href="/css/admin/admin.css">
                 <title>#block("title")#end</title>
 </head>
 <body>

@@ -104,15 +104,15 @@
 </div>
 #end #override("javascript")
 <script type="text/javascript"
-	src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	src="/js/lib/jquery/1.12.3/jquery.js"></script>
 	
 <script type="text/javascript"
-	src="http://edu.bjhd.gov.cn/js/manage/distric/book/cata.js"></script>
+	src="/js/manage/distric/book/cata.js"></script>
 	
 <script type="text/javascript"
-	src="http://edu.bjhd.gov.cn/js/lib/layer/layer.js"></script>
+	src="/js/lib/layer/layer.js"></script>
 	
 <script type="text/javascript"
-	data-main="http://edu.bjhd.gov.cn/js/dist/admin/bookLogMaintain_init.js"
-	src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+	data-main="/js/dist/admin/bookLogMaintain_init.js"
+	src="/js/lib/require/2.1.11/require.js"></script>
 #end #extends("common/manage/distric/index.vm")

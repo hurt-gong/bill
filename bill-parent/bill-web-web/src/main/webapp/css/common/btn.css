@@ -1,0 +1,41 @@
+.btn{
+	display: inline-block;
+	width: auto;
+	line-height: 30px;
+	padding: 0 20px;
+	font-size: 	16px;
+	background: #4f8dec;
+	color:#fff;
+	border-radius: 5px;
+	border:none;
+	cursor:pointer;
+}
+.btn:hover{
+	background: #0072af;
+}
+
+.dBtn{
+	display: inline-block;
+	width: auto;
+	line-height: 30px;
+	padding: 0 20px;
+	font-size: 	16px;
+	background: #4f8dec;
+	color:#fff;
+	border:none;
+	cursor:pointer;
+}
+.dBtn:hover{
+	background: #0072af;
+}
+.aLink{font-size: 15px;color: #4f8dec;padding: 0 20px;}
+
+.txt{width:138px;height:34px;border:1px solid #e1dede;outline: none;padding: 0 5px;float: right;margin-left: 10px;display:inline;}
+
+.sub{width:60px;height:36px;background:#4f8dec;color:#fff;border:none;outline: none;display:inline-block;float:right;}
+
+
+.timeChange a em{background: url(http://edu.bjhd.gov.cn/img/common/icon_1.png) 0 -1183px no-repeat;}
+.timeChange a.change{background:#4f8dec;}
+.timeChange a.change b{color:#fff;}
+.timeChange a.change em{background-position: -1px -1106px;}

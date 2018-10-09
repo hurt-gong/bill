@@ -115,12 +115,12 @@
 	</div>
 #end #override("javascript")
 <script type="text/javascript"
-	src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	src="/js/lib/jquery/1.12.3/jquery.js"></script>
 	
 <script type="text/javascript"
-	src="http://edu.bjhd.gov.cn/js/lib/layer/layer.js"></script>	
+	src="/js/lib/layer/layer.js"></script>	
 <script type="text/javascript"
-	src="http://edu.bjhd.gov.cn/js/manage/distric/book/bookList.js"></script>
+	src="/js/manage/distric/book/bookList.js"></script>
 	
 	
 #end #extends("common/manage/distric/index.vm")

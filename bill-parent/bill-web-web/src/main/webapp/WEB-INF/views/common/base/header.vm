@@ -3,7 +3,7 @@
 	<div class="inner cf">
 		<h1 class="logo">
 			<a href="/idx.html">
-				<img src="http://edu.bjhd.gov.cn/img/common/logo_03.png" alt="海淀教育" width="150px" height="47px">
+				<img src="/img/common/logo_03.png" alt="海淀教育" width="150px" height="47px">
 			</a>
 		</h1>
 		<div class="currentM">
@@ -13,29 +13,29 @@
 		#set($school=$app.currentSchool())
 		#if($user)
 		<!--<ul class="topNav">
-			<li><a class="#if($d_publiccourse_active) active #end" href="/mooc/course/list.html"><img src="http://edu.bjhd.gov.cn/img/common/topbar_home.png" alt="首页" width="17px" height="17px">首页</a></li>
+			<li><a class="#if($d_publiccourse_active) active #end" href="/mooc/course/list.html"><img src="/img/common/topbar_home.png" alt="首页" width="17px" height="17px">首页</a></li>
 			#if($user.schoolId != 0)
 				<li><a class="#if($d_schoolcourse_active) active #end" href="/mooc/course/ownSchoolPublic.html">本校课程</a></li>
 			#end
-			<li><a href="/idx.html" class="#if($d_myCenter_active) active #end">#if($user.schoolId == 0)<img src="http://edu.bjhd.gov.cn/img/common/topbar_class.png" alt="区公开课" width="17px" height="17px">区公开课 #else 个人中心 #end</a></li>
+			<li><a href="/idx.html" class="#if($d_myCenter_active) active #end">#if($user.schoolId == 0)<img src="/img/common/topbar_class.png" alt="区公开课" width="17px" height="17px">区公开课 #else 个人中心 #end</a></li>
 			#permission($permiConstant.districManage)
-				<li><a href="/manage/distric/school/list.html" class="#if($d_manage_active) active #end"><img src="http://edu.bjhd.gov.cn/img/common/topbar_manage.png" alt="海淀教育" width="17px" height="17px">区管理平台</a></li>
+				<li><a href="/manage/distric/school/list.html" class="#if($d_manage_active) active #end"><img src="/img/common/topbar_manage.png" alt="海淀教育" width="17px" height="17px">区管理平台</a></li>
 			#end
 			#permission($permiConstant.schoolManage)
 				<li><a href="/manage/school/dept/list.html" class="#if($s_manage_active) active #end">校管理平台</a></li>
 			#end
 		</ul>-->
 		<ul class="topNav">
-                        <li><a class="#if($d_publiccourse_active) active #end" href="/mooc/course/list.html"><img src="http://edu.bjhd.gov.cn/img/common/topbar_class.png" alt="区公开课" width="17px" height="17px">区公开课</a></li>
+                        <li><a class="#if($d_publiccourse_active) active #end" href="/mooc/course/list.html"><img src="/img/common/topbar_class.png" alt="区公开课" width="17px" height="17px">区公开课</a></li>
                         #if($user.schoolId != 0)
-                                <li><a class="#if($d_schoolcourse_active) active #end" href="/mooc/course/ownSchoolPublic.html"><img src="http://edu.bjhd.gov.cn/img/common/topbar_school.png" alt="本校课程" width="17px" height="17px">本校课程</a></li>
+                                <li><a class="#if($d_schoolcourse_active) active #end" href="/mooc/course/ownSchoolPublic.html"><img src="/img/common/topbar_school.png" alt="本校课程" width="17px" height="17px">本校课程</a></li>
                         #end
-                        <li><a href="/idx.html" class="#if($d_myCenter_active) active #end">#if($user.schoolId == 0)<img src="http://edu.bjhd.gov.cn/img/common/topbar_home1.png" alt="首页" width="17px" height="17px">首页 #else <img src="http://edu.bjhd.gov.cn/img/common/topbar_home.png" alt="个人中心" width="17px" height="17px">个人中心 #end</a></li>
+                        <li><a href="/idx.html" class="#if($d_myCenter_active) active #end">#if($user.schoolId == 0)<img src="/img/common/topbar_home1.png" alt="首页" width="17px" height="17px">首页 #else <img src="/img/common/topbar_home.png" alt="个人中心" width="17px" height="17px">个人中心 #end</a></li>
                         #permission($permiConstant.districManage)
-                                <li><a href="/manage/distric/school/list.html" class="#if($d_manage_active) active #end"><img src="http://edu.bjhd.gov.cn/img/common/topbar_manage.png" alt="区管理平台" width="17px" height="17px">区管理平台</a></li>
+                                <li><a href="/manage/distric/school/list.html" class="#if($d_manage_active) active #end"><img src="/img/common/topbar_manage.png" alt="区管理平台" width="17px" height="17px">区管理平台</a></li>
                         #end
                         #permission($permiConstant.schoolManage)
-                                <li><a href="/manage/school/dept/list.html" class="#if($s_manage_active) active #end"><img src="http://edu.bjhd.gov.cn/img/common/topbar_manage.png" alt="校管理平台" width="17px" height="17px">校管理平台</a></li>
+                                <li><a href="/manage/school/dept/list.html" class="#if($s_manage_active) active #end"><img src="/img/common/topbar_manage.png" alt="校管理平台" width="17px" height="17px">校管理平台</a></li>
                         #end
                 </ul>
 		#*
@@ -62,7 +62,7 @@
 			<p><a href="/ucenter/setPwd.html">基础设置</a></p>
 			<p><a href="/account/logout.html">退出</a></p>
 			<a href="javascript:;" class="down" id="down">
-				<img src="http://edu.bjhd.gov.cn/img/common/personmanage.png">
+				<img src="/img/common/personmanage.png">
 			</a>
 		</div>
         #else

@@ -34,7 +34,7 @@
                 <li></li>
         </ul>
 		<input type="hidden" value="" id="stars"/>
-        ##<img src='http://edu.bjhd.gov.cn/img/admin/star_03.png' class='k_img'>
+        ##<img src='/img/admin/star_03.png' class='k_img'>
     </div>
     <div class="gg">
         <textarea id="evaluateContent"></textarea>

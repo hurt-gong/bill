@@ -65,7 +65,7 @@
 	
 #end
 #override("javascript")
-    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
-	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/ucenter/parent/stuTask.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+    <script type="text/javascript" src="/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="/js/ucenter/parent/stuTask.js" src="/js/lib/require/2.1.11/require.js"></script>
 #end                                          
 #extends("common/ucenter/parent/index.vm")

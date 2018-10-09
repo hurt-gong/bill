@@ -21,9 +21,9 @@
 </div>
 #end
 #override("javascript")
-    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
-	<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/layer/layer.js"></script>	
-	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/admin/job_init.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
-	<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/mooc/homework/student/job_list.js"></script>
+    <script type="text/javascript" src="/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" src="/js/lib/layer/layer.js"></script>	
+	<script type="text/javascript" data-main="/js/admin/job_init.js" src="/js/lib/require/2.1.11/require.js"></script>
+	<script type="text/javascript" src="/js/mooc/homework/student/job_list.js"></script>
 #end                                          
 #extends("common/ucenter/student/index.vm")

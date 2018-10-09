@@ -12,7 +12,7 @@
 					#foreach($group in $groupDtos)
 					
                     <dl>
-                        <dt><a href="javascript:;"><img src="http://edu.bjhd.gov.cn/img/admin/room_03.png" style="width:60px; height:60px;"></a></dt>
+                        <dt><a href="javascript:;"><img src="/img/admin/room_03.png" style="width:60px; height:60px;"></a></dt>
                         <dd>
                             <h2><a href="javascript:void(0);" class="comeIn maskclass" value="$!group.id">进入群</a>$!group.klassName</h2>
                             <p><span class="preBum">群成员    <b>$!group.memberNum</b></span><span class="num">帖子数    <b>$!group.topicNum</b></span></p>
@@ -34,8 +34,8 @@
 	
 #end
 #override("javascript")
-    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
-	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/group/classrooms2.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+    <script type="text/javascript" src="/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="/js/group/classrooms2.js" src="/js/lib/require/2.1.11/require.js"></script>
 #end   
 #if($user.type == 2)
 	#extends("common/ucenter/teacher/index.vm")

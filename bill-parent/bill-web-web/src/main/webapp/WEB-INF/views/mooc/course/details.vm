@@ -28,11 +28,11 @@
 
                     <div class="play_move">
                         <div id='polyvplayer'>
-                            ##<img src="http://edu.bjhd.gov.cn/img/admin/play_03.jpg">
+                            ##<img src="/img/admin/play_03.jpg">
 								##<img src="$!video.cover">
                         </div>
                         <div class="play_movecenter" id="play_btn">
-                            <img src="http://edu.bjhd.gov.cn/img/admin/play_04.jpg" />
+                            <img src="/img/admin/play_04.jpg" />
                         </div>
                         <div class="play_moveright">
                             <div class="play_moverightInner">
@@ -71,7 +71,7 @@
                                         <div id="comment">
 										#foreach($comment in $commentList)
 											<dl>
-                                                <dt><img src='http://edu.bjhd.gov.cn/img/admin/headpic_03.jpg'></dt>
+                                                <dt><img src='/img/admin/headpic_03.jpg'></dt>
                                                 <dd>
 													<input type="hidden" name="id" value="$!comment.id"/>
                                                     <h4>$!current.name<span>$!klass.name  $!school.name</span></h4>
@@ -79,7 +79,7 @@
                     									##点击回复弹出该div
                     									<div style="display:none" class="replyDiv">
                     										<div class="reply_od">
-                                                                <img src='http://edu.bjhd.gov.cn/img/admin/headpic_03.jpg'>
+                                                                <img src='/img/admin/headpic_03.jpg'>
                                                                 <h5>
                                                                     <textarea class="replyText" id="$velocityCount" name="content"></textarea>
 																	<input type="hidden" name="isLeaf" id="isNotLeaf" value="0"/>
@@ -92,7 +92,7 @@
 														##二次回复列表显示div
 														<div style="display:none" class='sec_dl cf' data-id="replyDiv">
 														#foreach($replyComment in $replyCommentList)
-                                                            <div class='my_pic'><img src='http://edu.bjhd.gov.cn/img/admin/headpic_03.jpg'></div>
+                                                            <div class='my_pic'><img src='/img/admin/headpic_03.jpg'></div>
                                                             <div class='my_con'>
                                                                 <h4>$!current.name<span>$!klass.name $!school.name</span></h4>
                                                                 <p class='p_text'>$!replyComment.content</p>
@@ -105,7 +105,7 @@
                                                     ##<p class='time_show'><span><a href="javascript:;" class="reset_top">取消置顶</a>
                                                     <a href="javascript:;" class="reply $comment.id" value="$comment.id">回复</a>
                                                     <a href="javascript:;" class="deleteComment">删除</a></span></p>
-                                                    ##<img src="http://edu.bjhd.gov.cn/img/admin/play_07.jpg" alt="" class='top_pic'>
+                                                    ##<img src="/img/admin/play_07.jpg" alt="" class='top_pic'>
                                                 </dd>
                                             </dl>
 										#end
@@ -127,7 +127,7 @@
                                 <div class="publick_item answer_item">
 									#foreach($answerComment in $answerCommentList)
                                        <dl>
-                                            <dt><img src='http://edu.bjhd.gov.cn/img/admin/headpic_03.jpg'></dt>
+                                            <dt><img src='/img/admin/headpic_03.jpg'></dt>
                                             <dd>
 												<input type="hidden" name="id" value="$!answerComment.id"/>
                                                 <h4>$!current.name<span>$!klass.name $!school.name</span></h4>
@@ -135,7 +135,7 @@
 												##点击回复弹出该div
             									<div style="display:none" class="replyDiv">
             										<div class="reply_od">
-                                                        <img src='http://edu.bjhd.gov.cn/img/admin/headpic_03.jpg'>
+                                                        <img src='/img/admin/headpic_03.jpg'>
                                                         <h5>
                                                             <textarea class="replyText" id="$velocityCount" name="content"></textarea>
 															<input type="hidden" name="isLeaf" id="isNotLeaf" value="0"/>
@@ -146,7 +146,7 @@
 												##二次回复列表显示div
 												<div style="display:none" class='sec_dl cf' data-id="replyDiv">
 												#foreach($replyComment in $replyCommentList)
-													<div class='my_pic'><img src='http://edu.bjhd.gov.cn/img/admin/headpic_03.jpg'></div>
+													<div class='my_pic'><img src='/img/admin/headpic_03.jpg'></div>
                                                     <div class='my_con'>
                                                         <h4>$!current.name<span>$!klass.name $!school.name</span></h4>
                                                         <p class='p_text'>$!replyComment.content</p>
@@ -197,9 +197,9 @@
 									<div id="evaluate_item">
 									#foreach($evaluateComment in $evaluateCommentList)
                                     <dl>
-                                        <dt><img src='http://edu.bjhd.gov.cn/img/admin/headpic_03.jpg'></dt>
+                                        <dt><img src='/img/admin/headpic_03.jpg'></dt>
                                         <dd>
-                                            <h4><em><img src='http://edu.bjhd.gov.cn/img/admin/star1_03.png'></em>李佳薇<span>高二五班 北京市第八中学</span></h4>
+                                            <h4><em><img src='/img/admin/star1_03.png'></em>李佳薇<span>高二五班 北京市第八中学</span></h4>
                                             <p class='p_text'>$!evaluateComment.content</p>
                                             <p class='time_show'></p>
                                         </dd>
@@ -252,8 +252,8 @@
     
 #end
 #override("javascript")
-    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
-	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/mooc/course/details.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+    <script type="text/javascript" src="/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="/js/mooc/course/details.js" src="/js/lib/require/2.1.11/require.js"></script>
 	<script src='//player.polyv.net/script/polyvplayer.min.js'></script>
 #end                                          
 #extends("common/mooc/index.vm")

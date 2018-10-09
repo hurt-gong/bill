@@ -5,7 +5,7 @@
 <div class="playli_conRi">
 	<div class="playli_main">
         <div class="centerTit cf">
-            <h2>全区学习排名<img src="http://edu.bjhd.gov.cn/img/admin/class-02.png" style="margin-left:10px;"/></h2>
+            <h2>全区学习排名<img src="/img/admin/class-02.png" style="margin-left:10px;"/></h2>
         </div>
         <div class="adminBody">
 			<form action="/ucenter/teacher/ranking.html" id="taskForm" method="post">
@@ -37,7 +37,7 @@
 #end
 
 #override("javascript")
-	<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
-	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/ucenter/task_ranking.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+	<script type="text/javascript" src="/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="/js/ucenter/task_ranking.js" src="/js/lib/require/2.1.11/require.js"></script>
 #end                                          
 #extends("common/ucenter/teacher/index.vm")

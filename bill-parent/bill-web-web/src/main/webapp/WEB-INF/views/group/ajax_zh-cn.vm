@@ -7,7 +7,7 @@
 							#foreach($group in $groupDtos)
 							
                             <dl>
-                                <dt><a href="javascript:;"><img src="http://edu.bjhd.gov.cn/img/admin/class_03.jpg"></a></dt>
+                                <dt><a href="javascript:;"><img src="/img/admin/class_03.jpg"></a></dt>
                                 <dd>
                                     <h2><a href="javascript:void(0);" class="comeIn" value="$!group.id">进入群</a>$!group.klassName</h2>
                                     <p><span class="preBum">群成员    <b>$group.memberNum</b></span><span class="num">帖子数    <b>$group.topicNum</b></span></p>

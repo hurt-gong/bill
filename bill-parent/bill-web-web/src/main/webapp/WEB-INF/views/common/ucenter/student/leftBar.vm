@@ -1,12 +1,12 @@
 <div class="conLeft">
     <ul>
-        <li class="#if($s_myCenter_active) hoveLi #end"><span><img src='http://edu.bjhd.gov.cn/img/common/teacher_leftbar01.png' width="20px" height="20px"></span><a href="/ucenter/student/index.html">个人中心</a></li>
-		<li class="#if($d_group_active) hoveLi #end"><span><img src='http://edu.bjhd.gov.cn/img/common/teacher_leftbar02.png' width="20px" height="20px"></span><a href="/group/group/indexGroup.html">班群</a></li>
-		<li class="#if($d_learnPlan_active) hoveLi #end"><span><img src='http://edu.bjhd.gov.cn/img/common/teacher_leftbar03.png' width="20px" height="20px"></span><a href="/learnplan/learnPlans.html">学案</a></li>
-        <li class="#if($d_directcourse_active) hoveLi #end"><span><img src='http://edu.bjhd.gov.cn/img/common/teacher_leftbar04.png' width="20px" height="20px"></span><a href="/mooc/course/directCourseToView.html">区级推荐课程</a></li>
-        <li class="#if($d_task_active) hoveLi #end"><span><img src='http://edu.bjhd.gov.cn/img/common/leftbar-11.png' width="20px" height="20px"></span><a href="/ucenter/student/task.html">学习任务</a></li>
-        <li class="#if($d_taskRanking_active) hoveLi #end"><span><img src='http://edu.bjhd.gov.cn/img/common/teacher_leftbar06.png' width="20px" height="20px"></span><a href="/ucenter/student/ranking.html">学习任务大排名</a></li>
-        <li class="#if($s_playBack_active) hoveLi #end"><span><img src='http://edu.bjhd.gov.cn/img/common/teacher_leftbar07.png' width="20px" height="20px"></span><a href="/ucenter/student/playbackRecord.html">播放记录</a></li>
-		<li class="#if($d_dept_active) hoveLi #end"><span><img src='http://edu.bjhd.gov.cn/img/common/teacher_leftbar08.png' width="20px" height="20px"></span><a href="/homework/index.html">我的作业</a></li>
+        <li class="#if($s_myCenter_active) hoveLi #end"><span><img src='/img/common/teacher_leftbar01.png' width="20px" height="20px"></span><a href="/ucenter/student/index.html">个人中心</a></li>
+		<li class="#if($d_group_active) hoveLi #end"><span><img src='/img/common/teacher_leftbar02.png' width="20px" height="20px"></span><a href="/group/group/indexGroup.html">班群</a></li>
+		<li class="#if($d_learnPlan_active) hoveLi #end"><span><img src='/img/common/teacher_leftbar03.png' width="20px" height="20px"></span><a href="/learnplan/learnPlans.html">学案</a></li>
+        <li class="#if($d_directcourse_active) hoveLi #end"><span><img src='/img/common/teacher_leftbar04.png' width="20px" height="20px"></span><a href="/mooc/course/directCourseToView.html">区级推荐课程</a></li>
+        <li class="#if($d_task_active) hoveLi #end"><span><img src='/img/common/leftbar-11.png' width="20px" height="20px"></span><a href="/ucenter/student/task.html">学习任务</a></li>
+        <li class="#if($d_taskRanking_active) hoveLi #end"><span><img src='/img/common/teacher_leftbar06.png' width="20px" height="20px"></span><a href="/ucenter/student/ranking.html">学习任务大排名</a></li>
+        <li class="#if($s_playBack_active) hoveLi #end"><span><img src='/img/common/teacher_leftbar07.png' width="20px" height="20px"></span><a href="/ucenter/student/playbackRecord.html">播放记录</a></li>
+		<li class="#if($d_dept_active) hoveLi #end"><span><img src='/img/common/teacher_leftbar08.png' width="20px" height="20px"></span><a href="/homework/index.html">我的作业</a></li>
     </ul>
 </div>

@@ -5,8 +5,8 @@
         <div class="banner slideBox"  id="slideBox" >
 			<div class="bd">
                 <ul id='pic'class="bd">
-                    <li><img src='http://edu.bjhd.gov.cn/img/admin/banner_01.png'></li>
-                    <li><img src='http://edu.bjhd.gov.cn/img/admin/banner_02.png'></li>
+                    <li><img src='/img/admin/banner_01.png'></li>
+                    <li><img src='/img/admin/banner_02.png'></li>
                 </ul>
 			</div>
 			<div class="hd">
@@ -153,9 +153,9 @@
     </div>
 #end
 #override("javascript")
-<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
-<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery.SuperSlide.2.1.1.js"></script>
-<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/mooc/course/district_class.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+<script type="text/javascript" src="/js/lib/jquery/1.12.3/jquery.js"></script>
+<script type="text/javascript" src="/js/lib/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" data-main="/js/mooc/course/district_class.js" src="/js/lib/require/2.1.11/require.js"></script>
 <script type="text/javascript">
 		jQuery(".slideBox").slide({mainCell:".bd ul",autoPlay:true});
 </script>

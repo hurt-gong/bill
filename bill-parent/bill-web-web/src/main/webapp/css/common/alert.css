@@ -1,0 +1,60 @@
+.manageBox{position: absolute;width:800px;height:460px;border:1px solid #eff3f5;background:#f7f7f7;left:50%;margin-left: -400px;top:50%;margin-top: -230px;display:none;}
+.manageBox h2{height:40px;background:#4f8dec;color:#fff;line-height: 40px;padding-left:10px;}
+.manageBox h2 a{float: right;color:#fff;font-size:17px;padding-right: 12px;}
+.manageBox button{width:100px;height:40px;background:#4f8dec; border: none;outline: none;border-radius: 5px;color:#fff;position: absolute;top:400px;}
+.boxContent{height:330px;overflow-y:scroll;}
+.boxMain dl{float: left;width:100%;-min-height:112px;border-bottom: 1px solid #dee1e2;}
+.boxMain dl dt{width:50px;font-size: 18px;color:#34495e;font-weight: bolder;text-align: center;padding-top: 22px;float: left;}
+.boxMain dl dd{background: #fff;float: left;min-height:112px;width:733px;}
+
+.boxMain dd input{margin:0 6px 0 10px;}
+.boxMain dl dd label{display:inline-block;width:96px;color:#9b9b9b;line-height: 36px;}
+.alertMange{position:absolute;width:478px;height:226px;border:1px solid #eff3f5;background:#fff;z-index: 5;left:50%;margin-left:-239px;top:50%;margin-top:-113px;display:none;z-index: 999;}
+.alertMange h2{height:40px;background:#4f8dec;color:#fff;line-height: 40px;padding-left:10px;}
+.alertMange h2 a{float: right;color:#fff;font-size:17px;padding-right: 12px;}
+.alertMange button{width:100px;height:40px;background:#4f8dec; border: none;outline: none;border-radius: 5px;color:#fff;position: absolute;top:400px;}
+.alertMange button{top:166px;}
+.alertMange button.sure{left:110px;}
+.alertMange button.cel{left:235px;}
+.alertMange p{text-align: center;line-height: 110px;}
+.alertMange p label{padding-right: 10px;color:#9b9a9a;}
+.alertMange p input{width:288px;height:34px;border: 1px solid #e5e5e5;outline: none;padding-left: 10px;}
+
+.clearBox{position:absolute;width:478px;height:226px;border:1px solid #eff3f5;background:#fff;z-index: 5;left:50%;margin-left:-239px;top:50%;margin-top:-113px;display:none;z-index: 999;}
+.clearBox h2{height:40px;background:#4f8dec;color:#fff;line-height: 40px;padding-left:10px;}
+.clearBox h2 a{float: right;color:#fff;font-size:17px;padding-right: 12px;}
+<<<<<<< .mine
+.clearBox button{width:100px;height:40px;background:#4f8dec; border: none;outline: none;border-radius: 5px;color:#fff;position: absolute;top:400px;}
+||||||| .r1006
+.clearBox button{width:100px;height:40px;background:#0082c8; border: none;outline: none;border-radius: 5px;color:#fff;position: absolute;top:400px;}
+=======
+.clearBox button{width:100px;height:40px;background:#0082c8; border: none;outline: none;border-radius: 5px;color:#fff;position: absolute;top:400px;margin-left:20px;}
+>>>>>>> .r1176
+.clearBox button{top:166px;}
+.clearBox button.sure{left:110px;}
+.clearBox button.cel{left:235px;}
+.clearBox p{text-align: center;line-height: 110px;}
+.clearBox p label{padding-right: 10px;color:#9b9a9a;}
+.clearBox p input{width:298px;height:34px;border: 1px solid #e5e5e5;outline: none;}
+
+div._alertBox{width:480px;height:300px;left:50%;margin-left: -240px;top:50%;margin-top: -150px;}
+
+._alertBox .jqTransformSelectWrapper{width:298px;height:34px;}
+.jqTransformSelectWrapper ul{width:116px; height:auto !important;z-index: 99;}
+._alertBox .jqTransformSelectWrapper span{width:108px !important;}
+._alertBox button{top:238px !important;}
+._alertBox .alertBox_bar .aaa{color:#9b9a9a;padding: 0 0 0 12px;}
+._alertBox .alertBox_bar{background:none;margin-left:44px;}
+
+
+
+
+
+
+
+
+
+
+
+
+

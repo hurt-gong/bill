@@ -32,25 +32,25 @@
             <div class="vodio_box">
                 <a href="/mooc/course/create.html" class="sendVideo" style="border-right:1px solid #e9ecf7;border-bottom:1px solid #e9ecf7;">
                     <dl>
-                        <dt><img src='http://edu.bjhd.gov.cn/img/admin/vadio_06.jpg' width="30px" height="28px"></dt>
+                        <dt><img src='/img/admin/vadio_06.jpg' width="30px" height="28px"></dt>
                         <dd>发视频</dd>
                     </dl>
                 </a>
                 <a href="/tiku/index.html" class="sendHomwk">
                     <dl>
-                        <dt><img src='http://edu.bjhd.gov.cn/img/admin/vadio_03.jpg' width="30px" height="28px"></dt>
+                        <dt><img src='/img/admin/vadio_03.jpg' width="30px" height="28px"></dt>
                         <dd>发作业</dd>
                     </dl>
                 </a>
                 <a href="javascript:;" id='discussion'>
                     <dl>
-                        <dt><img src='http://edu.bjhd.gov.cn/img/admin/vadio_12.jpg' width="30px" height="28px"></dt>
+                        <dt><img src='/img/admin/vadio_12.jpg' width="30px" height="28px"></dt>
                         <dd>发讨论</dd>
                     </dl>
                 </a>
                 <a href="javascript:;" id='case' class="case" style="border-left:1px solid #e9ecf7;border-top:1px solid #e9ecf7;">
                     <dl>
-                        <dt><img src='http://edu.bjhd.gov.cn/img/admin/vadio_10.png' width="30px" height="28px"></dt>
+                        <dt><img src='/img/admin/vadio_10.png' width="30px" height="28px"></dt>
                         <dd>发学案</dd>
                     </dl>
                 </a>
@@ -144,7 +144,7 @@
 			#foreach($video in $videoPlayPage.records)
             <a href="/mooc/course/details.html?id=$!video.moocId&listenUrl=$!video.listenUrl&videoId=$!video.videoId">
                 <dl>
-                    <dt><img src='http://edu.bjhd.gov.cn/img/course/videoDefault/demo.png'></dt>
+                    <dt><img src='/img/course/videoDefault/demo.png'></dt>
                     <dd>
                         <h3>$!video.videoName</h3>
                         <p>主讲：$!video.speaker<span>$!date.format('yyyy-MM-dd',$!video.date)</span></p>
@@ -266,7 +266,7 @@
 </div>
 	#end
 #override("javascript")
-	<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
-	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/index/teacher.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+	<script type="text/javascript" src="/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="/js/index/teacher.js" src="/js/lib/require/2.1.11/require.js"></script>
 #end                                          
 #extends("common/ucenter/teacher/index.vm")

@@ -71,7 +71,7 @@
             <a href="/mooc/course/details.html?id=$!video.moocId&listenUrl=$!video.listenUrl&videoId=$!video.videoId">
                 <dl class="clearfix">
 					
-                    <dt><img src='http://edu.bjhd.gov.cn/img/course/videoDefault/demo.png'></dt>
+                    <dt><img src='/img/course/videoDefault/demo.png'></dt>
                     <dd>
                         <h3>$!video.videoName</h3>
                         <p>主讲：$!video.speaker<span>$!video.date</span></p>
@@ -125,7 +125,7 @@
 	<script>
 					console.log($!video.cover);
 					</script>
-    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
-	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/admin/distric/dept/dept.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+    <script type="text/javascript" src="/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="/js/admin/distric/dept/dept.js" src="/js/lib/require/2.1.11/require.js"></script>
 #end                                          
 #extends("common/ucenter/distric/index.vm")
