@@ -62,7 +62,7 @@ public class BookController extends BaseController {
 		Page<Grade> graPage = getPage(50);
 		Page<Grade> graList = this.gradeModuleImpl.getGradeList(graPage).getBody();
 		model.addAttribute("graList", graList.getRecords());
-		System.out.println("11111");
+		System.out.println("1111222222221");
 		// 查询学段
 		List<Phase> phaseList = teachModuleImpl.listPhase(StatusEnum.ON.key()).getBody();
 		Phase ph = phaseList.get(0);
