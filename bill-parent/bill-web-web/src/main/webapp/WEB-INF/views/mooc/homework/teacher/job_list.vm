@@ -1,0 +1,31 @@
+#set($d_dept_active="1")
+#override("title")我的作业#end
+#override("content")
+
+<div class="conRight">
+        <div class="mainContent">
+        <div class="adminTopBar">
+            <a href="javascript:void(0)" id="today" class="btn mybtn">今日作业</a>
+            <a href="javascript:void(0)" id="before" class="aLink mybtn">往期作业</a>
+        </div>
+        <div class="adminBody">
+            <div class="date">
+                <label for="">发布时间</label>
+                <input type="text" id="time" name="startDate" value="">
+                至
+                <input type="text" id="time1" name="endDate" value="">
+                <button id="seeBtn" class="seeBtn">查询</button>
+                
+            </div>
+    		<div id="jobListDiv">
+            </div>
+            
+        </div>
+	</div>
+</div>
+#end
+#override("javascript")
+    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/admin/job_init.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end                                          
+#extends("common/ucenter/teacher/index.vm")

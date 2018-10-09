@@ -1,0 +1,59 @@
+#set($d_manage_active="1")
+#set($d_teach_active="1")
+#override("title")区教学设置#end
+#override("content")
+ <div class="mainContent">
+            <div class="adminTopBar">
+                <a class="aLink mybtn" href="/manage/distric/teach/list.html">年级设置</a>
+                <a href="/manage/distric/teach/courseManage.html" class="aLink mybtn">课程管理 </a>
+                <a href="/manage/distric/teach/gradeSubject.html" class="btn mybtn">年级配课</a>
+
+            </div>
+            <div class="adminBody">
+                <div class="tableBox">
+                    <table>
+                        <tr>
+                            <th class="ltd">年级</th>
+                            <th>已有课程</th>
+                        </tr>
+                        #foreach($graSubject in $graSubDto)
+                        <tr>
+                            <td>$!{graSubject.grade.name}</td>
+                            <td>
+                                <div value="$!{graSubject.grade.id}">
+                                    <ul>
+                                     	#foreach($subject in $!{graSubject.subjectList})
+                                        <li>
+                                            $!subject.name
+                                            <a href="javascript:void(0)" value="$!subject.id">×</a>
+                                        </li>
+                                        #end
+                                    </ul>
+                                    <a href="javascript:void(0)" class="add">添加</a>
+                                </div>
+                            </td>
+                        </tr>
+                        #end 
+                    </table>
+                </div>
+            </div>
+            <div class="alertMange">
+                <h2><a href="javascript:;" class="closeAlert">×</a>添加课程</h2>
+                <p>
+                <div class="screenBar select_p _white">
+                    <form action="">
+                        <span class="fl">选择课程：</span>
+                        <select class="mySelect fl">
+                        </select>
+                    </form>
+                </div></p>
+                <button class="sure">确认</button>
+                <button class="cel">取消</button>
+            </div>
+       </div>
+#end
+#override("javascript")
+<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/admin/distric/teach/grade_subject.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end
+#extends("common/manage/distric/index.vm")

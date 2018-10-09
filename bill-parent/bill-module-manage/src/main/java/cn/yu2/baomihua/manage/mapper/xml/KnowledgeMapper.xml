@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yu2.baomihua.manage.mapper.KnowledgeMapper">
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 id, name, type, orderNum, k1, k2, parentId, category
+	</sql>
+	<select id="getKnowledgeList" parameterType="java.lang.Long" resultType="cn.yu2.baomihua.manage.entity.Knowledge">
+		select * from GL_KNOWLEDGE 
+		where type=17 and k1=#{phaseId} and k2=#{subjectId}
+	</select>
+	
+	<select id="getKnowledgeListByPsrentId" parameterType="java.lang.Long" resultType="cn.yu2.baomihua.manage.entity.Knowledge">
+		select * from GL_KNOWLEDGE 
+		where  parentId=#{parentId}
+	</select>
+</mapper>

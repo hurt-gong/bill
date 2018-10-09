@@ -1,0 +1,71 @@
+#set($d_myCenter_active="1")
+#set($p_stuTask_active="1")
+#override("title")学习任务#end
+#override("content")
+<div class="conRight planName">
+	<div class="adminTopBar" id="tit1">
+		#if($!isFinished==0)
+            <a href="javascript:void(0)" class="btn" value="0">未完成</a>
+            <a class="aLink" href="javascript:void(0)" value="1">已完成</a>
+		#else
+            <a href="javascript:void(0)" class="aLink" value="0">未完成</a>
+            <a class="btn" href="javascript:void(0)" value="1">已完成</a>
+		#end
+    </div>
+    <div class="planName_top">
+        <ul>
+			#if($!taskType==2)
+                <li value="1">视频</li>
+                <li class="lihover" value="2">作业</li>
+                <li value="3">学案</li>
+                <li value="4">讨论</li>
+			#elseif($!taskType==3)
+                <li value="1">视频</li>
+                <li value="2">作业</li>
+                <li class="lihover" value="3">学案</li>
+                <li value="4">讨论</li>
+			#elseif($!taskType==4)
+                <li value="1">视频</li>
+                <li value="2">作业</li>
+                <li value="3">学案</li>
+                <li class="lihover" value="4">讨论</li>
+			#else
+                <li class="lihover" value="1">视频</li>
+                <li value="2">作业</li>
+                <li value="3">学案</li>
+                <li value="4">讨论</li>
+				
+			#end
+        </ul>
+    </div>
+	<form id="taskForm" action="/ucenter/parent/stuTask.html" method="post">
+		<input type="hidden" name="_index" value="$!{stuTaskPage.current}"/>
+		<input type="hidden" name="isFinished" value="$!isFinished"/>
+		<input type="hidden" name="taskType" value="$!taskType"/>
+    </form>
+    <div class="planName_titile">
+        <b>任务名称</b>
+        <b style="float:right;margin-right:25px">任务时间</b>
+    </div>
+    <div class="planName_list">
+        <ul>
+			 #foreach($task in $stuTaskPage.records)
+            <li>
+                <a href="javascript:;">$!task.taskName</a>
+                <div>
+                    <span>$!date.format('yyyy-MM-dd',$!task.crDate)</span>
+                </div>
+            </li>
+			#end
+        </ul>
+	<div class="bg"></div>
+    #pager($stuTaskPage,"taskForm")
+    </div>
+</div>
+	
+#end
+#override("javascript")
+    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/ucenter/parent/stuTask.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end                                          
+#extends("common/ucenter/parent/index.vm")

@@ -1,0 +1,259 @@
+#set($d_dept_active="1")
+#override("title")课程播放页#end
+#override("content")
+        <div class="adminBody detailsBody">
+            <div class="top_mycenter">
+                <a href="/idx.html">个人中心 ></a><span>课程</span>
+            </div>
+            <div class="detailsTit">
+                <h2>
+                    <a href="javascript:;" id="moveStudy" class="titStyle detail">视频学习</a>
+                    <a href="javascript:;" id="exercises" class="detail">习题</a>
+                    <a href="javascript:;" id="courseware" class="detail">学案及课件</a>
+                </h2>
+            </div>
+            <div class="detailsCon">
+				<!--视频学习部分-->
+                <div class="moveStudy cf">
+                    <div class="play_top">
+                        <span>课程来源：$!mooc.schoolName</span>
+                        <h2><b>$!mooc.title</b><span>主讲教师：$!mooc.teacherName</span>
+							<ul>
+								#foreach($i in [1..$mooc.score])
+                                <li class="starheigh"></li>
+                               #end
+                            </ul>
+						</h2>
+                    </div>
+
+                    <div class="play_move">
+                        <div id='polyvplayer'>
+                            ##<img src="http://edu.bjhd.gov.cn/img/admin/play_03.jpg">
+								##<img src="$!video.cover">
+                        </div>
+                        <div class="play_movecenter" id="play_btn">
+                            <img src="http://edu.bjhd.gov.cn/img/admin/play_04.jpg" />
+                        </div>
+                        <div class="play_moveright">
+                            <div class="play_moverightInner">
+                                <ul>
+									#foreach($video in $videoList)
+                                    <li class="playafter">
+                                        <a href='/mooc/course/details.html?id=$video.courseNo&listenUrl=$video.listenUrl&videoId=$video.id'>$video.title</a>
+                                    </li>
+									#end
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="play_comment">
+                        <ul id='ul'>
+                            <li class='plattit_style comment' id="interaction"><a href="javascript:;" name="type" value="1">课程互动</a><em></em></li>
+                            <li class='comment' id="answer"><a href="javascript:;" name="type" value="2">我的答疑<span></span></a><em></em></li>
+                            <li class='comment' id="evaluate"><a href="javascript:;" name="type" value="3">课程评价</a><em></em></li>
+                        </ul>
+                        <div class="play_con">
+							<!--课程互动开始-->
+                            <div class='interaction cf'>
+								<!--课程互动下方的条目开始-->
+                                <div class="publick_item">
+                                    <dl>
+                                        <dt><img src='$!current.headUrl'></dt>
+                                        <dd>
+                                            <textarea id="content" name="content"></textarea>
+											<input type="hidden" id="videoId" value=""/>
+											<input type="hidden" name="type" id="type" value="1"/>
+											<input type="hidden" name="isLeaf" id="isLeaf" value="1"/>
+                                            <p class='announce'><a href="javascript:;" class="publish">发表</a><span><label id="allCom" for="aa" class="exeCheck label_checked"></label><input type="radio" id="aa">全部</span><span><label id="ownSchlCom" for="a1" class="exeCheck"></label><input type="radio" id="a1">只看本校</span></p>
+										</dd>
+                                    </dl>
+                                        <div id="comment">
+										#foreach($comment in $commentList)
+											<dl>
+                                                <dt><img src='http://edu.bjhd.gov.cn/img/admin/headpic_03.jpg'></dt>
+                                                <dd>
+													<input type="hidden" name="id" value="$!comment.id"/>
+                                                    <h4>$!current.name<span>$!klass.name  $!school.name</span></h4>
+                                                    <p class='p_text'>$!comment.content</p>
+                    									##点击回复弹出该div
+                    									<div style="display:none" class="replyDiv">
+                    										<div class="reply_od">
+                                                                <img src='http://edu.bjhd.gov.cn/img/admin/headpic_03.jpg'>
+                                                                <h5>
+                                                                    <textarea class="replyText" id="$velocityCount" name="content"></textarea>
+																	<input type="hidden" name="isLeaf" id="isNotLeaf" value="0"/>
+                                                                    <p class=''>
+																		<a href="javascript:;" class="replyPublish">回复</a>
+																	</p>
+                        										</h5>
+                                                        	</div>
+                    									</div>
+														##二次回复列表显示div
+														<div style="display:none" class='sec_dl cf' data-id="replyDiv">
+														#foreach($replyComment in $replyCommentList)
+                                                            <div class='my_pic'><img src='http://edu.bjhd.gov.cn/img/admin/headpic_03.jpg'></div>
+                                                            <div class='my_con'>
+                                                                <h4>$!current.name<span>$!klass.name $!school.name</span></h4>
+                                                                <p class='p_text'>$!replyComment.content</p>
+                                                                ##<p class='time_show'>12分钟<span>
+                                                                <a href="javascript:;">回复</a>
+                                                                <a href="javascript:;">删除</a></span></p> 
+                                                            </div>
+														#end
+                                                        </div>
+                                                    ##<p class='time_show'><span><a href="javascript:;" class="reset_top">取消置顶</a>
+                                                    <a href="javascript:;" class="reply $comment.id" value="$comment.id">回复</a>
+                                                    <a href="javascript:;" class="deleteComment">删除</a></span></p>
+                                                    ##<img src="http://edu.bjhd.gov.cn/img/admin/play_07.jpg" alt="" class='top_pic'>
+                                                </dd>
+                                            </dl>
+										#end
+										</div>
+                                </div>
+								<!--课程互动下方的条目结束-->
+								<!--右边的课程评价开始-->
+                                <div class="class_say">
+                                    <h3>课程介绍</h3>
+                                    <ul>
+										<li>$!mooc.content</li>
+                                    </ul>
+                                </div>
+								<!--右边的课程评价结束-->
+                            </div>
+							<!--课程互动结束-->
+							<!--我的答疑开始-->
+                            <div class="answer cf">
+                                <div class="publick_item answer_item">
+									#foreach($answerComment in $answerCommentList)
+                                       <dl>
+                                            <dt><img src='http://edu.bjhd.gov.cn/img/admin/headpic_03.jpg'></dt>
+                                            <dd>
+												<input type="hidden" name="id" value="$!answerComment.id"/>
+                                                <h4>$!current.name<span>$!klass.name $!school.name</span></h4>
+                                                <p class='p_text'>$!answerComment.content</p>
+												##点击回复弹出该div
+            									<div style="display:none" class="replyDiv">
+            										<div class="reply_od">
+                                                        <img src='http://edu.bjhd.gov.cn/img/admin/headpic_03.jpg'>
+                                                        <h5>
+                                                            <textarea class="replyText" id="$velocityCount" name="content"></textarea>
+															<input type="hidden" name="isLeaf" id="isNotLeaf" value="0"/>
+                                                            <p class='announce'><a href="javascript:;" class="replyPublish">回复</a></p>
+                										</h5>
+                                                	</div>
+            									</div>
+												##二次回复列表显示div
+												<div style="display:none" class='sec_dl cf' data-id="replyDiv">
+												#foreach($replyComment in $replyCommentList)
+													<div class='my_pic'><img src='http://edu.bjhd.gov.cn/img/admin/headpic_03.jpg'></div>
+                                                    <div class='my_con'>
+                                                        <h4>$!current.name<span>$!klass.name $!school.name</span></h4>
+                                                        <p class='p_text'>$!replyComment.content</p>
+                                                        <p class='time_show'><span>
+                                                        <a href="javascript:;">回复</a>
+                                                        <a href="javascript:;">删除</a></span></p> 
+                                                   </div>
+												 #end
+                                                </div>
+												<p class='time_show bottom'><span>
+                                                ##<a href="javascript:;" class="answerReply">回复</a>
+                                                ##<a href="javascript:;">删除</a></span></p>
+                                            </dd>
+                                        </dl>
+									#end
+                                </div>
+                                <div class="class_say">
+                                    <h3>课程介绍</h3>
+                                    <ul>
+                                       
+                                        <li>$!mooc.content</li>
+                                    </ul>
+                                </div> 
+                            </div>
+							<!--我的答疑结束-->
+							<!--课程评价开始-->
+                            <div class="evaluate cf">
+                                <div class="publick_item">
+                                    <dl class='class_start'>
+                                        <dt>
+                                            <p>课程评星：</p>
+                                            <p>评价内容：</p>
+                                        </dt>
+                                        <dd>
+											<ul class="starcon">
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                                <li></li>
+                                            </ul>
+											<input type="hidden" id="score" name="score"/>
+                                            <input type="text" name="content" id="evaluateContent">
+											<input type="hidden" name="type" id="evaluateType" value="3"/>
+                                            <p class='announce'><a href="javascript:;" class="evaluatePublish">发表</a>最低不少于10个字</p>
+                                        </dd>
+                                    </dl>
+									<div id="evaluate_item">
+									#foreach($evaluateComment in $evaluateCommentList)
+                                    <dl>
+                                        <dt><img src='http://edu.bjhd.gov.cn/img/admin/headpic_03.jpg'></dt>
+                                        <dd>
+                                            <h4><em><img src='http://edu.bjhd.gov.cn/img/admin/star1_03.png'></em>李佳薇<span>高二五班 北京市第八中学</span></h4>
+                                            <p class='p_text'>$!evaluateComment.content</p>
+                                            <p class='time_show'></p>
+                                        </dd>
+                                    </dl>
+									#end
+									</div>
+                                </div>
+								<!--课程评价结束-->
+                                <div class="class_say">
+                                    <h3>课程介绍</h3>
+                                    <ul>
+                                       
+										<li>$!mooc.content</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+				<!--习题部分-->
+                <div class="exercises">
+					<input type="hidden" id="moocId" value="${mooc.id}"/>
+					<input type="hidden" id="periodId" value="${video.id}"/>
+                    <div class="exercisesLeft detailsLeft">
+                    </div>
+                   
+                </div>
+				<!--学案及课件部分-->
+                <div class="courseware">
+				<form id="source" action="/mooc/course/details.html">
+                    <div class="cursewareLeft detailsLeft">
+                        <ul>
+							#foreach($source in $page.records)
+                            <li><a href="/mooc/course/downLoadSource.html?filename=$!source.name&path=$!source.url&id=$!source.id"><span></span>$!{source.name}.ppt</a></li>
+                           #end
+                        </ul>
+                        <!--<div class="pageNum leftPage detailspage">
+                            <a href="jsvascript:;" class="page pageLeft"></a><a href="jsvascript:;">上一页</a><a href="jsvascript:;" class="numStyle changeStyle">1</a><a href="jsvascript:;" class="numStyle">2</a><a href="jsvascript:;" class="numStyle hoverStyle">3</a><a href="jsvascript:;" class="numStyle">4</a><a href="jsvascript:;">下一页</a><a href="jsvascript:;" class="page pageRight"></a>
+						</div>-->
+						#pagerMooc($page,"source")
+					</form>
+                    </div>
+                    <div class="detailsRight">
+                        <h2>下载统计</h2>
+                        <p>已下载 $!{count} 个</p>
+                    </div>
+                </div>
+            </div>   
+        </div>
+    
+#end
+#override("javascript")
+    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/mooc/course/details.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+	<script src='//player.polyv.net/script/polyvplayer.min.js'></script>
+#end                                          
+#extends("common/mooc/index.vm")

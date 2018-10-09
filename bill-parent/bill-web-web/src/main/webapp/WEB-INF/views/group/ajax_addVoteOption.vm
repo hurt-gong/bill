@@ -1,0 +1,12 @@
+<div class="voteOptions">
+	<div class="change_class cf">
+       <span><label for="" class='label_title new_add'>00</label>
+       <input type="text" name="voteOn" id="" class="voteOn"></span>
+   </div>
+   <div class="insert">
+       <div class="_add_change cf">
+           <label for="" class='label_title new_add'>00</label>
+           <a href="javascript:;" id="addVoteOption">添加投票选项</a>
+       </div>
+   </div>
+</div>

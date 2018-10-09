@@ -1,0 +1,17 @@
+<div class="chooseSource">
+    <div class="planName_list">
+        <ul>
+			#foreach($source in $sourceList)
+            <li>
+                <a href="javascript:;" class="inLearnPlan" name='$!source.preUrl'>$source.subjectName $!teacherNameMap.get($source.userId) 发布了 $!classNameMap.get($source.id) 《$source.title》</a>
+                <div>
+                    <span>$source.subjectName</span>
+                    <b>$!crTimeMap.get($source.crTime)</b>
+					<!--<i>#if($source.status == 1)删除#end</i>-->
+                    <i id="down" value="$!source.storeUrl" name="$!source.title">下载</i>
+                </div>
+            </li>
+			#end
+        </ul>
+    </div>
+</div>

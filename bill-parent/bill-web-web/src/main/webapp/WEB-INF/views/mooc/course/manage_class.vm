@@ -1,0 +1,113 @@
+#set($s_staff_active="1")
+#override("title")微课程管理#end
+#override("content")
+<div class="mainWrap">
+        <h2 class='_tit'><a href="javascript:;">校公开课 ></a>课程管理页</h2>
+        <div class="mess_top">
+            <a href="/mooc/course/manageCourse.html">返回</a>请填写以下信息
+        </div>
+        <div class="mess_wrap">
+            <dl>
+                <dt><img src='$!mooc.cover'></dt>
+                <dd>
+                    <h2><span><a href="javascript:;" class="updatecourse" value="$!{mooc.id}">修改课程信息</a><a href="javascript:;" class="delCourse" value="$!{mooc.id}">删除课程</a></span>$!{mooc.title}</h2>
+					<input type="hidden" id="title" value="$!{mooc.title}"/>
+					<p class="listen"><em>$!mooc.checkNum</em>位同学听课</p>
+                    <h3>课程介绍：</h3>
+                    <p class='con3'>
+                        $!{mooc.content}
+                    </p>
+					<input type="hidden" id="content" value="$!{mooc.content}"/>
+                </dd>
+            </dl>
+            <ul>
+                #if($!moocTag.objType==1)<li><label>课程标签：</label><span>$!phase.name>$!grade.name>$!subject.name>$!moocTag.key1Name>$!moocTag.key2Name</span></li>#end
+                #if($!moocTag.objType==2)<li><label>知识点标签：</label><span>$!phase.name>$!grade.name>$!subject.name>$!moocTag.key1Name>$!moocTag.key2Name</span></li>#end
+                <li><label>关键字：</label><span>$!{mooc.keyword}</span></li>
+				<input type="hidden" id="keyword" value="$!{mooc.keyword}"/>
+				<input type="hidden" id="moocId" name="courseNo" value="$!{mooc.id}"/>
+				<input type="hidden" id="listenUrl" name="listenUrl" value=""/>
+				<input type="hidden" id="cover" name="cover" value=""/>
+				<input type="hidden" id="duration" name="duration" value=""/>
+				<input type="hidden" id="status" value="2"/>
+            </ul>
+            <div class="up_class">
+                <span class='set_class'><a href="javascript::" class='up1'>上传课程</a><a href="javascript:;" class='up2'>上传学案及课件</a></span><span class='over_up'><a href="javascript:;" class='video aa'>已上传的课程</a><a href="javascript:;" class="source">学习资源</a></span>
+            </div>
+            <table class='table1' id="video">
+                <tr>
+                    <th class='class_time'>课时</th>
+                    <th class='class_namem'>课程名称</th>
+                    <th class='class_times'>时长</th>
+                    <th class='class_times'>点播人数</th>
+                    <th class='class_times'>习题作答人数</th>
+                    <th>操作</th>
+                </tr>
+				#foreach($videoVo in $videoVoList)
+                <tr>
+                    <td class='class_time'>课时$velocityCount</td>
+                    <td class='class_namem'><a href="javascritp:;"></a>${videoVo.video.title})</td>
+                    <td class='class_times'>${videoVo.video.duration}</td>
+                    <td class='dianbo class_times'><a href="javascritp:;"></a>3人点播</td>
+                    <td class='class_times'>${videoVo.paper.answerNum}人</td>
+                    <td class='set1'>
+					<a href="/mooc/course/details.html">查看</a>
+                    <a href="javascritp:;">查看习题</a>
+                    <a href="javascritp:;" class='delVideo'>删除</a></td>
+                </tr>
+				#end
+            </table>
+            <table class="table2" style="display:none" id="source">
+                <tr>
+                    <th class='courseware_case'>课件及学案</th>
+                    <th class='class_times'>下载人数</th>
+                    <th>操作</th>
+                </tr>
+				#foreach($source in $sourceList)
+                <tr>
+                    <td class='courseware_case'>老人与海阅读及分析课件.rar</td>
+                    <td class='class_times'>0人下载</td>
+                    <td class='set1'><a href="javascript:;">下载</a><a href="javascript:;">删除</a></td>
+                </tr>
+				#end
+            </table>
+			
+            <div class="alertMange learningPlan_sel">
+			<form action="/sourceUpload/file.html" enctype="multipart/form-data" id="uploadForm" name="uploadForm" method="post">
+                <h2><a href="javascript:;" class="closeAlert">×</a>上传学案及课件</h2>
+				<label for="planfile" class="planfile">选择文件</label>
+				<input type="file" name="filename" id='planfile' style="display:none;">
+                <p class="fileType"><span>文档支持格式: .ppt,.pptx,.doc,.docx,.pdf</span></p>
+			</form>
+				<button class="sure sure1" id="uploadsource">立即上传</button>
+            </div>
+			
+			
+            <div class="alertBox classBox">
+                <h2><a href="javascript:;" class="closeAlert">×</a>上传课程</h2>
+                <div class="screenBar kk">
+                        <span style="float:left" class='kname'>课时选择</span>
+                        <select id="chooseVideo" class="mySelect">
+                            <option></option>
+                        </select>
+                </div>
+                <div class="kk">
+                    <span class="kname">课时名称</span>
+                    <input type="text" name="title" id="videotitle">
+                </div>
+                <div class="kk courf_sel">
+					<input type="file" name="video_file_upload" id="video_file_upload" style="display:block;" />
+					<div id="progress"></div>
+					<div class="kname fileType"><span>上传视频支持格式: .flv,.avi,.mpg,.mp4,.wmv,.mov,.3gp,.asf</span></div>
+				</div>
+                <button class='go_up'>立即上传</button>
+            </div>
+        </div>
+    </div>
+#end
+#override("javascript")
+<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/mooc/course/manage_class.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+
+#end
+#extends("common/mooc/index.vm")

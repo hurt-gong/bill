@@ -1,0 +1,146 @@
+#set($d_manage_active="1") 
+#set($d_statistics_active="1") 
+#override("title")资源使用统计 #end
+#override("content")
+	 <div class="mainContent">
+            <div class="statistics">
+				<form id="quaForm" action="/manage/distric/statistics/listResource.html">
+                    <div class="date">
+                        <label for="">时间</label>
+                        <span class="yesterday">昨日</span>
+                        <span class="seven">近7日</span>
+                        <span class="thirty">近30日</span>
+                        <input type="text" id="time" name="startDate" value="$!date.format('yyyy-MM-dd',$!paramMap.get('startDate'))">  至
+                        <input type="text" id="time1" name="endDate" value="$!date.format('yyyy-MM-dd',$!paramMap.get('endDate'))">
+                    </div>
+                    <div class="screenBar">
+                           	#if($paramMap.get("sel1")==1)
+                            	<select name="sel1" class="selectType" onchange="sel1Fun()">
+                                	<option value="1">按学校</option>
+                                	<option value="2">按应用</option>
+                            	</select>
+                            	<select name="sel2" class="selectDetail" onchange="sel2Fun()">
+                                	<option value=''>全部</option>
+    								#foreach($school in $schoolList)
+										#if($paramMap.get("sel2")==$!school.ID)
+											<option value='$!school.ID' selected='true'>$!school.name</option>
+										#else
+											<option value='$!school.ID'>$!school.name</option>
+										#end
+    								#end
+                           		</select>
+                            #else
+                            	<select name="sel1" class="selectType" onchange="sel1Fun()">
+                                	<option value="2">按应用</option>
+                                	<option value="1">按学校</option>
+                            	</select>
+                           		<select name='sel2' class="selectDetail" onchange="sel2Fun()">
+    								#foreach($sel in $appTypeMap.entrySet())
+										#if($paramMap.get("sel2")==$!sel.key)
+											<option value='$!sel.key' selected='true'>$!sel.value</option>
+										#else
+											<option value='$!sel.key'>$!sel.value</option>
+										#end
+    								#end
+                            </select>
+                            #end
+                    </div>
+                    
+                    <div class="screenBar _white">
+                        <span class="fl">指标</span>
+                        <select name="sort" class="mySelect fl">
+                        	#foreach($selQuo in $selectQuota.entrySet())
+								#if($paramMap.get("sort")==$!selQuo.key)
+									<option value='$!selQuo.key' selected='true'>$!selQuo.value</option>
+								#else
+									<option value='$!selQuo.key'>$!selQuo.value</option>
+								#end
+    						#end
+                        </select>
+                    </div>
+				</form>
+                <div id="chart" name="chart">
+            </div> 
+            </div>
+            <div class="adminBody baseBody">
+                <table class="table baseTable">
+					#if($paramMap.get("sel1")==1)
+                        <tr class="th">
+                            <td>排名</td>
+                            <td>学校名称</td>
+                            <td>浏览量</td>
+                            <td>登录次数</td>
+                            <td>IP次数</td>
+                        </tr>
+                    	#foreach($login in $loginStatistics)
+                    	<tr>
+                            <td>$velocityCount</td>
+                            <td>$!login.schoolName</td>
+                            <td>$!login.pageView</td>
+                            <td>$!login.loginCount</td>
+                            <td>$!login.loginIp</td>
+                        </tr>
+                    	#end
+                	#else
+						#if($paramMap.get("sel2")==2)
+							<tr class="th">
+							<td>排名</td>
+                            <td>学校名称</td>
+                            <td>上传作业次数</td>
+                            <td>完成作业次数</td>
+                            </tr>
+                        	#foreach($homwork in $homeworkStatistics)
+                        	<tr>
+                                <td>$velocityCount</td>
+                                <td>$!homwork.schoolName</td>
+                                <td>$!homwork.homwkUploadQty</td>
+                                <td>$!homwork.homwkFinishQty</td>
+                            </tr>
+                        	#end
+						#elseif($paramMap.get("sel2")==3)
+							<tr class="th">
+							<td>排名</td>
+                            <td>学校名称</td>
+                            <td>发布学习任务次数</td>
+                            <td>完成学习任务次数</td>
+                            </tr>
+                        	#foreach($task in $taskStatistics)
+                        	<tr>
+                                <td>$velocityCount</td>
+                                <td>$!task.schoolName</td>
+                                <td>$!task.publishTaskQty</td>
+                                <td>$!task.finishStudentQty</td>
+                            </tr>
+                        	#end
+						#else
+							<tr class="th">
+							<td>排名</td>
+                            <td>学校名称</td>
+                            <td>视频点播次数</td>
+                            <td>视频上传次数</td>
+                            <td>视频评论次数</td>
+                            </tr>
+                        	#foreach($video in $videoStatistics)
+                        	<tr>
+                                <td>$velocityCount</td>
+                                <td>$!video.schoolName</td>
+                                <td>$!video.videoDibbleQty</td>
+                                <td>$!video.videoUploadQty</td>
+                                <td>$!video.videoCommentQty</td>
+                            </tr>
+                        	#end
+						#end
+                	#end
+                </table>
+            </div>
+        </div>
+#end #override("javascript")
+<script type="text/javascript"
+	src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	
+<script type="text/javascript"
+	data-main="http://edu.bjhd.gov.cn/js/admin/distric/statistics/list_statistics.js"
+	src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+
+	
+#end #extends("common/manage/distric/index.vm")

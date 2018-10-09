@@ -1,0 +1,9 @@
+<ul>
+	#foreach($admin in $admins)
+        <li class="cf">
+            <span class="schoolAdmin fl">$!admin.name</span>
+            <span class="userName fl">$!admin.loginName</span>
+            <a href="javascript:void(0)" class="del fl" attrId="$admin.id">删除</a>
+        </li>
+	#end
+</ul>

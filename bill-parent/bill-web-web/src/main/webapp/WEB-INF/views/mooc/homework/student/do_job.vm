@@ -1,0 +1,73 @@
+#set($d_dept_active="1")
+#override("title")我的作业#end
+#override("content")
+    <div class="conRight do_jobBody">
+        <div class="mainContent">
+            
+            <div class="adminBody">
+                <div class="dojobTit cf">
+                    <a href="/homework/index.html">返回</a>
+                    <h2>做作业</h2>
+                </div>
+                    <table class="peoTable do_table">
+                        <tr class="th th1">
+                            <th class="center public">发布时间</th>
+                            <th class="center receive">收作业时间</th>
+                            <th class="center tit">标题</th>
+                            #*<th class="_left">班级</th>*#
+                            <th class="center numb">作答人数(本版人数${homework.studentCount}人)</th>
+                        </tr>
+                        <tr>
+                            <td class="center tdBlue public">${homework.startDate}<input type="hidden" id="hwId" value="${homework.id}"/></td>
+                            <td class="center tdBlue receive">${homework.endDate}</td>
+                            <td class="center tit">${homework.title}</td>
+                            #* <td class="_left">
+								#foreach($klassName in ${homework.klassNames})
+									$klassName;
+								#end
+							</td> *#
+                            <td class="center numb">${homework.answerCount}人</td>
+                        </tr>
+                    </table>
+                
+					#foreach($exam in $exams)
+                		<div class="floorone floor_do">
+                			<h3>$velocityCount.#if(${exam.typeName}!='')(${exam.typeName})#end<br>
+								${exam.content}<input type="hidden" name="examIds" data-type="${exam.typeId}" value="${exam.examId}"></h3>
+						<div class="options">
+                            <h3>请作答：</h3>
+								#if(${exam.typeId}==351)
+                				
+									#foreach($option in  ${exam.options})
+                                      <span><input type="radio" name="answer_${exam.examId}" value="$option"/><label for="$option"></label>$option</span>
+                					#end
+                				#elseif(${exam.typeId}==352||${exam.typeId}==353||${exam.typeId}==2)
+                						#foreach($option in  ${exam.options})
+                							<span><input type="checkbox"  name="answer_${exam.examId}" value="$option"/><label for="$option"></label>$option</span>
+                						#end
+                				#else
+                						<textarea name="answer_${exam.examId}" placeholder="拖动右下角可调整输入框大小" ></textarea>
+								#end
+                            
+    				</div>
+					   </div>
+                	#end
+          
+	 
+        </div>
+		<div class="allans">
+        <h2>共${exams.size()}题</h2><input type="hidden" id="questionTotal" value="${exams.size()}"/>
+        <div class="judge">
+            <p>已答：0 题</p>
+            <p>未答：<b>${exams.size()}</b> 题</p>
+        </div>
+        <button id="submitJob">提交答案</button>
+    </div>
+</div>
+</div>
+#end
+#override("javascript")
+    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/admin/job_init.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end                                          
+#extends("common/ucenter/student/index.vm")

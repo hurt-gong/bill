@@ -1,0 +1,17 @@
+
+<div class="roomDl">
+    #foreach($topic in $page.records)
+        <dl>
+            <dt class="id">$!topic.replayCount</dt>
+            <dd>
+                <h2><a href="/group/group/topic.html?topicId=$!topic.id&groupId=$groupId">$!topic.title#if($!topic.isDigest)<em> 精  </em> #end #if($!topic.isTop)<em> 顶  </em> #end</a></h2>
+                <p><a href="javascript:;">$!topic.preContent</a></p>
+            </dd>
+            <dd>
+                <span class='people'>$!topic.userName</span>
+            </dd>
+            <dd><b>$!date.format('yyyy-MM-dd HH:mm',$!topic.crTime)</b></dd>
+        </dl>
+    #end  
+</div>
+

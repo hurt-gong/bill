@@ -1,0 +1,82 @@
+#set($s_manage_active="1")
+#set($s_staff_active="1")
+#override("title")人员管理#end
+#override("content")
+<div class="mainContent">
+            <div class="adminTopBar">
+                 <a href="/manage/school/staff/studentManage.html" class="aLink  mybtn">学生管理</a>
+                <a href="/manage/school/staff/teacherManage.html" class="btn  mybtn">教师管理</a>
+            </div>
+            <div class="adminBody">
+                <div class="screenBar bgw">
+                    <form action="" class="chx" id="teacherForm">
+                        <span class="fl">筛选</span>
+                        <select class="mySelect fl" onchange="selOption(this.value)">
+                            <option value="">职务</option>
+                            #foreach($dic in $dictList)
+                            	#if($paramMap.get("positionId")==$!dic.id)
+                            		<option value="$dic.id" selected="selected">$!dic.name</option>
+                            	#else
+                            		<option value="$dic.id">$!dic.name</option>
+                            	#end
+                            #end
+                        </select>
+                        <input type="hidden" name="_index" value="$!{teacherList.current}"/>
+                        <input type="hidden" name="positionId" value="$!{paramMap.positionId}"/>
+                        <input type="hidden" name="name" value="$!{paramMap.name}"/>
+                    </form>
+                    <div class="seach">
+                        <input type="submit" value="搜索" class="sub">
+                        <input type="text" name="teacherName" class="txt" value="$!{paramMap.name}">
+                    </div> 
+                </div>
+                <form action="">
+                    <table class="peoTable">
+                        <tr class="th th1">
+                            <th class="center">编号</th>
+                            <th class="center">教育ID</th>
+                            <th class="center">姓名</th>
+                            <th class="center">民族</th>
+                            <th class="center">性别</th>
+                            <th class="center">手机号</th>
+                            <th class="_left">职务</th>
+                            <th class="center">在岗情况</th>
+                            <th class="center">出生日期</th>
+                        </tr>
+                        #foreach($teacher in $teacherList.records)
+                        <tr>
+                            <td class="peoNum">$!velocityCount</td>
+                            <td class="center">$!teacher.studentCode</td>
+                            <td class="center">$!teacher.name</td>
+                            <td class="center">$!teacher.nation</td>
+                            #if($!teacher.gender==1)
+                            	<td class="center">男</td>
+					    	#elseif($!teacher.gender==2)
+                           		<td class="center">女</td>
+                           	#else
+                           		<td class="center"></td>
+					    	#end
+                            <td class="center">$!teacher.mobile</td>
+                            <td class="center">$!teacher.postionName</td>
+                             #if($!teacher.status==1)
+                            	<td class="center">在岗</td>
+					    	#elseif($!teacher.status==2)
+                           		<td class="center">离岗</td>
+					    	#else
+					    		<td class="center"></td>
+					    	#end
+                            <td class="center"> $!date.format('yyyy-MM-dd',$!teacher.birthday)</td>
+                        </tr>
+                       #end
+                    </table>
+                </form>
+                <div class="bg"></div>
+                #pager($teacherList,"teacherForm")
+            </div>
+        </div>
+#end
+#override("javascript")
+<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/admin/school/staff/teacher_manage.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end
+#extends("common/manage/school/index.vm")

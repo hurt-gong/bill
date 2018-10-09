@@ -1,0 +1,92 @@
+#set($d_dept_active="1")
+#override("title")管理我的课程#end
+#override("content")
+<!-- 页面主体部分 开始 -->
+    <div class="mainWrap">
+        <div class="courseWrap">
+            <div class="courseCon">
+                <div class="tit">
+                    <span>校公开课</span>><a href="/mooc/course/manageCourse.html">我创建的课程</a>
+                </div>
+                <div class="title newTop_tit">
+					<a href="/mooc/course/list.html">返回</a>
+                    <h3><span>课程信息</span>共<b>$!count</b>个课程</h3>
+                </div>
+                <div class="courseDl cf">
+					#foreach($teacherMooc in $teacherMoocList)
+                    <dl>
+                        <dt><a href="javascript:;"><img src='$!teacherMooc.cover'></a></dt>
+                        <dd>
+                            <h2><a href="javascript:;" class="manageCourse" value="$!teacherMooc.id">管理课程</a>$!teacherMooc.title</h2>
+                            <p class="timer">上传时间:$!date.format("yyyy-MM-dd HH:mm",$!teacherMooc.crTime) </p>
+                            <p class="conTxt">课程介绍:$!teacherMooc.content</p>
+                        </dd>
+                    </dl>
+					#end
+                   <!-- <dl class="riDl">
+                        <dt><a href="javascript:;"><img src='http://edu.bjhd.gov.cn/img/admin/course_03.jpg'></a></dt>
+                        <dd>
+                            <h2><a href="javascript:;">管理课程</a>高考文综试卷答题技巧全解析</h2>
+                            <p class="timer">上传时间:2016-04-06</p>
+                            <p class="conTxt">课程介绍:掌门名师教你如何透过试卷看知识，透过题型看技巧，精辟的点拨，独到的思路，教会你如何提高高考复习中快人一步，在答题中轻松拿到高分！</p>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="javascript:;"><img src='http://edu.bjhd.gov.cn/img/admin/course_03.jpg'></a></dt>
+                        <dd>
+                            <h2><a href="javascript:;">管理课程</a>高考文综试卷答题技巧全解析</h2>
+                            <p class="timer">上传时间:2016-04-06</p>
+                            <p class="conTxt">课程介绍:掌门名师教你如何透过试卷看知识，透过题型看技巧，精辟的点拨，独到的思路，教会你如何提高高考复习中快人一步，在答题中轻松拿到高分！</p>
+                        </dd>
+                    </dl>
+                    <dl class="riDl">
+                        <dt><a href="javascript:;"><img src='http://edu.bjhd.gov.cn/img/admin/course_03.jpg'></a></dt>
+                        <dd>
+                            <h2><a href="javascript:;">管理课程</a>高考文综试卷答题技巧全解析</h2>
+                            <p class="timer">上传时间:2016-04-06</p>
+                            <p class="conTxt">课程介绍:掌门名师教你如何透过试卷看知识，透过题型看技巧，精辟的点拨，独到的思路，教会你如何提高高考复习中快人一步，在答题中轻松拿到高分！</p>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="javascript:;"><img src='http://edu.bjhd.gov.cn/img/admin/course_03.jpg'></a></dt>
+                        <dd>
+                            <h2><a href="javascript:;">管理课程</a>高考文综试卷答题技巧全解析</h2>
+                            <p class="timer">上传时间:2016-04-06</p>
+                            <p class="conTxt">课程介绍:掌门名师教你如何透过试卷看知识，透过题型看技巧，精辟的点拨，独到的思路，教会你如何提高高考复习中快人一步，在答题中轻松拿到高分！</p>
+                        </dd>
+                    </dl>
+                    <dl class="riDl">
+                        <dt><a href="javascript:;"><img src='http://edu.bjhd.gov.cn/img/admin/course_03.jpg'></a></dt>
+                        <dd>
+                            <h2><a href="javascript:;">管理课程</a>高考文综试卷答题技巧全解析</h2>
+                            <p class="timer">上传时间:2016-04-06</p>
+                            <p class="conTxt">课程介绍:掌门名师教你如何透过试卷看知识，透过题型看技巧，精辟的点拨，独到的思路，教会你如何提高高考复习中快人一步，在答题中轻松拿到高分！</p>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="javascript:;"><img src='http://edu.bjhd.gov.cn/img/admin/course_03.jpg'></a></dt>
+                        <dd>
+                            <h2><a href="javascript:;">管理课程</a>高考文综试卷答题技巧全解析</h2>
+                            <p class="timer">上传时间:2016-04-06</p>
+                            <p class="conTxt">课程介绍:掌门名师教你如何透过试卷看知识，透过题型看技巧，精辟的点拨，独到的思路，教会你如何提高高考复习中快人一步，在答题中轻松拿到高分！</p>
+                        </dd>
+                    </dl>
+                    <dl class="riDl">
+                        <dt><a href="javascript:;"><img src='http://edu.bjhd.gov.cn/img/admin/course_03.jpg'></a></dt>
+                        <dd>
+                            <h2><a href="javascript:;">管理课程</a>高考文综试卷答题技巧全解析</h2>
+                            <p class="timer">上传时间:2016-04-06</p>
+                            <p class="conTxt">课程介绍:掌门名师教你如何透过试卷看知识，透过题型看技巧，精辟的点拨，独到的思路，教会你如何提高高考复习中快人一步，在答题中轻松拿到高分！</p>
+                        </dd>
+                    </dl>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 页面主体部分 结束 -->   
+#end
+#override("javascript")
+    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/mooc/course/manageCourse.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end                                          
+#extends("common/mooc/index.vm")

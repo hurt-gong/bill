@@ -1,0 +1,44 @@
+         <div class="mainWrap">
+        <div class="myCenter_con cf">
+            <div class="conRight">
+                <div class="mainContent">
+                    
+                    <div class="adminBody do_jobBody">
+                        
+							<div id="tidetail">
+                           
+                        #foreach($exam in $exams)
+                         <div class="floor_play">
+							#if(${exam.typeId}==351||${exam.typeId}==352||${exam.typeId}==353)
+								<em class='right_cuo'>
+    								#if(${exam.studentAnswer}==${exam.answer})
+    									<img src='http://edu.bjhd.gov.cn/img/admin/right_03.png'>
+    								#else
+    									<img src='http://edu.bjhd.gov.cn/img/admin/cuo_03.png'>
+    								#end
+								</em>
+							#end
+                            
+                            <h3>$velocityCount.#if(${exam.typeName}!='')(${exam.typeName})#end<br>
+								${exam.content}</h3>
+                        </div>
+						<div class="play_judge1">
+							<h3>你的答案是<br><span>${exam.studentAnswer}</span><br>
+								正确答案是<br><span>${exam.answer}</span></h3>
+                        </div>
+                        <div class="analysis play_judge1">
+                            <h3><a href="javascrtip:;" class='look_analysis'>查看解析</a>
+								
+							</h3>
+                            <div class="look_analysis_box">
+								${exam.analysis}
+                            </div>
+                        </div>
+						#end
+						 </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.bill</groupId>
+		<artifactId>bill-parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>bill-web-web</artifactId>
+	<packaging>war</packaging>
+	<name>bill-web-web Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<!-- spring-wind -->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>spring-wind</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.bill</groupId>
+			<artifactId>bill-common-core</artifactId>
+		</dependency> <!-- -->
+		<!-- 文件上传 -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+		</dependency>
+		<!-- 格式转换 -->
+		<dependency>
+		    <groupId>com.artofsolving</groupId>
+		    <artifactId>jodconverter</artifactId>
+		    <version>2.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.livesense</groupId>
+			<artifactId>jodconverter-core</artifactId>
+			<version>1.0.5</version>
+		</dependency>
+		<!-- rpc begin -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.101tec</groupId>
+			<artifactId>zkclient</artifactId>
+		</dependency>
+		<!-- rpc end -->
+
+		<!-- velocity begin -->
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity-tools</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>dom4j</artifactId>
+					<groupId>dom4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>struts-core</artifactId>
+					<groupId>org.apache.struts</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>struts-tiles</artifactId>
+					<groupId>org.apache.struts</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>struts-taglib</artifactId>
+					<groupId>org.apache.struts</groupId>
+				</exclusion>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+		</dependency>
+		<!-- velocity end -->
+
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+		</dependency>
+		
+		<!-- poi -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+		</dependency>
+		<!-- jackson -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.6.5</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-core</artifactId>
+		    <version>2.6.5</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-annotations</artifactId>
+		    <version>2.6.5</version>
+		</dependency>
+		<dependency>
+			<groupId>de.intarsys.opensource</groupId>
+			<artifactId>jPod</artifactId>
+			<version>5.5.1</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.media</groupId>
+					<artifactId>jai-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.media</groupId>
+					<artifactId>jai-codec</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>de.intarsys.opensource</groupId>
+					<artifactId>isfreetype</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>bill-web-web</finalName>
+	</build>
+</project>

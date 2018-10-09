@@ -1,0 +1,147 @@
+#set($d_myCenter_active="1")
+#override("title")班群#end
+#override("content")
+   
+       <div class="roomCon">
+            <div class="roomheader" id="roomheader">
+                <h2><a href="javascript:;" class="personal">个人中心</a> > <span>班群</span></h2>
+            </div>
+            <div class="roomContent">
+                <div class="roomBanner conDl cf">
+                    <dl>
+                        <dt><img src="http://edu.bjhd.gov.cn/img/admin/class_03.jpg"></dt>
+                        <dd class='message'>
+                            <h2><a href="javascript:;" name="in" value="$!group.id" class="groupManageHref">#if($!GroupUser.tag != 1 && $!GroupUser.tag != 2 && $user.type==1)  #else 班群管理 #end</a>$!groupDto.klassName</h2>
+                            <p><span class="preBum">群成员    <b>$!groupDto.memberNum</b></span><span class="num">帖子数    <b>$!groupDto.topicNum</b></span></p>
+                            <p class="pre">创建者: $!groupDto.crUserName</p>
+                            <p class="pre">
+								管理员:
+								#foreach( $managers in $!groupDto.groupManagers)
+									$!managers.name、
+								#end
+							</p>
+                        </dd>
+                    </dl>
+                    <div class='textarea'>
+                        <textarea>$!{group.quotations}</textarea>
+                        <img src="http://edu.bjhd.gov.cn/img/admin/room_01.png">
+                    </div>
+                </div>
+                <div class="roomTop">
+                    <div class="toomTop_left">
+                        <div class="topNav cf">
+                        <form id="topicForm" action="/group/group/list.html?groupId=$!group.id" method="post">
+                        <input  id="userIdhidden"  value="$user.id"  type="hidden">
+						<input  id="groupIdhidden"  value="$!group.id"  type="hidden">
+                        <input type="hidden" name="_index" value="$!{page.current}"/>
+                            <ul class="topiclist">
+                                <li name="allTopic" #if((!$!{topic.isDigest})&&(!$!{topic.isLearn})&&(!$!{topic.userId})) class='navStyle' #end>
+									<input  id="allTopic" value="0" style="display:none" name="allTopic">
+									<label for="allTopic"> <a href="javascript:;"> 看帖 </a> </label>
+								</li>
+                                <li name="isDigest" #if($!{topic.isDigest}) class='navStyle' #end>
+    								<input  id="digest"  style="display:none" name="isDigest">
+    								<label for="digest"> <a href="javascript:;">精华帖</a> </label>
+								</li>
+                                <li name="isLearn" #if($!{topic.isLearn}) class='navStyle' #end>
+									<input  id="learn"  style="display:none" name="isLearn">
+									<label for="learn"> <a href="javascript:;">学习帖</a> </label>
+								</li>
+                                <li name="userId"  #if($!{topic.userId}) class='navStyle' #end>
+									<input  id="myTopic" style="display:none" name="userId">
+									<label for="myTopic"> <a href="javascript:;">我的帖子</a> </label>
+								</li>
+                            </ul>
+                           </form>
+                            <span><a href="javascript:;" class="toNew" >发表新话题</a></span>
+                        </div>
+						
+                        <div class="roomDl" id="roomDl">
+                        #foreach($topic in $page.records)
+                            <dl>
+                                <dt class="id">$!topic.replayCount</dt>
+                                <dd>
+                                    <h2><a href="/group/group/topic.html?topicId=$!topic.id&groupId=$!group.id">$!topic.title#if($!topic.isDigest)<em> 精  </em> #end #if($!topic.isTop)<em> 顶  </em> #end</a></h2>
+                                    <p><a href="javascript:;">$!topic.preContent</a></p>
+                                </dd>
+                                <dd>
+                                    <span class='people'>$!topic.userName</span>
+                                </dd>
+                                <dd><b>$!date.format('yyyy-MM-dd HH:mm',$!topic.crTime)</b></dd>
+								
+                            </dl>
+                          #end  
+                        </div>
+                            #pagerleftPage($page,"topicForm")
+                    </div>
+                    <div class="toomTop_right">
+                        <h2>群公告</h2>
+                        <p>$!{group.notice}</p>
+                    </div>
+                </div>
+				
+				
+				<div class="roomBottom" id="roomBottom">
+                    <h4 class="publish_btn">发表交流贴</h4>
+                    <h4 >发表投票</h4>
+                    <div class="publish_exchangePost">
+                        <p><input type="text" placeholder='输入标题' id="title">
+                            <span><input id="isLearn" type="checkbox" ><label for="" id="set_checked"></label>设为学习贴</span>
+                        </p>
+                        <div class="textear">
+                            <textarea id="content" placeholder='请输入内容'></textarea>  
+                        </div>
+                        <div class="int">
+                            <input type="button" value="发表" name="$!group.id" id="addTopic">
+                            <!-- <a href="javascript:;">@ 所有人</a> -->
+                        </div>
+                    </div>
+				
+				
+				<div class="publish_ballot">
+                        <form action="">
+                            <div class="publish_title">
+                                <h3>标题：</h3>
+                                <p><input type="text" placeholder='输入标题' id="titleVote"></p>
+                            </div>
+                            <div class="publish_type">
+                                <h3>投票类型：</h3>
+                                <p><span><label for="singleLi"></label><input type="radio" id='singleLi' value="单选">单选</span>
+                                   <span><label for="multipleLi"></label><input type="radio" id='multipleLi' value="多选">多选</span></p>
+                            </div>
+                            <div  class="publish_description">
+                                <h3>内容描述：</h3>
+                                <textarea placeholder='输入内容' id="conentVote"></textarea>
+                            </div>
+                            <div  class="publish_select">
+                                <h3>投票选项：</h3>
+                                <div>
+                                <p><input type="text" name="optionVote" /><a href="javascript:;"></a></p>
+                                <p><input type="text" name="optionVote"/><a href="javascript:;"></a></p>
+								<div class="addMore">
+									<i id="addInput"><a href="javascript:;">添加投票选项</a></i>
+								</div>
+                                </div>
+                            </div>
+                            <div class="publish_highSel"><span>高级选项</span></div>
+                            <div class="date date_over publish_cutTime">
+                                <h3>截止时间：</h3>
+                                <p><input type="text" id="time"></p>
+                            </div>
+                           
+                            <div class="publish_sendBtn">
+                                <input type="button" value="发表" name="$!group.id" id="addVoteTopic" />
+                            </div>
+                        </form>
+                    </div>
+				
+            </div>
+        </div>
+    
+	
+#end
+#override("javascript")
+    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/group/classrooms2.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end
+#extends("common/group/index.vm")

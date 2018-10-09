@@ -1,0 +1,68 @@
+#set($s_manage_active="1")
+#set($s_dept_active="1")
+#override("title")区部门管理#end
+#override("content")
+        <div class="mainContent">
+            <div class="adminTopBar">
+                <a class="aLink mybtn" href="/manage/school/dept/list.html">部门岗位人员管理</a>
+                <a href="/manage/school/role/list.html" class="btn mybtn">角色组</a>
+            </div>
+            <div class="adminBody">
+                <div class="highLayout">
+                    <div class="highRow twoRowLeft ruleName">
+                        <h3>
+							<span>角色名称</span>
+							<a href="javascript:void(0)" class="addBtn"></a>
+						</h3>
+						<ul class="cul">
+							#foreach($role in $roles)
+							<li class="cf #if($!checkedRoleId eq $!role.id) active #end">
+								<span id='$role.id'>$!role.name</span>
+								<a href="javascript:void(0)" class="del">删除</a>
+								<a href="javascript:void(0)" class="edit">修改</a>
+							</li>
+							#end
+						</ul>
+                    </div>
+                    <div class="highRow twoRowRight ruleMember">
+                        <h3>
+							<span>角色人员</span>
+							<a href="javascript:void(0)" class="dBtn">配置人员</a>
+
+						</h3>
+						<ul class="bul">
+							#foreach($roleTeacher in $roleTeachers)
+							<li class="cf " attrid='$!roleTeacher.id'>
+								<span>$!roleTeacher.teacherName</span>
+								<a href="javascript:void(0)" class="del">删除</a>
+							</li>
+							#end
+							##if($roleTeachers.size()==0)
+							##	<li class="cf ">
+							##	<span>角色下面没有人员</span>
+							##</li>
+							##end
+						</ul>
+                    </div>
+                </div>
+				<div class="alertMange addAlert">
+    				<h2><a href="javascript:;" class="closeAlert">×</a>添加角色</h2>
+    				<p><label for="">角色名称:</label><input type="text" name="" id=""></p>
+    				<button class="sure">确认</button>
+    				<button class="cel">取消</button>
+				</div>
+				<div class="alertMange updateAlert">
+    				<h2><a href="javascript:;" class="closeAlert">×</a>修改角色</h2>
+    				<p><label for="">角色名称:</label><input type="text" name="" id=""></p>
+    				<button class="sure">确认</button>
+    				<button class="cel">取消</button>
+				</div>
+            </div>
+        </div>
+	
+#end
+#override("javascript")
+    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/admin/school/dept/role.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end
+#extends("common/manage/school/index.vm")

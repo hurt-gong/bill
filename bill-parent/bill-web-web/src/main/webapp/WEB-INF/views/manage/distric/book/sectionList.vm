@@ -1,0 +1,118 @@
+#set($d_manage_active="1") 
+#set($d_book_active="1") 
+#override("title")区教材管理 #end
+#override("content")
+<div class="mainContent">
+	<div class="adminTopBar">
+		<a href="/manage/distric/book/list.html" class="aLink mybtn">教材版本管理</a> 
+		<a class="btn mybtn" href="/manage/distric/section/sectionList.html">教材目录维护</a>
+	</div>
+	<div class="adminBody">
+		<div class="screenBar">
+				<span class="fl">筛选</span>
+				<select class="mySelect fl phBy" style="width:185px" onchange="phBySub()">
+					#foreach($phase in $phaseList)
+						#if($!phase.id == $paramMap.get("phaseId"))
+							<option value="$!phase.id"  selected='selected'>$!phase.name</option>
+						#else
+							<option value="$!phase.id">$!phase.name</option>
+						#end
+					#end
+				</select>
+				<select class="mySelect fl subby" style="width:185px" id="my_updated_select_box" onchange="subByBook()">
+					#foreach($sub in $subList)
+						#if($!sub.id == $paramMap.get("subjectId"))
+							<option value="$!sub.id" selected='selected'>$!sub.name</option>
+						#else
+							<option value="$!sub.id">$!sub.name</option>
+						#end
+					#end
+				</select>
+				<select class="mySelect fl bookby" style="width:185px" id="my_updated_select_box2">
+					#foreach($book in $bookList)
+						#if($!book.id == $paramMap.get("bookId"))
+							<option value="$!book.id"  selected='selected'>$!book.name </option>
+						#else
+							<option value="$!book.id">$!book.name</option>
+						#end
+					#end
+				</select>
+				<a class="_dBtn fl" href="javascript:void(0)">确定</a> 
+				<div class="upload cf fl upBtn">
+				
+				<form id="form1" method="post" enctype="multipart/form-data">
+					<div class="upPic">
+						<div id="fileList" class="uploader-list"></div>
+						<div id="filePicker">上传新目录</div>
+					</div>
+				</form>
+			 </div>
+				<a class="aLink fr" href="javascript:void(0)" id="downloadSec">下载目录模版</a>
+				
+		</div>
+		<div class="highLayout">
+			<div class="highRow twoRowLeft ">
+				<h3>
+					<span>一级栏目</span> <a href="javascript:void(0)" class="addBtn"></a>
+				</h3>
+				<ul class="cul">
+					#foreach($firstSec in $firstSectionList)
+						#if($!firstSec.id == $paramMap.get("sectionId"))
+						<li class="cf oneName active" value="$!firstSec.id"><span>$!firstSec.name</span>
+						#else
+						<li class="cf oneName"  value="$!firstSec.id"><span>$!firstSec.name</span> 
+						#end
+							<a href="javascript:void(0)" class="del">删除</a> 
+							<a href="javascript:void(0)" class="edit">修改</a>
+						</li>
+					#end
+				</ul>
+			</div>
+			<div class="highRow twoRowRight">
+				<h3>
+					<span>已有课程</span> 
+					<a href="javascript:void(0)" class="dBtn">添加二级目录</a>
+				</h3>
+				<ul class="bul">
+					#foreach($!secondSec in $!secondSectionList)
+						<li class="cf" value="$!secondSec.id"><span>$!secondSec.name</span> 
+							<a href="javascript:void(0)" class="del">删除</a> 
+							<a href="javascript:void(0)" class="edit">修改</a>
+						</li>
+					#end
+				</ul>
+			</div>
+		</div>
+	</div>
+<div class="alertMange" value="first">
+    <h2><a href="javascript:;" class="closeAlert">×</a>目录名称</h2>
+    <p><label for="">目录名称:</label>
+    	<input type="text" name="sectionName" id="sectionName">
+    </p>
+    <button class="sure">确认</button>
+    <button class="cel">取消</button>
+</div>
+
+<div class="clearBox">
+    <input type="hidden" name="delId" id="delId">
+    <h2><a href="javascript:;" class="closeAlert">×</a>部门名称</h2>
+    <p>确认删除吗？</p>
+    <button class="sure" id="sureDel">确认</button>
+    <button class="cel" id="celDel">取消</button>
+</div>
+
+</div>
+#end #override("javascript")
+<script type="text/javascript"
+	src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	
+<script type="text/javascript"
+	src="http://edu.bjhd.gov.cn/js/manage/distric/book/cata.js"></script>
+	
+<script type="text/javascript"
+	src="http://edu.bjhd.gov.cn/js/lib/layer/layer.js"></script>
+	
+<script type="text/javascript"
+	data-main="http://edu.bjhd.gov.cn/js/dist/admin/bookLogMaintain_init.js"
+	src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end #extends("common/manage/distric/index.vm")

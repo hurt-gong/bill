@@ -1,0 +1,174 @@
+#set($d_myCenter_active="1")
+#override("title")班群#end
+#override("content")
+   
+        <div class="roomCon">
+            <div class="roomheader">
+                <h2><a href="javascript:;" class="personal">个人中心</a> > <span>班群</span></h2>
+            </div>
+            <div class="roomContent">
+                <div class="roomBanner conDl cf">
+                    <dl>
+                        <dt><img src="http://edu.bjhd.gov.cn/img/admin/class_03.jpg"></dt>
+                        <dd class='message'>
+                            <h2>$!groupDto.klassName</h2>
+                            <p><span class="preBum">群成员    <b>$!groupDto.memberNum</b></span><span class="num">帖子数    <b>$!groupDto.topicNum</b></span></p>
+                            <p class="pre">创建者: $!groupDto.crUserName</p>
+                            <p class="pre">
+								管理员:
+								#foreach( $managers in $!groupDto.groupManagers)
+									$!managers.name、
+								#end
+							</p>
+                        </dd>
+                    </dl>
+                    <div class='textarea'>
+                        <textarea>$!{group.quotations}</textarea>
+                        <img src="http://edu.bjhd.gov.cn/img/admin/room_01.png">
+                    </div>
+                </div>
+                <div class="roomTop listTopcon cf">
+                    <div class="toomTop_left">
+                        <div class="topNav cf">
+                        <form id="topicForm" action="/group/group/list.html?groupId=$!group.id" method="post">
+                        <input  id="userIdhidden"  value="$user.id"  type="hidden">
+							<input  id="groupIdhidden"  value="$!group.id"  type="hidden">
+                        <input type="hidden" name="_index" value="$!{page.current}"/>
+                           <ul class="topiclist">
+                                <li  name="allTopic" #if((!$!{topic.isDigest})&&(!$!{topic.isLearn})&&(!$!{topic.userId})) class='navStyle' #end><input  name="allTopic" value="0" style="display:none"><label for="allTopic"><a href="javascript:;">看帖</a></label></li>
+                                <li name="isDigest" #if($!{topic.isDigest}) class='navStyle' #end><input  id="digest" value="0" style="display:none" name="isDigest"><label for="digest"><a href="javascript:;">精华帖</a></label></li>
+                                <li name="isLearn" #if($!{topic.isLearn}) class='navStyle' #end><input  id="learn" value="0" style="display:none" name="isLearn"><label for="learn"><a href="javascript:;">学习帖</a></label></li>
+                                <li name="userId"  #if($!{topic.userId}) class='navStyle' #end><input  id="myTopic"  style="display:none" name="userId"><label for="myTopic"><a href="javascript:;">我的帖子</a></label></li>
+                            </ul>
+                            </form>
+                        </div>
+                        <div class="listRoom">
+                            <h5><a href="javascript:viod(0);" class="backToList" style="color:#000000;"><<返回</a></h5><!--only_look-->
+                            <h2>
+								<div id="toDigestClass">
+    								<span>
+										<!--老师 -->
+    									#if($user.type==2 && $topic.isDigest!=true)
+											<a href="javascript:;" id='toDigest' value="$topic.id">设为精华</a>
+										#elseif($user.type==2)
+											<a href="javascript:;" id='outDigest' value="$topic.id">取消精华</a>
+										#end
+										<!--学生管理员 -->
+										#if($!user.type==1 && $!GroupUser.tag==1 && $!topic.isDigest!=true)
+											<a href="javascript:;" id='toDigest' value="$topic.id">设为精华</a>
+										#elseif($!user.type==1 && $!GroupUser.tag==1)
+											<a href="javascript:;" id='outDigest' value="$topic.id">取消精华</a>
+										#end
+										<!--老师 -->
+										#if($user.type==2 && $topic.isTop!=true)
+    									<a href="javascript:;" id='toTop' value="$topic.id">设为置顶</a>
+										#elseif($user.type==2)
+										<a href="javascript:;" id='outTop' value="$topic.id">取消置顶</a>
+										#end
+										<!--学生管理员 -->
+										#if($!user.type==1 && $!GroupUser.tag==1 && $topic.isTop!=true)
+    									<a href="javascript:;" id='toTop' value="$topic.id">设为置顶</a>
+										#elseif($!user.type==1 && $!GroupUser.tag==1)
+										<a href="javascript:;" id='outTop' value="$topic.id">取消置顶</a>
+										#end
+										<!--老师 -->
+										#if($user.type==2)
+                                			<a href="javascript:;" class="cancelTopic" value="$topic.id" name="$!group.id">删除该贴</a>
+										#end
+										<!--学生管理员 -->
+										#if($!user.type==1 && $!GroupUser.tag==1)
+                                			<a href="javascript:;" class="cancelTopic" value="$topic.id" name="$!group.id">删除该贴</a>
+                                		#end
+    									<a href="#roomBottom">回复</a>
+    								</span>
+								</div>
+								$!topic.title
+							</h2>
+							
+                            <form id="topicDtoForm" action="/group/group/topic.html?topicId=$!topic.id&&groupId=$!group.id" method="post">
+                                <input  id="topicIdhidden"  value="$!topic.id"  type="hidden">
+        						<input  id="groupIdhidden"  value="$!group.id"  type="hidden">
+                                <input type="hidden" name="_index" value="$!{page.current}"/>
+							</form>	
+                            <table class="listroomCon">
+                            <tr>
+                                    <td class="floor">
+                                        <dl class="floorDl">
+                                            <dt><img src="$!topic.headUrl"></dt>
+                                            <dd>$!topic.userName</dd>
+                                        </dl>
+                                    </td>
+                                    <td class="floorRight cf">
+                                        <div class='cf'>
+                                            <p class="pCon">$!topic.content</p>
+                                            <span class="floorSpan">$!date.format('yyyy-MM-dd HH:mm',$!topic.crTime)<a href="#roomBottom">回复</a></span>
+                                        </div>
+                                       
+                                    </td>
+                                </tr>
+                             #foreach($topicDto in $page.records)
+                                <tr>
+                                    <td class="floor">
+                                        <dl class="floorDl">
+                                            <dt><img src="$!topicDto.headUrl"></dt>
+                                            <dd>$!topicDto.userName</dd>
+                                        </dl>
+                                    </td>
+                                    <td class="floorRight cf">
+                                        <div class='cf'>
+                                            <p class="pCon">$!topicDto.content</p>
+                                            <span class="floorSpan">$!date.format('yyyy-MM-dd HH:mm',$!topicDto.crTime)#if($user.id == $topicDto.userId)<a href="javascript:;" attrId='$!topicDto.id' class="colorStyle delreplay">删除</a>#end<a href="javascript:;" class="reply">回复</a></span>
+                                        </div>
+                                        <div class="replyBox cf">
+                                          #foreach($topic in $!topicDto.topics)
+                                            <dl>
+                                                <dt>
+													<img src="$!topic.headUrl">
+												</dt>
+                                                <dd>
+													<p style="color:#67b6e9">$!topic.userName</p>
+                                                    <p>$!topic.content</p>
+                                                    <span>$!date.format('yyyy-MM-dd HH:mm',$!topic.crTime)<a href="javascript:;" attrId='$!topic.id' class="colorStyle delreplay">删除</a></span>
+                                                </dd>
+                                            </dl>
+                                            #end
+                                            <p class="say">我也说一句</p>
+                                            <div class="replyTextarea">
+                                                <textarea class="$!topicDto.id" placeholder='写出你想说的话……'></textarea>
+                                                <input type="button" value="发表" class="say fun" name="$!topicDto.id"></input>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                               #end
+                            </table>
+                        </div>
+
+                         #pagerleftPage($page,"topicDtoForm")   
+                    </div>
+                    <div class="toomTop_right">
+                        <h2>群公告</h2>
+                        <p>$!{group.notice}</p>
+                    </div>
+                </div>
+                 <div class="roomBottom" id="roomBottom">
+                   <h4>发表回复</h4>
+                  <!--  <p><input type="text" placeholder='输入标题'></p> -->
+					<div class="textear">
+                        <textarea id="words" placeholder='写出你想说的话……'></textarea>  
+                    </div>
+                    <div class="int">
+                        <input type="button" value="发表" name="$!topic.id" id="comment">
+						<!-- <button onclick="report()">发表</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+	
+#end
+#override("javascript")
+    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/group/classrooms2.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end
+#extends("common/group/index.vm")

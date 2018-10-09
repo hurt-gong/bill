@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>WebUploader Demo</title>
+<meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="http://fex.baidu.com/webuploader/css/webuploader.css">
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">!window.jQuery && document.write('<script src="/static/js/jquery.min-1.9.1.js"><\/script>');</script>
+<script type="text/javascript" src="http://fex.baidu.com/webuploader/js/webuploader.js"></script>
+</head>
+<body>
+ <div class="item cf">
+         <span class="f_left">课程名称：</span>
+         <div class="input_box"><input type="text" id="videoTitle"></div>
+     </div>
+     <div id="thelist"></div>
+     <div class="upload_box">
+         <span id="picker" class="file_box ">选择文件</span>
+         <div class="upload_tip">支持MP4和FLV格式，文件大小不超过1G</div>
+     </div>
+     <div class="progress_box">
+         <div id="uploadProgress" class="progress" style="width:0%"></div>
+     </div>
+     <div id="md5Result"></div>
+     <div class="upload_btn upload_video">立即上传</div>
+ </div>
+</body>
+<script>
+$(function(){
+// 初始化上传控件
+    var uploader = WebUploader.create({
+        auto : false,
+        swf : '../staic/Uploader.swf',
+        server : '/upload/file.html',
+        pick : '#picker',
+        chunkRetry : 0,
+    	progressNum : 1,
+    	threads : 1,
+    	formData: {md5 : ""},
+    	method: 'POST',
+        accept : {
+            title: 'Videos',
+            extensions: 'mp4,flv',
+            mimeTypes: 'video/mp4,video/x-flv'
+        }
+    });
+    
+	
+    // 绑定手动上传按钮事件，上传前校验参数
+    $('.upload_video').click(function(){
+    	if(uploader.getFiles().length == 0){
+    		alert('请选择一个本地视频文件:mp4/flv');
+    		return;
+    	}
+    	if(!md5Finish){
+    		alert('请稍等，正在扫描视频文件！');
+    		return;
+    	}
+    	// 可以秒传
+    	if(fileExist){
+    		$("#uploadProgress").attr('style', 'width:45%');
+    		$.ajax({
+    			type : 'POST',
+    			url : baseServer + '/mooc/teacher/uploadVideo',
+    			data : {
+    				moocId : $("#moocId_L").val(),
+    				peroidId : $("#videoPeroidId").val(),
+    				title : $('#videoTitle').val(),
+    				cover : serverFile.clipUrl,
+    				storeUrl : serverFile.url,
+    				duration : serverFile.duration
+    			},
+    			dataType : 'json',
+    			success : function(json) {
+    				if(json.success){
+    					$("#uploadProgress").attr('style', 'width:100%');
+    				} else {
+    					alert(json.message);
+    				}
+    				location.reload();
+    			},
+    			error : function(json) {
+    				alert('视频保存失败');
+    			}
+    		});
+    	} else {
+    		//$('.upload_video').die();
+    		uploader.upload();
+    	}
+    });
+
+	uploader.on( 'fileQueued', function( file ) {
+				$('#thelist').empty().append(file.name);
+				
+				// 重新选择，移除上一次选择的视频文件
+				var reselect = false;
+				var files = uploader.getFiles('queued');
+				if(files.length > 1){
+					uploader.removeFile(files[0].id, true);
+					reselect = true;
+				}
+				if(reselect || !$('#videoTitle').val()){
+					var di = file.name.lastIndexOf('.');
+					$('#videoTitle').val( file.name.substring(0, di) );
+				}
+				
+				// 秒传校验
+				fileExist = false;
+				md5Finish = false;
+				serverFile = {};
+				uploader.md5File(file).progress(function(percentage) {
+					if($('#upload_file').css('display') == 'none' || (uploader.getFiles().length == 0)){
+						uploader.reset();
+						return;
+					}
+					$('#md5Result').empty().append('扫描文件进度：' + parseInt(percentage * 100) + '%');	
+				}).then(function(val) {
+					if($('#upload_file').css('display') == 'none' || (uploader.getFiles().length == 0)){						
+						return;
+					}
+					md5Finish = true;
+					console.log(val)
+					$.ajax({
+						type : 'POST',
+						url : 'http://edu.bjhd.gov.cn/upload/search.html',
+						data : { md5 : val },
+						dataType : 'json',
+						success : function(json) {
+							console.log(json);
+							fileExist  = json.exist;
+							if(fileExist){ // 服务器已存在该文件
+								serverFile = json.data;
+								$('#md5Result').empty().append('该文件服务器已存在，点击立即上传，开始秒传！');
+							} else {
+								uploader.options.formData.md5 = val;
+								$('#md5Result').empty().append('扫描完毕，请点击立即上传，开始上传！');
+							}
+							//console.log(serverFile);
+						},
+						error : function(json) {
+							// 秒传校验失败，直接传
+							uploader.options.formData.md5 = val;
+						}
+					});
+				});
+            });
+});
+    
+
+
+</script>
+</html>

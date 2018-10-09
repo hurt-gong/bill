@@ -1,0 +1,45 @@
+   <div class="mainWrap">
+    <div class="myCenter_con cf">
+        <div class="conRight do_jobBody">
+            <div class="mainContent">
+                
+                <div class="adminBody">
+                    
+                    <input type="hidden" id="paperId" value="${paperId}"/>
+						#foreach($exam in $exams)
+                    		<div class="floorone floor_do">
+                    			<h3>$velocityCount.#if(${exam.typeName}!='')(${exam.typeName})#end<br>
+									${exam.content}<input type="hidden" name="examIds" data-type="${exam.typeId}" value="${exam.examId}"></h3>
+							<div class="options">
+                                <h3>请作答：</h3>
+									#if(${exam.typeId}==351)
+										#foreach($option in  ${exam.options})
+                                          <span><input type="radio" name="answer_${exam.examId}" value="$option"/><label for="$option"></label>$option</span>
+										#end
+											
+                    				#elseif(${exam.typeId}==352||${exam.typeId}==353)
+                    						#foreach($option in  ${exam.options})
+                    							<span><input type="checkbox"  name="answer_${exam.examId}" value="$option"/><label for="$option"></label>$option</span>
+                    						#end
+                    				#else
+                    						<textarea name="answer_${exam.examId}" placeholder="拖动右下角可调整输入框大小"  style="width:90%;hight:300px"></textarea>
+									#end
+                                
+        				</div>
+						   </div>
+                    	#end
+              
+		 
+            </div>
+			<div class="allans position">
+            <h2>共${exams.size()}题</h2><input type="hidden" id="questionTotal" value="${exams.size()}"/>
+            <div class="judge">
+                <p>已答：0题</p>
+                <p>未答：${exams.size()}题</p>
+            </div>
+            <button id="submitJob">提交答案</button>
+        </div>
+    </div>
+</div>
+            </div>
+        </div>

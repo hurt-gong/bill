@@ -1,0 +1,3 @@
+ #foreach($grade in $gradeList)
+   	 <option value="$!grade.id">$!grade.name</option>
+#end

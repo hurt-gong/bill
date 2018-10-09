@@ -1,0 +1,33 @@
+#override("content")
+<img src="http://edu.bjhd.gov.cn/img/common/login.png" style="display:block;margin:0 auto;margin-top:200px;"/>
+<div class="loginWrap">
+    <div class="longinCon">
+    <form id="login" action="/account/loginFirst.html" method="post">
+        <h2>首次登录</h2>
+        <div class="initTxt"><label for="txt" class="labelOne"></label><input type="text" autocomplete="off"   name="username" placeholder="请输入您的账号"></div>
+        <div class="initTxt"><label for="pwd" class="labelTwo"></label><input type="password" autocomplete="off"   id="password" placeholder="请输入您的账号"></div>
+        <div class="verify cf">
+            <input type="text" name="checkcode">
+            <span>
+            <input name="token" type="hidden" value="$!{token}"  autocomplete="off"  />
+          	#set($captchaUrl ="/captcha/checkcode.html?token="+${token})
+            <img src="${captchaUrl}" onclick="this.src=('${captchaUrl}&t='+(new Date()).getTime())" >
+            </span>
+        </div>
+        <p>学生为学籍号、教学人员或家长请用手机号登录区人员及教师用户名为您的手机号、学生用户名为您的学籍号</p>
+        <div class="login_btn cf">
+            <button class="submitBtn">登录</button>
+            <button class="reseatBtn" onclick="history.go(-1)">取消</button>
+        </div>
+    </form>
+    </div>
+</div>
+#end
+#override("javascript")
+<script type="text/javascript">
+function cancel(){
+	window.location.href="/account/login.html";
+}
+</script>
+#end
+#extends("common/login.vm")

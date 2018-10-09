@@ -1,0 +1,118 @@
+#set($s_manage_active="1")
+#set($s_role_active="1")
+#override("title")区人员权限管理#end
+#override("content")
+	<div class="mainContent">
+            <div class="adminTopBar cf">
+                <a href="/manage/school/permission/list.html" class="btn mybtn">部门权限管理</a>
+                <a href="/manage/school/permission/roleList.html" class="aLink mybtn" >角色组管理</a>
+                <span class="hidden"><span><a href="javascript:;" id="btn">配置权限</a></span>
+            </div>
+            <div class="adminBody role">
+            	<form action="">
+                <div class="highLayout cf check">
+                       <div class="roleGroup">
+                <h5 class="roleTit">部门岗位</h5>
+               		<ul>
+						#foreach($dto in $roleDTOs)
+               			<li #if($!dto.id != $deptPId) class="animateHeight" #end>
+							#set($count = $!velocityCount)
+                            <span #if($!dto.id == $deptPId) class="animate" #end myId="$!dto.id">$!dto.name</span>
+							#foreach($role in $dto.childrens)
+                            <p #if($!{role.id} ==$deptId)class="pStyle dept" #else class="dept" #end myId="$!role.id" >$!role.name</p>
+							#end
+						</li>
+						#end
+               		</ul>
+               </div>
+                    <div class="role_right role_bg1">
+                        <h5 class="roleTit">已配置权限</h5>
+						#foreach($permission in $permissionList)
+    						#if($!permission.pCode == 0)
+                            <div class="onerole">
+                                <div class="oneleft roleCenter">
+                                    <label class="firstLi cf"><input type="checkbox">$!{permission.name}</label>
+                                </div>
+								
+                                <div class="oneright roleRight cf">
+                                    <ol class="roleManage cf">
+										#foreach($permissionSun in $permissionList)
+											#if($permissionSun.pCode == $permission.code)
+											<li><input type="checkbox">$!{permissionSun.name}</label></li>
+											#end
+										#end
+                                    </ol>  
+                                </div>
+                            </div>
+    						#end
+						#end
+						
+                        
+                        <!-- <div class="roleCenter">
+                            <div class="ul cf">
+                                <ul>
+                                    <li class="firstLi cf"><input type="checkbox">区后台管理</label>
+                                                  
+                                    </li>
+                                    <li class="_li cf"><input type="checkbox">公开课管理</label></li>
+                                    <li><input type="checkbox">消息通知</label></li>
+                                </ul>
+                            </div>
+                        </div> -->
+                        
+                    </div>
+                </div>
+                   
+               
+				<!--模板-->
+				
+
+                </form>
+				<div class="role_right role_bg">
+                        <h5 class="roleTit">已配置权限</h5>
+						<form id="addPer" action="/manage/school/permission/addPermissions.html" method="post" onSubmit="return false" >
+                <button class="sure" >提交</button>
+                <button class="cancel">取消</button>
+						<input type="hidden" name="deptId" value="$!{deptId}">
+							<input type="hidden" name="deptPId" value="$!{deptPId}">
+						#foreach($!permission in $!permissionAllList)
+							#if($permission.pCode==0)
+                            <div class="onerole">
+                                <div class="oneleft roleCenter">
+                                    <label class="firstLi cf"><input type="checkbox" checked="checked" name="perCode" value="$!{permission.code}">$!{permission.name}</label>
+                                </div>
+                                <div class="oneright roleRight cf">
+                                    <ol class="roleManage cf">
+										#foreach($permissionSun in $permissionAllList)
+											#if($permissionSun.pCode==$permission.code)
+												#set($mark=false)
+											<li>
+												#foreach($permission in $permissionList)
+													#if($permission.code==$permissionSun.code)
+														#set($mark=true)
+													#end
+												#end
+												#if($mark==true)
+													<input type="checkbox" checked="checked" name="perCode" value="$!{permissionSun.code}">
+												#else
+													<input type="checkbox" name="perCode" value="$!{permissionSun.code}">
+												#end
+													$!{permissionSun.name}
+											</li>
+											#end
+                                        #end
+                                    </ol>  
+                                </div>
+                            </div>
+    						#end
+						#end
+					</form>
+                </div>
+            </div>
+        </div>
+#end
+#override("javascript")
+    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/admin/school/permission/dept.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end
+#extends("common/manage/school/index.vm")

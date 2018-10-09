@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yu2.baomihua.manage.mapper.UserMapper">
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 id, name, spell, loginName, password, gender,nation, studentCode, idCardNo, mobile, headUrl, birthday, type, status, schoolId,positionId, crTime, crUserId
+	</sql>
+	
+	<select id="getUserList" resultType="cn.yu2.baomihua.manage.entity.User">
+		 SELECT
+		 	id,name, gender, idCardNo, mobile, nation
+		 FROM GL_USER
+		 WHERE 1=1
+		 <if test="user.name != null">
+		 	AND name like '%${user.name}%'
+		 </if>
+		 	AND type = #{user.type}
+			AND status = #{user.status}
+			AND schoolId = #{user.schoolId}
+			ORDER BY
+				crTime DESC
+	</select>
+	<select id="getUserDtoList" resultType="cn.yu2.baomihua.manage.dto.UserDTO">
+		 SELECT
+		 	id, studentCode, name, gender, nation,mobile,positionId,birthday,status
+		 FROM GL_USER
+		 WHERE 1=1
+		 <if test="paramMap.name != null">
+		 	AND name like '%${paramMap.name}%'
+		 </if>
+		 	AND type = #{user.type}
+			AND status = #{user.status}
+			AND schoolId = #{user.schoolId}
+		<if test="paramMap.klassId != null">
+		 	AND id IN (SELECT studentId FROM GL_KLASS_STUDENT WHERE klassId=#{paramMap.klassId})
+		</if>
+		<if test="paramMap.positionId != null">
+		 	AND positionId = #{paramMap.positionId}
+		</if>
+	</select>
+	
+</mapper>

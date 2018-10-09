@@ -1,0 +1,29 @@
+#set($d_dept_active="1")
+#override("title")我的作业#end
+#override("content")
+<div class="conRight">
+    <div class="mainContent">
+
+        <div class="adminBody">
+			<input type="hidden" id="subjectId"/>
+            <div class="navClass cf">
+                <ul>
+					<li class="nav_li">全部</li>
+					#foreach($subject in ${subjectList})
+                        <li  data-id=${subject.id}>${subject.name}</li>
+					#end
+                </ul>     
+            </div>
+            <div id="jobListDiv_stu">
+            </div>
+        </div>
+    </div>
+</div>
+#end
+#override("javascript")
+    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/layer/layer.js"></script>	
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/admin/job_init.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+	<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/mooc/homework/student/job_list.js"></script>
+#end                                          
+#extends("common/ucenter/student/index.vm")

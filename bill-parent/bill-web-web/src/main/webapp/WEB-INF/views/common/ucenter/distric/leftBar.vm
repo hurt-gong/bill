@@ -1,0 +1,8 @@
+<div class="conLeft">
+    <ul>
+        <li class="#if($di_myCenter_active) hoveLi #end"><span><img src='http://edu.bjhd.gov.cn/img/admin/my_03.png' width="20px" height="20px"></span><a href="/ucenter/distric/index.html">个人中心</a></li>
+        <li class="#if($d_directcourse_active) hoveLi #end"><span><img src='http://edu.bjhd.gov.cn/img/admin/my_06.png' width="20px" height="20px"></span><a href="/mooc/course/directCourseToView.html">区级推荐课程</a></li>
+        <li class="#if($d_taskRanking_active) hoveLi #end"><span><img src='http://edu.bjhd.gov.cn/img/admin/my_08.png' width="20px" height="20px"></span><a href="/ucenter/distric/ranking.html">学习任务大排名</a></li>
+        <li class="#if($d_playBackRecord_active) hoveLi #end"><span><img src='http://edu.bjhd.gov.cn/img/admin/my_10.png' width="20px" height="20px"></span><a href="/ucenter/distric/playBackRecord.html">播放记录</a></li>
+    </ul>
+</div>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- 加载配置文件 -->
+	<bean id="placeholder"
+		class="com.baomidou.framework.velocity.VelocityPropertyPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true"/>
+		<property name="locations">
+			<list>
+				<value>classpath:properties/common.properties</value>
+				<value>classpath:properties/dubbo.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 获取ApplicationContext上下文 -->
+	<bean id="springContextHolder" class="com.baomidou.framework.spring.SpringContextHolder" />
+</beans>

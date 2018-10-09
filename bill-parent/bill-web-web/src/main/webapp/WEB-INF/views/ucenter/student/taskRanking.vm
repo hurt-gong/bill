@@ -1,0 +1,46 @@
+#set($d_myCenter_active="1")
+#set($d_taskRanking_active="1")
+#override("title")全区学习大排名#end
+#override("content")
+<div class="mainContent student_fl">
+	<div class="conCenter cf" id="conCenter">
+        <div class="centerTit cf">
+            <h2>全区学习排名<img src="http://edu.bjhd.gov.cn/img/admin/class-02.png" style="margin-left:10px;"/></h2>
+        </div>
+        <div class="adminBody mainB">
+			<form action="/ucenter/student/ranking.html" id="taskForm" method="post">
+				<input type="hidden" name="_index" value="$!{userList.current}"/>
+                    <table class="peoTable">
+                        <tbody>
+							<tr class="th th1">
+                                <th class="center number">编号</th>
+                                <th class="center school">学校</th>
+                                <th class="center progress">当前进度</th>
+                                <th class="center task">首名完成任务的同学</th>
+							</tr>
+						#foreach($task in $taskRankingPage.records)
+                    	  <tr>
+                            <td class="peoNum number">$velocityCount</td>
+                            <td class="center school">$!task.schoolName</td>
+                            <td class="center progress">$!task.finishRate</td>
+                            <td class="center task">$!task.firstStudentName
+								#if(""!=$!task.firstStudentKlass)
+								($!task.firstStudentKlass)</td>
+								#end
+						  </tr>
+						#end
+                         </tbody>
+					</table>
+                </form>
+		</div>
+		<div class="bg"></div>
+		#pager($taskRankingPage,"taskForm")
+    </div>
+</div>
+#end
+
+#override("javascript")
+	<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/ucenter/task_ranking.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end                                          
+#extends("common/ucenter/student/index.vm")

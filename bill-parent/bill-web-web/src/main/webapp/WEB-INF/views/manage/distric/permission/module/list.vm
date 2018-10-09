@@ -1,0 +1,93 @@
+#set($d_manage_active="1")
+#set($d_module_active="1")
+#override("title")应用权限管理#end
+#override("content")
+        <div class="mainContent">
+            <div class="adminTopBar cf">
+                <a href="javascript:void(0)" class="btn">按应用管理</a>
+                <a href="javascript:void(0)" class="aLink">按学校管理</a>
+                <span><a href="javascript:;" id="btn">配置权限</a></span>
+            </div>
+            <div class="adminBody">
+                <form action="">
+                    <table class="peoTable">
+                        <tr>
+                            <td class="firstTr _firstTr">人大附中</td>
+                            <td class="padding cf">
+                                <ul>
+                                    <li>北京市第一中学</li>
+                                    <li>北京市第五中学</li>
+                                    <li>北京市第九中学</li>
+                                </ul>
+                                <ul>
+                                    <li>北京市第一中学</li>
+                                    <li>北京市第五中学</li>
+                                    <li>北京市第九中学</li>
+                                </ul>
+                                <ul>
+                                    <li>北京市第一中学</li>
+                                    <li>北京市第五中学</li>
+                                    <li>北京市第九中学</li>
+                                </ul>
+                                <ul>
+                                    <li>北京市第一中学</li>
+                                    <li>北京市第五中学</li>
+                                    <li>北京市第九中学</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="firstTr _firstTr">人大附中</td>
+                            <td class="padding cf">
+                                <ul>
+                                    <li>北京市第一中学</li>
+                                    <li>北京市第五中学</li>
+                                    <li>北京市第九中学</li>
+                                </ul>
+                                <ul>
+                                    <li>北京市第一中学</li>
+                                    <li>北京市第五中学</li>
+                                    <li>北京市第九中学</li>
+                                </ul>
+                                <ul>
+                                    <li>北京市第一中学</li>
+                                    <li>北京市第五中学</li>
+                                    <li>北京市第九中学</li>
+                                </ul>
+                                <ul>
+                                    <li>北京市第一中学</li>
+                                    <li>北京市第五中学</li>
+                                    <li>北京市第九中学</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="alertBox">
+                      <h2 class="cf"><a href="javascript:;" id="close">×</a>配置权限</h2>
+                      <div class="alertTable use cf">
+                          <ul id="nav">
+                              <li class="fristChecked li"><input type="checkbox"><label for="">资源应用一</label></li>
+                              <li class="bgLi"><input type="checkbox"><label for="">区公开课</label></li>
+                              <li class="bgLi"><input type="checkbox"><label for="">资源应用二</label></li>
+                          </ul>
+                          <div class="ulCon">
+                              <div class="useOne">
+                                <p><em class="fristChecked"><input type="checkbox"><label for="">人大附中</label></em><input type="checkbox"><label for="">人大附中</label><input type="checkbox"><label for="">人大附中</label><input type="checkbox"><label for="">人大附中</label><input type="checkbox"><label for="">一零一中学</label></p>
+                                <p><input type="checkbox"><label for="">十一学校</label><input type="checkbox"><label for="">十一学校</label><input type="checkbox"><label for="">十一学校</label><input type="checkbox"><label for="">人大附中分校</label></p>
+                                <p><input type="checkbox"><label for="">中关村中学</label></p>
+                              </div>
+                          </div>
+                      </div>
+                      <button class="sureUp">确认上架</button>
+                      <button class="cel">取消</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+	
+#end
+#override("javascript")
+    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/admin/distric/school/school.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end
+#extends("common/manage/distric/index.vm")

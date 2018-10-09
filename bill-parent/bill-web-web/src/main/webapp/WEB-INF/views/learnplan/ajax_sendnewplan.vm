@@ -1,0 +1,39 @@
+<div class="learnPlanClass">
+    <div class="learning_case_box">
+        <h2><a href="javascript:;" class='close_discussion_box'>×</a>发学案</h2>
+		
+            <div class="kk">
+                <span class="kname xname">学案学科</span>
+                <input type="hidden"  name="subjectName" id="subjectName">
+				<select class="mySelect" id="subjectClass">
+                    <option selected="selected" >--请选择--</option>
+					#foreach($subject in $subjectList)
+                    <option>$subject.name</option>
+					#end
+                </select>
+            </div>
+			<form action="/DocUpload/file.html" enctype="multipart/form-data" id="uploadForm" name="uploadForm" method="post" >
+                <div class="xx">
+                    <span class="kname xname">上传学案</span>
+                    <a href="javascript:;" class="file" >
+                        <input type="file" name="filename"  id="fileUp" >
+                    </a>
+                </div>
+					<p class="fileType"><span>文档支持格式 .ppt,.pptx,.doc,.docx,.xls,.xlsx,.pdf</span></p>
+			</form>
+            <div class="screenBar kk">
+				<form action="">
+
+                    <span style="float:left" class='kname xname'>推荐班级</span>
+					<input type="hidden" name="forKlassName" value="" id="forKlassName"/>
+                    <select class="mySelect" id="planClass">
+                        <option selected="selected" >--请选择--</option>
+    					#foreach($klassName in $klassNames)
+                        <option>$klassName</option>
+    					#end
+                    </select>
+				</form>
+            </div>
+    	<div class="send_discuss" id="sendLearnPlan">发学案</div>
+    </div>
+</div>

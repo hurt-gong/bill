@@ -1,0 +1,35 @@
+<div class="box_top cf">
+    <ul class='left_ul'>
+        <li><span>学生信息：</span>$!userDto.name</li>
+        <li><span>学籍号：</span>$!userDto.studentCode</li>
+        <li><span>家长信姓名：</span>$!userDto.parent.name</li>
+        <li><span>家长联系方式：</span>$!userDto.parent.mobile</li>
+    </ul>
+    <ul class='right_ul'>
+        <li><span>学生用户名：</span>$!userDto.loginName
+        	#if($!userDto.loginName)
+        		<a href="javascript:;" value="$!userDto.id">重置密码</a>
+	        #end
+        </li>
+        <li><span>入学时间：</span>$!{date.format('yyyy-MM-dd',$!userDto.crTime)}</li>
+        <li><span>家长用户名：</span>$!{userDto.parent.loginName}
+        	#if($!userDto.parent.loginName)
+        		<a href="javascript:;" value="$!{userDto.parent.id}">重置密码</a>
+	        #end
+        </li>
+    </ul>
+</div>
+<em class="detailed_information">详细信息</em>
+<div class="box_bottom cf">
+    <ul class='left_ul'>
+        <li><span>民族：</span>汉族</li>
+        <li><span>证件号：</span>$!userDto.idCardNo</li>
+        <li><span>年级：</span>高中?</li>
+        <li><span>政治面貌：</span>团员?</li>
+    </ul>
+    <ul class='right_ul ul1'>
+        <li><span>出生日期：</span>$!userDto.birthday</li>
+        <li><span>证件类型：</span>身份证?</li>
+        <li><span>班级：</span>高三一班?</li>
+    </ul>
+</div>

@@ -1,0 +1,56 @@
+#set($d_manage_active="1")
+#set($d_school_active="1")
+#override("title")校区管理#end
+#override("content")
+	<div class="mainContent schoolManage">
+        <div class="adminTopBar cf">
+            <form class="fr" id="schoolId" action="/manage/distric/school/list.html" method="post">
+				<input type="hidden" name="_index" value="$!{page.current}"/>
+                <input type="text" name="name" value="$!name" class="fl searchText">
+                <input type="submit" value="搜索" class="dBtn fl">
+            </form>
+            <a href="/manage/distric/school/schoolExport.html?name=$!{name}" class="btn fr" style="height:30px;line-height:30px;border:none;background-color:#0087f5;font-size:12px;color:#fff;">生成excel并导出</a>
+        </div>
+        <div class="adminBody">
+            <div class="tableBox">
+                <table>
+                    <tr>
+                        <th class="schoolName">学校名称</th>
+                        <th class="schoolAddress">校区地址</th>
+                        <th class="userWrap"><span class="schoolAdmin">校管理员</span><span class="userName">用户名</span></th>
+                        <!-- <th class="userName">用户名</th> -->
+                        <th class="op">操作</th>
+                    </tr>
+					#foreach($school in $page.records)
+                        <tr>
+                            <td class="schoolName">$!school.name</td>
+                            <td class="schoolAddress">$!school.address</td>
+                            <td class="userWrap" id="$!school.id">
+                            <ul>
+								#foreach($admin in $school.admins)
+                                    <li class="cf">
+                                        <span class="schoolAdmin fl">$!admin.name</span>
+                                        <span class="userName fl">$!admin.loginName</span>
+                                        <a href="javascript:void(0)" class="del fl" attrId="$admin.id">删除</a>
+                                    </li>
+								#end
+                            </ul>
+                            </td>
+                            <td class="op" id="$!school.id"><a href="javascript:void(0)">添加</a></td>
+                        </tr>
+					#end
+                </table>
+            </div>
+			<!--<div class="bg"></div>-->
+			#pager($page,"schoolId")
+        </div>
+    </div>
+	
+#end
+#override("javascript")
+    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+    <script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/admin/distric/school/school.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end
+<script>
+</script>
+#extends("common/manage/distric/index.vm")

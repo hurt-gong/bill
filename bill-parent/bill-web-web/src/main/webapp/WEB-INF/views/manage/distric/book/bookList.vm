@@ -1,0 +1,126 @@
+#set($d_manage_active="1") 
+#set($d_book_active="1") 
+#override("title")区教材管理 #end
+#override("content")
+	<div class="mainContent">
+		<div class="adminTopBar">
+			<a href="/manage/distric/book/list.html" class="btn mybtn">教材版本管理</a> 
+			<a class="aLink mybtn" href="/manage/distric/section/sectionList.html">教材目录维护</a>
+
+		</div>
+		<div class="adminBody">
+		
+			<input type="hidden" name="phId" id="phId" value="$!phaseId">
+		    <input type="hidden" name="subId" id="subjectId" value="$!subjectId">
+			<div class="screenBar">
+				<form action="/manage/distric/book/list.html">
+					<span style="float:left">筛选</span>
+					<select class="mySelect" name="phaseId" id="phaseId">
+						#foreach($phase in $phaseList)
+							#if($!phase.id == $!phaseId)
+								<option value="$!phase.id"  selected='selected'>$!phase.name</option>
+							#else
+								<option value="$!phase.id">$!phase.name</option>
+							#end
+						#end
+					</select>
+					<a class="dBtnsure" href="javascript:void(0)">确定</a>
+				</form>
+			</div>
+			<div class="highLayout">
+				<div class="highRow twoRowLeft ">
+					<h3>
+						<span>学科</span>
+					</h3>
+					#if($!subList)
+						<ul class="cul textCenter">
+							#foreach($!sub in $!subList)
+								#if($sub.id==$subjectId)
+								<li class="cf active" id="$!sub.id">
+								#else
+								<li class="cf" id="$!sub.id">
+								#end
+									<span value="$!sub.id" onclick="edits('$!sub.id')">$!sub.name</span>
+								</li>
+							#end
+						</ul>
+					#end
+				</div>
+				<div class="highRow twoRowRight">
+					 <h3>
+						<span>已有目录维护</span>
+						<a href="javascript:void(0)" class="dBtn" onclick="edit('', '')">添加教材</a>
+					</h3>
+					#if($!bookList)
+					<ul class="bul">
+						#foreach($!book in $!bookList)
+							<li class="cf" value="$book.id">
+								<span class="spanText">$!book.name</span>
+								<a href="javascript:void(0)" class="del" onclick="bookDel('$!book.id')">删除</a>
+								<a href="#" class="edit" onclick="edit('$!book.name', '$!book.id')">修改</a>
+							</li>
+						#end
+					</ul>
+					#end
+				</div>
+			</div>
+		</div>
+		
+		<div class="alertMange _alertBox">
+		    <h2><a href="javascript:;" class="closeAlert">×</a>添加教材</h2>
+		    <p>
+		    	<label for="">教材名称:</label>
+		    	<input type="text" name="bookName" id="book">
+		    	<input type="hidden" name="yuan" id="yuan">
+		    	<input type="hidden" name="id" id="id">
+		    </p>
+		   	<div class="screenBar alertBox_bar">
+            	<form action="">
+            		<span style="float:left" class="aaa">选择年级：</span>
+            		<select class="mySelect selGrade" id="updatePhId">
+							<option value="">请选择年级</option>
+            			#foreach($grade in $graList)
+							#if($!grade.id == $!gra)
+								<option value="$!grade.id"  selected='selected'>$!grade.name</option>
+							#else
+								<option value="$!grade.id">$!grade.name</option>
+							#end
+							<!-- <option value="$!gra.id">$!gra.name</option> -->
+						#end
+            		</select>
+           		</form>	
+           	</div>
+		    <button class="sure">确认</button>
+		    <button class="cel">取消</button>
+		</div>
+		
+		<div class="clearBox">
+		    <input type="hidden" name="delId" id="delId">
+		    <h2><a href="javascript:;" class="closeAlert">×</a>部门名称</h2>
+		    <p>确认删除吗？</p>
+		    <button class="sure" id="sureDel">确认</button>
+		    <button class="cel" id="celDel">取消</button>
+		</div>
+		<!-- <div class="alertMange">
+		    <h2><a href="javascript:;" class="closeAlert">×</a>教材名称</h2>
+		    <p>
+		    	<label for="">教材名称:</label>
+		    	<input type="text" name="bookName" id="book">
+		    	<input type="hidden" name="yuan" id="yuan">
+		    	<input type="hidden" name="id" id="id">
+		    </p>
+		    <button class="sure">确认</button>
+		    <button class="cel">取消</button>
+		</div> -->
+	</div>
+#end #override("javascript")
+<script type="text/javascript"
+	src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	
+<script type="text/javascript"
+	src="http://edu.bjhd.gov.cn/js/lib/layer/layer.js"></script>	
+<script type="text/javascript"
+	src="http://edu.bjhd.gov.cn/js/manage/distric/book/bookList.js"></script>
+	
+	
+#end #extends("common/manage/distric/index.vm")

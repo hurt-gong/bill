@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yu2.baomihua.manage.mapper.KlassMapper">
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 id, name, gradeId, year, status, schoolId, crTime, crUserId
+	</sql>
+
+	<select id="getKlassName" resultType="cn.yu2.baomihua.manage.entity.Klass">
+		select 
+		<include refid="Base_Column_List"/>
+		from GL_KLASS  WHERE id = #{id}
+	</select>
+
+	<select id="getKlassByIds" parameterType="java.lang.Long" resultType="cn.yu2.baomihua.manage.entity.Klass">
+		select * from GL_KLASS 
+		where gradeId=#{gradeId} and schoolId=#{schoolId} and crUserId=#{crUserId}
+	</select>
+</mapper>

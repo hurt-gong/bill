@@ -1,0 +1,48 @@
+#set($d_book_active="1") 
+#override("title")预览 #end
+#override("content")
+ <div class="mainWrap preWrap">
+        <div class="adminBody preBody cf">
+            <div class="top_mycenter">
+                <a href="javascript:;">校本课程库 > 管理课程 > </a><span>习题预览</span>
+            </div>
+            <div class="doPreTit">
+                <span>共<b id="preview_total">${exams.size()}</b>题</span>
+                <h2>
+                    <a href="/mooc/paper/teacher/uploadPaperIndex?moocId=${moocId}&periodId=${periodId}&listenUrl=${listenUrl}" class="titStyle">添加习题</a>
+                    <a href="javascript:;" id="publishjobForPaper">发布习题</a>
+                </h2>
+            </div>
+			<input type="hidden" id="moocId" value="${moocId}"/>
+			<input type="hidden" id="periodId" value="${periodId}"/>
+			<input type="hidden" id="listenUrl" value="${listenUrl}"/>
+			#foreach($exam in $exams)
+				<div class="pre_con play_judge cf">
+                <div class="floorone">
+                    <div class="flooleft">
+                        <h3><span class="exam_index">$velocityCount.</span>#if(${exam.typeName}!='')(${exam.typeName})#end<br>
+							${exam.content}</h3>
+                    </div>
+                    <div class="flooright">
+                        <a href="javascript:;" class="bb" data-examid="${exam.examId}" data-typeid="${exam.typeId}" data-typename="${exam.typeName}">取消选择</a>
+                        <a href="javascript:;" class="check_jiexi">查看解析</a>
+                    </div>
+                    <div class="floor_jiexi">
+                    <h2>解析</h2>
+                    <p>
+                       ${exam.analysis}
+                    </p>
+                    </div>
+                </div>
+            </div>
+			#end
+            
+        </div>
+    </div>
+	 
+#end #override("javascript")
+<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/jquery.datetimepicker.js"></script>
+<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/admin/do_preview.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+
+#end #extends("common/tiku/index.vm")

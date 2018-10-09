@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yu2.baomihua.manage.mapper.LoginStatisticsMapper">
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 id, schoolId, schoolName, gradeId, klassId, klassName, userId, pageView, loginCount, loginIp, crDate
+	</sql>
+
+	<select id="getLoginCount" resultType="cn.yu2.baomihua.manage.entity.LoginStatistics">
+		SELECT
+			id, schoolName, SUM(pageView) pageView, SUM(loginCount) loginCount, COUNT(loginIp) loginIp
+		FROM
+			TJ_LOGIN_STATISTICS
+		WHERE 
+			1=1
+		<if test="schoolId !=null">
+			AND schoolId = #{schoolId}
+		</if>
+		<if test="startDate != null">
+		    AND crDate &gt;= #{startDate}
+		</if> 
+		<if test="endDate != null">
+		    AND crDate &lt;= #{endDate}
+		</if>
+		GROUP BY
+			schoolId
+		ORDER BY
+		 	${sort} desc
+	</select>
+	
+	<select id="getLoginCountChart" resultType="cn.yu2.baomihua.manage.entity.LoginStatistics">
+		SELECT
+			SUM(pageView) pageView,
+			SUM(loginCount) loginCount,
+			COUNT(loginIp) loginIp,
+			crDate
+		FROM
+			TJ_LOGIN_STATISTICS
+		WHERE
+			1=1
+		<if test="schoolId !=null">
+			AND schoolId = #{schoolId}
+		</if>
+		<if test="startDate != null">
+		    AND crDate &gt;= #{startDate}
+		</if> 
+		<if test="endDate != null">
+		    AND crDate &lt;= #{endDate}
+		</if>
+		GROUP BY
+			crDate
+	</select>
+	
+	<select id="getSchoolLoginCount" resultType="cn.yu2.baomihua.manage.entity.LoginStatistics">
+		SELECT
+			klassName, SUM(pageView) pageView, SUM(loginCount) loginCount
+		FROM
+			TJ_LOGIN_STATISTICS
+		WHERE 
+			schoolId = #{schoolId}
+		<if test="gradeId !=null">
+			AND gradeId = #{gradeId}
+		</if>
+		<if test="startDate != null">
+		    AND crDate &gt;= #{startDate}
+		</if> 
+		<if test="endDate != null">
+		    AND crDate &lt;= #{endDate}
+		</if>
+		GROUP BY
+			klassId
+		ORDER BY
+		 	${sort} desc
+	</select>
+	<select id="getSchoolLoginCountChart" resultType="cn.yu2.baomihua.manage.entity.LoginStatistics">
+		SELECT
+			SUM(pageView) pageView, SUM(loginCount) loginCount, crDate
+		FROM
+			TJ_LOGIN_STATISTICS
+		WHERE
+			schoolId = #{schoolId}
+		<if test="gradeId !=null">
+			AND gradeId = #{gradeId}
+		</if>
+		<if test="startDate != null">
+		    AND crDate &gt;= #{startDate}
+		</if> 
+		<if test="endDate != null">
+		    AND crDate &lt;= #{endDate}
+		</if>
+		GROUP BY
+			crDate
+	</select>
+</mapper>

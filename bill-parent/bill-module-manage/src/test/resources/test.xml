@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<dubbo:application name="manage.test" logger="slf4j" />
+	<!-- 使用zookeeper暴露服务地址 -->
+	<dubbo:registry protocol="zookeeper" address="192.168.1.251:2181" />
+	<!-- 超时时间和重试次数 -->
+	<dubbo:consumer timeout="2000" retries="5"
+		lazy="true" />
+	<!-- 用dubbo协议暴露服务 -->
+	<dubbo:protocol name="dubbo" port="20480" />
+
+	<!-- manage -->
+	<dubbo:reference id="schoolModule" interface="cn.yu2.baomihua.manage.module.ISchoolModule" url="dubbo://127.0.0.1:20480/" />
+
+</beans>

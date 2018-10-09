@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yu2.baomihua.manage.mapper.BookTagMapper">
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 id, bookId, tagId, type
+	</sql>
+
+	<select id="selectBookTag" resultType="cn.yu2.baomihua.manage.entity.BookTag">
+		select 
+			<include refid="Base_Column_List"/>
+		from GL_BOOK_TAG where 1=1
+		<if test="bookId !=null and bookId != ''">
+			and bookId=#{bookId}
+		</if>
+		<!-- <if test="tagId !=null and tagId != ''">
+			and tagId=#{tagId}
+		</if> -->
+		<if test="type !=null and type != ''">
+			and type=#{type}
+		</if>
+	</select>
+	
+	<delete id="deleteBookTag">
+		delete from GL_BOOK_TAG where 1 = 1
+		<if test="bookId != null and bookId != ''">
+			and bookId = #{bookId}
+		</if>
+	</delete>
+	
+	<select id="getBookTagById" parameterType="java.lang.Long" resultType="cn.yu2.baomihua.manage.entity.BookTag">
+	select a.id,a.bookId from 
+	(select * from GL_BOOK_TAG where type=1 and tagId=#{phaseId}) a,
+	(select * from GL_BOOK_TAG where type=2 and tagId=#{gradeId}) b,
+	(select * from GL_BOOK_TAG where type=3 and tagId=#{subjectId}) c 
+	where a.bookId=b.bookId and b.bookId=c.bookId
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,4 @@
+ <option value="">选择班级</option>
+  #foreach($klass in $klassList)
+    <option value="$!klass.id">$!klass.name</option>
+  #end

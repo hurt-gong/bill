@@ -1,0 +1,31 @@
+#set($d_learnPlan_active="1")
+#set($d_myCenter_active="1")
+#override("title")文案预览#end
+#override("content")
+ <!-- 页面主体部分 开始 -->
+            <div class="conRight planPreview">
+                <div class="preview_title">
+                    <h4>学案：$!source.title</h4>
+                    <a href="javascript:;" class="backButton">返回</a>
+                </div>
+                <div class="preview_con">
+                    <div>
+                        <div id="viewerPlaceHolder" value="$!url" class="flexpaper_viewer" style="width:940px;height:530px"></div>
+                    </div>
+                </div>
+                <div class="download_plan" value="$!source.storeUrl" name="$!source.title" >下载学案</div>
+            </div>
+
+    <!-- 页面主体部分 结束 -->
+	#end
+#override("javascript")
+<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+##<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/flexpaper/js/flexpaper.js"></script>
+##<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/flexpaper/js/flexpaper_handlers.js"></script>
+<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/index/teacher.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end 
+#if($user.type == 2)
+	#extends("common/ucenter/teacher/index.vm")
+#else
+	#extends("common/ucenter/student/index.vm")
+#end

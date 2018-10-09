@@ -1,0 +1,55 @@
+#set($d_myCenter_active="1")
+#set($d_task_active="1")
+#override("title")学习任务#end
+#override("content")
+<div class="mainContent student_fl">
+	<div class="conCenter cf" id="conCenter">
+        <div class="centerTit cf task">
+            <h2><em>学习任务</em></h2>
+        </div>
+        <div class="adminBody student_adminBody">
+			<form action="/ucenter/student/ranking.html" id="taskForm" method="post">
+				<input type="hidden" name="_index" value="$!{userList.current}"/>
+                    <table class="peoTable student_table">
+                        <tbody>
+							<tr class="th th1">
+                                <th class="center task_num">编号</th>
+                                <th class="center task_name">任务名称</th>
+                                <th class="center task_type">任务类型</th>
+                                <th class="center task_state">状态</th>
+							</tr>
+							#foreach($myTask in $stuTaskPage.records)
+							<tr>
+                                <td class="peoNum task_num">$velocityCount</td>
+                                
+    							#if(1==$!myTask.taskType)
+                                <td class="center task_name"><a href="/mooc/course/details.html?id=$!myTask.preUrl&videoId=$!myTask.taskId">$!myTask.taskName</a></td>
+								<td class="center task_type">视频</td>
+        						#elseif(2==$!myTask.taskType)
+								<td class="center task_name"><a href="/homework/doJob?hwId=$!myTask.taskId">$!myTask.taskName</a></td>
+								<td class="center task_type">作业</td>
+        						#elseif(3==$!myTask.taskType)
+								<td class="center task_name"><a href="/learnplan/learnPlanPreview.html?url=$!myTask.preUrl">$!myTask.taskName</a></td>
+                                <td class="center task_type">学案</td>
+        						#elseif(4==$!myTask.taskType)
+								<td class="center task_name"><a href="/group/group/topic.html?topicId=$!myTask.taskId&groupId=$!myTask.groupId">$!myTask.taskName</a></td>
+                                <td class="center task_type">讨论</td>
+        						#end
+                                <td class="center task_state">未完成</td>
+						  	</tr>
+							#end
+                         </tbody>
+					</table>
+                </form>
+		</div>
+		<div class="bg"></div>
+		#pager($taskRankingPage,"taskForm")
+    </div>
+</div>
+#end
+
+#override("javascript")
+	<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/ucenter/task_ranking.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end                                          
+#extends("common/ucenter/student/index.vm")

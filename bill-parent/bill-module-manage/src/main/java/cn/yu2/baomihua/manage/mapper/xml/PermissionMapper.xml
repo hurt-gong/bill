@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yu2.baomihua.manage.mapper.PermissionMapper">
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 code, name, pCode, orderNum
+	</sql>
+
+	<select id="selectBatchCodes" parameterType="string" resultType="permission">
+		SELECT 
+		code, name, pCode, orderNum
+		FROM
+		GL_PERMISSION
+		WHERE
+		code in (#{str}) 
+	</select>
+	
+	<select id="selectBatchCode" parameterType="string" resultType="permission">
+		SELECT 
+		code, name, pCode, orderNum
+		FROM
+		GL_PERMISSION
+		WHERE
+		code = #{str}
+	</select>
+	<select id="getPermission" resultType="java.lang.String">
+		SELECT DISTINCT rp.permissionCode FROM GL_ROLE_PERMISSION rp JOIN GL_ROLE_TEACHER rt ON rp.roleId = rt.roleId 
+		WHERE rt.teacherId=#{userId}
+	</select>
+</mapper>

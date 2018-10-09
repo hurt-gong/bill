@@ -1,0 +1,30 @@
+<div class='cf content_box'>
+    <h3>#if($vote.optionType==1)单选 #elseif($vote.optionType==2)多选 #end：已有$!{totalNum}人参加投票</h3>
+    <p class="pCon">$!topic.content</p>
+	<ul class="checkbox-con vote_result">
+		#foreach($voteOption in $voteOptions)
+        <li>
+			$voteOption.content
+			<p>
+				#if($vote.optionType==1)
+    				#set($num=(${peopleNumMap.get($voteOption.id)} * 100 / $!{totalNum}) )
+    				<span class="line_style"><b></b></span>
+    				<em class='percentage'>$num %</em>
+    				<em class='people_num'>${peopleNumMap.get($voteOption.id)}</em>
+				#end
+				#if($vote.optionType==2)
+					#set($num=${peopleNumMap.get($voteOption.id)} )
+    				<span class="line_style"><b></b></span>
+    				<em class='percentage'>$num 人</em>
+    				<em class='people_num'>${peopleNumMap.get($voteOption.id)}</em>
+				#end
+			</p>
+		</li>
+		#end
+		
+    </ul>
+	<!--$number.format("#0.00", $val)
+	<p class="you_voke" id = "tip">投票成功！谢谢您的参与。</p>
+    <span class="overTime">截止时间： $!date.format('yyyy-MM-dd',$!vote.endDate)</span>
+	-->
+</div>

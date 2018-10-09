@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>登录</title>
+<link rel="stylesheet" type="text/css" href="http://edu.bjhd.gov.cn/css/admin/admin.css">
+<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/common/inculde.js"></script>
+</head>
+<body class='login'>
+	<div class="mainWrap">
+		#block("content")#end
+	</div>
+</body>
+<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/admin/login_init.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#block("javascript")#end
+</html>

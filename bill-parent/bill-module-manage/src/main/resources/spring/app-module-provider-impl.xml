@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+       
+    <bean id="userModule" class="cn.yu2.baomihua.manage.module.UserModuleImpl" lazy-init="true"/>
+       
+    <bean id="schoolModule" class="cn.yu2.baomihua.manage.module.SchoolModuleImpl" lazy-init="true"/>
+    
+    <bean id="deptModule" class="cn.yu2.baomihua.manage.module.DeptModuleImpl" lazy-init="true"/>
+
+    <bean id="bookModule" class="cn.yu2.baomihua.manage.module.BookModuleImpl" lazy-init="true"/>
+    
+    <bean id="sectionModule" class="cn.yu2.baomihua.manage.module.SectionModuleImpl" lazy-init="true"/>
+
+    <bean id="userLoginModule" class="cn.yu2.baomihua.manage.module.UserLoginModuleImpl" lazy-init="true"/>
+    
+    <bean id="teachModuleImpl" class="cn.yu2.baomihua.manage.module.TeachModuleImpl" lazy-init="true"/>
+    
+    <bean id="subjectModuleImpl" class="cn.yu2.baomihua.manage.module.SubjectModuleImpl" lazy-init="true"/>
+    
+    <bean id="gradeModuleImpl" class="cn.yu2.baomihua.manage.module.GradeModuleImpl" lazy-init="true"/>
+
+    <bean id="staffModuleImpl" class="cn.yu2.baomihua.manage.module.StaffModuleImpl" lazy-init="true"/>
+    
+    <bean id="permissionModuleImpl" class="cn.yu2.baomihua.manage.module.PermissionModuleImpl" lazy-init="true"/>
+
+    <bean id="fileMd5Module" class="cn.yu2.baomihua.manage.module.FileMd5ModuleImpl" lazy-init="true"/>
+    
+    <bean id="klassStudentModuleImpl" class="cn.yu2.baomihua.manage.module.KlassStudentModuleImpl" lazy-init="true"/>
+    
+    <bean id="knowledgeModuleImpl" class="cn.yu2.baomihua.manage.module.KnowledgeModuleImpl" lazy-init="true"/>
+    
+    <bean id="klassTeacherModuleImpl" class="cn.yu2.baomihua.manage.module.KlassTeacherModuleImpl" lazy-init="true"/>
+    
+    <bean id="gradeSubjectModuleImpl" class="cn.yu2.baomihua.manage.module.GradeSubjectModuleImpl" lazy-init="true"/>
+    
+    <bean id="studentParentModuleImpl" class="cn.yu2.baomihua.manage.module.StudentParentModuleImpl" lazy-init="true"/>
+     
+    <bean id="klassModuleImpl" class="cn.yu2.baomihua.manage.module.KlassModuleImpl" lazy-init="true"/>
+    
+    <bean id="phaseModuleImpl" class="cn.yu2.baomihua.manage.module.PhaseModuleImpl" lazy-init="true"/>
+    
+    <bean id="statisticsModuleImpl" class="cn.yu2.baomihua.manage.module.StatisticsModuleImpl" lazy-init="true"/>
+    
+    <bean id="personalCenterModuleImpl" class="cn.yu2.baomihua.manage.module.PersonalCenterModuleImpl" lazy-init="true"/>
+</beans>

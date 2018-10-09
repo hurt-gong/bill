@@ -1,0 +1,12 @@
+<div class="invitation">
+    <div class="essence" >
+        <ul>
+    		#foreach($topic in $pageEssence)
+            <li>
+    			<a href="javascript:();" class="cancelEssence" attrId="$topic.id"><b>取消精华</b></a>
+    			<span><em>$topic.id</em>$topic.title</span>
+    		</li>
+    		#end 
+        </ul>
+    </div>
+</div>

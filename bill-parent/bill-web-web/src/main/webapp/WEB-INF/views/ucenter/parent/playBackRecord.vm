@@ -1,0 +1,30 @@
+#set($d_myCenter_active="1")
+#set($p_playBackRecord_active="1")
+#override("title")视频播放记录#end
+#override("content")
+<div class="playli_conRi">
+    <div class="playli_main">
+		<form action="/ucenter/parent/playbackRecord.html" id="videoForm" method="post">
+				<input type="hidden" name="_index" value="$!{videoPlayPage.current}"/>
+        </form>
+       <h2>播放记录</h2>
+        <ul>
+			#foreach($video in $videoPlayPage.records)
+            <li>
+                <p><img src="http://edu.bjhd.gov.cn/img/course/videoDefault/demo.png" /></p>
+                <p><b>$!video.videoName</b></p>
+                <p><span>主讲：$!video.speaker</span><em>$!video.date</em></p>
+            </li>
+			#end
+        </ul>
+    </div>
+	<div class="bg"></div>
+	#pagerleftPage($videoPlayPage,"videoForm")
+</div>
+#end
+
+#override("javascript")
+	<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/ucenter/task_ranking.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end                                          
+#extends("common/ucenter/parent/index.vm")

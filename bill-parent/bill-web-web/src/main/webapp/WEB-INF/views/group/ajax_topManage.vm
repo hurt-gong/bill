@@ -1,0 +1,13 @@
+ <div class="invitation">
+									
+	<div class="top" >
+        <ul>
+            #foreach($topic in $pageTop)
+            <li>
+				<a href="javascript:;" class="cancelTop" attrId="$!topic.id"><b>取消置顶</b></a>
+				<span><em>$topic.id</em>$!topic.title</span>
+			</li>
+			#end 
+        </ul>
+    </div>
+</div>

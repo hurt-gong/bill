@@ -1,0 +1,44 @@
+<div class="topic" id="tidetail">
+	#foreach($exam in $exams)
+        <div class="floor_play">
+            <h3>$velocityCount.#if(${exam.typeName}!='')(${exam.typeName})#end<br>
+				${exam.content}</h3>
+        </div>
+		<input type="hidden" id="paperId" value="${paperId}"/>
+		#if(${exam.typeId}==351||${exam.typeId}==352||${exam.typeId}==353)
+            <div class="analysis">
+                <h3>
+					<a href="javascrtip:;" class='look_analysis'>查看解析</a>
+					<span>
+						<a href="javascript:;"class='look_respond' data-examId="${exam.examId}"  data-options="${exam.options}">查看作答详情</a>
+						平均正答率${exam.rightRate}
+					</span>
+				</h3>
+                <div class="look_analysis_box">
+                   ${exam.analysis} 
+                </div>
+            </div>
+		#else
+			<div class="analysis">
+                <h3>
+					<a href="javascript:;" class='go_read'>去批阅</a>
+					<span>
+						暂无作答详情
+					</span>
+				</h3>
+            </div>
+		#end
+    #end
+</div>
+                        
+<div class="look_respond_box">
+    <h2><a href="javascript:;" class='close_box'>×</a>作答详情</h2>
+    <div class="look_respond_con"><input type="hidden" id="examId"/>
+        <ul id="options">
+            
+        </ul>
+        <div class="atudent_name">
+           
+        </div>
+    </div> 
+</div>

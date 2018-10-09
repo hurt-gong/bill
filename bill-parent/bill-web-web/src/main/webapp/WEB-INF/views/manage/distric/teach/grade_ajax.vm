@@ -1,0 +1,5 @@
+#foreach($grade in $gradeList)
+    <li class="cfs">
+        <span>$!grade.name</span>
+    </li>
+#end

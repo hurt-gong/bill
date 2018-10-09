@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yu2.baomihua.manage.mapper.VideoStatisticsMapper">
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		  id, schoolId, schoolName, gradeId, subjectId, teacherId, teacherName, videoId, videoName, videoDibbleQty, videoCommentQty, crDate
+	</sql>
+	<select id="getVideoCount" resultType="cn.yu2.baomihua.manage.dto.VideoStatisticsDTO">
+		SELECT
+			schoolName, SUM(videoDibbleQty) videoDibbleQty,	COUNT(1) videoUploadQty, SUM(videoCommentQty) videoCommentQty
+		FROM
+			TJ_VIDEO_STATISTICS
+		WHERE 
+			1=1
+		<if test="startDate != null">
+		    AND crDate &gt;= #{startDate}
+		</if> 
+		<if test="endDate != null">
+		    AND crDate &lt;= #{endDate}
+		</if>
+		GROUP BY
+			schoolId
+		ORDER BY
+		 	${sort} desc
+	</select>
+	
+	<select id="getVideoCountChart" resultType="cn.yu2.baomihua.manage.dto.VideoStatisticsDTO">
+		SELECT
+			SUM(videoDibbleQty) videoDibbleQty,	COUNT(1) videoUploadQty, SUM(videoCommentQty) videoCommentQty,crDate
+		FROM
+			TJ_VIDEO_STATISTICS
+		WHERE
+			1=1
+		<if test="startDate != null">
+		    AND crDate &gt;= #{startDate}
+		</if> 
+		<if test="endDate != null">
+		    AND crDate &lt;= #{endDate}
+		</if>
+		GROUP BY
+			crDate
+	</select>
+	
+	<select id="getSchoolVideoCount" resultType="cn.yu2.baomihua.manage.dto.VideoStatisticsDTO">
+		SELECT
+			videoId,videoName,teacherName,videoDibbleQty,videoCommentQty
+		FROM
+			TJ_VIDEO_STATISTICS
+		WHERE 
+			schoolId=#{schoolId}
+		<if test="gradeId != null">
+		    AND gradeId = #{gradeId}
+		</if> 
+		<if test="subjectId != null">
+		    AND subjectId = #{subjectId}
+		</if> 
+		<if test="startDate != null">
+		    AND crDate &gt;= #{startDate}
+		</if> 
+		<if test="endDate != null">
+		    AND crDate &lt;= #{endDate}
+		</if>
+		ORDER BY
+		 	${sort} desc
+	</select>
+		
+	<select id="getSchoolVideoCountChart" resultType="cn.yu2.baomihua.manage.dto.VideoStatisticsDTO">
+		SELECT
+			videoDibbleQty, videoCommentQty, crDate
+		FROM
+			TJ_VIDEO_STATISTICS
+		WHERE 
+			schoolId=#{schoolId}
+		<if test="gradeId != null">
+		    AND gradeId = #{gradeId}
+		</if> 
+		<if test="subjectId != null">
+		    AND subjectId = #{subjectId}
+		</if> 
+		<if test="startDate != null">
+		    AND crDate &gt;= #{startDate}
+		</if> 
+		<if test="endDate != null">
+		    AND crDate &lt;= #{endDate}
+		</if>
+		GROUP BY
+			crDate
+	</select>
+</mapper>

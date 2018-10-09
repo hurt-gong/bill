@@ -1,0 +1,386 @@
+#set($d_book_active="1") 
+#override("title")题库选择 #end
+#override("content")
+	<div class="adminBody detailsBody cf">
+            <div class="top_mycenter">
+                <a href="javascript:;" class='house'>校本课程库 ></a><a href="javascript:;">管理课程 ></a><span>上传习题</span>
+            </div>
+			<div class="nav">
+				<div id="phaseListDiv">
+                   <p><span>学段<em>&gt;</em></span>
+					
+    					#foreach($phase in ${phaseList})
+							#if(${phase.name}=="初中")
+								<a href="javascript:;" data-id=${phase.id} class="aStyle">${phase.name}</a>
+							#else
+								<a href="javascript:;" data-id=${phase.id}>${phase.name}</a>
+							#end
+    					#end
+				   </p>
+                </div>
+				
+				<div id="gradeListDiv">
+                   <p><span>年级<em>&gt;</em></span>
+					#foreach($grade in ${gradeList})
+						#if(${grade.name}=="初三")
+							<a href="javascript:;" data-id=${grade.id} class="aStyle">${grade.name}</a>
+						#else
+							<a href="javascript:;" data-id=${grade.id}>${grade.name}</a>
+						#end
+					#end
+    			   </p>
+                </div>
+				<div id="subjectListDiv">
+                   <p class="lastP"><span>学科<em>&gt;</em></span>
+    				#foreach($subject in ${subjectList})
+						#if(${subject.name}=="物理")
+							<a href="javascript:;" data-id=${subject.id} class="aStyle">${subject.name}</a>
+						#else
+							<a href="javascript:;" data-id=${subject.id}>${subject.name}</a>
+						#end
+					#end
+    			   </p>
+				 </div>
+            </div>
+            <div class="course_wrap">
+                <div class="course_tit">
+                    <a href="javascript:;" class='changeA_style'>题库选择</a>
+					<a href="javascript:;" name="upload_div">自上传习题</a>
+                </div>
+                <div class="course_con">
+					<input type="hidden" id="phaseId"  value="52"/>
+					<input type="hidden" id="gradeId" value="2"/>
+					<input type="hidden" id="subjectId"  value="24"/>
+					<input type="hidden" id="typeId" value=""/>
+					<input type="hidden" id="kId" value=""/>
+					
+                    <div class="con1">
+                        <div class="course_left">
+                            <h2>知识点</h2>
+                            <ul id="knowledgeList">
+								#foreach($knowledge in ${knowledgeList})
+									<li><a href="javascript:;" data-id=${knowledge.id}>${knowledge.name}</a></li>
+								#end
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="con2 cf">
+                        <div class="con2_left">
+                            <div class="con2_nav cf">
+                                <h3>上传题型</h3>
+                                <ul id='change'>
+                                    <li class='li_click'><a name="singleSelect" href="javascript:;" data-id="351">单项选择题</a></li>
+                                    <li><a name="multiSelect" href="javascript:;" data-id="353">多项选择题</a></li>
+                                    <li><a name="fill_in" href="javascript:;" data-id="354">填空题</a></li>
+                                    <li><a name="read" href="javascript:;" data-id="357">阅读题</a></li>
+                                    <li><a name="writing" href="javascript:;" data-id="358">写作题</a></li>
+                                </ul>
+								<input type="hidden" id="new_type_id" value="351" data-type_name="单项选择题"/>
+                            </div>
+                            <div class="ti_con">
+                                <div class='multiple_choice'>
+                                    <div class="tigan">
+                                        <h3>题干：</h3>
+                                        <p>
+                                            <textarea id="single_content"   name="content"></textarea>
+                                        </p>
+                                    </div>
+									<div class="xuanxiang">
+										<h3>选项：</h3>
+										<p id="single_options">
+											<b>A、<input type="text" name="option1" style="width:300px;"/></b><br/><br/>
+											<b>B、<input type="text" name="option2" style="width:300px"/></b><br/><br/>
+											<b>C、<input type="text" name="option3" style="width:300px"/></b><br/><br/>
+											<b>D、<input type="text" name="option4" style="width:300px"/></b><br/><br/>
+                                        </p>
+                                    </div>
+                                   
+                                    <div class="solution">
+                                        <h3>答案：</h3>
+                                        <p id="single_answers">
+                                            <span><input type="radio" name="single_answer" value="A"><label for="A"></label>A</span>
+                                            <span><input type="radio" name="single_answer" value="B"><label for="B"></label>B</span>
+                                            <span><input type="radio" name="single_answer" value="C"><label for="C"></label>C</span>
+                                            <span><input type="radio" name="single_answer" value="D"><label for="D"></label>D</span>
+                                            <a href="javascript:;" id="single_add_option" class='add_change'>添加选项</a>
+                                        </p>
+                                    </div>
+                                    <div class="jiexi">
+                                        <h3>解析：</h3>
+                                        <p>
+                                            <textarea id="single_analysis" name="content"></textarea>
+                                        </p>
+                                    </div>
+                                    <div class="upload cf upBtn fl f2">
+                                        <div class="upPic">
+                                            <!--用来存放item-->
+                                            <div id="fileList" class="uploader-list"></div>
+                                            <div id="single_upload" class="webuploader-pick">保存并继续上传</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='multiSelect'>
+                                    <div class="tigan">
+                                        <h3>题干：</h3>
+                                        <p>
+                                            <textarea id="multi_content"  name="content"></textarea>
+                                        </p>
+                                    </div>
+									<div class="xuanxiang">
+										<h3>选项：</h3>
+										<p id="multi_options">
+											<b>A、<input type="text" name="multi_option1" style="width:300px;"/></b><br/><br/>
+											<b>B、<input type="text" name="multi_option2" style="width:300px"/></b><br/><br/>
+											<b>C、<input type="text" name="multi_option3" style="width:300px"/></b><br/><br/>
+											<b>D、<input type="text" name="multi_option4" style="width:300px"/></b><br/><br/>
+                                        </p>
+                                    </div>
+                                    <div class="solution">
+                                        <h3>答案：</h3>
+                                        <p id="multi_answers">
+                                            <span><input type="checkbox" name="multi_answer" value="A"><label for="A"></label>A</span>
+                                            <span><input type="checkbox" name="multi_answer" value="B"><label for="B"></label>B</span>
+                                            <span><input type="checkbox" name="multi_answer" value="C"><label for="C"></label>C</span>
+                                            <span><input type="checkbox" name="multi_answer" value="D"><label for="D"></label>D</span>
+                                            <a href="javascript:;" id="multi_add_option" class='add_change'>添加选项</a>
+                                        </p>
+                                    </div>
+                                    <div class="jiexi">
+                                        <h3>解析：</h3>
+                                        <p>
+                                            <textarea id="multi_analysis"  name="content"></textarea>
+                                        </p>
+                                    </div>
+                                    <div class="upload cf upBtn fl f2">
+                                        <div class="upPic">
+                                            <!--用来存放item-->
+                                            <div id="fileList" class="uploader-list"></div>
+                                            <div id="multi_upload" class="webuploader-pick">保存并继续上传</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='fill_in'>
+                                    <div class="tigan">
+                                        <h3>题干：</h3>
+                                        <p>
+                                            <textarea id="fill_in_content"  name="content"></textarea>
+                                        </p>
+                                    </div>
+                                    <div class="solution">
+                                        <h3>答案：</h3>
+                                        <p>
+                                            <textarea id="fill_in_answer" name="content"></textarea>
+                                        </p>
+                                    </div>
+                                    <div class="jiexi">
+                                        <h3>解析：</h3>
+                                        <p>
+                                            <textarea id="fill_in_analysis"  name="content"></textarea>
+                                        </p>
+                                    </div>
+                                    <div class="upload cf upBtn fl f2">
+                                        <div class="upPic">
+                                            <!--用来存放item-->
+                                            <div id="fileList1" class="uploader-list"></div>
+                                            <div id="fill_in_upload" class="webuploader-pick">保存并继续上传</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='read'>
+                                    <div class="tigan">
+                                        <h3>题干：</h3>
+                                        <p>
+                                            <textarea id="read_content"  name="content"></textarea>
+                                        </p>
+                                        <dl>
+                                            <dt>
+                                                <h4>
+													问题1：
+                                                </h4>
+												<div>
+                                                <span><input type="radio" name="1" checked="checked" value="1"><label for="1" class="tigan_class labelChecked"></label><b class="se1">单选</b></span>
+                                                <span><input type="radio" name="1" value="2"><label for="2" class="tigan_class"></label><b class="se2">多选</b></span>
+                                                <span><input type="radio" name="1" value="3"><label for="3" class="tigan_class"></label><b class="se3">文本</b></span>
+                                                </div>
+                                            </dt>
+                                             <dd class="tigan_dan">
+                                                <div class="read_dan"> 
+                                                    <h5>答案：</h5>
+                                                    <span><input type="radio" name="radio_1" checked="checked" value="A"><label for="A" class="asncheck"></label><b>A</b></span>
+                                                    <span><input type="radio" name="radio_1" value="B"><label for="B"></label><b>B</b></span>
+                                                    <span><input type="radio" name="radio_1" value="C"><label for="C"></label><b>C</b></span>
+                                                    <span><input type="radio" name="radio_1" value="D"><label for="D"></label><b>D</b></span>
+                                                    <a href="javascript:;" class='add_change small'>添加选项</a>
+                                                </div>
+                                            </dd>
+											 <dd class="tigan_duo">
+                                                <div  class="read_duo">
+                                                    <h5>答案：</h5>
+                                                    <span><input type="checkbox" name="checkbox_1" value="A"><label for="A"></label><b>A</b></span>
+                                                    <span><input type="checkbox" name="checkbox_1" value="B"><label for="B"></label><b>B</b></span>
+                                                    <span><input type="checkbox" name="checkbox_1" value="C"><label for="C"></label><b>C</b></span>
+                                                    <span><input type="checkbox" name="checkbox_1" value="D"><label for="D"></label><b>D</b></span>
+                                                    <a href="javascript:;" class='add_change small'>添加选项</a>
+                                                </div>
+                                            </dd>
+											<dd class="tigan_txt">
+                                                    <h5>答案：</h5>
+                                                    <textarea  name="textarea_1"></textarea>
+                                            </dd>
+											</dl>
+											<dl>
+                                            <dt>
+                                               <h4>
+												问题2：
+                                                </h4>
+												<div>
+                                                <span><input type="radio" name="2" checked="checked" value="1"><label for="1" class="tigan_class labelChecked"></label><b class="se1">单选</b></span>
+                                                <span><input type="radio" name="2" value="2"><label for="2" class=" tigan_class"></label><b class="se2">多选</b></span>
+                                                <span><input type="radio" name="2" value="3"><label for="3" class="tigan_class"></label><b class="se3">文本</b></span>
+                                                </div>
+                                            </dt>
+                                             <dd class="tigan_dan">
+                                                <div class="read_dan"> 
+                                                    <h5>答案：</h5>
+                                                    <span><input type="radio" name="radio_2" checked="checked" value="A"><label for="A" class="asncheck"></label><b>A</b></span>
+                                                    <span><input type="radio" name="radio_2" value="B"><label for="B"></label><b>B</b></span>
+                                                    <span><input type="radio" name="radio_2" value="C"><label for="C"></label><b>C</b></span>
+                                                    <span><input type="radio" name="radio_2" value="D"><label for="D"></label><b>D</b></span>
+                                                    <a href="javascript:;" class='add_change small'>添加选项</a>
+                                                </div>
+                                            </dd>
+											
+                                            <dd class="tigan_duo">
+                                                <div  class="read_duo">
+                                                    <h5>答案：</h5>
+                                                    <span><input type="checkbox" name="checkbox_2" value="A"><label for="A"></label><b>A</b></span>
+                                                    <span><input type="checkbox" name="checkbox_2" value="B"><label for="B"></label><b>B</b></span>
+                                                    <span><input type="checkbox" name="checkbox_2" value="C"><label for="C"></label><b>C</b></span>
+                                                    <span><input type="checkbox" name="checkbox_2" value="D"><label for="D"></label><b>D</b></span>
+                                                    <a href="javascript:;" class='add_change small'>添加选项</a>
+                                                </div>
+                                            </dd>
+                                            <dd class="tigan_txt">
+                                                    <h5>答案：</h5>
+                                                    <textarea  name="textarea_2"></textarea>
+                                            </dd>
+											</dl>
+											<dl>
+                                            <dt>
+                                                <h4>
+														问题3：
+                                                </h4>
+												
+												 <div>
+                                                <span><input type="radio" name="3" checked="checked" value="1"><label for="1" class="tigan_class labelChecked"></label><b class="se1">单选</b></span>
+                                                <span><input type="radio" name="3" value="2"><label for="2" class="tigan_class"></label><b class="se2">多选</b></span>
+                                                <span><input type="radio" name="3" value="3"><label for="3" class="tigan_class"></label><b class="se3">文本</b></span>
+                                                </div>
+                                             
+                                            </dt>
+											<dd class="tigan_dan">
+                                                <div class="read_dan"> 
+                                                    <h5>答案：</h5>
+                                                    <span><input type="radio"  name="radio_3" checked="checked" value="A"><label for="A" class="asncheck"></label><b>A</b></span>
+                                                    <span><input type="radio"  name="radio_3" value="B"><label for="B"></label><b>B</b></span>
+                                                    <span><input type="radio"  name="radio_3" value="C"><label for="C"></label><b>C</b></span>
+                                                    <span><input type="radio"  name="radio_3" value="D"><label for="D"></label><b>D</b></span>
+                                                    <a href="javascript:;" class='add_change small'>添加选项</a>
+                                                </div>
+                                            </dd>
+                                            <dd class="tigan_duo">
+                                                <div  class="read_duo">
+                                                    <h5>答案：</h5>
+                                                    <span><input type="checkbox"  name="checkbox_3" value="A"><label for="A"></label><b>A</b></span>
+                                                    <span><input type="checkbox" name="checkbox_3" value="B"><label for="B"></label><b>B</b></span>
+                                                    <span><input type="checkbox" name="checkbox_3" value="C"><label for="C"></label><b>C</b></span>
+                                                    <span><input type="checkbox" name="checkbox_3" value="D"><label for="D"></label><b>D</b></span>
+                                                    <a href="javascript:;" class='add_change small'>添加选项</a>
+                                                </div>
+                                            </dd>
+                                            <dd class="tigan_txt">
+                                                    <h5>答案：</h5>
+                                                    <textarea  name="textarea_3"></textarea>
+                                            </dd>
+                                          
+                                        </dl>
+										<div class="addqus">
+                                            <div><i>+</i>添加问题</div>
+                                        </div>
+                                    </div>
+                                    <div class="jiexi">
+                                        <h3>解析：</h3>
+                                        <p>
+                                            <textarea id="read_analysis" name="content"></textarea>
+                                        </p>
+                                    </div>
+                                    <div class="upload cf upBtn fl f2">
+                                        <div class="upPic">
+                                            <!--用来存放item-->
+                                            <div id="fileList2" class="uploader-list"></div>
+                                            <div  id="read_upload">保存并继续上传</div>
+                                        </div>
+                                    </div>    
+                                </div>
+                                <div class='writing'>
+                                    <div><h3>写作：</h3></div>
+                                    <textarea id="writing_content" name="content"></textarea>
+									<div class="upload cf upBtn fl f2">
+                                        <div class="upPic">
+                                            <!--用来存放item-->
+                                            <div id="fileList1" class="uploader-list"></div>
+                                            <div id="writing_upload" class="webuploader-pick">保存并继续上传</div>
+                                        </div>
+                                    </div>
+								</div>
+                            </div>
+                            
+                        </div>  
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		#foreach($selExam in $selectedExams)
+			<input type="hidden" name="selectedExam" data-examid="${selExam.examId}" data-typeid="${selExam.typeId}" data-typename="${selExam.typeName}"/>
+		#end
+		 <div class="publishjob_box">
+        <h2><a href="javascript:;" class="publishjob_exit">×</a>发作业</h2>
+        <div class="">
+            <span>作业名称：</span>
+            <input type="text" name="" id="title">
+        </div>
+        <div class="selectgrade">
+            <span>选择班级：</span>
+            <ul>
+				#foreach($klass in ${klasses})
+					<li>
+                        <input type="checkbox"  name="classId" value=${klass.id} >
+                        <label for=${klass.id}></label>
+        				<b>${klass.name}</b>
+					</li>
+				#end
+            </ul>
+            
+        </div>
+        <div class="">
+            <span>发作业时间：</span>
+            <input type="text" name="" id="startDate" class="datetimepicker">
+        </div>
+        <div class="">
+            <span>收作业时间：</span>
+            <input type="text" name="" id="endDate"  class="datetimepicker">
+        </div>
+        <div class="publishjob_sure">确认发布</div>
+    </div>
+#end #override("javascript")
+<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/layer/layer.js"></script>	
+<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/jquery.datetimepicker.js"></script>
+<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/kindeditor-4.1.10/kindeditor-min.js"></script>
+<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/kindeditor-4.1.10/lang/zh_CN.js"></script>
+<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/tiku/job_manage.js"></script>	
+
+<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/admin/details_init.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+
+#end #extends("common/tiku/index.vm")

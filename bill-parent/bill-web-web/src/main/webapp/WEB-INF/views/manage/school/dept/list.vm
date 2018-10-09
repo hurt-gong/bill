@@ -1,0 +1,96 @@
+#set($s_manage_active="1")
+#set($s_dept_active="1")
+#override("title")部门管理#end
+#override("content")
+   <div class="mainContent">
+        <div class="adminTopBar">
+            <a class="btn mybtn" href="/manage/school/dept/list.html">部门岗位人员管理</a>
+            <a href="/manage/school/role/list.html" class="aLink mybtn">角色组</a>
+        </div>
+        <div class="adminBody">
+            <div class="highLayout">
+                <div class="highRow departmentRow">
+                    <h3>
+						<span>部门名称</span>
+						<a href="javascript:void(0)" class="addBtn adddept"></a>
+					</h3>
+					<ul class="cul dept">
+						#foreach($dept in $depts)
+						<li class="cf #if($dept.id == $checkedDeptId) active #end" id='$dept.id'>
+							<span>$!dept.name</span>
+							<a href="javascript:void(0)" class="del deptdel">删除</a>
+							<a href="javascript:void(0)" class="edit deptedit">修改</a>
+						</li>
+						#end
+					</ul>
+                </div>
+                <div class="highRow postRow">
+                    <h3>
+						<span>岗位</span>
+						<a href="javascript:void(0)" class="addBtn addchild"></a>
+					</h3>
+					<ul class="cul child">
+						#foreach($child in $childDepts)
+						<li class="cf #if($child.id == $checkedChildId) active #end" id='$child.id'>
+							<span>$!child.name</span>
+							<a href="javascript:void(0)" class="del deptdel">删除</a>
+							<a href="javascript:void(0)" class="edit deptedit">修改</a>
+						</li>
+						#end
+					</ul>
+                </div>
+                <div class="highRow postMemberRow">
+                    <h3>
+						<span>岗位人员</span>
+						<a href="javascript:void(0)" class="addBtn addUsers"></a>
+					</h3>
+					<ul class="bul">
+						#foreach($roleTeacher in $roleTeachers)
+						<li class="cf" attrId="$!roleTeacher.id">
+							<span>$!roleTeacher.teacherName</span>
+							<a href="javascript:void(0)" class="del">删除</a>
+						</li>
+						#end
+					</ul>
+                </div>
+            </div>
+			<div class="alertMange alertdept">
+				<h2><a href="javascript:;" class="closeAlert">×</a>添加部门</h2>
+				<p><label for="">部门名称:</label><input type="text" name="" id=""></p>
+				<button class="sure">确认</button>
+				<button class="cel">取消</button>
+			</div>
+			<div class="alertMange alertchild">
+				<h2><a href="javascript:;" class="closeAlert">×</a>添加岗位</h2>
+				<p><label for="">岗位名称:</label><input type="text" name="" id=""></p>
+				<button class="sure">确认</button>
+				<button class="cel">取消</button>
+			</div>
+			<div class="alertMange alertupdate">
+				<h2><a href="javascript:;" class="closeAlert">×</a></h2>
+				<p><label for=""></label><input type="text" name="" id=""></p>
+				<button class="sure">确认</button>
+				<button class="cel">取消</button>
+			</div>
+		</div>
+		<div class="clearBox delDept">
+			    <h2><a href="javascript:;" class="closeAlert">×</a></h2>
+			    <p>确认删除吗？</p>
+			    <button class="sure">确认</button>
+			    <button class="cel">取消</button>
+			</div>
+			
+			<div class="clearBox delUser">
+			    <h2><a href="javascript:;" class="closeAlert">×</a>人员名称</h2>
+			    <p>确认删除吗？</p>
+			    <button class="sure">确认</button>
+			    <button class="cel">取消</button>
+			</div>
+    </div>
+	
+#end
+#override("javascript")
+    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/admin/school/dept/dept.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end
+#extends("common/manage/school/index.vm")

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yu2.baomihua.manage.mapper.FileMd5Mapper">
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 md5, type, convertUrl, sourceUrl,duration,crTime
+	</sql>
+
+	<select id="selectById" resultType="FileMd5" parameterType="string">
+		select 
+		<include refid="Base_Column_List"/>
+		from GL_FILE_MD5 
+		where md5=#{md5}
+	</select>
+	<insert id="addFileMd5" parameterType="cn.yu2.baomihua.manage.entity.FileMd5">
+		INSERT INTO GL_FILE_MD5(md5, type, sourceUrl, convertUrl,duration,crTime) 
+		VALUES(#{md5},#{type},#{sourceUrl},#{convertUrl},#{duration},#{crTime});
+		
+	</insert>
+	<!-- 添加 （匹配有值的字段）
+	<insert id="addFileMd5" >
+		 INSERT INTO GL_FILE_MD5
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="md5 != null">
+				 md5,
+			</if>
+			<if test="type != null">
+				 type,
+			</if>
+			<if test="url != null">
+				 url,
+			</if>
+			<if test="clipUrl != null">
+				 clipUrl,
+			</if>
+			<if test="duration != null">
+				 duration,
+			</if>
+			<if test="crTime != null">
+				 crTime,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="md5!=null">
+				 #{md5},
+			</if>
+			<if test="type!=null">
+				 #{type},
+			</if>
+			<if test="url!=null">
+				 #{url},
+			</if>
+			<if test="clipUrl!=null">
+				 #{clipUrl},
+			</if>
+			<if test="duration!=null">
+				 #{duration},
+			</if>
+			<if test="crTime!=null">
+				 #{crTime},
+			</if>
+		 </trim>
+	</insert>-->
+	<!-- <select id="getSchoolByName" resultType="SchoolDTO">
+		SELECT id,name,address FROM GL_SCHOOL 
+		<if test="name !=null and name != ''">
+			 WHERE name LIKE CONCAT("%",#{name},"%")
+			 WHERE name LIKE CONCAT('%',#{name},'%')
+		</if>
+	</select> -->
+</mapper>

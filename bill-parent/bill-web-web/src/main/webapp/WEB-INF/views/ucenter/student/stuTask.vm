@@ -1,0 +1,49 @@
+#set($d_myCenter_active="1")
+#set($d_taskRanking_active="1")
+#override("title")全区学习大排名#end
+#override("content")
+<div class="conRight planName">
+    <div class="planName_top">
+        <ul>
+            <li class="lihover">数学</li>
+            <li>数学</li>
+            <li>数学</li>
+            <li>数学</li>
+            <li>数学</li>
+            <li>数学</li>
+        </ul>
+    </div>
+    <div class="planName_titile">
+        <b>学案名称</b>
+        <span>操作</span>
+    </div>
+    <div class="planName_list">
+        <ul>
+            <li>
+                <a href="javascript:;">数学 李小明发布了《数学定理作业》</a>
+                <div>
+                    <span>数学</span>
+                    <b>2016-3-22 10:46:08</b>
+                    <i>已学习</i>
+                    <i>下载</i>
+                </div>
+            </li>
+            <li>
+                <a href="javascript:;">数学 李小明发布了《数学定理作业》</a>
+                <div>
+                    <span>数学</span>
+                    <b>2016-3-22 10:46:08</b>
+                    <i>已学习</i>
+                    <i>下载</i>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+#end
+
+#override("javascript")
+	<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/ucenter/task_ranking.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end                                          
+#extends("common/ucenter/student/index.vm")

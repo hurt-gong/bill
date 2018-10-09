@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yu2.baomihua.manage.mapper.SchoolMapper">
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 ID, name, address, logo, status, crTime, crUserId
+	</sql>
+	<select id="getSchoolByName" resultType="SchoolDTO">
+		SELECT id,name,address FROM GL_SCHOOL 
+		<if test="name !=null and name != ''">
+			<!--  WHERE name LIKE CONCAT("%",#{name},"%")-->
+			 WHERE name LIKE CONCAT('%',#{name},'%')
+		</if>
+	</select>
+
+</mapper>

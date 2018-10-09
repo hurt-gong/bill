@@ -1,0 +1,6 @@
+#foreach($roleTeacher in $roleTeachers)
+<li class="cf" attrId="$!roleTeacher.id">
+	<span>$!roleTeacher.teacherName</span>
+	<a href="javascript:void(0)" class="del">删除</a>
+</li>
+#end

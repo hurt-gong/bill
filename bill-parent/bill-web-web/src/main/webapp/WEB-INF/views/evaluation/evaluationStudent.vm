@@ -1,0 +1,51 @@
+#set($d_evaluation_active="1")
+#override("title")过程评价#end
+#override("content")
+<div class="mainContent guocheng_bod">
+	<div class="centerTit cf">
+            <h2>过程评价</h2>
+			<form action="/parent/evaluation.html" method="get" id="evaluationFormId" >
+				<input type="hidden" name="_index" value="$!{evaluationPage.current}"/>
+				<input type="hidden" id="subjectNameId" name="subjectName" value="$!subjectName"/>
+				
+                <select class="mySelect fl" id="subjectName">
+                    <option style="display:none" selected="selected" >$subjectName</option>
+                    <option>全部</option>
+        			#foreach($subjectName in $subjectNames)
+                    <option>$!subjectName</option>
+        			#end
+                </select>
+                <a class="dBtn fl" href="javascript:;" id="subjectSubmit">确定</a>
+			</form>
+        </div>
+			
+        <div>
+    		#foreach($evaluation in $allEvaluation)
+				<div class="box1">
+                <h3>
+    				<em>$crTimeMap.get($evaluation.crTime)</em>
+    				$evaluation.studentName 
+    				<span>
+    					$evaluation.klassName
+						$evaluation.subjetName 课
+    					<ul class="box1_starcon" >
+            				#foreach($i in [1..$evaluation.star])
+                            <li class="starheigh"></li>
+            				#end
+    					</ul>
+    				</span>
+    				
+    			</h3>
+                <p>$evaluation.content</p>
+            </div>
+            #end
+    		#pager($evaluationPage,"evaluationFormId")
+		</div>
+</div>
+#end
+
+#override("javascript")
+	<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/index/parent.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end                                          
+#extends("common/ucenter/parent/index.vm")

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+            <link rel="stylesheet" type="text/css" href="http://edu.bjhd.gov.cn/css/admin/admin.css">
+                <title>#block("title")#end</title>
+</head>
+<body>
+    <!-- 公共头部 开始 -->
+    #parse("common/base/header.vm")
+    <!-- 公共头部 结束 -->
+    <div class="mainWrap">
+    <div class="myCenter_con cf playli_con">
+        <!-- 页面主体部分 开始 -->
+        #parse("common/ucenter/teacher/leftBar.vm")
+        #block("content")#end
+        <!-- 页面主体部分 结束 -->
+    </div>
+    </div>
+    <!-- 页面尾部开始 -->
+    #parse("common/base/footer.vm")
+    <!-- 页面尾部结束 -->
+</body>
+#block("javascript")#end
+<script>
+	$(".pageNum a").on('click', function(){
+			var formId = $('#vkoPagerFormId').val();
+			var pagerForm = $('#' + formId);
+			pagerForm.find(':input[name=_index]').val($(this).attr('pn'));
+			pagerForm.submit(); 
+		})
+</script>
+</html>

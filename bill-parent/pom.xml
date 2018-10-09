@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.bill</groupId>
+	<artifactId>bill-parent</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>bill-common-core</module>
+		<!-- <module>hd-module-mooc</module>
+		<module>hd-module-statistics</module>
+		<module>hd-module-group</module>
+		<module>hd-module-tiku</module>-->
+		<module>bill-module-manage</module> 
+		<module>bill-web-web</module>
+	</modules>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jdk.version>1.7</jdk.version>
+		<hd-version>1.0.0</hd-version>
+
+		<!-- mvc -->
+		<spring-wind.version>1.1.5</spring-wind.version>
+		<velocity.version>1.7</velocity.version>
+		<velocity-tools.version>2.0</velocity-tools.version>
+
+		<!-- log -->
+		<logback-classic.version>1.1.7</logback-classic.version>
+		<jcl-over-slf4j.version>1.7.21</jcl-over-slf4j.version>
+		<log4j-over-slf4j.version>1.7.21</log4j-over-slf4j.version>
+
+		<!-- data -->
+		<druid.version>1.0.18</druid.version>
+		<mysql-connector-java.version>5.1.34</mysql-connector-java.version>
+
+		<!-- rpc -->
+		<dubbo.version>2.5.3</dubbo.version>
+		<zkclient.version>0.9</zkclient.version>
+
+		<!-- other -->
+		<mail.version>1.4.7</mail.version>
+		<ehcache.version>2.6.11</ehcache.version>
+
+		<!-- test -->
+		<junit.version>4.12</junit.version>
+
+		<!-- poi -->
+		<poi.version>3.11</poi.version>
+		<!-- 文件上传 -->
+		<commons-fileupload.version>1.3.1</commons-fileupload.version>
+		<org.boofcv.version>0.20</org.boofcv.version>
+		<xuggle-xuggler.version>5.4</xuggle-xuggler.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.bill</groupId>
+				<artifactId>bill-common-core</artifactId>
+				<version>${hd-version}</version>
+			</dependency>
+
+			<!-- video-client begin -->
+			<dependency>
+				<groupId>org.boofcv</groupId>
+				<artifactId>xuggler</artifactId>
+				<version>${org.boofcv.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>xuggle</groupId>
+				<artifactId>xuggle-xuggler</artifactId>
+				<version>${xuggle-xuggler.version}</version>
+			</dependency>
+			<!-- spring-wind -->
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>spring-wind</artifactId>
+				<version>${spring-wind.version}</version>
+			</dependency>
+
+			<!-- velocity begin -->
+			<dependency>
+				<groupId>org.apache.velocity</groupId>
+				<artifactId>velocity-tools</artifactId>
+				<version>${velocity-tools.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.velocity</groupId>
+				<artifactId>velocity</artifactId>
+				<version>${velocity.version}</version>
+			</dependency>
+			<!-- velocity end -->
+
+			<!-- log begin -->
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${logback-classic.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>${jcl-over-slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>log4j-over-slf4j</artifactId>
+				<version>${log4j-over-slf4j.version}</version>
+			</dependency>
+			<!-- log end -->
+
+			<!-- data begin -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>${druid.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql-connector-java.version}</version>
+			</dependency>
+			<!-- data end -->
+
+			<!-- rpc begin -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>dubbo</artifactId>
+				<version>${dubbo.version}</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>spring</artifactId>
+						<groupId>org.springframework</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.101tec</groupId>
+				<artifactId>zkclient</artifactId>
+				<version>${zkclient.version}</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>log4j</artifactId>
+						<groupId>log4j</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>slf4j-log4j12</artifactId>
+						<groupId>org.slf4j</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<!-- rpc end -->
+
+			<!-- 文件上传 -->
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>${commons-fileupload.version}</version>
+			</dependency>
+			<!-- test begin -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+			</dependency>
+			<!-- test end -->
+
+			<dependency>
+				<groupId>javax.mail</groupId>
+				<artifactId>mail</artifactId>
+				<version>${mail.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.ehcache</groupId>
+				<artifactId>ehcache-core</artifactId>
+				<version>${ehcache.version}</version>
+			</dependency>
+
+			<!-- poi -->
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi</artifactId>
+				<version>${poi.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml</artifactId>
+				<version>${poi.version}</version>
+			</dependency>
+			<!-- 字符串压缩 -->
+			<dependency>
+				<groupId>net.jpountz.lz4</groupId>
+				<artifactId>lz4</artifactId>
+				<version>1.3.0</version>
+			</dependency>
+			<!-- video-client end -->
+		</dependencies>
+	</dependencyManagement>
+
+	<!-- 基础依赖 -->
+	<dependencies>
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>spring-wind</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>log4j-over-slf4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+<!-- https://mvnrepository.com/artifact/com.belerweb/pinyin4j -->
+<dependency>
+    <groupId>com.belerweb</groupId>
+    <artifactId>pinyin4j</artifactId>
+    <version>2.5.0</version>
+</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+
+	<!-- 项目发布配置信息 -->
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<name>Internal Releases</name>
+			<url>http://192.168.1.254:8081/nexus/content/repositories/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Nexus Snapshot Repository</name>
+			<url>http://192.168.1.254:8081/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<!-- maven插件管理 -->
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- resource插件, 设定编码 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.7</version>
+					<configuration>
+						<encoding>${project.build.sourceEncoding}</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>2.4</version>
+					<configuration>
+						<encoding>${project.build.sourceEncoding}</encoding>
+					</configuration>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- compiler插件, 设定JDK版本及编码 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.2</version>
+					<configuration>
+						<source>${jdk.version}</source>
+						<target>${jdk.version}</target>
+						<encoding>${project.build.sourceEncoding}</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.6</version>
+					<configuration>
+						<archive>
+							<addMavenDescriptor>false</addMavenDescriptor>
+						</archive>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.6</version>
+					<configuration>
+						<resourceEncoding>${project.build.sourceEncoding}</resourceEncoding>
+						<archive>
+							<addMavenDescriptor>false</addMavenDescriptor>
+						</archive>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.18.1</version>
+					<configuration>
+						<skip>true</skip>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.5</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>2.5</version>
+			</plugin>
+			<plugin>
+				<groupId>com.github.goldin</groupId>
+				<artifactId>mail-maven-plugin</artifactId>
+				<version>0.2.5</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.4</version>
+				<configuration>
+					<linkXref>true</linkXref>
+					<minimumTokens>1</minimumTokens>
+					<sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
+					<targetJdk>${jdk.version}</targetJdk>
+					<rulesets>
+						<!-- rulesets/dummy.xml -->
+						<!-- rulesets/maven.xml -->
+						<ruleset>rulesets/maven.xml</ruleset>
+					</rulesets>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

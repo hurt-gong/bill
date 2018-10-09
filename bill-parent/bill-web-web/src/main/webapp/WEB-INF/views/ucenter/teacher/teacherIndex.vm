@@ -1,0 +1,272 @@
+#set($d_myCenter_active="1")
+#set($t_myCenter_active="1")
+#override("title")老师主页#end
+#override("content")
+            
+<div class="conRight patriarchCon">
+    <div class="conTop cf">
+        <div class="topLeft cf sign">
+            <div style="width: 410px;height: 128px;border-bottom: 1px solid #e9ecf7;">
+                <dl>
+                    <dt style="float:left;"><img src="$!user.headUrl" style="width:50px;height:50px;border-radius:50%;"></dt>
+                    <dd style="float:left;">
+                        <h3>$!user.name<span></span></h3>
+                        <p style="color:#4f8dec;">$school.name</p>
+                        ##<p>积分：<em>500</em></p>
+                       ## <ul>
+                        ##    <li>本周签到排名：<em>29</em>(全校)</li>
+                        ##    <li>本周签到排名：<em>4</em>(全区)</li>
+                        ##</ul>
+                    </dd>
+                </dl>
+            </div>
+            <div class="leftCon cf sign_in" style="width:400px;margin:0px;padding:0px;border:none;">
+               ## 签到表
+            </div>
+        </div>
+        <div class="topRight">
+            <div class="rightTit studyTit">
+                <a href="/ucenter/teacher/getTeacherTask.html">我发布的学习任务</a>
+                <h2><span>发布学习任务</span></h2>
+            </div>
+            <div class="vodio_box">
+                <a href="/mooc/course/create.html" class="sendVideo" style="border-right:1px solid #e9ecf7;border-bottom:1px solid #e9ecf7;">
+                    <dl>
+                        <dt><img src='http://edu.bjhd.gov.cn/img/admin/vadio_06.jpg' width="30px" height="28px"></dt>
+                        <dd>发视频</dd>
+                    </dl>
+                </a>
+                <a href="/tiku/index.html" class="sendHomwk">
+                    <dl>
+                        <dt><img src='http://edu.bjhd.gov.cn/img/admin/vadio_03.jpg' width="30px" height="28px"></dt>
+                        <dd>发作业</dd>
+                    </dl>
+                </a>
+                <a href="javascript:;" id='discussion'>
+                    <dl>
+                        <dt><img src='http://edu.bjhd.gov.cn/img/admin/vadio_12.jpg' width="30px" height="28px"></dt>
+                        <dd>发讨论</dd>
+                    </dl>
+                </a>
+                <a href="javascript:;" id='case' class="case" style="border-left:1px solid #e9ecf7;border-top:1px solid #e9ecf7;">
+                    <dl>
+                        <dt><img src='http://edu.bjhd.gov.cn/img/admin/vadio_10.png' width="30px" height="28px"></dt>
+                        <dd>发学案</dd>
+                    </dl>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="conTop cf studentCon">
+        <div class="topRight">
+            <div class="rightTit">
+				#if($taskRankingPage.records.size>0)
+					<a href="/ucenter/teacher/ranking.html">更多 >></a>
+				#end
+                <h2 style="font-weight:400;">全区学习任务大排名</h2>
+            </div>
+            <table>
+				<tr style="height:30px;border-bottom:1px solid #e9ecf7;">
+					<th>学校</th>
+					<th>完成率</th>
+					<th>首名完成学生</th>
+				</tr>
+                #foreach($task in $taskRankingPage.records)
+                <tr>
+                    <td>$velocityCount. $!task.schoolName</td>
+                    <td>
+						#if($!task.finishRate)
+						$number.format("#00",$!task.finishRate)%
+						#else
+							0
+						#end
+					</td>
+                    <td>
+						$!task.firstStudentName 
+						#if($!task.firstStudentKlass)
+						($!task.firstStudentKlass)
+						#end
+					</td>
+                </tr>
+				#end
+            </table>
+        </div>
+        <div class="topLeft cf">
+            <div class="leftTit cf">
+				<input type="hidden" id="subjectId" value=""/>
+                <span id="subject">
+					#foreach($subject in $subjectList)
+                    <a href="javascript:;" class="aStyle">语文</a>
+					#end
+                </span>
+                <h2>区级推荐课程</h2>
+            </div>
+            <div class="leftCon cf">
+                <div class="leftNew conterMess studLi">
+                    <ul id="dictCour">
+						#foreach($mooc in $moocList)
+                       <li>
+                            <span>一天前</span>
+                            <div>
+                                <h2>曹志 英语来时</h2>
+                                <!--<p>徐子佳同学最近表现成绩有明显提升，从上课中努力</p>-->
+                            </div>
+                        </li>
+						#end
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	
+    <!--<div class="conCenter cf" id="conCenter">
+        <div class="centerTit cf" style="width:100%;border:1px solid #e9ecf7;">
+            <h2 style="display:inline-block;width:200px;border:none;">过程评价</h2>
+			<p style="float:right;"><a href="javascript:;" id='more'>更多 >></a></p>
+            <span>
+                <a href="javascript:;" class="aStyle" id='goEvaluate' style="color:#fff;">去评价</a>
+            </span>
+            
+        </div>
+        <div class="centerMain"></div>
+    </div>-->
+	
+	
+    <div class="conBottom">
+		<div class="rightTit historyTit">
+			#if($videoPlayPage.total>8)
+              <a href="/ucenter/teacher/videoPlayBackRecord.html">更多 >></a>
+			#end
+              <h2>播放记录</h2>
+        </div>
+        <dic class="history cf">
+			#foreach($video in $videoPlayPage.records)
+            <a href="/mooc/course/details.html?id=$!video.moocId&listenUrl=$!video.listenUrl&videoId=$!video.videoId">
+                <dl>
+                    <dt><img src='http://edu.bjhd.gov.cn/img/course/videoDefault/demo.png'></dt>
+                    <dd>
+                        <h3>$!video.videoName</h3>
+                        <p>主讲：$!video.speaker<span>$!date.format('yyyy-MM-dd',$!video.date)</span></p>
+                    </dd>
+                </dl>
+            </a>
+			#end
+        </dic>
+    </div>
+    <!--弹框-->
+    <div class="discussion_box">
+       <h2><a href="javascript:;" class='close_discussion_box'>×</a>发起讨论</h2> 
+       <div class="obedient_box">
+           <h3 id="tit"><a href="javascript:;" class='checked'>交流贴</a><a href="javascript:;" >投票贴</a></h3>
+           <div class="obedient_box_con">
+               <div class="takle_obedient">
+                   <div class="discuss_title">
+                       <label for="">讨论标题</label>
+                       <input type="text" maxlength='20' id="topicTitle">
+                   </div>
+                   <div class="discuss_content">
+                       <label for="">讨论内容</label>
+                       <input type="text" id="topicContent">
+                   </div>
+				   
+				   <div class="chooseGroup"> </div>
+                   
+                   <div class="send_discuss" id="sendTopic">发起讨论</div>
+               </div>
+			   
+               <div class="voke_obedient cf">
+                   <div class="discuss_title cf">
+                       <label for="" class='label_title'>标题</label>
+                       <input type="text" maxlength='20' id="voteTitle">
+                   </div>
+                   <div class="checkbox-con cf discuss_radio">
+                        <label for="" class='label_title'>投票类型</label>
+                        <span><input type="radio"  class="ipt-hide" name='aaa' value="单选" >
+                        <label class="checkbox"></label>单选</span>
+                        <span><input type="radio"  class="ipt-hide" name='aaa' value="多选" >
+                        <label class="checkbox" for=''></label>多选</span>
+                    </div>
+                   <div class="discuss_content cf">
+                       <label for="" class='label_title'>讨论内容</label>
+                       <input type="text" id="voteContent">
+                   </div>
+				   
+				   <div class="chooseGroup2"> </div>
+				   
+                   <div class="change_class cf">
+                       <span><label for="" class='label_title' >投票选项</label>
+                       <input type="text" name="voteOn" class="voteOn"></span>
+					   <!--
+                       <div class="upload cf up_pic">
+                          <div class="upPic">
+                            	用来存放item
+                            <div id="fileList" class="uploader-list"></div>
+                            <div id="filePicker">添加图片</div>
+                          </div>
+                        </div>
+						-->
+                   </div>
+                   <div class="change_class cf">
+                       <span><label for="" class='label_title new_add'>投票选项</label>
+                       <input type="text" name="voteOn" id="" class="voteOn"></span>
+					   <!--
+                       <div class="upload cf up_pic">
+                          <div class="upPic">
+                            <!--用来存放item
+                            <div id="fileList" class="uploader-list"></div>
+                            <div id="filePicker">添加图片</div>
+                          </div>
+                        </div>
+						-->
+                   </div>
+				   
+				   <div class="voteOptions">
+                       <div class="_add_change cf">
+                           <label for="" class='label_title new_add'>00</label>
+                           <a href="javascript:;" id="addVoteOption">添加投票选项</a>
+                       </div>
+				   </div>
+                   <div class="date date_over">
+                        <label for="" class='label_title'>截止日期</label>
+                        <input type="text" id="time"placeholder="2016-02-13">
+                    </div>
+					
+                   <div class="send_discuss" id="sendVoteTopic">发起讨论</div>
+               </div>
+           </div>
+       </div>
+    </div>
+	
+	
+    
+	<!-- 学案 -->
+	<div class="learnPlanClass"></div>
+	
+	<!-- 过程评价  开始 -->
+	<div class="processBox">
+        <h2><a href="javascript:;" class='close_discussion_box'>×</a>过程评价</h2>
+		<div class="teacher">
+			<div class="box_content"></div> 
+		</div>
+    </div>
+	
+	<div class="processBox" id="districtCourse">
+        <h2><a href="javascript:;" class='close_discussion_box'>×</a>区推荐课程</h2>
+		<div class="teacher">
+			<div id="districtCourseContent"></div> 
+		</div>
+    </div>
+	
+    <div class="gg_box" style="display:none">
+		<div class="newBox"></div>
+		<button type="button" id="button">提交评价</button>
+    </div>
+<!-- 过程评价  结束 -->
+</div>
+	#end
+#override("javascript")
+	<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/index/teacher.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end                                          
+#extends("common/ucenter/teacher/index.vm")

@@ -1,0 +1,49 @@
+#set($d_manage_active="1")
+#set($d_teach_active="1")
+#override("title")年级设置#end
+#override("content")
+<div class="mainContent">
+    <div class="adminTopBar">
+        <a class="btn mybtn" href="/manage/distric/teach/list.html">年级设置</a>
+        <a href="/manage/distric/teach/courseManage.html" class="aLink mybtn">课程管理 </a>
+        <a href="/manage/distric/teach/gradeSubject.html" class="aLink mybtn">年级配课</a>
+    </div>
+    <div class="adminBody">
+        <div class="highLayout">
+            <div class="highRow twoRowLeft ">
+                <h3>
+                    <span>学段</span>
+                </h3>
+                <ul class="cul">
+                	#foreach($phase in $phaseList)
+	                	#if($velocityCount==1)
+	                    	<li class="cf active" value="$!phase.id">
+	                    #else
+		                    <li class="cf" value="$!phase.id">
+	                	#end
+	                        <span value="$!phase.id">$!phase.name</span>
+	                    </li>
+                    #end
+                </ul>
+            </div>
+            <div class="highRow twoRowRight">
+                <h3 class="textCenter">
+                    <span>年级</span>
+                </h3>
+                <ul class="bul">
+                #foreach($grade in $gradeList)
+				    <li class="cfs">
+				        <span>$!grade.name</span>
+				    </li>
+				#end
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+#end
+#override("javascript")
+<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/admin/distric/teach/grade_setting.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end
+#extends("common/manage/distric/index.vm")

@@ -1,0 +1,47 @@
+#set($d_learnPlan_active="1")
+#set($d_myCenter_active="1")
+#override("title")文案#end
+#override("content")
+<div class="mainWrap">
+            <div class="conRight planName">
+                <div class="planName_top">
+                    <ul>
+						<li class="lihover" id="chooseSource"><a href="javascript:;">全部</a></li>
+						#foreach($subject in $subjects)
+                        <li class="" id="chooseSource"><a href="javascript:;">$subject</a></li>
+						#end
+                    </ul>
+                </div>
+                <div class="planName_titile">
+                    <b>学案名称</b>
+                    <span class="handle">操作</span>
+                </div>
+				
+				<div class="chooseSource">
+					<form id="learnPlanForm" action="/learnplan/learnPlans.html" method="post">
+						<input type="hidden" name="_index" value="$!{page.current}"/>
+					</form>
+                    <div class="planName_list">
+                        <ul>
+    						#foreach($source in $sourceList)
+                            <li>
+                                <a href="javascript:;" class="inLearnPlan" value='$!source.preUrl'>$source.subjectName $!teacherNameMap.get($source.userId) 发布了  $!classNameMap.get($source.id) 《$source.title》</a>
+                                <div>
+                                    <span>$source.subjectName</span>
+                                    <b>$!date.format('yyyy-MM-dd HH:mm',$source.crTime)</b>
+                                    <i id="down" value="$!source.storeUrl" name="$!source.title">下载</i>
+                                </div>
+                            </li>
+    						#end
+                        </ul>
+						#pagerleftPage($page,"learnPlanForm")
+                    </div>
+				</div>
+            </div>
+        </div>
+	#end
+#override("javascript")
+	<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/learnplan/learnplan.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end                                          
+#extends("common/ucenter/student/index.vm")

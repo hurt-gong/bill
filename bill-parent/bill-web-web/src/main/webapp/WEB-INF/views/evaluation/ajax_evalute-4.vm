@@ -1,0 +1,42 @@
+<div class="subjects">
+    <div class="centerTit cf">
+        <h2>过程评价</h2>
+        <span>
+			<a href="javascript:;" class="hello" value="全部">全部</a>
+			#foreach($subjectName in $subjectNames)
+            <a href="javascript:;" class="hello" value="$subjectName">$subjectName</a>
+			#end
+			<!--<a href="javascript:;" class="aStyle">语文</a> -->
+        </span>
+        <p><a href="javascript:;" id="parentMore">更多 >></a></p>
+    </div>
+    <div class="centerMain">
+        <div class="conterMess">
+            <ul>
+				#foreach($evaluation in $allEvaluation)
+                <li>
+                    <span>$crTimeMap.get($evaluation.crTime)</span>
+                    <div>
+                        <h2>
+							$evaluation.studentName 在 $evaluation.subjetName 课
+							<ul class="messStar" >
+            					#foreach($i in [1..$evaluation.star])
+                                <li class="starheigh"></li>
+            					#end
+                            </ul>
+						</h2>
+                        <p>
+							#if($evaluation.content.length() > 60)
+								$evaluation.content.substring(0,61).....
+							#else
+								$evaluation.content
+							#end
+						</p>
+                    </div>
+                </li>
+				#end
+            </ul>
+			
+        </div>
+    </div>
+</div>

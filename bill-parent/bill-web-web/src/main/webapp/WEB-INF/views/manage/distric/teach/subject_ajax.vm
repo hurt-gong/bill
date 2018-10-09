@@ -1,0 +1,3 @@
+#foreach($subject in $subjectList)
+    <option value="$!subject.id">$!subject.name</option>
+#end

@@ -1,0 +1,191 @@
+#override("title")微课程添加页#end
+#override("content")
+<!-- 页面主体部分 开始 -->
+    <div class="mainWrap">
+        <div class="adminBody newBody cf">
+            <div class="top_mycenter">
+                <a href="javascript:;">校公开课 ></a><span>创建新课程</span>
+            </div>
+            <div class="newTop_tit">
+                <a href="/mooc/course/list.html">返回</a>请填写以下信息
+            </div>
+            <div class="new_wrap cf">
+                <div class="new_con_left cf">
+                    <form id="createCourse" action="/mooc/course/add" method="post">
+                        <div class="class_name cf">
+                            <h4>课程名称：</h4>
+                            <input type="text" id="title" name="title" value="$!{title}">
+                        </div>
+                        <div class="class_introduce cf">
+                            <h4>课程介绍：</h4>
+                            <textarea name="content">$!{content}</textarea>
+                        </div>
+                        <div class="exhibition cf">
+
+                            <h4>对全区展示：</h4>
+                            <p>
+								<span><label for="a0"></label><input name="isOpen" type="radio" id='a0' value="0" />否</span>
+								<span><label for="a1"></label><input name="isOpen" type="radio" id='a1' value="1" />是</span>
+							</p>
+                        </div>
+                        <div class="class_label cf">
+							
+                            <h4>课程标签：</h4>
+							
+                            <select id='phase1' class="phase">
+                                <option>学段</option>
+									#foreach($phase in $phaseList)
+										<option value="$!phase.id">$!phase.name</option>
+									#end
+                            </select>
+							
+                            <select id="grade1" class="grade">
+								<option>年级</option>
+                            </select>
+							
+                            <select id="subject1" class="subject">
+                                <option value="">学科</option>
+                            </select>
+                               <input type='button' id="chooseSection" name="1" value="选择章节" class="classBtn cha_btn" />
+							   
+							   
+							   <input type="hidden" id="phaseId" name="phaseId" value=""/>
+							   <input type="hidden" id="gradeId" name="gradeId" value=""/>
+							   <input type="hidden" id="subjectId" name="subjectId" value=""/>
+							   <input type="hidden" name="objType" id="objType" value=""/>
+							   <input type="hidden" name="key1Name" id="key1Name" value=""/>
+							   <input type="hidden" name="key2Name" id="key2Name" value=""/>
+							   <input type="hidden" name="key1Id" value="" id="key1Id"/>
+							   <input type="hidden" name="key2Id" value="" id="key2Id"/>
+							   <input type="hidden" id="cover" value="" name="cover"/>
+                        </div>
+                        <div class="knowledge_label cf">
+							
+                            <h4>知识点标签：</h4>
+                            <select id='phase2' class="phase2">
+                                <option>学段</option>
+									#foreach($phase in $phaseList)
+										<option value="$!phase.id">$!phase.name</option>
+									#end
+                            </select>
+                            <select id="grade2" class="grade2">
+								<option>年级</option>
+                            </select>
+                            <select id="subject2" class="subject2">
+                                <option>学科</option>
+                            </select>
+                                <input type='button' id="chooseKnow" name="2" value="选择知识点" class="classBtn know_btn" />
+                        </div>
+                   <div class="keyword cf">
+                        <h4>关键词：</h4>
+                        <p><input type="text" name="keyword" value="$!{keyword}"></p>
+                    </div>
+                    </form>
+                </div>
+                <div class="new_con_right">
+                    <div class="pic_upload">
+                        <dl>
+                            <dt class="imgbox"></dt>
+                            <dd>仅支持5M以内的图片，最小尺寸290*164</dd>
+                        </dl>
+                    </div>
+
+                    <div class="upload_img">
+						
+                        <div class="upPic">
+                            <!--用来存放item-->
+                            <div id="fileList2" class="uploader-list"></div>
+                            <div id="filePicker1" class="selectimg">上传图片</div>
+                        </div>
+                    </div>
+					<div>
+                        <!--用来存放item-->
+                        <a href="javascript:;"><div id="filePicker2" class="selsysimg">选择系统图片</div></a>
+					</div>
+                </div>
+				
+            </div>
+            <div class="go_set createCourse">立即创建
+			<input type="hidden" name="id" value="$!{id}"/>
+        </div>
+    </div>
+
+<div class="choosekonw_box choose_box">
+        <h2><a href="javascript:;" class="choosebox_exit">×</a>选择知识点</h2>
+        <div class="choose_wrap">
+            <div class="choose_con">
+                <ul class="selt1" id="know1">
+					#foreach($knowledge in $knowledgeList)
+                    <li>
+                        <div><i class="openbtn"></i><span></span><p>一级知识点</p></div>
+                        <ul class="selt2">
+                            <li>
+                                <div><i class="openbtn"></i><span></span><p>二级知识点</p></div>
+                                <ul class="selt3">
+                                    <li><em>我是知识点</em><b><input type="checkbox"><label for="">选择</label></b></li>
+                                    <li><em>我是知识点</em><b><input type="checkbox"><label for="">选择</label></b></li>
+                                    <li><em>我是知识点</em><b><input type="checkbox"><label for="">选择</label></b></li>
+                                </ul>
+                            </li>				
+                        </ul>
+                    </li>
+					#end
+                </ul>
+                <div class="sure_btn"><input type="button" value="确定" id="choKnow"></div>
+            </div>
+        </div>
+    </div>
+	<div class="choosecha_box choose_box">
+        <h2><a href="javascript:;" class="choosebox_exit">×</a>选择章节</h2>
+        <div class="choose_wrap">
+            <div class="choose_con">
+				
+                <ul class="selt1" id="sect1">
+					#foreach($section in $sectionList)
+                    <li>
+                        <div><i class="openbtn"></i><span></span><p>第$velocityCount章 $!section.name</p></div>
+                        <ul class="selt2">
+                            <li>
+                                <div><i class="openbtn"></i><span></span><p>二级知识点</p></div>
+                                <ul class="selt3">
+                                    <li><em>我是知识点</em><b><input type="checkbox"><label for="">选择</label></b></li>
+                                    <li><em>我是知识点</em><b><input type="checkbox"><label for="">选择</label></b></li>
+                                    <li><em>我是知识点</em><b><input type="checkbox"><label for="">选择</label></b></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+					#end
+                </ul>
+				
+                <div class="sure_btn"><input type="button" value="确定" id="chooseSect"></div>
+            </div>
+        </div>
+    </div>
+	<div class="chooseimg_box choose_box" id="sysChooseImg" style="display:none;">
+        <h2><a href="javascript:;" class="choosebox_exit">×</a></h2>
+        <div class="choose_wrap" >
+            <div class="choose_con">
+                <ul>
+					<li><a href="javascript:();"><img src="http://edu.bjhd.gov.cn/img/course/videoDefault/1.jpg" /></a></li>
+                    <li><a href="javascript:();"><img src="http://edu.bjhd.gov.cn/img/course/videoDefault/2.jpg" /></a></li>
+                    <li><a href="javascript:();"><img src="http://edu.bjhd.gov.cn/img/course/videoDefault/3.jpg" /></a></li>
+                    <li><a href="javascript:();"><img src="http://edu.bjhd.gov.cn/img/course/videoDefault/4.jpg" /></a></li>
+                    <li><a href="javascript:();"><img src="http://edu.bjhd.gov.cn/img/course/videoDefault/5.jpg" /></a></li>
+                    <li><a href="javascript:();"><img src="http://edu.bjhd.gov.cn/img/course/videoDefault/6.jpg" /></a></li>
+                    <li><a href="javascript:();"><img src="http://edu.bjhd.gov.cn/img/course/videoDefault/7.jpg" /></a></li>
+                    <li><a href="javascript:();"><img src="http://edu.bjhd.gov.cn/img/course/videoDefault/8.jpg" /></a></li>
+                    <li><a href="javascript:();"><img src="http://edu.bjhd.gov.cn/img/course/videoDefault/9.jpg" /></a></li>
+                </ul>
+                <div class="sure_btn"><input type="button" value="确定" id="selectSysImg"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 页面主体部分 结束 -->
+#end
+#override("javascript")
+<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/mooc/course/new_class.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end
+#extends("common/mooc/index.vm")

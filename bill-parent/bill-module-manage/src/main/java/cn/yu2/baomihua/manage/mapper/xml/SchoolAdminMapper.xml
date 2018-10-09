@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yu2.baomihua.manage.mapper.SchoolAdminMapper">
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 id, schoolId, userId
+	</sql>
+	<select id="getAdmins" resultType="cn.yu2.baomihua.manage.dto.SchoolAdminDTO">
+		SELECT sa.id AS id,sa.schoolId AS schoolId,sa.userId AS userId,u.name AS name,u.loginName AS loginName 
+		FROM GL_SCHOOL_ADMIN sa JOIN GL_USER u ON sa.userId=u.ID 
+		WHERE sa.schoolId=#{schoolId}
+	</select>
+</mapper>

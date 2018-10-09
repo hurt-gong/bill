@@ -1,0 +1,46 @@
+#set($d_myCenter_active="1")
+#set($d_taskRanking_active="1")
+#override("title")全区学习大排名#end
+#override("content")
+<div class="mainContent">
+	<div class="conCenter cf" id="conCenter">
+        <div class="centerTit cf">
+            <h2>全区学习排名<i></i></h2>
+        </div>
+        <div class="adminBody adminBody1" style="border:1px solid #e9ecf7;margin-top:0px;">
+			<form action="/ucenter/distric/ranking.html" id="taskForm" method="post">
+				<input type="hidden" name="_index" value="$!{userList.current}"/>
+                    <table class="peoTable">
+                        <tbody>
+							<tr class="th th1" style="padding:0px;margin:0px;">
+                                <th class="center">编号</th>
+                                <th class="center">学校</th>
+                                <th class="center">当前进度</th>
+                                <th class="center">首名完成任务的同学</th>
+							</tr>
+						#foreach($task in $taskRankingPage.records)
+                    	  <tr>
+                            <td class="peoNum" style="padding:0px;margin:0px;">$velocityCount</td>
+                            <td class="center" style="padding:0px;margin:0px;">$!task.schoolName</td>
+                            <td class="center" style="padding:0px;margin:0px;">$!number.format("#0",$!task.finishRate)%</td>
+                            <td class="center" style="padding:0px;margin:0px;">$!task.firstStudentName 
+								#if(""!=$!task.firstStudentKlass)
+									($!task.firstStudentKlass)
+								#end
+							</td>
+						  </tr>
+						#end
+                         </tbody>
+					</table>
+                </form>
+		</div>
+			#pager($taskRankingPage,"taskForm")
+    </div>
+</div>
+#end
+
+#override("javascript")
+	<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/ucenter/task_ranking.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end                                          
+#extends("common/ucenter/distric/index.vm")

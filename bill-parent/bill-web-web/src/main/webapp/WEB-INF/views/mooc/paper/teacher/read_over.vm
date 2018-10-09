@@ -1,0 +1,31 @@
+<div class="mainWrap">
+<div class="myCenter_con cf">
+    <div class="conRight">
+        <div class="mainContent">
+    <div class="adminBody subjective_item studentList">
+		<input type="hidden" id="paperId" value="${paperId}"/>
+        <div class="class_box">
+            <div class="one_class">
+                <div class="all_ans_name">
+                    <h3>全部作答学生</h3>
+                    <div class="_names">
+						#if(${answeredStudents.size()}==0)
+                            <p>暂无学生作答</p>
+						#else 
+    						#foreach($student in $answeredStudents)
+    							<span><label for="${student.userId}"></label><input type="radio" name="studentId" value="${student.userId}">${student.userName}</span>
+							#end
+						#end
+					</div>  
+                </div>
+            </div>
+        </div>
+    </div>
+	<div id="read_over_list"></div>
+</div>
+    </div>
+</div>
+</div> 
+
+	
+

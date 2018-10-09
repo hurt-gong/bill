@@ -1,0 +1,169 @@
+#set($d_myCenter_active="1")
+#set($s_myCenter_active="1")
+#override("title")学生主页#end
+#override("content")
+    <div class="conRight stuCon">
+        <div class="conTop cf">
+            <div class="topLeft cf sign">
+                <div>
+                    <dl>
+                        <dt><img src="$!user.headUrl" width="50px" height="50px;"></dt>
+                        <dd>
+                            <h3>$!user.name</h3>
+                            <p>$!klass.name</p>
+                            <p>$!school.name</p>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="topRight">
+                <div class="rightTit studyTit">
+					#if($stuTaskPage.total>6)
+						<a href="/ucenter/student/task.html">更多 >></a>
+					#end
+                    <h2><span>学习任务</span></h2>
+                </div>
+                <ul>
+					#foreach($myTask in $stuTaskPage.records)
+                    <li><span class="green">任务$velocityCount</span>
+						#if(1==$!myTask.taskType)
+							<a href="/mooc/course/details.html?id=$!myTask.preUrl&videoId=$!myTask.taskId">$!myTask.taskName
+							<b>视频</b>
+						#elseif(2==$!myTask.taskType)
+							<a href="/homework/doJob?hwId=$!myTask.taskId">$!myTask.taskName
+							<b>作业</b>
+						#elseif(3==$!myTask.taskType)
+							<a href="/learnplan/learnPlanPreview.html?url=$!myTask.preUrl">$!myTask.taskName
+							<b>学案</b>
+						#elseif(4==$!myTask.taskType)
+							<a href="/group/group/topic.html?topicId=$!myTask.taskId&groupId=$!myTask.groupId">$!myTask.taskName
+							<b>讨论</b>
+						#end
+						</a></li>
+					#end
+                </ul>
+				#if($!finishNum>0)
+					<div class="speedLine"><p><span></span></p><em>$number.format("#0.0",$!finishNum)%</em></div>
+				#end
+            </div>
+        </div>
+        <div class="conTop cf studentCon">
+            <div class="topRight">
+                <div class="rightTit">
+					#if($taskRankingPage.total>6)
+                    <a href="/ucenter/student/ranking.html">更多 >></a>
+					#end
+                    <h2 style="font-weight:400;">全区学习任务大排名</h2>
+                </div>
+                <table>
+                    <tr>
+                        <th>学校</th>
+                        <th>当前进度</th>
+                        <th>首名完成任务的同学</th>
+                    </tr>
+					#foreach($task in $taskRankingPage.records)
+                    <tr>
+                        <td>$velocityCount. $!task.schoolName</td>
+                        <td>
+						#if($!task.finishRate)
+							$!number.format("#0",$!task.finishRate)%
+						#else
+							0%
+						#end
+						</td>
+                        <td>$!task.firstStudentName
+							#if($!task.firstStudentKlass)
+							($!task.firstStudentKlass)
+							#end
+						</td>
+                    </tr>
+					#end
+                </table>
+            </div>
+            <div class="topLeft cf">
+                <div class="leftTit cf">
+					<input type="hidden" id="subjectId" value=""/>
+                    <span id="subject">
+                     	#foreach($subject in $subjectList)
+                        <a href="javascript:;" class="aStyle">语文</a>
+						#end
+                    </span>
+                    <h2 >区级推荐课程</h2>
+                </div>
+                <div class="leftCon cf">
+                    <div class="leftNew conterMess studLi">
+                        <ul id="dictCour">
+							#foreach($mooc in $moocList)
+                           <li>
+                                <span>一天前</span>
+                                <div>
+                                    <h2>曹志 英语来时</h2>
+                                    <p>徐子佳同学最近表现成绩有明显提升，从上课中努力</p>
+                                </div>
+                            </li>
+							#end
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      <!-- <div class="conCenter cf">
+            <div class="centerTit cf stuTit" style="width:940px;border:1px solid #e9ecf7;">
+                <h2 style="width:660px;border:none;display:inline-block;">区推荐课程</h2>
+                <span id="subject2"> 
+                    #foreach($subject in $subjectList)
+                        <a href="javascript:;" class="aStyle">语文</a>
+						#end
+                </span>
+            </div>
+            <div class="centerMain cf">
+                <div class="conterMess studentMess cf">
+                    <ul id="dictCour2">
+						#foreach($mooc in $moocList)
+                        <li><a href="javascript:;"><span>王洛阳</span>《平面简析几何初步》</a></li>
+						#end
+                    </ul>
+                </div>
+            </div>
+	  </div> -->
+
+
+        <div class="conBottom">
+            <div class="rightTit historyTit">
+				#if($videoPlayPage.total>8)
+				 <a href="/ucenter/student/playbackRecord.html">更多 >></a>
+				 #end
+                <h2>播放记录</h2>
+            </div>
+			<dic class="history cf">
+			#foreach($video in $videoPlayPage.records)
+            <a href="/mooc/course/details.html?id=$!video.moocId&listenUrl=$!video.listenUrl&videoId=$!video.videoId">
+                <dl>
+                    <dt><img src='http://edu.bjhd.gov.cn/img/course/videoDefault/demo.png'></dt>
+                    <dd>
+                        <h3>$!video.videoName</h3>
+                        <p>主讲：$!video.speaker<span>$!video.date</span></p>
+                    </dd>
+                </dl>
+            </a>
+			#end
+        </dic>
+        </div>
+    </div>
+<div class="processBox" id="districtCourse1">
+	<h2><a href="javascript:;">×</a>区推荐课程</h2>
+	<div class="screenBar gg">
+	<div id="districtCourseContent"></div> 
+	</div>
+</div>
+#end
+#override("javascript")
+    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/admin/distric/dept/dept.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+	<script>
+	$('.topRight .speedLine span').css('width',$('.topRight .speedLine em').text());
+    </script>
+#end                                          
+#extends("common/ucenter/student/index.vm")

@@ -1,0 +1,400 @@
+#set($s_staff_active="1")
+#override("title")人员管理#end
+#override("content")
+<div class="adminBody detailsBody cf">
+    <div class="top_mycenter">
+        <a href="javascript:;" class='house'>校本课程库 ></a><a href="javascript:;">管理课程 ></a><span>上传习题</span>
+    </div>
+    <div class="course_wrap">
+        <div class="course_tit">
+            <a href="javascript:;" class='changeA_style'>题库选择</a><a href="javascript:;">自上传习题</a>
+        </div>
+        <div class="course_con">
+            <div class="con1">
+                <div class="course_left">
+                    <h2>知识点</h2>
+                    <ul>
+                        <li><a href="javascript:;">第一章 余弦定理</a></li>
+                        <li><a href="javascript:;" class='clicka'>第二章 正余弦定理的综合</a></li>
+                        <li><a href="javascript:;">第三章 简单的线性规划问题</a></li>
+                        <li><a href="javascript:;">第四章 均值不等式</a></li>
+                        <li><a href="javascript:;">第五章 一元二次不等式</a></li>
+                        <li><a href="javascript:;">第六章 求数列的通项公式</a></li>
+                        <li><a href="javascript:;">第七章 特殊数列求和</a></li>
+                        <li><a href="javascript:;">第八章 高中数学必修3</a></li>
+                        <li><a href="javascript:;">第九章 高中数学必修4</a></li>
+                        <li><a href="javascript:;">第十章 高中数学必修5</a></li>
+                    </ul>
+                </div>
+                <div class="course_center">
+                    <div class="top_nav">
+                        <span>共<em>20213</em>道题</span>
+                        <ul>
+                            <li class='li_click'><a href="javascript:;">全部</a></li>
+                            <li><a href="javascript:;">单项选择题</a></li>
+                            <li><a href="javascript:;">多项选择题</a></li>
+                            <li><a href="javascript:;">填空题</a></li>
+                            <li><a href="javascript:;">阅读题</a></li>
+                            <li><a href="javascript:;">写作题</a></li>
+                        </ul>
+                    </div>
+                    <div class="exercisesLeft detailsLeft course_center_con">
+                        <div class="floorone">
+                            <h3>1、下列结论成立的是<input type="text"></h3>
+                            <ul>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>A.若ac>bc，则a>b</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>B.若a>b，则a2>b2</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>C.若a>b，c<d，则a+c>b+d</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>D.a>b，c>d，则a-d>b-c</li>
+                            </ul>
+                            <div class="flooright">
+                                <a href="javascript:;">取消选择</a>
+                                <a href="javascript:;">编辑该题</a>
+                                <a href="javascript:;">查看解析</a>
+                            </div>
+                        </div>
+                        <div class="floorone">
+                            <h3>1、下列结论成立的是<input type="text"></h3>
+                            <ul>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>A.若ac>bc，则a>b</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>B.若a>b，则a2>b2</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>C.若a>b，c<d，则a+c>b+d</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>D.a>b，c>d，则a-d>b-c</li>
+                            </ul>
+                            <div class="flooright">
+                                <a href="javascript:;">取消选择</a>
+                                <a href="javascript:;">编辑该题</a>
+                                <a href="javascript:;">查看解析</a>
+                            </div>
+                        </div>
+                        <div class="floorone">
+                            <h3>1、下列结论成立的是<input type="text"></h3>
+                            <ul>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>A.若ac>bc，则a>b</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>B.若a>b，则a2>b2</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>C.若a>b，c<d，则a+c>b+d</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>D.a>b，c>d，则a-d>b-c</li>
+                            </ul>
+                            <div class="flooright">
+                                <a href="javascript:;">取消选择</a>
+                                <a href="javascript:;">编辑该题</a>
+                                <a href="javascript:;">查看解析</a>
+                            </div>
+                        </div>
+                        <div class="floorone">
+                            <h3>1、下列结论成立的是<input type="text"></h3>
+                            <ul>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>A.若ac>bc，则a>b</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>B.若a>b，则a2>b2</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>C.若a>b，c<d，则a+c>b+d</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>D.a>b，c>d，则a-d>b-c</li>
+                            </ul>
+                            <div class="flooright">
+                                <a href="javascript:;">取消选择</a>
+                                <a href="javascript:;">编辑该题</a>
+                                <a href="javascript:;">查看解析</a>
+                            </div>
+                        </div>
+                        <div class="floorone">
+                            <h3>1、下列结论成立的是<input type="text"></h3>
+                            <ul>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>A.若ac>bc，则a>b</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>B.若a>b，则a2>b2</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>C.若a>b，c<d，则a+c>b+d</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>D.a>b，c>d，则a-d>b-c</li>
+                            </ul>
+                            <div class="flooright">
+                                <a href="javascript:;">取消选择</a>
+                                <a href="javascript:;">编辑该题</a>
+                                <a href="javascript:;">查看解析</a>
+                            </div>
+                        </div>
+                        <div class="floorone">
+                            <h3>1、下列结论成立的是<input type="text"></h3>
+                            <ul>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>A.若ac>bc，则a>b</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>B.若a>b，则a2>b2</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>C.若a>b，c<d，则a+c>b+d</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>D.a>b，c>d，则a-d>b-c</li>
+                            </ul>
+                            <div class="flooright">
+                                <a href="javascript:;">取消选择</a>
+                                <a href="javascript:;">编辑该题</a>
+                                <a href="javascript:;">查看解析</a>
+                            </div>
+                        </div>
+                        <div class="floorone">
+                            <h3>1、下列结论成立的是<input type="text"></h3>
+                            <ul>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>A.若ac>bc，则a>b</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>B.若a>b，则a2>b2</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>C.若a>b，c<d，则a+c>b+d</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>D.a>b，c>d，则a-d>b-c</li>
+                            </ul>
+                            <div class="flooright">
+                                <a href="javascript:;">取消选择</a>
+                                <a href="javascript:;">编辑该题</a>
+                                <a href="javascript:;">查看解析</a>
+                            </div>
+                        </div>
+                        <div class="floorone">
+                            <h3>1、下列结论成立的是<input type="text"></h3>
+                            <ul>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>A.若ac>bc，则a>b</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>B.若a>b，则a2>b2</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>C.若a>b，c<d，则a+c>b+d</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>D.a>b，c>d，则a-d>b-c</li>
+                            </ul>
+                            <div class="flooright">
+                                <a href="javascript:;">取消选择</a>
+                                <a href="javascript:;">编辑该题</a>
+                                <a href="javascript:;">查看解析</a>
+                            </div>
+                        </div>
+                        <div class="floorone">
+                            <h3>1、下列结论成立的是<input type="text"></h3>
+                            <ul>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>A.若ac>bc，则a>b</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>B.若a>b，则a2>b2</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>C.若a>b，c<d，则a+c>b+d</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>D.a>b，c>d，则a-d>b-c</li>
+                            </ul>
+                            <div class="flooright">
+                                <a href="javascript:;">取消选择</a>
+                                <a href="javascript:;">编辑该题</a>
+                                <a href="javascript:;">查看解析</a>
+                            </div>
+                        </div>
+                        <div class="floorone">
+                            <h3>1、下列结论成立的是<input type="text"></h3>
+                            <ul>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>A.若ac>bc，则a>b</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>B.若a>b，则a2>b2</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>C.若a>b，c<d，则a+c>b+d</li>
+                                <li><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck"></label>D.a>b，c>d，则a-d>b-c</li>
+                            </ul>
+                            <div class="flooright">
+                                <a href="javascript:;">取消选择</a>
+                                <a href="javascript:;">编辑该题</a>
+                                <a href="javascript:;">查看解析</a>
+                            </div>
+                        </div>
+                        <div class="pageNum leftPage detailspage">
+                            <a href="jsvascript:;" class="page pageLeft"></a><a href="jsvascript:;">上一页</a><a href="jsvascript:;" class="numStyle changeStyle">1</a><a href="jsvascript:;" class="numStyle">2</a><a href="jsvascript:;" class="numStyle hoverStyle">3</a><a href="jsvascript:;" class="numStyle">4</a><a href="jsvascript:;">下一页</a><a href="jsvascript:;" class="page pageRight"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="course_right">
+                    <h2>已上传题目</h2>
+                    <ul>
+                        <li>共8题，其中</li>
+                        <li>单项选择题：3</li>
+                        <li>多项选择题：2</li>
+                        <li>填空题：2</li>
+                    </ul>
+                    <p>
+                        <button style='margin-right:9px;'>预览编辑</button><button>发布习题</button>
+                    </p>
+                </div>
+            </div>
+            <div class="con2 cf">
+                <div class="con2_left">
+                    <div class="con2_nav cf">
+                        <h3>上传题型</h3>
+                        <ul id='change'>
+                            <li class='li_click'><a href="javascript:;">单项选择题</a></li>
+                            <li><a href="javascript:;">多项选择题</a></li>
+                            <li><a href="javascript:;">填空题</a></li>
+                            <li><a href="javascript:;">阅读题</a></li>
+                            <li><a href="javascript:;">写作题</a></li>
+                        </ul>
+                    </div>
+                    <div class="ti_con">
+                        <div class='multiple_choice'>
+                            <table>
+                                <tr>
+                                    <td class='left_td'>题干：</td>
+                                    <td class='tigan right_td'>
+                                        <div><p>编辑器————采用高级编辑器，用来输入特定函数及相关表达式。</p>
+                                        <p>李白，字 ？号 ？</p>
+                                        <p>A、字太白。号居士</p>
+                                        <p>B、字太白。号青莲</p></div>
+                                    </td>
+                                </tr>
+                                <tr class='empty'>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class='left_td daan'>答案：</td>
+                                    <td class='right_td floorone change_check'>
+                                        <span><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck td_cha"></label>A</span>
+                                        <span><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck td_cha"></label>B</span>
+                                        <span><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck td_cha"></label>C</span>
+                                        <span><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck td_cha"></label>D</span>
+                                        <span><a href="javascript:;" class='add_change'>添加选项</a></span>
+                                    </td>
+                                </tr>
+                                <tr class='empty'>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class='left_td'>解析：</td>
+                                    <td class='jiexi right_td'>
+                                        <div>
+                                       李白（701年-762年），字太白，号青莲居士，又号“谪仙人”，汉族，绵州昌隆县（今四川省江油市）人，是唐代伟大的浪漫主义诗人，被后人誉为“诗仙”。 </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="upload cf upBtn fl f2">
+                                <div class="upPic">
+                                    <!--用来存放item-->
+                                    <div id="fileList" class="uploader-list"></div>
+                                    <div id="filePicker">保存并继续上传</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='multiSelect'>多选</div>
+                        <div class='fill_in'>
+                            <table>
+                                <tr>
+                                    <td class='left_td'>解析：</td>
+                                    <td class='right_td'>
+                                       <textarea placeholder='您可以编辑文字。编辑公式或上传图片图片大小请小鱼2M' class='input'></textarea>
+                                    </td>
+                                </tr>
+                                <tr class='empty'>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class='left_td'>解析：</td>
+                                    <td class='jiexi right_td'>
+                                       李白（701年-762年），字太白，号青莲居士，又号“谪仙人”，汉族，绵州昌隆县（今四川省江油市）人，是唐代伟大的浪漫主义诗人，被后人誉为“诗仙”。 
+                                    </td>
+                                </tr>
+                                <tr class='empty'>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class='left_td'>解析：</td>
+                                    <td class='jiexi right_td'>
+                                       李白（701年-762年），字太白，号青莲居士，又号“谪仙人”，汉族，绵州昌隆县（今四川省江油市）人，是唐代伟大的浪漫主义诗人，被后人誉为“诗仙”。 
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="upload cf upBtn fl f2">
+                                <div class="upPic">
+                                    <!--用来存放item-->
+                                    <div id="fileList1" class="uploader-list"></div>
+                                    <div id="filePicker1">保存并继续上传</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='read'>
+                            <table>
+                                <tr>
+                                    <td class='left_td'>解析：</td>
+                                    <td class='right_td'>
+                                       <textarea placeholder='您可以编辑文字。编辑公式或上传图片图片大小请小鱼2M' class='input'></textarea>
+                                    </td>
+                                </tr>
+                                <tr class='empty'>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class='left_td'></td>
+                                    <td class='right_td'>
+                                       <div class="ans1">
+                                           <p><span><label for="aa"></label><input type="radio" id='aa'>张晓珊</span><span><label for="aa"></label><input type="radio" id='aa'>张晓珊</span><span><label for="aa"></label><input type="radio" id='aa'>张晓珊</span></p>问题1:
+                                       </div> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class='left_td daan'></td>
+                                    <td class='right_td floorone change_check'>
+                                        &nbsp;答案：
+                                        <span><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck td_cha"></label>A</span>
+                                        <span><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck td_cha"></label>B</span>
+                                        <span><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck td_cha"></label>C</span>
+                                        <span><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck td_cha"></label>D</span>
+                                        <span><a href="javascript:;" class='add_change'>添加选项</a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class='left_td'></td>
+                                    <td class='right_td'>
+                                       <div class="ans1">
+                                           <p><span><label for="aa"></label><input type="radio" id='aa'>张晓珊</span><span><label for="aa"></label><input type="radio" id='aa'>张晓珊</span><span><label for="aa"></label><input type="radio" id='aa'>张晓珊</span></p>问题1:
+                                       </div> 
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class='left_td daan'></td>
+                                    <td class='right_td floorone change_check'>
+                                        &nbsp;答案：
+                                        <span><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck td_cha"></label>A</span>
+                                        <span><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck td_cha"></label>B</span>
+                                        <span><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck td_cha"></label>C</span>
+                                        <span><input type="checkbox" class="ipt-hide"><label for="" class="exeCheck td_cha"></label>D</span>
+                                        <span><a href="javascript:;" class='add_change'>添加选项</a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class='left_td'></td>
+                                    <td class='right_td'>
+                                       <div class="ans1">
+                                           <p><span><label for="aa"></label><input type="radio" id='aa'>张晓珊</span><span><label for="aa"></label><input type="radio" id='aa'>张晓珊</span><span><label for="aa"></label><input type="radio" id='aa'>张晓珊</span></p>问题1:
+                                       </div> 
+                                    </td>
+                                </tr>
+                                <tr class='empty'>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class='left_td'></td>
+                                    <td class='right_td'>
+                                        <span class='ans2'>答案：</span>
+                                        <div class='ans2_1'>
+                                       李白（701年-762年），字太白，号青莲居士，又号“谪仙人”，汉族，绵州昌隆县（今四川省江油市）人，是唐代伟大的浪漫主义诗人，被后人誉为“诗仙”。 </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="upload cf upBtn fl f2">
+                                <div class="upPic">
+                                    <!--用来存放item-->
+                                    <div id="fileList2" class="uploader-list"></div>
+                                    <div id="filePicker2">保存并继续上传</div>
+                                </div>
+                            </div>    
+                        </div>
+                        <div class='writing'>写作</div>
+                    </div>
+                    
+                </div>  
+                <div class="course_right">
+                    <h2>已上传题目</h2>
+                    <ul>
+                        <li>共8题，其中</li>
+                        <li>单项选择题：3</li>
+                        <li>多项选择题：2</li>
+                        <li>填空题：2</li>
+                    </ul>
+                    <p>
+                        <button style='margin-right:9px;'>预览编辑</button><button>发布习题</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+#end
+#override("javascript")
+<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/dist/admin/details_init.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end
+#extends("common/mooc/index.vm")

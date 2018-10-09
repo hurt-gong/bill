@@ -1,0 +1,43 @@
+
+<!-- -->
+<div class="newBox" >
+    <h2><a href="javascript:;" class='close_discussion_box' >×</a>过程评价</h2>
+    <div class="screenBar kk">
+       <form action="" >
+            <span style="float:left" class='kname xname'>选择班级</span>
+            <select class="mySelect" id="chooseKlass">
+				<option style="display:none" selected ="selected">全部</option>
+                <option >全部</option>
+    			#foreach($klassName in $klassNames)
+                <option>$!klassName</option>
+    			#end
+            </select>
+		</form>
+    </div>
+	<!--  -->
+    <div class="people_check_box">
+		<div class="newPeppleBox">
+        <ul>
+			#foreach($student in $studentList)
+            <li><input type="checkbox" name="name" value="$student.id" class="ipt-hide"><label for="" class="exeCheck"></label>$student.name</li>
+			#end
+        </ul>  
+		</div>
+    </div>
+    <div class="kk">
+        <span class='kname xname'>评价内容</span>
+		<ul class="starcon">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+        </ul>
+		<input type="hidden" value="" id="stars"/>
+        ##<img src='http://edu.bjhd.gov.cn/img/admin/star_03.png' class='k_img'>
+    </div>
+    <div class="gg">
+        <textarea id="evaluateContent"></textarea>
+    </div>
+
+</div>

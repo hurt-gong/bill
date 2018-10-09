@@ -1,0 +1,63 @@
+#set($s_manage_active="1")
+#set($s_teach_active="1")
+#override("title")班主任#end
+#override("content")
+ <div class="mainContent">
+    <div class="adminTopBar">
+        <a class="aLink  mybtn"  href="/manage/school/teach/teacher.html">任课教师</a>
+        <a href="/manage/school/teach/headTeacher.html" class="btn  mybtn">班主任</a>
+    </div>
+    <div class="adminBody">
+        <div class="screenBar">
+            <form action="/manage/school/teach/headTeacher.html" method="get" id="userForm">
+                <span class="fl">学段</span>
+                <select class="mySelect fl phase" onchange="phaseChage(this.value)">
+                   <option value="">全部学段</option>
+                	#foreach($phase in $baseCode.phaseList)
+	                    #if($paramMap.get("phaseId")==$!phase.id)
+	                   	 <option selected="selected" value="$!phase.id">$!phase.name</option>
+	                   	#else
+	                   	 <option value="$!phase.id">$!phase.name</option>
+	                    #end
+                    #end
+                </select>
+                <span class="fl">年级</span>
+                <select class="mySelect fl grade" onchange="gradeChage(this.value)">
+                <option value="">全部年级</option>
+                    #foreach($grade in $baseCode.gradeList)
+	                    #if($paramMap.get("gradeId")==$!grade.id)
+	                   	 <option selected="selected" value="$!grade.id">$!grade.name</option>
+	                   	#else
+	                   	 <option value="$!grade.id">$!grade.name</option>
+	                    #end
+                    #end
+                </select>
+                <input type="hidden" name="_index" value="$!{userDto.current}"/>
+                <input type="hidden" name="phaseId" value="$!paramMap.phaseId">
+                <input type="hidden" name="gradeId" value="$!paramMap.gradeId">
+            </form>
+            <div class="seach">
+                <input type="submit" value="搜索" class="sub">
+                <input type="text" name="teacherName" class="txt">
+            </div> 
+        </div>
+        <table class="table">
+            <tr class="th">
+                <td class="class">班级</td>
+                <td class="teach">班主任</td>
+            </tr>
+            #foreach($user in $userDto.records)
+	            <tr>
+	                <td class="class">$!user.klassName</td>
+	                <td class="teach">$!user.name</td>
+	            </tr>
+            #end
+        </table>
+    </div>
+</div>
+#end
+#override("javascript")
+<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/admin/school/teach/head_teacher.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end
+#extends("common/manage/school/index.vm")

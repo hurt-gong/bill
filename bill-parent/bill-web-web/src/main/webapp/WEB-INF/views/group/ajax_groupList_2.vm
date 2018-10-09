@@ -1,0 +1,13 @@
+<div class='chooseGroup2'>
+   <div class="change_class screenBar">
+       <form action="">
+            <label>选择班群</label>
+            <select class="mySelect fl" id="sendChoose2">
+                <option>请选择</option>
+    			#foreach($klassName in $klassNameList)
+                <option>$klassName</option>
+    			#end
+            </select>
+       </form>
+   </div>
+</div>

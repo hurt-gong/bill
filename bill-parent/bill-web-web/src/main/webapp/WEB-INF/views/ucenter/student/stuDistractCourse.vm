@@ -1,0 +1,44 @@
+#set($d_directcourse_active="1")
+#set($d_myCenter_active="1")
+#override("title")区级推荐课程#end
+#override("content")
+<div class="cf tuijCou_con">
+	<form action="/mooc/course/directCourseToView.html" id="districtCourseForm">
+    <div>
+        <h2>区推荐课程<i></i></h2>
+        <span id="subject2" class="subtit"> 
+			<input type="hidden" name="subjectId" id="subjectId" value="$!subjectId"/>
+            #foreach($subject in $subjectList)
+				#if($!subjectId==$!subject.id)
+                <a href="javascript:;" value="$subject.id" class='fontCo subj'>$!subject.name</a>
+				#else
+				<a href="javascript:;" value="$subject.id" class='subj'>$!subject.name</a>
+				#end
+			#end
+        </span>
+    </div>
+    <div class="centerMain cf">
+        <div class="conterMess studentMess cf">
+            <ul id="dictCour2">
+				#foreach($mooc in $moocList)
+                <li><a href="/mooc/course/details.html?id=$!mooc.id&listenUrl=$!map.get($!mooc.id)[0].listenUrl"><span>$mooc.teacherName</span>《$mooc.title》</a></li>
+				#end
+            </ul>
+        </div>
+    </div>
+	</form>
+</div>
+#end
+#override("javascript")
+	<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/ucenter/districtCourse.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end   
+#if($!user.schoolId == 0 && $!user.type==2)
+	#extends("common/ucenter/distric/index.vm")
+#elseif($!user.type==1)
+	#extends("common/ucenter/student/index.vm")
+#elseif($!user.type==3)
+	#extends("common/ucenter/parent/index.vm")
+#else
+	#extends("common/ucenter/teacher/index.vm")
+#end

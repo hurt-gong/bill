@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yu2.baomihua.manage.mapper.SubjectMapper">
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 id, name, type, status, schoolId, crTime, crUserId
+	</sql>
+
+	<select id="getSubjectByPhase" resultType="cn.yu2.baomihua.manage.entity.Subject">
+		SELECT
+		<include refid="Base_Column_List"/> 
+		FROM
+			GL_SUBJECT s
+		WHERE
+			s. STATUS = #{status}
+		<if test="phaseId !=null">
+		AND s.id IN (
+			SELECT
+				subjectId
+			FROM
+				GL_GRADE_SUBJECT gs
+			WHERE
+				gs.gradeId IN (
+					SELECT
+						id
+					FROM
+						GL_GRADE g
+					WHERE
+						g.phaseId = #{phaseId}
+				)
+			AND (
+				gs.schoolId = #{schoolId}
+				OR gs.schoolId = 0
+			)
+		)
+		</if>
+	</select>
+	<select id="getSubjectByGradeId" resultType="cn.yu2.baomihua.manage.entity.Subject">
+		select 
+			<include refid="Base_Column_List"/>
+		from GL_SUBJECT sub 
+		where
+			 sub.id in (
+			 	select subjectId from GL_GRADE_SUBJECT
+			 	where gradeId = #{gradeId}
+			 	and schoolId = #{schoolId} 
+			 )
+	</select>
+	<select id="getSubjectNoSel" resultType="cn.yu2.baomihua.manage.entity.Subject">
+		SELECT
+			<include refid = "Base_Column_List" />
+		FROM
+			GL_SUBJECT sub
+		WHERE
+			(sub.schoolId = 0 OR sub.schoolId = #{schoolId})
+			AND sub. STATUS = #{status}
+			AND sub.id NOT IN (
+					SELECT subjectId
+					FROM GL_GRADE_SUBJECT
+					WHERE
+						(schoolId = 0 OR schoolId = #{schoolId})
+					AND gradeId = #{gradeId})
+	</select>
+	
+	<select id="getBookToName" resultType="cn.yu2.baomihua.manage.entity.Subject">
+		SELECT 
+		<include refid="Base_Column_List"/>
+		from GL_SUBJECT where 1=1
+		<if test="name !=null and name != ''">
+			 and name = #{name}
+		</if>
+	</select>
+	
+		<select id="findSubjectByGradeId" resultType="cn.yu2.baomihua.manage.entity.Subject" parameterType="java.lang.Long">
+		select * from GL_SUBJECT s 
+		where s.id in (
+		select g.subjectId from GL_GRADE_SUBJECT g 
+		where gradeId=#{gradeId})
+	</select>
+	
+	<select id="getSubjectBySchoolId" parameterType="java.lang.Long" resultType="cn.yu2.baomihua.manage.entity.Subject">
+	select * from GL_SUBJECT where schoolId=#{schoolId}
+	</select>
+	
+</mapper>

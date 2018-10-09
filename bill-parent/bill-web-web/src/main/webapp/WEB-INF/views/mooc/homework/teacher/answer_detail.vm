@@ -1,0 +1,84 @@
+#set($d_dept_active="1")
+#override("title")我的作业#end
+#override("content")
+<div class="conRight">
+    <div class="mainContent">
+<div class="adminTopBar">
+    <a href="/tiku/index.html" class="aLink" >发作业</a>
+    <ahref="javascript:void(0)" class="btn">已发作业</a>
+</div>
+<div class="adminBody subjective_item">
+ 
+    <div class="class_box">
+        <div class="one_class">
+            <form action="">
+                <table class="peoTable do_table">
+                    <tr class="th th1">
+                        <th class="center">发作业时间</th>
+                        <th class="center">收作业时间</th>
+                        <th class="center">标题</th>
+                        <th class="center">作答人数(本版人数${homework.studentCount}人)</th>
+                    </tr>
+                    <tr>
+                        <td class="center tdBlue">${homework.startDate}<input type="hidden" id="hwId" value="${homework.id}"/></td>
+                        <td class="center tdBlue">${homework.endDate}</td>
+                        <td class="center">${homework.title}</td>
+                        <td class="center">${homework.answerCount}人</td>
+                    </tr>
+                </table>
+            </form>
+            <div class="topic" id="tidetail">
+				#foreach($exam in $exams)
+                    <div class="floor_play">
+                        <h3>$velocityCount.#if(${exam.typeName}!='')(${exam.typeName})#end<br>
+							${exam.content}</h3>
+                    </div>
+					#if(${exam.typeId}==351||${exam.typeId}==352||${exam.typeId}==353||${exam.typeId}==2)
+                        <div class="analysis">
+                            <h3>
+								<a href="javascrtip:;" class='look_analysis'>查看解析</a>
+								<span>
+									<a href="javascript:;"class='look_respond' data-examId="${exam.examId}" data-options="${exam.options}">查看作答详情</a>
+									平均正答率${exam.rightRate}
+								</span>
+							</h3>
+                            <div class="look_analysis_box">
+                               ${exam.analysis} 
+                            </div>
+                        </div>
+					#else
+						<div class="analysis">
+                            <h3>
+								<a href="/homework/readOver?hwId=${homework.id}" class='go_read'>去批阅</a>
+								<span>
+									暂无作答详情
+								</span>
+							</h3>
+                        </div>
+					#end
+                #end
+               
+            </div>
+            
+        </div>
+    </div>
+    <div class="look_respond_box">
+        <h2><a href="javascript:;" class='close_box'>×</a>作答详情</h2>
+        <div class="look_respond_con"><input type="hidden" id="examId"/>
+            <ul id="options">
+                
+            </ul>
+            <div class="atudent_name">
+               
+            </div>
+        </div> 
+    </div>
+</div>
+</div>
+</div>
+#end
+#override("javascript")
+    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/admin/job_init.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end                                          
+#extends("common/ucenter/teacher/index.vm")

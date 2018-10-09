@@ -1,0 +1,183 @@
+#set($d_manage_active="1")
+#set($d_schoolcourse_active="1")
+#override("title")校公开课#end
+#override("content")
+<!-- 页面主体部分 开始 -->
+        <div class="mainContent">
+            <div class="adminTopBar">
+                <a class="btn mybtn" href="/mooc/course/schoolClass.html">区公开课</a>
+                <a class="aLink mybtn" href="/mooc/course/schoolPublic.html">校公开课</a>
+				#*<p>
+                <input type="text" name="" id="" class="txt">
+                <input type="submit" value="搜索" class="sub"></p>*#
+            </div>
+			<form id="schoolClass"  action="/mooc/course/schoolClass.html">
+				<input type="hidden" name="_index" value="$!{page.current}"/>
+            <div class="adminBody publicBody">
+				<input id="phaseId" name="phaseId" type="hidden" value="$!phaseId"/>
+				<input id="gradeId" name="gradeId" type="hidden" value="$!gradeId"/>
+				<input id="subjectId" name="subjectId" type="hidden" value="$!subjectId"/>
+				<input id="isOpen" name="isOpen" type="hidden" value="1"/>
+               <div class="nav">
+               <p id='phase'><span>学段<em></em></span>
+					#foreach($phase in $phaseList)
+						#if($phaseId==$phase.id)
+							<a href="javascript:;"  value="$!phase.id" class="phase aStyle">$!phase.name</a>
+						#else
+							<a href="javascript:;"  value="$!phase.id" class="phase">$!phase.name</a>
+						#end
+					#end
+			   </p>
+			   <p id='grade'><span>年级<em></em></span>
+				 #foreach($grade in $gradeList)
+					#if($gradeId==$grade.id)
+						<a href="javascript:;" value="$!grade.id" class="grade aStyle">$!grade.name</a>
+					#else
+						<a href="javascript:;" value="$!grade.id" class="grade">$!grade.name</a>
+					#end
+				 #end
+			   </p>
+               <p id="subject" class="lastP"><span>学科<em></em></span>
+					#foreach($subject in $subjectList)
+						#if($subjectId==$subject.id)
+						<a href="javascript:;" value="$!subject.id" class="subject aStyle">$!subject.name</a>
+						#else
+						<a href="javascript:;" value="$!subject.id" class="subject">$!subject.name</a>
+						#end
+					#end
+			   </p>
+            </div> 
+              
+                    <div class="bodyMain  cf">
+                       <div class="mainHead">
+                          <div class="changeLeft">
+                            <input type="checkbox" value="0">
+                            <label></label>
+							<b>全选</b>
+                            <button class="batchdelete">批量删除</button>
+                            <span>共200套课程</span>  
+                          </div>
+                          ##<a href="javascript:;" class="move">区公开课轮播管理</a>
+                       </div>
+                    </div>
+                    <div class="mainCon">
+					<div class="moocList">
+					#foreach($mooc in $page.records)
+                      <div class="dl cf">
+                        <input type="checkbox" value="$!mooc.id">
+                        <dl>
+                          <dt><a href="/mooc/course/details.html?id=$!mooc.id&listenUrl=$!map.get($!mooc.id)[0].listenUrl&videoId=$!map.get($!mooc.id)[0].id"><img src="$!mooc.cover"></a></dt>
+                          <dd>
+                            <h2>$!mooc.title</h2>
+                            <p>共2节课</p>
+                            <p>主讲人:$!mooc.teacherName</p>
+                            <p class="lastP">
+                              ##<b>时长:12 `24</b>
+							  ##<span><a href="javascript:;" class='hidecourse' value="$!mooc.id">隐藏</a><a href="javascript:;"class='deletecourse' value="$!mooc.id">删除课程</a><a href="javascript:;" class="open" value="$!mooc.id">展开</a></span>
+							  #if(${mooc.isCommend}==false)
+							  <span>
+								<a href="javascript:;" class="setClass" value="$!mooc.id">设为区推荐课程</a>
+								#if(${mooc.isHide}==false)
+								<a href="javascript:;" class='hidecourse' value="$!mooc.id">隐藏</a>
+								#else
+								<a href="javascript:;" class='hidecourse' value="$!mooc.id">取消隐藏</a>
+								#end
+								<a href="javascript:;"class='deletecourse' value="$!mooc.id">删除课程</a>
+								#if($map.get($!mooc.id))
+								<a class="open" value="$!mooc.id">展开</a>
+								#end
+							  </span>
+							  #else
+							  <span>
+								<a href="javascript:;" class="setClass" value="$!mooc.id">取消推荐</a>
+								#if(${mooc.isHide}==false)
+								<a href="javascript:;" class='hidecourse' value="$!mooc.id">隐藏</a>
+								#else
+								<a href="javascript:;" class='hidecourse' value="$!mooc.id">取消隐藏</a>
+								#end
+								<a href="javascript:;"class='deletecourse' value="$!mooc.id">删除课程</a>
+								#if($map.get($mooc.id))
+								<a class="open" value="$!mooc.id">展开</a>
+								#end
+							  </span>
+							  #end
+							</p>
+                          </dd>
+                        </dl>
+                      </div>
+					<div class="box" style="display:none">
+                        <ul class='video' value="$!mooc.id">
+							#foreach($video in $!map.get($!mooc.id))
+                          <li class="cf">
+                            <p class="leftP"><span class="classOne">课时一</span><span>《$video.title》</span></p>
+                            <p class="rightP"><b>时长:12 `12</b><a href="javascript:;">查看</a><a href="javascript:;">删除该课时</a></p>
+                          </li>
+						  #end
+                        </ul>
+                      </div>
+					  #end
+					 </div>
+					 
+                      <div class="bg"></div>
+					  #pagerMooc($page,"schoolClass")
+                    </div> 
+              
+			   
+			  <form action="">
+			  <div class="alertBox publicClass">
+                    <h2 class="cf"><a href="javascript:;" id="close">×</a>配置权限</h2>
+                    <div class="upload cf">
+                      <label for="">一图:</label>
+                      <div class="upPic">
+                        <!--用来存放item-->
+                        <div id="fileList" class="uploader-list"></div>
+                        <div id="filePicker">选择图片</div>
+                      </div>
+                      <span>小于20M</span>
+                    </div>
+                    <div class="upload cf">
+                      <label for="">播放地址:</label>
+                      <input type="text" name="" id="">
+                    </div>
+                    <div class="upload cf">
+                      <label for="">一图:</label>
+                      <div class="upPic">
+                        <!--用来存放item-->
+                        <div id="fileList" class="uploader-list"></div>
+                        <div id="filePicker1">选择图片</div>
+                      </div>
+                      <span>小于20M</span>
+                    </div>
+                    <div class="upload cf">
+                      <label for="">播放地址:</label>
+                      <input type="text" name="" id="">
+                    </div>
+                    <div class="upload cf">
+                      <label for="">一图:</label>
+                      <div class="upPic">
+                        <!--用来存放item-->
+                        <div id="fileList" class="uploader-list"></div>
+                        <div id="filePicker2">选择图片</div>
+                      </div>
+                      <span>小于20M</span>
+                    </div>
+                    <div class="upload cf">
+                      <label for="">播放地址:</label>
+                      <input type="text" name="" id="">
+                    </div>
+                   
+                    <div class='albtns init'>保存</div>
+                    <div class='albtns cele'>取消</div>
+                </div>
+			    </form>
+			   
+            </div>
+			</form>
+        </div> 
+    <!-- 页面主体部分 结束 -->
+#end
+#override("javascript")
+    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/mooc/course/schoolClass.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end                                          
+#extends("common/manage/distric/index.vm")

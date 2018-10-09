@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yu2.baomihua.manage.mapper.BookMapper">
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 id, code, name, status
+	</sql>
+
+<!-- select * from GL_BOOK where id in (
+select a.bookId from 
+(select bookId from GL_BOOK_TAG where type=1 and tagId = 1) a,
+(select bookId from GL_BOOK_TAG where type=3 and tagId = 1) b
+where a.bookId = b.bookId
+) -->
+
+	<select id="getBookList" resultType="cn.yu2.baomihua.manage.entity.Book">
+		select 
+		<include refid="Base_Column_List"/>
+		from GL_BOOK
+		
+		where id in (
+			select a.bookId from (
+				select bookId from GL_BOOK_TAG where type=1 
+				<if test="phId !=null and phId != ''">
+					and tagId = #{phId}
+				</if>
+				) a,
+				(select bookId from GL_BOOK_TAG where type=3
+				<if test="subId !=null and subId != ''">
+					and tagId = #{subId}
+				</if>
+				) b
+			where a.bookId = b.bookId
+		)
+	</select>
+	
+	<select id="getBookToName" resultType="cn.yu2.baomihua.manage.entity.Book">
+		SELECT 
+		<include refid="Base_Column_List"/>
+		from GL_BOOK where 1=1
+		<if test="name !=null and name != ''">
+			 and name = #{name}
+		</if>
+	</select>
+</mapper>

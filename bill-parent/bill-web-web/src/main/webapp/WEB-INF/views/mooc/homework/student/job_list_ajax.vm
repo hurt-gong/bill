@@ -1,0 +1,51 @@
+<table class="peoTable jobTable">
+    <tr class="th th1">
+        
+        <th class="_left leftTit">班级</th>
+        <th class="center">发作业时间</th>
+		<th class="center">收作业时间</th>
+        <th class="center opera">操作</th>
+    </tr>
+	#if(${homeworkListPage.total}==0)
+        <tr><td colspan="2" class="center">~无结果~</td></tr>
+	#else
+    	#foreach($homework in ${homeworkListPage.records})
+            <tr>
+				<td class="_left spanRight"><span>${homework.title}&nbsp;&nbsp;&nbsp;${homework.subjectName}&nbsp;&nbsp;&nbsp;</span>
+					#foreach($klassName in ${homework.klassNames})
+    					${klassName};
+    				#end
+				</td>
+                <td class="center">${homework.startDate}</td>
+                <td class="center">${homework.endDate}</td>
+                </td>
+				<td class="center opera">
+					#if(${homework.hadFinishJob})
+						<a  href="#" name="answerDetail" data-hwid="$!{homework.id}" data-enddate="$!{homework.endDate}">详情</a>
+					#else
+						<a href="/homework/doJob?hwId=${homework.id}">做作业</a>
+					#end
+				</td>
+            </tr>
+		#end
+	#end
+</table>
+#if(${homeworkListPage.total}>0)
+    <div class="pageNum leftPage detailspage">
+    	<input type="hidden" id="current" value="${homeworkListPage.current}"/>
+    	<input type="hidden" id="pageCount" value="${homeworkListPage.pages}"/>
+    	#set( $nextPage = ${homeworkListPage.current} + 1 )
+    	#set( $nnPage = ${homeworkListPage.current} + 2 )
+        <a href="jsvascript:;" class="page pageLeft"></a>
+    	<a href="jsvascript:;" class="left">上一页</a>
+    	<a href="jsvascript:;" class="numStyle changeStyle">${homeworkListPage.current}</a>
+    	#if(${homeworkListPage.pages}>=${nextPage} )
+    		<a href="jsvascript:;" class="numStyle">$nextPage</a>
+    	#end
+    	#if(${homeworkListPage.pages}>=${nnPage} )
+    		<a href="jsvascript:;" class="numStyle">$nnPage</a>
+    	#end
+    	<a href="jsvascript:;" class="right">下一页</a>
+    	<a href="jsvascript:;" class="page pageRight"></a>
+    </div>
+#end

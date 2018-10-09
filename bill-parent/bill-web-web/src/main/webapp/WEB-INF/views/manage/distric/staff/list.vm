@@ -1,0 +1,119 @@
+#set($d_manage_active="1")
+#set($d_staff_active="1")
+#override("title")区人员管理#end
+#override("content")
+<div class="mainContent">
+    <div class="screenBar bgw" style="border-bottom:1px solid #e9ecf7;margin-top:20px;">
+        <div class="seach seachPeo">
+            <a href="/doc/区人员录入模板.xlsx" class="aLink">下载excel模板</a>
+            <div class="upload cf dBtn fl btn">
+              <div class="upPic">
+                <!--用来存放item-->
+                <div id="fileList" class="uploader-list"></div>
+                <div id="filePicker">从excel到入</div>
+              </div>
+            </div>
+            <div class="upload cf dBtn fl btn">
+              <div class="upPic">
+                <!--用来存放item-->
+                <div class="exportExcel">生成excel并导出</div>
+##            	<a class="btn" href="/manage/distric/staff/exportStaff.html">生成excel并导出</a>
+              </div>
+            </div>
+            <form id="staffForm" action="/manage/distric/staff/list.html" method="post">
+            	<input type="hidden" name="_index" value="$!{userList.current}"/>
+                <button>搜索</button>
+                <input type="text" name="name" class="txt" value="$!name">
+            </form>
+        </div> 
+    </div>
+    <div class="adminBody">
+        <form action="">
+            <div class="screenBar">
+                <div class="mainHead cf">
+                  <div class="changeLeft">
+                    <input type="checkbox" id="check">
+                    <label for="check" class="lbe" style="margin-top:0px;">全选</label>
+                    <a href="javascript:;" class="allclear">批量删除</a>
+                  </div>
+                  <a href="javascript:;" class="move">添加人员</a>
+               </div>
+            </div>
+            <table class="peoTable">
+                <tr class="th th1">
+                    <th>编号</th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th class="_left">身份证号</th>
+                    <th class="_left">手机号</th>
+                    <th class="operation">操作</th>
+                </tr>
+                 #foreach($users in $userList.records)
+	                <tr>
+	                    <td class="peoNum">
+							#if($!users.id!=$user.id)
+								
+                            <input type="checkbox" name="uId" value="$!users.id">
+							#end
+						<span>$velocityCount</span></td>
+	                    <td class="center uName">$!users.name</td>
+	                    <td class="center uGender" value="$!users.gender">
+		                    #if($!users.gender==1)
+								男
+					    	#elseif($!users.gender==2)
+								女
+					    	#end
+	                    </td>
+	                    <td class="_left uIdCardNo">$!users.idCardNo</td>
+	                    <td class="_left uMobile">$!users.mobile</td>
+	                    <td class="operation" value="$!users.id"><a href="javascript:;" class="add">修改</a>
+							#if($!users.id!=$user.id)
+							<a href="javascript:;" class="del">删除</a>
+							#end
+						</td>
+	                </tr>
+                #end
+                #if($userList.records.size()==0)
+                	<tr>
+                        <td colspan="6"></td>
+                    </tr>
+                #end
+            </table>
+        </form>
+        <div class="bg"></div>
+        #pager($userList,"staffForm")
+	         <div class="manage_box cf">
+	            <h2><a href="javascript:;" class='close_box'>×</a><span>添加人员</span></h2>
+	            <div class="box_con">
+	            	<input type="hidden" name="id">
+	                <p><em>姓名</em><input type="text" name="name" value=""></p>
+	                <p><em>身份证号</em><input type="text" name="idCardNo" value=""><span class="tishi">18位</span></p>
+	                <p class="checkbox-con">
+	                    <em>性别</em>
+	                    <span>
+	                        <input type="radio" class="ipt-hide" name="gender" value="1" checked="checked">
+	                        <label class="checkbox cur"></label>男
+	                    </span>
+	                    <span>
+	                        <input type="radio" class="ipt-hide" name="gender" value="2">
+	                        <label class="checkbox"></label>女
+	                    </span>
+	                </p>
+	                <p><em>手机号</em><input type="text" name="mobile" value=""><span class="tishi">11位</span></p>
+	                <p><button class="save">保存</button><button class="cancel">取消</button></p>
+	            </div>
+        	</div>
+        	<div class="clearBox">
+			    <h2><a href="javascript:;" class="closeAlert">×</a>部门名称</h2>
+			    <p>确认删除吗？</p>
+			    <button class="sure">确认</button>
+			    <button class="cel">取消</button>
+			</div>
+    </div>
+</div>
+#end
+#override("javascript")
+<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/admin/distric/staff/staff_manage.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end
+#extends("common/manage/distric/index.vm")

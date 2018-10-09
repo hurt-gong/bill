@@ -1,0 +1,35 @@
+#set($d_dept_active="1")
+#override("title")修改头像#end
+#override("content")
+        <div class="passCon">
+            <div class="passLeft">
+                <dl>
+                    <dt><img src='$!user.headUrl' style="height:200px;width:200px;"></dt>
+                    <dd id="tab">
+                        <p class="tabStyle"><a href="/ucenter/setAvatar.html">头像设置</a></p>
+                        <p><a href="/ucenter/setPwd.html" >修改密码</a></p>
+                    </dd>
+                </dl>
+            </div>
+            <div class="passRight">
+                
+                <div class="picCon">
+                    <h2><span>头像设置</span></h2>
+                    <h3>登陆名 : $!user.loginName</h3>
+                    <div class="pic"><!-- <a href="javascript:;">点击编辑头像</a> -->
+                        <p id="swfContainer"></p>
+                    </div>
+                    <p>本组件需要安装Flash Player后才可使用，请从
+                                <a href="http://www.adobe.com/go/getflashplayer">这里</a>
+                            下载安装。</p>
+                    <input type="button" value="保存" id="upload">
+                </div>
+                
+            </div>
+        </div>
+#end
+#override("javascript")
+    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/ucenter/set_avatar.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end                                          
+#extends("common/ucenter/index.vm")

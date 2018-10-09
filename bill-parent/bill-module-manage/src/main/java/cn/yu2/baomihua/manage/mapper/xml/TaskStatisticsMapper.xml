@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yu2.baomihua.manage.mapper.TaskStatisticsMapper">
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 id, taskId, taskName, taskType, schoolId, schoolName, gradeId, subjectId, teacherId, teacherName, taskStudentQty, finishStudentQty, finishRate, firstStudentId, firstStudentName, firstStudentKlass, videoDibbleQty, videoCommentQty, preUrl, groupId, crDate
+	</sql>
+	<select id="getTaskQty" resultType="cn.yu2.baomihua.manage.dto.TaskStatisticsDTO">
+		SELECT
+			schoolName, COUNT(1) publishTaskQty, SUM(finishStudentQty) finishStudentQty
+		FROM
+			TJ_TASK_STATISTICS
+		WHERE 
+			1=1
+		<if test="startDate != null">
+		    AND crDate &gt;= #{startDate}
+		</if> 
+		<if test="endDate != null">
+		    AND crDate &lt;= #{endDate}
+		</if>
+		GROUP BY
+			schoolId
+		ORDER BY
+		 	${sort} desc
+	</select>
+	
+	<select id="getTaskQtyChart" resultType="cn.yu2.baomihua.manage.dto.TaskStatisticsDTO">
+		SELECT
+			 COUNT(1) publishTaskQty, SUM(finishStudentQty) finishStudentQty, crDate
+		FROM
+			TJ_TASK_STATISTICS
+		WHERE
+			1=1
+		<if test="startDate != null">
+		    AND crDate &gt;= #{startDate}
+		</if> 
+		<if test="endDate != null">
+		    AND crDate &lt;= #{endDate}
+		</if>
+		GROUP BY
+			crDate
+	</select>
+	
+	<select id="getTaskRanking" resultType="cn.yu2.baomihua.manage.entity.TaskStatistics">
+		SELECT
+			schoolName,AVG(finishRate) finishRate,firstStudentName,firstStudentKlass
+		FROM
+			TJ_TASK_STATISTICS
+		GROUP BY
+			schoolId
+		ORDER BY
+			finishRate DESC
+	</select>
+		<select id="getHomwkQty" resultType="cn.yu2.baomihua.manage.dto.HomeworkStatisticsDTO">
+		SELECT
+			schoolName, COUNT(1) homwkUploadQty, SUM(finishStudentQty) homwkFinishQty
+		FROM
+			TJ_TASK_STATISTICS
+		WHERE 
+			taskType = 2
+		<if test="startDate != null">
+		    AND crDate &gt;= #{startDate}
+		</if> 
+		<if test="endDate != null">
+		    AND crDate &lt;= #{endDate}
+		</if>
+		GROUP BY
+			schoolId
+		ORDER BY
+		 	${sort} desc
+	</select>
+	
+	<select id="getHomwkQtyChart" resultType="cn.yu2.baomihua.manage.dto.HomeworkStatisticsDTO">
+		SELECT
+			 COUNT(1) homwkUploadQty, SUM(finishStudentQty) homwkFinishQty, crDate
+		FROM
+			TJ_TASK_STATISTICS
+		WHERE
+			taskType = 2
+		<if test="startDate != null">
+		    AND crDate &gt;= #{startDate}
+		</if> 
+		<if test="endDate != null">
+		    AND crDate &lt;= #{endDate}
+		</if>
+		GROUP BY
+			crDate
+	</select>
+	
+	<!-- video -->
+	<select id="getVideoCount" resultType="cn.yu2.baomihua.manage.dto.VideoStatisticsDTO">
+		SELECT
+			schoolName, SUM(videoDibbleQty) videoDibbleQty,	COUNT(1) videoUploadQty, SUM(videoCommentQty) videoCommentQty
+		FROM
+			TJ_TASK_STATISTICS
+		WHERE 
+			taskType = 1
+		<if test="startDate != null">
+		    AND crDate &gt;= #{startDate}
+		</if> 
+		<if test="endDate != null">
+		    AND crDate &lt;= #{endDate}
+		</if>
+		GROUP BY
+			schoolId
+		ORDER BY
+		 	${sort} desc
+	</select>
+	
+	<select id="getVideoCountChart" resultType="cn.yu2.baomihua.manage.dto.VideoStatisticsDTO">
+		SELECT
+			SUM(videoDibbleQty) videoDibbleQty,	COUNT(1) videoUploadQty, SUM(videoCommentQty) videoCommentQty,crDate
+		FROM
+			TJ_TASK_STATISTICS
+		WHERE
+			taskType = 1
+		<if test="startDate != null">
+		    AND crDate &gt;= #{startDate}
+		</if> 
+		<if test="endDate != null">
+		    AND crDate &lt;= #{endDate}
+		</if>
+		GROUP BY
+			crDate
+	</select>
+	
+	<select id="getSchoolVideoCount" resultType="cn.yu2.baomihua.manage.dto.VideoStatisticsDTO">
+		SELECT
+			taskId videoId,taskName videoName,teacherName,videoDibbleQty,videoCommentQty
+		FROM
+			TJ_TASK_STATISTICS
+		WHERE
+			taskType = 1
+		AND
+			schoolId=#{schoolId}
+		<if test="gradeId != null">
+		    AND gradeId = #{gradeId}
+		</if> 
+		<if test="subjectId != null">
+		    AND subjectId = #{subjectId}
+		</if> 
+		<if test="startDate != null">
+		    AND crDate &gt;= #{startDate}
+		</if> 
+		<if test="endDate != null">
+		    AND crDate &lt;= #{endDate}
+		</if>
+		ORDER BY
+		 	${sort} desc
+	</select>
+		
+	<select id="getSchoolVideoCountChart" resultType="cn.yu2.baomihua.manage.dto.VideoStatisticsDTO">
+		SELECT
+			videoDibbleQty, videoCommentQty, crDate
+		FROM
+			TJ_TASK_STATISTICS
+		WHERE
+			taskType = 1
+		AND
+			schoolId=#{schoolId}
+		<if test="gradeId != null">
+		    AND gradeId = #{gradeId}
+		</if> 
+		<if test="subjectId != null">
+		    AND subjectId = #{subjectId}
+		</if> 
+		<if test="startDate != null">
+		    AND crDate &gt;= #{startDate}
+		</if> 
+		<if test="endDate != null">
+		    AND crDate &lt;= #{endDate}
+		</if>
+		GROUP BY
+			crDate
+	</select>
+	<!-- 校完成作业任务数 -->
+	<select id="getSchoolHomwkAndTask" resultType="cn.yu2.baomihua.manage.dto.HomeworkStatisticsDTO">
+		SELECT
+			taskType, taskName ,teacherName,COUNT(1) homwkUploadQty, finishStudentQty homwkFinishQty, finishRate
+		FROM
+			TJ_TASK_STATISTICS
+		WHERE
+			1=1
+		<if test="taskType != null">	
+		AND	taskType = #{taskType}
+		</if>
+		AND
+			schoolId=#{schoolId}
+		<if test="gradeId != null">
+		 AND gradeId = #{gradeId}
+		</if> 
+		<if test="subjectId != null">
+		  AND subjectId = #{subjectId}
+		</if> 
+		<if test="startDate != null">
+		    AND crDate &gt;= #{startDate}
+		</if> 
+		<if test="endDate != null">
+		    AND crDate &lt;= #{endDate}
+		</if>
+		<if test="groupByteacherId">
+		GROUP BY
+			teacherId
+		</if>
+		ORDER BY
+		 	${sort} desc
+	</select>
+		<select id="getSchoolHomwkAndTaskChart" resultType="cn.yu2.baomihua.manage.dto.HomeworkStatisticsDTO">
+		SELECT
+			 COUNT(1) homwkUploadQty,finishStudentQty homwkFinishQty, crDate
+		FROM
+			TJ_TASK_STATISTICS
+		WHERE
+			1=1
+		<if test="taskType != null">	
+		AND	taskType = #{taskType}
+		</if>
+		AND
+			schoolId=#{schoolId}
+		<if test="gradeId != null">
+		    AND gradeId = #{gradeId}
+		</if> 
+		<if test="subjectId != null">
+		    AND subjectId = #{subjectId}
+		</if> 
+		<if test="startDate != null">
+		    AND crDate &gt;= #{startDate}
+		</if> 
+		<if test="endDate != null">
+		    AND crDate &lt;= #{endDate}
+		</if>
+		ORDER BY
+		 	${sort} desc
+	</select>
+</mapper>

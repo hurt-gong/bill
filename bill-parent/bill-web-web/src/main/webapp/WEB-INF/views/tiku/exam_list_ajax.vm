@@ -1,0 +1,60 @@
+<div class="course_center">
+    <div class="top_nav">
+        <ul id="typeList">
+            <li><a href="javascript:;" data-id="">全部</a></li>
+			#foreach($type in $typeList)
+            <li><a href="javascript:;" data-id=${type.id}>${type.name}</a></li>
+			#end
+        </ul>
+		<span>共<em>$total</em>道题</span>
+    </div>
+    <div class="exercisesLeft detailsLeft course_center_con"  id="tidetail">
+	#if(${examListPage.total}==0)
+        <p style="text-align: center;">~无结果~</p>
+	#end
+	#foreach($exam in ${examListPage.records})
+    <div class="floorone">
+		<div class="flooleft">
+        <div>$!{exam.content}</div>
+        </div>
+        <div class="flooright">
+            <a href="javascript:;" name="selectExam" data-id=$!{exam.examId} data-typeId=$!{exam.typeId} data-typeName=$!{exam.typeName}>选择该题</a>
+            <a href="javascript:;" class="check_jiexi">查看解析</a>
+        </div>
+		<div class="floor_jiexi">
+            <h2>解析</h2>
+            $!{exam.analysis}
+            </div>
+    </div>
+	#end
+	
+	#if(${examListPage.total}>0)
+		<div class="pageNum leftPage detailspage">
+    		<input type="hidden" id="current" value="${examListPage.current}"/>
+    		<input type="hidden" id="pageCount" value="${examListPage.pages}"/>
+    		#set( $nextPage = ${examListPage.current} + 1 )
+    		#set( $nnPage = ${examListPage.current} + 2 )
+            <a href="jsvascript:;" class="page pageLeft"></a>
+    		<a href="jsvascript:;" class="left" class="numStyle">上一页</a>
+    		<a href="jsvascript:;" class="numStyle changeStyle">${examListPage.current}</a>
+    		#if(${examListPage.pages}>=${nextPage} )
+        		<a href="jsvascript:;" class="numStyle">$nextPage</a>
+        	#end
+        	#if(${examListPage.pages}>=${nnPage} )
+        		<a href="jsvascript:;" class="numStyle">$nnPage</a>
+        	#end
+    		<a href="jsvascript:;" class="right" class="numStyle">下一页</a>
+    		<a href="jsvascript:;" class="page pageRight"></a>
+        </div>
+	#end
+    
+</div>
+</div>
+<div class="course_right">
+    <h2>已上传题目</h2>
+    <ul id="selectedInfo">
+    </ul>
+    <p>
+        <button style='margin-right:9px;'>预览编辑</button><button>发布作业</button>
+    </p>
+</div>

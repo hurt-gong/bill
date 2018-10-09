@@ -1,0 +1,82 @@
+#set($d_myCenter_active="1")
+#override("title")班群#end
+#override("content")
+   
+<div class="roomCon">
+            <div class="roomheader">
+                <h2><a href="javascript:;" class="personal">个人中心</a> > <span>班群</span></h2>
+            </div>
+            <div class="roomContent">
+                <div class="roomBanner conDl cf">
+                    <dl>
+                        <dt><img src="http://edu.bjhd.gov.cn/img/admin/class_03.jpg"></dt>
+                        <dd class='message'>
+                            <h2><a href="javascript:;" name="back" value="$!group.id" class="groupManageHref">返回首页</a>$!groupDto.klassName</h2>
+                            <p><span class="preBum">群成员    <b>$!groupDto.memberNum</b></span><span class="num">帖子数    <b>$!groupDto.topicNum</b></span></p>
+                            <p class="pre">创建者: $!groupDto.crUserName</p>
+                            <p class="pre">
+								管理员:
+								#foreach( $managers in $!groupDto.groupManagers)
+									$!managers.name、
+								#end
+							</p>
+                        </dd>
+                    </dl>
+                    <div class='textarea'>
+                        <textarea class="announcementWords">$!group.quotations</textarea>
+                        <img src="http://edu.bjhd.gov.cn/img/admin/room_01.png">
+                        <a href="javascript:;" value="$!group.id" class="announcement" ></a>
+                    </div>
+                </div>
+                <div class="roomTop manageTop">
+                    <div class="toomTop_left">
+                        <div class="topNav cf">
+                            <ul>
+                                <li class='navStyle' ><a href="javascript:;" value="$!group.id" class="topicManage">帖子管理</a></li>
+                                <li class='' ><a href="javascript:;" value="$!group.id" class="memberManage">成员管理</a></li>
+                            </ul>
+                        </div>
+						
+                         <div class="post">
+                            <div class="postManage">
+                                <h2 class="change">
+									<a href="javascript:;" class='essenceStyle' id="essenceStyle" value="$!group.id">精华的帖子</a>
+									<a href="javascript:;" class='' id="topStyle" value="$!group.id">置顶的帖子</a>
+								</h2>
+                                <div class="invitation">
+                                    <div class="essence" >
+                                        <ul>
+											#foreach($topic in $pageEssence)
+                                            <li>
+												<a href="javascript:();" class="cancelEssence" attrId="$topic.id"><b>取消精华</b></a>
+												<span><em>$!topic.id</em>$!topic.title</span>
+											</li>
+											#end 
+                                        </ul>
+                                    </div>
+									
+                                </div>
+                            </div>
+                        </div>
+						
+						<div class="open_all tieziall">展开全部</div>
+						
+                    </div>
+                    <div class="toomTop_right post_right">
+                        <h2>群公告<a href="javascript:;" class="notice" value="$!group.id"></a></h2>
+						
+						<div class="newNotice">
+							<textarea class="noticeWords">$!group.notice</textarea>
+						</div>
+						
+                    </div>
+                </div>
+            </div>
+        </div>    
+	
+#end
+#override("javascript")
+    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/group/classrooms2.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end
+#extends("common/group/index.vm")

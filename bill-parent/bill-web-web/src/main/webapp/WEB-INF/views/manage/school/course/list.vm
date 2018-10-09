@@ -1,0 +1,69 @@
+#set($s_manage_active="1")
+#set($s_course_active="1")
+#override("title")课程管理#end
+#override("content")
+<div class="mainContent">
+            <div class="adminTopBar">
+                <a href="/manage/school/course/list.html" class="btn mybtn">课程管理 </a>
+                <a href="/manage/school/course/gradeSubject.html" class="aLink  mybtn">年级配课</a>
+            </div>
+            <div class="adminBody">
+                <div class="highLayout noBorder">
+                    <div class="highRow twoRowLeft basicsObj">
+                        <h3>
+                            <span>基础学科</span>
+                        </h3>
+                        <form action="/manage/distric/teach/updateSubjectList.html" id="baseSubForm" method="post">
+                            <ul class="cul textCenter ">
+                           		#foreach($subject in $baseSubjectList)
+	                            #set($i=$math.sub($velocityCount,1))
+                                	#if($subject.status==1)
+		                                <li class="cf">
+		                                    <label>$!subject.name</label>
+		                                </li>
+		                            #else
+		                                <li class="cf overflow_hidden">
+		                                    <label>$!subject.name</label>
+		                                </li>
+		                            #end
+                                #end
+                            </ul>
+                        </form>
+                    </div>
+                    <div class="highRow twoRowRight otherObj">
+                        <h3 class="textCenter">
+                            <span>其他学科</span>
+                            <a href="javascript:void(0)" class="dBtn">添加新学科</a>
+                        </h3>
+                        <ul class="bul">
+                            #foreach($subject in $customSubjectList)
+                                <li class="cf" value="$!subject.id">
+	                                <span>$!subject.name</span>
+	                                <a href="javascript:void(0)" class="del">删除</a>
+	                                <a href="javascript:void(0)" class="update">修改</a>
+	                            </li>
+                            #end
+                        </ul>
+                    </div>
+                </div>
+            </div>
+         <div class="alertMange">
+		    <h2><a href="javascript:;" class="closeAlert">×</a><span></span></h2>
+		    <p><label for="">学科名称:</label><input type="text" name="name" id="" value""></p>
+		    <button class="sure">确认</button>
+		    <button class="cel">取消</button>
+		 </div>
+	    <div class="clearBox">
+		    <h2><a href="javascript:;" class="closeAlert">×</a>删除学科</h2>
+		    <p>确认删除吗？</p>
+		    <button class="sure" value="">确认</button>
+		    <button class="cel">取消</button>
+		</div>
+ </div>
+        
+#end
+#override("javascript")
+<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/admin/school/course/course_manage.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end
+#extends("common/manage/school/index.vm")

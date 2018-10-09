@@ -1,0 +1,164 @@
+#set($d_publiccourse_active="1")
+#override("title")课程列表页#end
+#override("content")
+<div class="mainWrap detailsWrap">
+        <div class="banner slideBox"  id="slideBox" >
+			<div class="bd">
+                <ul id='pic'class="bd">
+                    <li><img src='http://edu.bjhd.gov.cn/img/admin/banner_01.png'></li>
+                    <li><img src='http://edu.bjhd.gov.cn/img/admin/banner_02.png'></li>
+                </ul>
+			</div>
+			<div class="hd">
+				<ol id='num' >
+					<li class='li'></li>
+					<li class='li'></li>
+				</ol>
+           </div>
+		   <a class="prev" href="javascript:void(0)"></a>
+			<a class="next" href="javascript:void(0)"></a>
+        </div>
+        <div class="adminBody publicBody classBody cf">
+		<form id="moocPage"  action="/mooc/course/list.html">
+			<input type="hidden" name="_index" value="$!{page.current}"/>
+            <div class="nav" style="height:auto">
+		
+               <p id='phase' style="margin-bottom:20px;height:40px;line-height:40px;"><span>学段</span>
+					#foreach($phase in $phaseList)
+						#if($phaseId==$phase.id)
+							<a href="javascript:;"  value="$!phase.id" class="phase aStyle" style="line-height:40px;">$!phase.name</a>
+						#else
+							<a href="javascript:;"  value="$!phase.id" class="phase" style="line-height:40px;">$!phase.name</a>
+						#end
+					#end
+			   </p>
+			   <p id='grade'><span>年级</span>
+				 #foreach($grade in $gradeList)
+					#if($gradeId==$grade.id)
+						<a href="javascript:;" value="$!grade.id" class="grade aStyle">$!grade.name</a>
+					#else
+						<a href="javascript:;" value="$!grade.id" class="grade">$!grade.name</a>
+					#end
+				 #end
+			   </p>
+               <p id="subject" class="lastP"><span>学科</span>
+					#foreach($subject in $subjectList)
+						#if($subjectId==$subject.id)
+						<a href="javascript:;" value="$!subject.id" class="subject aStyle">$!subject.name</a>
+						#else
+						<a href="javascript:;" value="$!subject.id" class="subject">$!subject.name</a>
+						#end
+					#end
+			   </p>
+            
+
+</div> 
+            <div class="district_wrap cf">
+                <div class="left_nav">
+                    <h2 id='tit'>
+						#if($!objType==1)
+                        <a href="javascript:;" class='section tapchange objType' value="1" style="border-right:1px solid #e9ecf7;">按章节</a><a href="javascript:;" class="knowledge1 objType" value="2">知识点</a>
+						#end
+						#if($!objType==2)
+						<a href="javascript:;" class='section objType' value="1" style="border-right:1px solid #e9ecf7;">按章节</a><a href="javascript:;" class="knowledge1 tapchange objType" value="2">知识点</a>
+						#end
+                    </h2>
+		
+
+                    <ul class='dddd'>
+						#if($!objType==1)
+						#foreach($section in $sectionList)
+							#if($key1Id==$section.id)
+							<li><a href="javascript:;" value="$!section.id" class="clicka section">$!section.name<i >&gt;</i></a></li>
+							#else
+							<li><a href="javascript:;" value="$!section.id" class="section">$!section.name<i >&gt;</i></a></li>
+							#end
+						#end
+						#end
+						
+						#if($!objType==2)
+						#foreach($knowledge in $knowledgeList)
+							#if($key1Id==$knowledge.id)
+							<li><a href="javascript:;" value="$!knowledge.id" class="clicka knowledge">$!knowledge.name<i >&gt;</i></a></li>
+							#else
+							<li><a href="javascript:;" value="$!knowledge.id" class="knowledge">$!knowledge.name<i >&gt;</i></a></li>
+							#end
+						#end
+						#end
+					</ul>
+					
+                </div>
+                <div class="right_con">
+                    
+                        <div class="con_top">
+							#if($flag !='1' && $flag !='2' && $flag !='3')
+							<a href="javascript:;" class='aaaa' id="newupdate">最近更新</a>
+                            <a href="javascript:;" id="checkmost">点播最多</a>
+                            <a href="javascript:;" id="scoremost">评星最高</a>
+							#end
+							#if($flag=='1')
+                            <a href="javascript:;" class='aaaa' id="newupdate">最近更新</a>
+                            <a href="javascript:;" id="checkmost">点播最多</a>
+                            <a href="javascript:;" id="scoremost">评星最高</a>
+							#end
+							#if($flag=='2')
+                            <a href="javascript:;" id="newupdate">最近更新</a>
+                            <a href="javascript:;" class='aaaa' id="checkmost">点播最多</a>
+                            <a href="javascript:;" id="scoremost">评星最高</a>
+							#end
+							#if($flag=='3')
+                            <a href="javascript:;" id="newupdate">最近更新</a>
+                            <a href="javascript:;" id="checkmost">点播最多</a>
+                            <a href="javascript:;" class='aaaa' id="scoremost">评星最高</a>
+							#end
+                            &nbsp;共有<span>$!{page.records.size()}</span>个结果
+							#if($schoolId==0)
+							<a href="/mooc/course/manageCourse.html" style="float:right;">我创建的课程</a>
+							<a href="/mooc/course/create.html" style="float:right;height:14px;line-height:14px;margin-top:17px;border-right: 1px solid #888888;">创建微课程</a>
+							#end
+                        </div>
+                        	<input id="objType" name="objType" type="hidden" value="$!objType"/>
+							<input id="phaseId" name="phaseId" type="hidden" value="$!phaseId"/>
+							<input id="gradeId" name="gradeId" type="hidden" value="$!gradeId"/>
+							<input id="subjectId" name="subjectId" type="hidden" value="$!subjectId"/>
+							<input id="key1Id" name="key1Id" type="hidden" value="$!key1Id"/>
+							<input id="isOpen" name="isOpen" type="hidden" value="1"/>
+							<input id="flag" name="flag" type="hidden" value="$!flag"/>
+                        <div class="con_con clearfix" id="mooc">
+							#foreach($mooc in $page.records)
+                            <dl>
+                                <dt><a href="/mooc/course/details.html?id=$!mooc.id&listenUrl=$!map.get($!mooc.id)[0].listenUrl&videoId=$!map.get($!mooc.id)[0].id"><img src='$!mooc.cover' /></a></dt>
+                                <dd>
+                                    <h3>$!mooc.title</h3>
+                                    <p>来源：$!mooc.schoolName</p>
+                                    <p class="clearfix">
+										<span class="checkNum">$!{mooc.checkNum}次播放</span>
+										<span ><a href="javascript:;">$!mooc.commentNum</a>
+										<em class="starcon clearfix">
+												#foreach($i in [1..$mooc.score])
+													<i class="starheigh"></i>
+												#end
+                                        </em>
+									</span></p>
+                                </dd>
+                            </dl>
+							
+							#end
+                        </div>
+							#pagerMooc($page,"moocPage")
+                </div>
+            </div>
+		</form>
+        </div>
+    </div>
+#end
+#override("javascript")
+<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/mooc/course/district_class.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+<script type="text/javascript">
+		jQuery(".slideBox").slide({mainCell:".bd ul",autoPlay:true});
+</script>
+
+#end
+#extends("common/mooc/index.vm")

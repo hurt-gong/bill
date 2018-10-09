@@ -1,0 +1,4 @@
+<option>全部</option>
+#foreach($school in $school)
+	<option value='$!school.id'>$!school.name</option>
+#end

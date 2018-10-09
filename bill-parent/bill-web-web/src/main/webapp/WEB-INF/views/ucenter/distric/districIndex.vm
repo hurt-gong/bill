@@ -1,0 +1,131 @@
+#set($d_myCenter_active="1")
+#set($di_myCenter_active="1")
+#override("title")区人员主页#end
+#override("content")
+
+<div class="conRight">
+    <div class="conTop cf">
+        <div class="topLeft cf">
+            <div class="leftTit cf">
+				<input type="hidden" id="subjectId" value=""/>
+				
+                <span id="subject">
+                    #foreach($subject in $subjectList)
+                    <a href="javascript:;" class="aStyle">语文</a>
+					#end
+                </span>
+                <h2>区级推荐课程</h2>
+            </div>
+            <div class="leftCon cf">
+                <div class="leftNew">
+					<p class="classInfo"><span class="className">课程名称</span><span class="classTeacher">主讲</span></p>
+                    <ul id="dictCour">
+						#foreach($mooc in $moocList)
+                        <li><a href="javascript:;"><span>王洛阳</span>《平面简析几何初步》</a></li>
+						#end
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="topRight">
+            <div class="rightTit">
+				#if($taskRankingPage.total>6)
+                <a href="/ucenter/distric/ranking.html">更多 >></a>
+				#end
+                <h2 style="font-size:16px;font-weight:400;">全区学习任务大排名</h2>
+            </div>
+            <table>
+                #foreach($task in $taskRankingPage.records)
+				<tr>
+                    <th style="margin-left:20px;">学校</th>
+                    <th>当前进度</th>
+                    <th>首名完成任务的同学</th>
+                </tr>
+                <tr>
+                    <td>$velocityCount. $!task.schoolName</td>
+                    <td>
+						#if($!task.finishRate)
+						$!number.format("#0",$!task.finishRate)%
+						#end
+					</td>
+                    <td>$!task.firstStudentName
+						#if(""!=$!task.firstStudentKlass)
+						($!task.firstStudentKlass)
+						#end
+					</td>
+                </tr>
+				#end
+            </table>
+			<a href='/mooc/course/directCourseToView.html' class='aStyle' id='moreCourse' style='position: absolute;;bottom:0px;right:0px;display:block;height:50px;line-height:50px;margin-right:35px;float:right;color:#7f7f7f;'>更多>></a>
+        </div>
+    </div>
+    <div class="conBottom">
+        <div class="rightTit historyTit">
+			#if($videoPlayPage.total>8)
+              <a href="/ucenter/distric/playBackRecord.html">更多 >></a>
+			 #end
+              <h2>播放记录</h2>
+        </div>
+        <dic class="history cf" >
+			#foreach($video in $videoPlayPage.records)
+            <a href="/mooc/course/details.html?id=$!video.moocId&listenUrl=$!video.listenUrl&videoId=$!video.videoId">
+                <dl class="clearfix">
+					
+                    <dt><img src='http://edu.bjhd.gov.cn/img/course/videoDefault/demo.png'></dt>
+                    <dd>
+                        <h3>$!video.videoName</h3>
+                        <p>主讲：$!video.speaker<span>$!video.date</span></p>
+                    </dd>
+                </dl>
+            </a>
+			#end
+        </dic>
+    </div>
+</div>
+	<div class="processBox" id="districtCourse">
+        <h2><a href="javascript:;">×</a>区级推荐课程</h2>
+		<div class="screenBar gg">
+			<div id="districtCourseContent"></div> 
+		</div>
+    </div>
+<div class="processBox">
+    <h2><a href="javascript:;">×</a>过程评价</h2>
+    <div class="box_content">
+        <div class="screenBar gg">
+            <form action="">
+                <select class="mySelect fl">
+                    <option>班主任</option>
+                    <option>高中高中高中</option>
+                    <option>初中</option>
+                </select>
+                <a class="dBtn fl" href="javascript:void(0)">确定</a>
+            </form>
+        </div>
+        <div class="box1">
+            <h3><em>三天前</em>吕晓飞 <span>高三一班</span></h3>
+            <p>徐子佳同学近日表现成绩有明显提升，从上课中看到学习兴趣提高，希望继续女里！再接再厉</p>
+        </div>
+        <div class="box1">
+            <h3><em>三天前</em>吕晓飞 <span>高三一班</span></h3>
+            <p>徐子佳同学近日表现成绩有明显提升，从上课中看到学习兴趣提高，希望继续女里！再接再厉</p>
+        </div>
+        <div class="box1">
+            <h3><em>三天前</em>吕晓飞 <span>高三一班</span></h3>
+            <p>徐子佳同学近日表现成绩有明显提升，从上课中看到学习兴趣提高，希望继续女里！再接再厉</p>
+        </div>
+        <div class="box1">
+            <h3><em>三天前</em>吕晓飞 <span>高三一班</span></h3>
+            <p>徐子佳同学近日表现成绩有明显提升，从上课中看到学习兴趣提高，希望继续女里！再接再厉</p>
+        </div>        
+    </div>    
+</div>
+	
+#end
+#override("javascript")
+	<script>
+					console.log($!video.cover);
+					</script>
+    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/admin/distric/dept/dept.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end                                          
+#extends("common/ucenter/distric/index.vm")

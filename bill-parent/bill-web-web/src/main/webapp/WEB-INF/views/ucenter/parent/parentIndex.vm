@@ -1,0 +1,93 @@
+#set($d_myCenter_active="1")
+#set($p_myCenter_active="1")
+#override("title")家长主页#end
+#override("content")
+<div class="conRight patriarchCon">
+    <div class="conTop cf">
+        <div class="topLeft cf sign">
+            <div>
+                <dl>
+                    <dt><img src="$!user.headUrl"></dt>
+                    <dd>
+                        <h3>$!user.name</h3>
+                        <p>$!school.name</p>
+                    </dd>
+                </dl>
+            </div>
+            <!--<div class="leftCon cf sign_in">
+                <h3><span>已签18天</span>学生签到情况</h3>
+            </div>-->
+        </div>
+        <div class="topRight">
+            <div class="rightTit studyTit">
+				#if($stuTaskPage.total>6)
+					<a href="javascript:;">更多 >></a>
+				#end
+                <h2><span>学习任务</span></h2>
+            </div>
+            <ul>
+				#foreach($myTask in $stuTaskPage.records)
+                    <li><span class="green">任务$velocityCount</span>
+						<a href="javascript:;" value="$!myTask.id">$!myTask.taskName
+							#if(1==$!myTask.taskType)
+								<b>视频</b>
+							#elseif(2==$!myTask.taskType)
+								<b>作业</b>
+							#elseif(3==$!myTask.taskType)
+								<b>学案</b>
+							#end
+						</a></li>
+					#end
+            </ul>
+			#if($finishNum>0)
+            <div class="speedLine"><p><span></span></p><em>$number.format("#0",$!finishNum)%</em></div>
+			#end
+        </div>
+    </div>
+	
+	
+    <div class="conCenter cf">
+		<div class="subjects">
+            <div class="centerTit cf"></div>
+            <div class="centerMain"> </div>
+		</div>
+    </div>
+	<!-- 点击更多 -->
+	<div class="processBox" >
+		<h2><a href="javascript:;" class='close_discussion_box'>×</a>过程评价</h2>
+		<div class="parent"><div class="box_content"></div></div>
+		
+	</div>
+
+    <div class="conBottom">
+         <div class="rightTit historyTit">
+				#if($videoPlayPage.records.size()>8)
+				 <a href="/ucenter/parent/playBackRecord.html">更多 >></a>
+				 #end
+                <h2>播放记录</h2>
+            </div>
+            <dic class="history cf">
+			#foreach($video in $videoPlayPage.records)
+            <a href="/mooc/course/details.html?id=$!video.moocId&listenUrl=$!video.listenUrl&videoId=$!video.videoId">
+                <dl>
+                    <dt><img src='http://edu.bjhd.gov.cn/img/course/videoDefault/demo.png'></dt>
+                    <dd>
+                        <h3>$!video.videoName</h3>
+                        <p>主讲：$!video.speaker<span>$!video.date</span></p>
+                    </dd>
+                </dl>
+            </a>
+			#end
+        </dic>
+    </div>
+</div>
+	
+#end
+#override("javascript")
+    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/index/parent.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+	<script>
+	$('.topRight .speedLine span').css('width',$('.topRight .speedLine em').text());
+    </script>
+#end                                          
+#extends("common/ucenter/parent/index.vm")

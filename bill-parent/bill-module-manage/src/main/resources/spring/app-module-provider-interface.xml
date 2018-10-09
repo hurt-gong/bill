@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<dubbo:application name="${dubbo.application.name}" logger="slf4j" />
+	<!-- 使用zookeeper暴露服务地址 -->
+	<dubbo:registry protocol="zookeeper" address="${dubbo.zookeeper}" />
+
+	<!-- 用dubbo协议在20880端口暴露服务 -->
+	<dubbo:protocol name="dubbo" port="${dubbo.port}" />
+	
+	<dubbo:service interface="cn.yu2.baomihua.manage.module.IUserModule" ref="userModule"/>
+	
+    <dubbo:service interface="cn.yu2.baomihua.manage.module.ISchoolModule" ref="schoolModule"/>
+    
+    <dubbo:service interface="cn.yu2.baomihua.manage.module.IDeptModule" ref="deptModule"/>
+    
+    <dubbo:service interface="cn.yu2.baomihua.manage.module.IBookModule" ref="bookModule"/>
+    
+    <dubbo:service interface="cn.yu2.baomihua.manage.module.ISectionModule" ref="sectionModule"/>
+    
+    <dubbo:service interface="cn.yu2.baomihua.manage.module.IUserLoginModule" ref="userLoginModule"/>
+    
+	<dubbo:service interface="cn.yu2.baomihua.manage.module.IFileMd5Module" ref="fileMd5Module"/>
+
+    <dubbo:service interface="cn.yu2.baomihua.manage.module.ITeachModule" ref="teachModuleImpl"/>
+    
+    <dubbo:service interface="cn.yu2.baomihua.manage.module.ISubjectModule" ref="subjectModuleImpl"/>
+    
+    <dubbo:service interface="cn.yu2.baomihua.manage.module.IGradeModule" ref="gradeModuleImpl"/>
+
+    <dubbo:service interface="cn.yu2.baomihua.manage.module.IStaffModule" ref="staffModuleImpl"/>
+    
+    <dubbo:service interface="cn.yu2.baomihua.manage.module.IPermissionModule" ref="permissionModuleImpl"/>
+    
+    <dubbo:service interface="cn.yu2.baomihua.manage.module.IPhaseModule" ref="phaseModuleImpl"/>
+    
+    <dubbo:service interface="cn.yu2.baomihua.manage.module.IKlassStudentModule" ref="klassStudentModuleImpl"/>
+    
+    <dubbo:service interface="cn.yu2.baomihua.manage.module.IKnowledgeModule" ref="knowledgeModuleImpl"/>
+    
+    <dubbo:service interface="cn.yu2.baomihua.manage.module.IKlassTeacherModule" ref="klassTeacherModuleImpl"/>
+    
+    <dubbo:service interface="cn.yu2.baomihua.manage.module.IGradeSubjectModule" ref="gradeSubjectModuleImpl"/>
+    
+    <dubbo:service interface="cn.yu2.baomihua.manage.module.IStudentParentModule" ref="studentParentModuleImpl"/>
+    
+    <dubbo:service interface="cn.yu2.baomihua.manage.module.IKlassModule" ref="klassModuleImpl"/>
+    
+    <dubbo:service interface="cn.yu2.baomihua.manage.module.IStatisticsModule" ref="statisticsModuleImpl"/>
+    
+    <dubbo:service interface="cn.yu2.baomihua.manage.module.IPersonalCenterModule" ref="personalCenterModuleImpl"/>
+</beans>

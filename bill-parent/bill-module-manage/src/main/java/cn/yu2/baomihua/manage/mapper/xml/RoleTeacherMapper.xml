@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yu2.baomihua.manage.mapper.RoleTeacherMapper">
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 id, roleId, teacherId, type
+	</sql>
+
+	<select id="getRoleTeachers" resultType="cn.yu2.baomihua.manage.dto.RoleTeacherDTO">
+		SELECT rt.id,rt.roleId,rt.teacherId,u.name AS teacherName 
+		FROM GL_ROLE_TEACHER rt JOIN GL_USER u ON rt.teacherId=u.id 
+		WHERE rt.roleId=#{roleId}	
+	</select>
+</mapper>

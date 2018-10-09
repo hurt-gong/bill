@@ -1,0 +1,97 @@
+###群组分页的样式和别的不一样，所以新建了一个
+
+## 分页宏
+#macro(pagerleftPage $__pageObj $__formId)
+	#set($url="$vkoUtil.getUrl()")
+#if($__pageObj.total >= 1)
+<div class="pageNum leftPage">
+	<input type="hidden" id="vkoPagerFormId" value="$__formId"/>
+	#set($__p = $__pageObj.current)
+	#set($__count = $__pageObj.pages)
+	#set($pre_page = $__p - 1)
+    #set($next_page = $__p + 1)
+    #if($__p > 3)
+        #set($begin_idx = $__p - 3)
+    #else
+        #set($begin_idx = 1)
+    #end
+    #set($end_idx = $__p + 3)
+    #if($end_idx > $__count)#set($end_idx = $__count)#end
+    #if($__p > 1)
+	<a href="jsvascript:;" class="page pageLeft"></a>
+	<a href="javascript:void(0);" class="numStyle"   pn="$pre_page">上一页</a>
+	#end
+    #if($begin_idx > 1)
+    <a href="javascript:void(0);" pn="1">1</a>
+	#end
+	#foreach($idx in [$begin_idx..$end_idx])
+		#if($idx == $__p)
+	<a href="javascript:void(0);" class="numStyle changeStyle" pn="$idx">$idx</a>
+		#else
+	<a href="javascript:void(0);" class="numStyle" pn="$idx">$idx</a>
+		#end
+	#end
+	#if($end_idx < $__count)
+	<!-- <a href="javascript:void(0);" pn="$__count">$__count</a> -->
+	#end
+	#if($__p < $__count)
+	<a href="javascript:void(0);" class="numStyle" pn="$next_page">下一页</a>
+	<a href="jsvascript:;" class="page pageRight"></a>
+	#end
+</div>
+#end
+#end
+
+
+
+#macro(manage_page $pageObj)
+#set($url="$vkoUtil.getUrl()")
+
+#if(${pageObj.getHasPrevious()})
+	#set($_this=${pageObj.page} - 1)
+	#set($prevUrl="${url}_index=$_this")
+#else
+	#set($prevUrl="javascript:;")
+#end
+
+
+#if(${pageObj.getHasNext()})
+	#set($_this=${pageObj.page} + 1)
+	#set($nextUrl="${url}_index=$_this")
+#else
+	#set($nextUrl="javascript:;")
+#end
+
+
+#if(${pageObj.page} gt 3)
+	#set($start=${pageObj.page} - 2)
+#else 
+	#set($start=1)
+#end
+#set($end=${pageObj.page}+2)
+#if($end gt ${pageObj.getPages()})
+	#set($end=${pageObj.getPages()})
+#end
+#if(${pageObj.count} gt 0)
+
+<div class="page">
+	#if(${pageObj.getHasPrevious()})
+    <a href="$!{prevUrl}" class="p_n">&lt;上一页</a>
+    #end
+    <span class="num">
+    	#foreach($_number in [$start .. $end])
+    		#if(${pageObj.page} eq $_number)
+        	<a href="javascript:void(0);" class="curr">$_number</a>
+        	#elseif($_number ne 0)
+        	 <a href="${url}_index=$_number">$_number</a>
+        	#end
+        #end
+    </span>
+    #if(${pageObj.getHasNext()})
+    <a href="$!{nextUrl}" class="p_n">下一页&gt;</a>
+    #end
+</div>
+#end
+
+	        
+#end

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yu2.baomihua.manage.mapper.StudentTaskRecordMapper">
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 id, taskStatisticsId, isFinished, studentId, crDate
+	</sql>
+
+	<select id="getStudentTask" resultType="cn.yu2.baomihua.manage.dto.StudentTaskRecordDTO">
+		SELECT
+			task.taskName taskName,
+			task.taskId,
+			task.taskType,
+			recode.isFinished,
+			task.preUrl,
+			task.groupId,
+			task.crDate
+		FROM
+			TJ_STUDENT_TASK_RECORD recode,
+			TJ_TASK_STATISTICS task
+		WHERE
+			studentId = #{studentId}
+		<if test="isFinished !=null">
+		AND
+			isFinished = #{isFinished}
+		</if>
+		AND 
+			recode.taskStatisticsId = task.id
+		<if test="taskType !=null">
+		AND 
+			task.taskType = #{taskType}
+		</if>
+		ORDER BY crDate DESC
+	</select>
+		<select id="getTaskNum" resultType="int">
+		SELECT
+			COUNT(1)
+		FROM
+			TJ_STUDENT_TASK_RECORD
+		WHERE studentId = #{studentId}
+		<if test="isFinished !=null">
+			AND isFinished=#{isFinished}
+		</if>
+		AND crDate &gt;= #{crDate}
+	</select>
+</mapper>

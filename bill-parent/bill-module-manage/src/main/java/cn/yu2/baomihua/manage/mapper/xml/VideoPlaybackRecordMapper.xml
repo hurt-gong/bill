@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yu2.baomihua.manage.mapper.VideoPlaybackRecordMapper">
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 id, moocId, videoId, videoName, cover, listenUrl, speaker, userId, crDate
+	</sql>
+
+	<select id="getRecordPage" resultType="cn.yu2.baomihua.manage.dto.VideoPlaybackRecordDTO">
+		SELECT 
+			<include refid="Base_Column_List"/>
+		FROM 
+			TJ_VIDEO_PLAYBACK_RECORD 
+		WHERE
+			 1=1
+		<if test="studentId !=null">
+			AND userId=#{studentId}
+		</if>
+		ORDER BY crDate DESC
+	</select>
+	
+</mapper>

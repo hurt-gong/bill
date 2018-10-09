@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>WebUploader Demo</title>
+<meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="http://fex.baidu.com/webuploader/css/webuploader.css">
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">!window.jQuery && document.write('<script src="/static/js/jquery.min-1.9.1.js"><\/script>');</script>
+<script type="text/javascript" src="http://fex.baidu.com/webuploader/js/webuploader.js"></script>
+</head>
+<body>
+<div style="width: 300px; margin-left: auto;margin-right: auto;margin-top: 160px;">
+    <!--用来存放文件信息-->
+    <div id="thelist"></div>
+    <div>
+        <div id="picker">选择文件</div>
+        <button id="ctlBtn">开始上传</button>
+    </div>
+    <div id="md5file" style="margin-top: 10px;color: red;"></div>
+</div>
+<script type="text/javascript" src="/static/js/webuploader-demo.js"></script>
+<form action="file1.html" method="POST" enctype="multipart/form-data">
+	<input type="file"/>
+	<input type="submit" value="提交" />
+</form>
+</body>
+</html>

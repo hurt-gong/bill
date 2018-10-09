@@ -1,0 +1,52 @@
+<table class="peoTable jobTable">
+    <tr class="th th1">
+        <th class="center">发布时间</th>
+        <th class="center">收作业时间</th>
+        <th class="center">标题</th>
+        <th class="_left">班级</th>
+        <th class="center">操作</th>
+    </tr>
+	#if(${homeworkListPage.total}==0)
+        <tr><td colspan="5" class="center">~无结果~</td></tr>
+	#else
+    	#foreach($homework in ${homeworkListPage.records})
+            <tr>
+                <td class="center tdBlue">${homework.startDate}</td>
+                <td class="center tdBlue">${homework.endDate}</td>
+                <td class="center">${homework.title}</td>
+                <td class="_left">
+    				#foreach($klassName in ${homework.klassNames})
+    					${klassName};
+    				#end
+    			</td>
+                <td class="center">
+    				#if(${homework.answerCount}==0)
+    					<a href="javascript:;" name="delBtn" data-id=${homework.id}>删除</a>
+    				#end
+    				<a href="/homework/teacher/answerDetail?hwId=${homework.id}" name="detailBtn" data-id=${homework.id}>查看详情</a>
+    			</td>
+            </tr>
+		#end
+		
+	#end
+                     
+</table>
+#if(${homeworkListPage.total}>0)
+	<div class="pageNum leftPage detailspage">
+    	<input type="hidden" id="current" value="${homeworkListPage.current}"/>
+    	<input type="hidden" id="pageCount" value="${homeworkListPage.pages}"/>
+    	#set( $nextPage = ${homeworkListPage.current} + 1 )
+    	#set( $nnPage = ${homeworkListPage.current} + 2 )
+        <a href="jsvascript:;" class="page pageLeft"></a>
+    	<a href="jsvascript:;" class="left">上一页</a>
+    	<a href="jsvascript:;" class="numStyle changeStyle">${homeworkListPage.current}</a>
+		#if(${homeworkListPage.pages}>=${nextPage} )
+    		<a href="jsvascript:;" class="numStyle">$nextPage</a>
+    	#end
+    	#if(${homeworkListPage.pages}>=${nnPage} )
+    		<a href="jsvascript:;" class="numStyle">$nnPage</a>
+    	#end
+    	<a href="jsvascript:;" class="right">下一页</a>
+    	<a href="jsvascript:;" class="page pageRight"></a>
+    </div>
+#end

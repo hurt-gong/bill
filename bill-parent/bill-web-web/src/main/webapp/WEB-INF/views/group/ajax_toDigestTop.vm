@@ -1,0 +1,37 @@
+<div id="toDigestClass">
+	<span>
+		<!--老师 -->
+		#if($user.type==2 && $topic.isDigest!=true)
+			<a href="javascript:;" id='toDigest' value="$topic.id">设为精华</a>
+		#elseif($user.type==2)
+			<a href="javascript:;" id='outDigest' value="$topic.id">取消精华</a>
+		#end
+		<!--学生管理员 -->
+		#if($!user.type==1 && $!GroupUser.tag==1 && $!topic.isDigest!=true)
+			<a href="javascript:;" id='toDigest' value="$topic.id">设为精华</a>
+		#elseif($!user.type==1 && $!GroupUser.tag==1)
+			<a href="javascript:;" id='outDigest' value="$topic.id">取消精华</a>
+		#end
+		<!--老师 -->
+		#if($user.type==2 && $topic.isTop!=true)
+		<a href="javascript:;" id='toTop' value="$topic.id">设为置顶</a>
+		#elseif($user.type==2)
+		<a href="javascript:;" id='outTop' value="$topic.id">取消置顶</a>
+		#end
+		<!--学生管理员 -->
+		#if($!user.type==1 && $!GroupUser.tag==1 && $topic.isTop!=true)
+		<a href="javascript:;" id='toTop' value="$topic.id">设为置顶</a>
+		#elseif($!user.type==1 && $!GroupUser.tag==1)
+		<a href="javascript:;" id='outTop' value="$topic.id">取消置顶</a>
+		#end
+		<!--老师 -->
+		#if($user.type==2)
+			<a href="javascript:;" class="cancelTopic" value="$topic.id" name="$!group.id">删除该贴</a>
+		#end
+		<!--学生管理员 -->
+		#if($!user.type==1 && $!GroupUser.tag==1)
+			<a href="javascript:;" class="cancelTopic" value="$topic.id" name="$!group.id">删除该贴</a>
+		#end
+		<a href="#roomBottom">回复</a>
+	</span>
+</div>

@@ -1,0 +1,37 @@
+<div class="peoManage">
+	#foreach($groupUser in $groupUserList)
+		#foreach($teacher in $teachers)
+			#if($teacher.id == $groupUser.userId)
+				<dl>
+                    <dt><img src="$!teacher.headUrl"></dt>
+                    <dd>
+						<h3>${userMap.get($groupUser.userId)}</h3>
+                        <span>$!{teacherIdToSubjectName.get($groupUser.userId)}</span>
+                    </dd>
+					#if($groupUser.tag==1)
+					<dd class="set"><a href="javascript:;" value="$groupUser.userId" class="manager">管理员</a></dd>
+					#end
+					#if($groupUser.tag==2)
+						<dd class="set"><a href="javascript:;" value="$groupUser.userId" class="gag">已禁言</a></dd>
+					#end
+				</dl>
+			#end
+		#end
+	#end
+	
+	#foreach($newTeacher in $newTeachers)
+		<dl>
+            <dt><img src="$!newTeacher.headUrl"></dt>
+            <dd>
+                <h3>$!newTeacher.name</h3>
+                <span>$!{teacherIdToSubjectName.get($!newTeacher.id)}</span>
+            </dd>
+			<dd class="set">
+				<a href="javascript:;" value="$newTeacher.id" class="newManager">设为管理员</a>
+				|
+				<a href="javascript:;" value="$newTeacher.id" class="newGag">禁言</a>
+			</dd>
+		</dl>
+	#end
+	
+</div>

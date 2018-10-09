@@ -1,0 +1,30 @@
+
+    <div class="centerMain">
+        <div class="conterMess">
+            <ul>
+				#foreach($evaluation in $allEvaluation)
+                <li>
+                    <span><a href="javascript:;" value="$evaluation.id" id="deleteEvaluation">删除</a>   $!crTimeMap.get($evaluation.crTime)</span>
+                    <div>
+                        <h2>
+							$evaluation.studentName 在 $evaluation.subjetName 课
+							 <ul class="messStar" >
+								#foreach($i in [1..$evaluation.star])
+                                <li class="starheigh"></li>
+								#end
+                            </ul>
+						</h2>
+                        <p>
+							#if($evaluation.content.length() > 60)
+								$evaluation.content.substring(0,61).....
+							#else
+								$evaluation.content
+							#end
+						</p>
+                    </div>
+                </li>
+				#end
+            </ul>
+			
+        </div>
+    </div>

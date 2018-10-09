@@ -1,0 +1,23 @@
+<div  id="tidetail">
+	#foreach($exam in $exams)
+		#if(!(${exam.typeId}==351||${exam.typeId}==352||${exam.typeId}==353||${exam.typeId}==2))
+			<div class="floor_play">$velocityCount.#if(${exam.typeName}!='')(${exam.typeName})#end<br>
+				${exam.content}</div>
+            <div class="analysis">
+                <h3><a href="javascrtip:;" class='look_analysis'>查看解析</a>
+						平均正答率
+					<span id="${exam.examId}">${exam.rightRate}
+                    </span>
+				</h3>
+                <div class="look_analysis_box analysis_box">
+                    <p>学生解答</p>
+                    ${exam.studentAnswer}
+                </div>
+				 <div  class="ana look_analysis_box">
+                     <p><b>答案解析</b></p>
+					${exam.analysis}
+				 </div>
+                <div class='right_answers'>本题正答率<input type="text" name="rightRate"><a name="updateRightRate" data-examId="${exam.examId}" href="javascript:;">确定</a><em>%</em></div>
+			#end
+	#end
+</div>

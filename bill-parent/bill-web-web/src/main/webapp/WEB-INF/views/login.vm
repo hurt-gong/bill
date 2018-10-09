@@ -1,0 +1,26 @@
+#override("content")
+<img src="http://edu.bjhd.gov.cn/img/common/login.png" style="display:block;margin:0 auto;margin-top:200px;"/>
+<div class="loginWrap">
+    <div class="longinCon login_text">
+	#*<form id="login" action="/account/ajaxlogin.html" method="post">*#
+        <div class="initTxt "><label for="txt" class="labelOne"></label><input name="username" type="text" id="txt" autofill="off"  autocomplete="off"  placeholder="请输入您的账号"></div>
+        <div class="initTxt"><label for="pwd" class="labelTwo"></label><input type="password" name="password" autocomplete="off"   id="pwd" placeholder="请输入密码"><!-- <em>省份证后六位(家长为初始123456)</em> --></div>
+		<input name="ReturnURL" type="hidden" value="$!{ReturnURL}"/>
+		<div class="verify cf">
+            <input type="text" name="checkcode" maxlength="4" class="inputText captcha" autocomplete="off"    value="验证码" onfocus="this.value=''" onblur="if(this.value==''){this.value='验证码'}">
+            <input name="token" type="hidden" value="$!{token}" autocomplete="off"   />
+          	#set($captchaUrl ="/captcha/checkcode.html?token="+${token})
+            <img src="${captchaUrl}" onclick="this.src=('${captchaUrl}&t='+(new Date()).getTime())" >
+        </div>
+        <em style="color:#f00">$!{errorMsg}</em>
+        <div class="login_btn cf">
+            <button class="submitBtn" style="width:290px;">登录</button>
+        </div>
+        <span class="forgetPwd">
+        <a href="/account/forgotPassword.html">忘记密码</a>
+        <a href="/account/loginFirst.html">首次登录</a></span>
+	#*</form>*#
+	</div>
+</div>
+#end
+#extends("common/login.vm")

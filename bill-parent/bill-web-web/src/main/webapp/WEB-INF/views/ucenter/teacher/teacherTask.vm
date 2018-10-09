@@ -1,0 +1,72 @@
+#set($d_myCenter_active="1")
+#set($t_myCenter_active="1")
+#override("title")学习任务#end
+#override("content")
+<div class="playli_conRi">
+<div class="conRight planName">
+    <div class="planName_top">
+        <ul>
+			<a class="centerTit dBtn" href="/ucenter/teacher/index.html" style="float:right">返回</a>
+			#if($!taskType==2)
+                <li value="1">视频</li>
+                <li class="lihover" value="2">作业</li>
+                <li value="3">学案</li>
+                <li value="4">讨论</li>
+			#elseif($!taskType==3)
+                <li value="1">视频</li>
+                <li value="2">作业</li>
+                <li class="lihover" value="3">学案</li>
+                <li value="4">讨论</li>
+			#elseif($!taskType==4)
+                <li value="1">视频</li>
+                <li value="2">作业</li>
+                <li value="3">学案</li>
+                <li class="lihover" value="4">讨论</li>
+			#else
+                <li class="lihover" value="1">视频</li>
+                <li value="2">作业</li>
+                <li value="3">学案</li>
+                <li value="4">讨论</li>
+				
+			#end
+        </ul>
+    </div>
+	<form id="taskForm" action="/ucenter/teacher/getTeacherTask.html" method="post">
+		<input type="hidden" name="_index" value='$!{taskSta.current}'/>
+		<input type="hidden" name="taskType" value="$!taskType"/>
+    </form>
+    <div class="planName_titile">
+        <b>任务名称</b>
+        <b style="float:right;margin-right:25px">任务时间</b>
+    </div>
+    <div class="planName_list">
+        <ul>
+			 #foreach($task in $taskSta.records)
+				<li>
+				#if(1==$!task.taskType)
+					<a href="/mooc/course/details.html?id=$!task.preUrl&videoId=$!task.taskId">$!task.taskName</a>
+				#elseif(2==$!task.taskType)
+					<a href="/homework/teacher/answerDetail?hwId=$!task.taskId">$!task.taskName</a>
+				#elseif(3==$!task.taskType)
+					<a href="/learnplan/learnPlanPreview.html?url=$!task.preUrl">$!task.taskName</a>
+				#elseif(4==$!task.taskType)
+					<a href="/group/group/topic.html?topicId=$!task.taskId&groupId=$!task.groupId">$!task.taskName</a>
+				#end
+                    <div>
+                        <span>$!date.format('yyyy-MM-dd',$!task.crDate)</span>
+                    </div>
+            	</li>
+			 #end
+        </ul>
+    </div>
+</div>
+	<div class="bg"></div>
+    #pagerleftPage($taskSta,"taskForm")
+</div>
+	
+#end
+#override("javascript")
+    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/ucenter/teacher/teacherTask.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end                                          
+#extends("common/ucenter/teacher/index.vm")

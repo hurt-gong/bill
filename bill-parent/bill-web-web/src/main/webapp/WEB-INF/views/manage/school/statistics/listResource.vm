@@ -1,0 +1,205 @@
+#set($s_manage_active="1")
+#set($s_statistics_active="1") 
+#override("title")校资源使用统计 #end
+#override("content")
+	 <div class="mainContent">
+		<div class="adminTopBar">
+			#if($paramMap.get("selType")==1)
+                <a class="btn  mybtn" href="javascript:;" value="1">学习任务</a>
+                <a href="javascript:;" class="aLink  mybtn" value="2">基础统计</a>
+			#else
+                <a href="javascript:;" class="aLink  mybtn" value="1">学习任务</a>
+                <a href="javascript:;" class="btn  mybtn" value="2">基础统计</a>
+			#end
+        </div>
+            <div class="statistics">
+				<form id="quaForm" action="/manage/school/statistics/listResource.html">
+					<input type="hidden" name="selType" value="$paramMap.get("selType")">
+                    <div class="date">
+                        <label for="">时间</label>
+                        <span class="yesterday">昨日</span>
+                        <span class="seven">近7日</span>
+                        <span class="thirty">近30日</span>
+                        <input type="text" id="time" name="startDate" value="$!date.format('yyyy-MM-dd',$!paramMap.get('startDate'))">  至
+                        <input type="text" id="time1" name="endDate" value="$!date.format('yyyy-MM-dd',$!paramMap.get('endDate'))">
+                    </div>
+                    <div class="screenBar">
+							<label for="">年级</label>
+                        	<select name="gradeId" class="selectType" onchange="sel1Fun()">
+                            	#foreach($grade in $gradeSubject.gradeList)
+									#if($paramMap.get("gradeId")==$!grade.id)
+										<option value='$!grade.id' selected='true'>$!grade.name</option>
+									#else
+										<option value='$!grade.id'>$!grade.name</option>
+									#end
+								#end
+                        	</select>
+							#if($paramMap.get("selType")==1)
+    							<label for="">学科</label>
+                           		<select name='subjectId' class="selectDetail" onchange="sel2Fun()">
+    								#foreach($sub in $gradeSubject.subjectList)
+    									#if($paramMap.get("subjectId")==$!sub.id)
+    										<option value='$!sub.id' selected='true'>$!sub.name</option>
+    									#else
+    										<option value='$!sub.id'>$!sub.name</option>
+    									#end
+    								#end
+    							</select>
+							#end
+                    </div>
+                    
+                    <div class="screenBar _white">
+                        <span class="fl">指标</span>
+                        <select name="sort" class="mySelect fl">
+							#if($paramMap.get("selType")==2)
+								#if($paramMap.get("sort")==1)
+    								<option value='1' selected='true'>浏览次数(PV)</option>
+    								<option value='2'>登录次数</option>
+								#else
+    								<option value='1'>浏览次数(PV)</option>
+    								<option value='2' selected='true'>登录次数</option>
+								#end
+							#else
+                            	#foreach($selQuo in $SchoolSttQuota.entrySet())
+    								#if($paramMap.get("sort")==$!selQuo.key)
+    									<option value='$!selQuo.key' selected='true'>$!selQuo.value</option>
+    								#else
+    									<option value='$!selQuo.key'>$!selQuo.value</option>
+    								#end
+        						#end
+    						#end
+                        </select>
+                    </div>
+				</form>
+                <div id="chart" name="chart">
+            </div> 
+            </div>
+            <div class="adminBody baseBody">
+                <table class="table baseTable">
+					#if($paramMap.get("selType")==2)
+                        <tr class="th">
+                            <td>排名</td>
+                            <td>班级</td>
+							#if($!paramMap.get('sort')==1)
+								<td>浏览量</td>
+							#else
+								<td>登录次数</td>
+							#end
+                        </tr>
+                    	#foreach($login in $loginStatistics)
+                    	<tr>
+                            <td>$velocityCount</td>
+                            <td>$!login.klassName</td>
+							#if($!paramMap.get('sort')==1)
+								<td>$!login.pageView</td>
+							#else
+								<td>$!login.loginCount</td>
+							#end
+                        </tr>
+                    	#end
+                	#else
+						#if($paramMap.get("sort")==1)
+							<tr class="th">
+							<td>排名</td>
+                            <td>视频名称</td>
+                            <td>上传教师</td>
+							<td>课程播放次次数</td>
+							</tr>
+                        	#foreach($video in $videoCount)
+                        	<tr>
+                                <td>$velocityCount</td>
+                                <td>$!video.videoName</td>
+                                <td>$!video.teacherName</td>
+                                <td>$!video.videoDibbleQty</td>
+                            </tr>
+                        	#end
+						 #elseif($paramMap.get("sort")==2)
+							<tr class="th">
+							<td>排名</td>
+                            <td>视频名称</td>
+                            <td>上传教师</td>
+                            <td>评论次数</td>
+                            </tr>
+                        	#foreach($video in $videoCount)
+                        	<tr>
+                                <td>$velocityCount</td>
+                                <td>$!video.videoName</td>
+                                <td>$!video.teacherName</td>
+                                <td>$!video.videoCommentQty</td>
+                            </tr>
+                        	#end
+						#elseif($paramMap.get("sort")==3)
+							<tr class="th">
+							<td>排名</td>
+                            <td>作业名称</td>
+                            <td>上传教师</td>
+                            <td>作业完成人数</td>
+                            <td>作业完成率</td>
+                            </tr>
+                        	#foreach($task in $homwkSta)
+                        	<tr>
+                                <td>$velocityCount</td>
+                                <td>$!task.taskName</td>
+                                <td>$!task.teacherName</td>
+                                <td>$!task.homwkFinishQty</td>
+								#if($!task.finishRate)
+                                <td>$number.format("#0",$!task.finishRate)%</td>
+								#end
+                            </tr>
+							#end
+						#elseif($paramMap.get("sort")==4)
+							<tr class="th">
+							<td>排名</td>
+                            <td>作业名称</td>
+                            <td>上传教师</td>
+                            <td>作业上传数</td>
+                            </tr>
+                        	#foreach($task in $homwkSta)
+                        	<tr>
+                                <td>$velocityCount</td>
+                                <td>$!task.taskName</td>
+                                <td>$!task.teacherName</td>
+                                <td>$!task.homwkUploadQty</td>
+                            </tr>
+							#end
+						#else
+							<tr class="th">
+							<td>排名</td>
+                            <td>任务名称</td>
+                            <td>发布教师</td>
+                            <td>任务完成人数</td>
+                            <td>任务完成率</td>
+                            </tr>
+                        	#foreach($task in $homwkSta)
+                        	<tr>
+                                <td>$velocityCount</td>
+                                <td>#if($task.taskType==1)
+										视频-
+									#elseif($task.taskType==2)
+										作业-
+									#else
+										学案-
+									#end
+									$!task.taskName</td>
+                                <td>$!task.teacherName</td>
+                                <td>$!task.homwkFinishQty</td>
+								#if($!task.finishRate)
+                                <td>$number.format("#0",$!task.finishRate)%</td>
+								#end
+                            </tr>
+							#end
+						#end
+                	#end
+                </table>
+            </div>
+        </div>
+#end #override("javascript")
+<script type="text/javascript"
+	src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	
+<script type="text/javascript"
+	data-main="http://edu.bjhd.gov.cn/js/admin/school/statistics/list_statistics.js"
+	src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+
+	
+#end #extends("common/manage/school/index.vm")

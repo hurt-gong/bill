@@ -1,0 +1,20 @@
+<div class="manageBox" attrId="$!schoolId">
+    <h2><a href="javascript:;" class="closeAlert">×</a>添加人员</h2>
+    <div class="boxContent">
+        <div class="boxMain">
+			#foreach($key in $teacherTreeMap.keySet())
+           <dl>
+               <dt>$!key</dt>
+               <dd>
+				#foreach($user in $!{teacherTreeMap.get($key)})
+                    <input type="checkbox" name="userIds" value="$!user.id"  #if($adminIds.contains($user.id)) checked #end>
+                    <label for="">$user.name</label>
+				#end
+               </dd>
+           </dl>
+		   #end
+        </div>
+    </div>
+    <button class="sureUp" id="sure">确认</button>
+    <button class="cel">取消</button>
+</div>

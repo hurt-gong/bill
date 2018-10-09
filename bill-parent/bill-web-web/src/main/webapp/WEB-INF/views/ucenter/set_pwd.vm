@@ -1,0 +1,36 @@
+#set($d_dept_active="1")
+#override("title")修改密码#end
+#override("content")
+        <div class="passCon">
+            <div class="passLeft">
+                <dl>
+                    <dt><img src='$!user.headUrl' style="height:200px;width:200px;"></dt>
+                    <dd id="tab">
+                        <p><a href="/ucenter/setAvatar.html">头像设置</a></p>
+                        <p class="tabStyle"><a href="/ucenter/setPwd.html">修改密码</a></p>
+                    </dd>
+                </dl>
+            </div>
+			
+            <div class="passRight">
+                <div class="pwdCon">
+                    <h2><span>修改密码</span></h2>
+                    <form action="/ucenter/setPwd.html" method="post" class="editpwdform">
+                        <p><label for="old">当前登录密码：</label><input type="password" name="oldPwd" id="old"></p>
+                        <p><label for="new">新登录密码：</label><input type="password" name="newPwd" id="new"></p>
+                        <p><label for="surenew">确认新登录密码：</label><input type="password" name="repassword" id="surenew"></p>
+						<div style="margin-top: 30px;margin-left: 120px;"><font style="font-size: 30px;color: red;">$!{tipMsg}</font></div>	
+                        <input id="save" type="button" value="保存" class="pwdBtn">
+                    </form>
+                </div>
+            </div>
+        </div>
+	
+#end
+
+#override("javascript")
+    <script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+	<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/ucenter/set_pwd.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end
+                                       
+#extends("common/ucenter/index.vm")

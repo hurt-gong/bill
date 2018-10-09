@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Simple demo</title>
+    <link rel="stylesheet" type="text/css" href="http://edu.bjhd.gov.cn/js/lib/uploadify/uploadify.css">
+
+</head>
+<body>
+        
+         <input type="file" name="video_file_upload" id="video_file_upload">
+         <div id="progress"></div>
+    <script src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+    <script src="http://edu.bjhd.gov.cn/js/lib/uploadify/jquery.uploadify.min.js"></script><script>
+
+        $(function() {
+            $('#video_file_upload').uploadify({
+                'auto' : true,
+                'formData' : {
+                    'fcharset' : 'UTF-8',
+                    'writetoken' : 'E1FLnPnSIPY3IyE-UDQHOGWBXH0SKUJ9',
+                    'cataid':'1477635806414',
+                    'JSONRPC' : '{"title": "海淀教委视频"}'
+                },
+                'buttonText' : '选择视频文件',
+                'fileTypeDesc' : '视频文件',
+                'fileTypeExts' : '*.avi; *.mp4; *.mov',//文件类型过滤
+                'swf' : 'http://edu.bjhd.gov.cn/js/lib/uploadify/uploadify.swf',
+                //'uploader' : 'http://edu.bjhd.gov.cn/upload/file.html',
+                'uploader' : 'http://v.polyv.net/uc/services/rest?method=uploadfile',
+                'onUploadSuccess' : function(file, data, response) {
+                    var jsonobj = eval('(' + data + ')');
+                    var vid = jsonobj.data[0].vid;
+                    alert(vid);
+                },
+                'onUploadError' : function(file, errorCode, errorMsg, errorString) {
+                    alert('The file ' + file.name + ' could not be uploaded: ' + errorString);
+                },
+                 'onUploadProgress' : function(file, bytesUploaded, bytesTotal, totalBytesUploaded, totalBytesTotal) {
+                    $('#progress').html(totalBytesUploaded + ' bytes uploaded of ' + totalBytesTotal + ' bytes.');
+                },
+                // 'onSWFReady' : function() {
+                //     alert('The Flash file is ready to go.');
+                // },
+                 'onUploadStart' : function(file) {
+                    alert('Starting to upload ' + file.name);
+                }
+
+            });
+        });
+
+   
+       
+
+</script>
+
+
+</body>
+</html>

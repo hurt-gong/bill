@@ -1,0 +1,91 @@
+#set($s_manage_active="1")
+#set($s_staff_active="1")
+#override("title")人员管理#end
+#override("content")
+<div class="mainContent">
+            <div class="adminTopBar">
+                <a href="/manage/school/staff/studentManage.html" class="btn  mybtn">学生管理</a>
+                <a href="/manage/school/staff/teacherManage.html" class="aLink  mybtn">教师管理</a>
+            </div>
+            <div class="adminBody">
+                <div class="screenBar bgw">
+                    <form id="studentForm" action="/manage/school/staff/studentManage.html" class="chx" ,method="get">
+                        <span class="fl">筛选</span>
+                        <select class="mySelect fl grade"  onchange="getKlass(this.value)">
+                            <option value="">选择年级</option>
+	                        #foreach($grade in $baseCode.gradeList)
+                            	#if($paramMap.get("gradeId")==$!grade.id)
+	                            	<option value="$!grade.id" selected="selected">$!grade.name</option>
+                            	#else
+	                            	<option value="$!grade.id">$!grade.name</option>
+                            	#end
+                            #end
+                        </select>
+                        <select class="mySelect fl klass">
+                            <option value="">选择班级</option>
+                            #foreach($klass in $baseCode.klassList)
+                            	#if($paramMap.get("klassId")==$!klass.id)
+                            		<option value="$!klass.id" selected="selected">$!klass.name</option>
+                            	#else
+                            		<option value="$!klass.id">$!klass.name</option>
+                            	#end
+                            #end
+                        </select>
+                        <input type="hidden" name="_index" value="$!{studentList.current}"/>
+                        <input type="hidden" name="gradeId" value="$!{paramMap.gradeId}"/>
+                        <input type="hidden" name="klassId" value="$!{paramMap.klassId}"/>
+                        <input type="hidden" name="name" value="$!{paramMap.name}"/>
+                    </form>
+	                    <div class="seach">
+	                   		<a class="btn" href="javascript:void(0);">生成excel并导出</a>
+	                        <input type="submit" value="搜索" class="sub">
+	                        <input type="text" name="stuName" value="$!{paramMap.name}" class="txt">
+	                    </div> 
+                </div>
+                <form action="">
+                    <table class="peoTable" style="border:1px solid #e9ecf7;border-bottom:none;">
+                        <tr class="th th1">
+                            <th class="center">编号</th>
+                            <th class="center">学籍号</th>
+                            <th class="center">姓名</th>
+                            <th class="center">性别</th>
+                            <th class="center">年级</th>
+                            <th class="center">班级</th>
+                            <th class="center">民族</th>
+                            <th class="center">家长姓名</th>
+                            <th class="center">家长联系方式</th>
+                        </tr>
+                    	#foreach($student in $studentList.records)
+                        <tr>
+                            <td class="peoNum">$!velocityCount</td>
+                            <td class="center">$!student.studentCode</td>
+                            <td class="center"><a href="javascript:;" class='a_alert_box' value="$!student.id">$!student.name</a></td>
+                            #if($!student.gender==1)
+                            	<td class="center">男</td>
+					    	#elseif($!student.gender==2)
+                           		<td class="center">女</td>
+                           	#else
+                           		<td class="center"></td>
+					    	#end
+                            <td class="center">$!student.gradeName</td>
+                            <td class="center">$!student.klassName</td>
+                            <td class="center">$!student.nation</td>
+                            <td class="center">$!student.parent.name</td>
+                            <td class="center">$!student.parent.mobile</td>
+                        </tr>
+                       #end
+                    </table>
+                </form>
+                <div class="bg"></div>
+                #pager($studentList,"studentForm")
+                 <div class="alertMange alert_box">
+                 	<h2><a href="javascript:;" class="closeAlert">×</a>学生信息</h2>
+                </div>
+            </div>
+        </div>
+#end
+#override("javascript")
+<script type="text/javascript" src="http://edu.bjhd.gov.cn/js/lib/jquery/1.12.3/jquery.js"></script>
+<script type="text/javascript" data-main="http://edu.bjhd.gov.cn/js/admin/school/staff/student_manage.js" src="http://edu.bjhd.gov.cn/js/lib/require/2.1.11/require.js"></script>
+#end
+#extends("common/manage/school/index.vm")
