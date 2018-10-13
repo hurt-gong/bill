@@ -13,4 +13,6 @@
 	<!-- 用dubbo协议在20880端口暴露服务 -->
 	<dubbo:protocol name="dubbo" port="${dubbo.port}" />
 	
+	<dubbo:service interface="cn.yu2.baomihua.openapi.module.ICompanyModule" ref="companyModule"/>
+	
 	</beans>

@@ -20,8 +20,8 @@
     <bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean">
    		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:xml/mybatis-config.xml" />
-		<property name="typeAliasesPackage" value="cn.yu2.baomihua.api.entity;cn.yu2.baomihua.api.dto" />
-		<property name="mapperLocations" value="classpath:cn/yu2/baomihua/api/mapper/xml/*Mapper.xml" />
+		<property name="typeAliasesPackage" value="cn.yu2.baomihua.openapi.entity;cn.yu2.baomihua.openapi.dto" />
+		<property name="mapperLocations" value="classpath:cn/yu2/baomihua/openapi/mapper/xml/*Mapper.xml" />
         <property name="plugins">
             <array>
                 <!-- 分页插件配置 -->
@@ -34,7 +34,7 @@
     
     <!-- 加载 mapper.xml 接口 配置文件 -->
 	<bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="cn.yu2.baomihua.api.mapper" />
+		<property name="basePackage" value="cn.yu2.baomihua.openapi.mapper" />
 	</bean>
 
 </beans>

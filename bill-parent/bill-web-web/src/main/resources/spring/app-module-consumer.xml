@@ -57,43 +57,7 @@
 	
 	<dubbo:reference id="personalCenterModuleImpl" interface="cn.yu2.baomihua.manage.module.IPersonalCenterModule" url="${service.url.manage}" />
 	
-	<!-- group 
-	<dubbo:reference id="groupModuleImpl" interface="cn.yu2.baomihua.group.module.IGroupModule" url="${service.url.group}" />
-	
-	<dubbo:reference id="groupUserModuleImpl" interface="cn.yu2.baomihua.group.module.IGroupUserModule" url="${service.url.group}" />
-	
-	<dubbo:reference id="evaluationModuleImpl" interface="cn.yu2.baomihua.group.module.IEvaluationModule" url="${service.url.group}" />
-	<dubbo:reference id="sourceModuleImpl" interface="cn.yu2.baomihua.group.module.ISourceModule" url="${service.url.group}" />
-	<dubbo:reference id="sourceTagModuleImpl" interface="cn.yu2.baomihua.group.module.ISourceTagModule" url="${service.url.group}" />
-	
-	<dubbo:reference id="topicModuleImpl" interface="cn.yu2.baomihua.group.module.ITopicModule" url="${service.url.group}" />
-	
-	<dubbo:reference id="voteModuleImpl" interface="cn.yu2.baomihua.group.module.IVoteModule" url="${service.url.group}" />
-	
-	<dubbo:reference id="voteOptionModuleImpl" interface="cn.yu2.baomihua.group.module.IVoteOptionModule" url="${service.url.group}" />
-	
-	<dubbo:reference id="voteUserModuleImpl" interface="cn.yu2.baomihua.group.module.IVoteUserModule" url="${service.url.group}" />-->
-	<!-- mooc 
-	<dubbo:reference id="moocModuleImpl" interface="cn.yu2.baomihua.mooc.module.IMoocModule" url="${service.url.mooc}" />
-	
-	<dubbo:reference id="moocTagModuleImpl" interface="cn.yu2.baomihua.mooc.module.IMoocTagModule" url="${service.url.mooc}" />
-	
-	<dubbo:reference id="commentModuleImpl" interface="cn.yu2.baomihua.mooc.module.ICommentModule" url="${service.url.mooc}" />
-	
-	<dubbo:reference id="homeworkModuleImpl" interface="cn.yu2.baomihua.mooc.module.IHomeworkModule" url="${service.url.mooc}" />
-	
-	<dubbo:reference id="videoModuleImpl" interface="cn.yu2.baomihua.mooc.module.IVideoModule" url="${service.url.mooc}" />
-	
-	<dubbo:reference id="wksourceModuleImpl" interface="cn.yu2.baomihua.mooc.module.ISourceModule" url="${service.url.mooc}" />
-	
-	<dubbo:reference id="paperModuleImpl" interface="cn.yu2.baomihua.mooc.module.IPaperModule" url="${service.url.mooc}" />
-	
-	<dubbo:reference id="scoreModuleImpl" interface="cn.yu2.baomihua.mooc.module.IScoreModule" url="${service.url.mooc}" />-->
-	
-	
-	<!-- tiku
-	<dubbo:reference id="tikuModule" interface="cn.yu2.baomihua.tiku.module.ITikuModule" url="${service.url.tiku}" />
-	
-	<dubbo:reference id="xxTikuModule" interface="cn.yu2.baomihua.tiku.module.IXxTikuModule" url="${service.url.tiku}" /> -->
+	 <!-- openapi -->
+	<dubbo:reference id="companyModule" interface="cn.yu2.baomihua.openapi.module.ICompanyModule" url="${service.url.openapi}" />
 
 </beans>

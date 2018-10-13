@@ -1,23 +1,23 @@
 package cn.yu2.baomihua.util;
 
-import java.security.DigestException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @author uskytec
- *
- */
+ 
+/**  
+* <p>Title: ParamUtil</p>  
+* <p>Description: 参数签名的算法 </p>  
+* @author hurt-gong  
+* @date 2018年10月10日  
+*/  
 public class ParamUtil {
 
 	/**
 	 * 
-	 * 
+	 * 给企业， 直接拼接
 	 * @param map
 	 * @return
 	 */
@@ -25,6 +25,54 @@ public class ParamUtil {
 
 		String param = "";
 		try {
+			param = SHA1.encode(accessParam(map));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return param;
+
+	}
+	
+	
+	/**
+	 * 
+	 * 给航信，需要去掉数据， 预计数据很大， 
+	 * @param map
+	 * @return
+	 */
+	public static String toAisinoParam(Map<String, Object> map) {
+
+		String param = "";
+		try {
+			if(map.containsKey("pushData")){
+				map.remove("pushData");
+			}
+			if(map.containsKey("signature")){
+				map.remove("signature");
+			}
+			param = SHA1.encode(accessParam(map));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return param;
+
+	}
+	
+	/**
+	 * 
+	 * 签名验证
+	 * @param map
+	 * @return
+	 */
+	public static String decryptParam(Map<String, Object> map) {
+
+		String param = "";
+		try {
+			if(map.containsKey("signature")){
+				map.remove("signature");
+			}
 			param = SHA1.encode(accessParam(map));
 		} catch (Exception e) {
 			e.printStackTrace();

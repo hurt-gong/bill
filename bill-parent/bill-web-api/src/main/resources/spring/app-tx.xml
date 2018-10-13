@@ -10,7 +10,7 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 
 	<!-- 扫描 service -->
-	<context:component-scan base-package="cn.yu2.baomihua.api.service" />
+	<context:component-scan base-package="cn.yu2.baomihua.openapi.service" />
 	
 	<!-- 使用annotation注解方式配置事务 -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
@@ -33,7 +33,7 @@
 	
 	<!-- 配置AOP切面 -->
 	<aop:config>
-        <aop:pointcut id="transactionPointcut" expression="execution(* cn.yu2.baomihua.api.service.impl..*.*(..))"/>
+        <aop:pointcut id="transactionPointcut" expression="execution(* cn.yu2.baomihua.openapi.service.impl..*.*(..))"/>
         <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice"/>
     </aop:config>
     

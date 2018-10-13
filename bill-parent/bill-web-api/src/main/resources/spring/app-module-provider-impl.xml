@@ -6,4 +6,6 @@
        http://code.alibabatech.com/schema/dubbo
        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
        
+       <bean id="companyModule" class="cn.yu2.baomihua.openapi.module.CompanyModuleImpl" lazy-init="true"/>
+     
  </beans>

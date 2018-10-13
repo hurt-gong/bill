@@ -4,12 +4,13 @@ import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.baomidou.framework.controller.SuperController;
+import com.baomidou.framework.mail.MailHelper;
+
 import cn.yu2.baomihua.core.exception.WebException;
 import cn.yu2.baomihua.manage.entity.User;
 import cn.yu2.baomihua.manage.module.IUserLoginModule;
-
-import com.baomidou.framework.controller.SuperController;
-import com.baomidou.framework.mail.MailHelper;
+import cn.yu2.baomihua.web.JsonResult;
 
 /**
  * 
@@ -55,5 +56,23 @@ public class BaseController extends SuperController {
 			throw new WebException("用户不存在,请重新登录");
 		}
 		return user;
+	}
+	
+	
+	/**
+	 * 
+	 * <p>Title: retsuccess</p>  
+	 * <p>Description: </p>  
+	 * @param code
+	 * @param msg
+	 * @param data
+	 * @return
+	 */
+	protected JsonResult retsuccess(int code,String msg,Object data){
+		JsonResult js = new JsonResult();
+		js.setCode(code);
+		js.setData(data);
+		js.setMsg(msg);
+		return js;
 	}
 }

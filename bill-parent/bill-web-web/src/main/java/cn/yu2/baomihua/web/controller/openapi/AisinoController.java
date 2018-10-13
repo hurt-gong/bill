@@ -24,16 +24,16 @@ import cn.yu2.baomihua.web.controller.BaseController;
 
 @Controller
 @RequestMapping("/openapi/")
-public class BastpayController extends BaseController {
+public class AisinoController extends BaseController {
 
 	@Autowired
 	private ICompanyModule companyModule;
 
 	@ResponseBody
-	@RequestMapping(value = "/search", method = RequestMethod.POST)
-	public JsonResult search() {
+	@RequestMapping(value = "/pushdata" , method = RequestMethod.POST)
+	public JsonResult pushdata() {
 
-		logger.info("search");
+		logger.info("pushdata");
 		String param = "";
 
 		JsonResult result = null;
@@ -88,6 +88,17 @@ public class BastpayController extends BaseController {
 				result = this.retsuccess(1002, "signature为空", "");
 				return result;
 			}
+			
+			try{
+			JSONObject data = json.getJSONObject("pushData");
+			
+			logger.info(data.toString());
+			
+			}catch(Exception e){
+				e.printStackTrace();
+				result = this.retsuccess(1003, "pushData为空或者格式錯誤", "");
+				return result;
+			}
 
 			// 验证channel是否正确
 			CompanyConstant t = new CompanyConstant();
@@ -105,7 +116,7 @@ public class BastpayController extends BaseController {
 
 			// 验证签名是否正确
 			Map<String, Object> map = json.toJavaObject(Map.class);
-			String signature_temp = ParamUtil.decryptParam(map);
+			String signature_temp = ParamUtil.toAisinoParam(map);
 			if (!signature.equals(signature_temp)) {
 				result = this.retsuccess(1003, "signature错误", "");
 				return result;

@@ -9,6 +9,12 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.StringUtils;
+/**  
+* <p>Title: AESEncryptUtil</p>  
+* <p>Description: AES加密解密</p>  
+* @author hurt-gong  
+* @date 2018年10月10日  
+*/  
 public class AESEncryptUtil {
     /**
      * 将byte[]转为各种进制的字符串
