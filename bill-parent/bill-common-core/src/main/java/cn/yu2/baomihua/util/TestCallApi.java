@@ -33,7 +33,7 @@ public class TestCallApi {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		String url = "http://192.168.10.104:8080/openapi/pushdata";
+		String url = "http://192.168.10.148:8080/openapi/search";
 
 		JSONObject json = new JSONObject();
 
@@ -45,7 +45,7 @@ public class TestCallApi {
 			json.put("timeStamp", System.currentTimeMillis() + ""); //时间戳
 			Map map = json.toJavaObject(Map.class);
 			json.put("signature", ParamUtil.toParam(map)); // 签名
-			json.put("pushData", new JSONObject());// 推送的数据， 想了一下不放在签名内，数据量太大的话太消耗性能。
+			//json.put("pushData", new JSONObject());// 推送的数据， 想了一下不放在签名内，数据量太大的话太消耗性能。
 			String ret = HttpUtil.post(url, json.toJSONString());
 			System.out.println(ret);
 		} catch (KeyManagementException e) {

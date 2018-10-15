@@ -121,5 +121,24 @@ public class DateUtils {
 		String date = new SimpleDateFormat("yyyy-MM-dd").format(c.getTime());
 		return parseyyyyMMddDate(date);
 	}
+	
+	/**
+	 * 获取当前时间
+	 * <p>Title: getCurrentDateTime</p>  
+	 * <p>Description: </p>  
+	 * @param _dtFormat
+	 * @return
+	 */
+	public static String getCurrentDateTime(String _dtFormat) {
+		String currentdatetime = "";
+		try {
+			Date date = new Date(System.currentTimeMillis());
+			SimpleDateFormat dtFormat = new SimpleDateFormat(_dtFormat);
+			currentdatetime = dtFormat.format(date);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return currentdatetime;
+	}
 
 }

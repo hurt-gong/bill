@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yu2.baomihua.openapi.mapper.CompanyTicketsMapper">
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 id, companyName, status
+	</sql>
+ 
+
+	<select id="getCompanyList" resultType="cn.yu2.baomihua.openapi.entity.CompanyTickets">
+		select 
+		<include refid="Base_Column_List"/>
+		from company
+	</select>
+	 
+</mapper>

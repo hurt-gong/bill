@@ -65,6 +65,55 @@ public class HttpsUtil {
 		URL console = new URL(null, url, new sun.net.www.protocol.https.Handler());
 		HttpsURLConnection conn = (HttpsURLConnection) console.openConnection();
 		conn.setSSLSocketFactory(sc.getSocketFactory());
+		conn.setRequestProperty("Content-Type", "application/json");
+		conn.setHostnameVerifier(new TrustAnyHostnameVerifier());
+		conn.setDoOutput(true);
+		conn.connect();
+
+		DataOutputStream out = new DataOutputStream(conn.getOutputStream());
+		out.write(content.getBytes("UTF-8"));
+		// 刷新、关闭
+		out.flush();
+		out.close();
+		InputStream is = conn.getInputStream();
+		if (is != null) {
+			ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+			byte[] buffer = new byte[1024];
+			int len = 0;
+			while ((len = is.read(buffer)) != -1) {
+				outStream.write(buffer, 0, len);
+			}
+			is.close();
+			return outStream.toByteArray();
+		}
+		return null;
+	}
+	
+	
+	
+	/**
+	 * post方式请求服务器(https协议)
+	 * 
+	 * @param url
+	 *            请求地址
+	 * @param content
+	 *            参数
+	 * @return
+	 * @throws NoSuchAlgorithmException
+	 * @throws KeyManagementException
+	 * @throws IOException
+	 */
+	public static byte[] httpsPostForPay(String url, String content,String appCode,String sign)
+			throws NoSuchAlgorithmException, KeyManagementException, IOException {
+		SSLContext sc = SSLContext.getInstance("SSL");
+		sc.init(null, new TrustManager[] { new TrustAnyTrustManager() }, new java.security.SecureRandom());
+
+		URL console = new URL(null, url, new sun.net.www.protocol.https.Handler());
+		HttpsURLConnection conn = (HttpsURLConnection) console.openConnection();
+		conn.setSSLSocketFactory(sc.getSocketFactory());
+		conn.setRequestProperty("X-QF-APPCODE", appCode);
+		conn.setRequestProperty("X-QF-SIGN", sign);
+		conn.setRequestProperty("Content-Type", "application/json");
 		conn.setHostnameVerifier(new TrustAnyHostnameVerifier());
 		conn.setDoOutput(true);
 		conn.connect();
