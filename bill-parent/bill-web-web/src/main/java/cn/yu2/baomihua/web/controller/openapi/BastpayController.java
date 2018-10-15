@@ -35,8 +35,8 @@ public class BastpayController extends BaseController {
 		String param = "";
 
 		JsonResult result = null;
-		
-		String msgId = ""; 
+
+		String msgId = "";
 		String channel = "";
 		try {
 			// 获取参数
@@ -122,27 +122,9 @@ public class BastpayController extends BaseController {
 		resultMap.put("channel", channel);
 
 		result = this.retsuccess(0, "success", resultMap);
-		new MsgHistoryTask(channel,msgId,param,JSONObject.toJSON(resultMap).toString(),"",0,companyModule).run();
+		// 记录查询日志
+		new MsgHistoryTask(channel, msgId, param, JSONObject.toJSON(resultMap).toString(), "", 0, companyModule).run();
 		return result;
 	}
 
-	// 获取参数
-	public String getParamByReader() {
-		String registInfo = "";
-		try {
-
-			BufferedReader bufferReader = this.request.getReader();
-			StringBuffer buffer = new StringBuffer();
-			String line = " ";
-			while ((line = bufferReader.readLine()) != null) {
-				buffer.append(line);
-			}
-			registInfo = buffer.toString();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return registInfo;
-	}
 }

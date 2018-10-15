@@ -27,7 +27,7 @@ import cn.yu2.baomihua.manage.module.IGradeModule;
 import cn.yu2.baomihua.manage.module.ISubjectModule;
 import cn.yu2.baomihua.manage.module.ITeachModule;
 import cn.yu2.baomihua.web.controller.BaseController;
-
+  
 @Controller
 @RequestMapping("/manage/distric/book/")
 public class BookController extends BaseController {

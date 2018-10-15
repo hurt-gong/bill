@@ -7,12 +7,13 @@ import cn.yu2.baomihua.openapi.entity.MsgHistory;
 import cn.yu2.baomihua.openapi.module.ICompanyModule;
 import cn.yu2.baomihua.util.DateUtils;
 
-/**
- * version异步任务
- * 
- * @author lys
- * 
- */
+ 
+/**  
+* <p>Title: MsgHistoryTask</p>  
+* <p>Description: </p>  
+* @author hurt-gong  
+* @date 2018年10月15日  
+*/  
 public class MsgHistoryTask extends Thread {
 	private static final Logger logger = LoggerFactory.getLogger(MsgHistoryTask.class);
 

@@ -1,5 +1,7 @@
 package cn.yu2.baomihua.web.controller;
 
+import java.io.BufferedReader;
+
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,5 +76,30 @@ public class BaseController extends SuperController {
 		js.setData(data);
 		js.setMsg(msg);
 		return js;
+	}
+	
+	
+	/**  
+	 * <p>Title: getParamByReader</p>  
+	 * <p>Description: </p>  
+	 * @return  
+	 */
+	public String getParamByReader() {
+		String registInfo = "";
+		try {
+
+			BufferedReader bufferReader = this.request.getReader();
+			StringBuffer buffer = new StringBuffer();
+			String line = " ";
+			while ((line = bufferReader.readLine()) != null) {
+				buffer.append(line);
+			}
+			registInfo = buffer.toString();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return registInfo;
 	}
 }
