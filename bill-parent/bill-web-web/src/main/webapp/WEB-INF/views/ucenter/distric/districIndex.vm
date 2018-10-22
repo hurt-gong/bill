@@ -1,131 +1,78 @@
 #set($d_myCenter_active="1")
 #set($di_myCenter_active="1")
-#override("title")区人员主页#end
+#override("title")主页#end
 #override("content")
-
-<div class="conRight">
-    <div class="conTop cf">
-        <div class="topLeft cf">
-            <div class="leftTit cf">
-				<input type="hidden" id="subjectId" value=""/>
-				
-                <span id="subject">
-                    #foreach($subject in $subjectList)
-                    <a href="javascript:;" class="aStyle">语文</a>
-					#end
-                </span>
-                <h2>区级推荐课程</h2>
-            </div>
-            <div class="leftCon cf">
-                <div class="leftNew">
-					<p class="classInfo"><span class="className">课程名称</span><span class="classTeacher">主讲</span></p>
-                    <ul id="dictCour">
-						#foreach($mooc in $moocList)
-                        <li><a href="javascript:;"><span>王洛阳</span>《平面简析几何初步》</a></li>
-						#end
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="topRight">
-            <div class="rightTit">
-				#if($taskRankingPage.total>6)
-                <a href="/ucenter/distric/ranking.html">更多 >></a>
-				#end
-                <h2 style="font-size:16px;font-weight:400;">全区学习任务大排名</h2>
-            </div>
-            <table>
-                #foreach($task in $taskRankingPage.records)
-				<tr>
-                    <th style="margin-left:20px;">学校</th>
-                    <th>当前进度</th>
-                    <th>首名完成任务的同学</th>
-                </tr>
-                <tr>
-                    <td>$velocityCount. $!task.schoolName</td>
-                    <td>
-						#if($!task.finishRate)
-						$!number.format("#0",$!task.finishRate)%
-						#end
-					</td>
-                    <td>$!task.firstStudentName
-						#if(""!=$!task.firstStudentKlass)
-						($!task.firstStudentKlass)
-						#end
-					</td>
-                </tr>
-				#end
-            </table>
-			<a href='/mooc/course/directCourseToView.html' class='aStyle' id='moreCourse' style='position: absolute;;bottom:0px;right:0px;display:block;height:50px;line-height:50px;margin-right:35px;float:right;color:#7f7f7f;'>更多>></a>
-        </div>
-    </div>
-    <div class="conBottom">
-        <div class="rightTit historyTit">
-			#if($videoPlayPage.total>8)
-              <a href="/ucenter/distric/playBackRecord.html">更多 >></a>
-			 #end
-              <h2>播放记录</h2>
-        </div>
-        <dic class="history cf" >
-			#foreach($video in $videoPlayPage.records)
-            <a href="/mooc/course/details.html?id=$!video.moocId&listenUrl=$!video.listenUrl&videoId=$!video.videoId">
-                <dl class="clearfix">
-					
-                    <dt><img src='/img/course/videoDefault/demo.png'></dt>
-                    <dd>
-                        <h3>$!video.videoName</h3>
-                        <p>主讲：$!video.speaker<span>$!video.date</span></p>
-                    </dd>
-                </dl>
-            </a>
-			#end
-        </dic>
-    </div>
-</div>
-	<div class="processBox" id="districtCourse">
-        <h2><a href="javascript:;">×</a>区级推荐课程</h2>
-		<div class="screenBar gg">
-			<div id="districtCourseContent"></div> 
-		</div>
-    </div>
-<div class="processBox">
-    <h2><a href="javascript:;">×</a>过程评价</h2>
-    <div class="box_content">
-        <div class="screenBar gg">
-            <form action="">
-                <select class="mySelect fl">
-                    <option>班主任</option>
-                    <option>高中高中高中</option>
-                    <option>初中</option>
-                </select>
-                <a class="dBtn fl" href="javascript:void(0)">确定</a>
+<div class="mainContent schoolManage">
+        <div class="adminTopBar cf">
+            <form class="fr" id="schoolId" action="/manage/distric/school/list.html" method="post">
+				<input type="hidden" name="_index" value="$!{page.current}"/>
+                <input type="text" name="name" value="$!name" class="fl searchText">
+                <input type="submit" value="搜索" class="dBtn fl">
             </form>
+            <a href="/manage/distric/school/schoolExport1.html?name=$!{name}" class="btn fr" style="height:30px;line-height:30px;border:none;background-color:#0087f5;font-size:12px;color:#fff;">生成excel并导出</a>
         </div>
-        <div class="box1">
-            <h3><em>三天前</em>吕晓飞 <span>高三一班</span></h3>
-            <p>徐子佳同学近日表现成绩有明显提升，从上课中看到学习兴趣提高，希望继续女里！再接再厉</p>
+        <div class="adminBody">
+            <div class="tableBox">
+                <table>
+                    <tr>
+                        <th class="schoolName">名称</th>
+                        <th class="schoolAddress">联系人</th>
+						<th class="schoolAddress">下单时间</th>
+						<th class="schoolAddress">支付状态</th>
+						<th class="schoolAddress">订单状态</th>
+						<th class="schoolAddress">完成时间</th>
+						<th class="schoolAddress">入账状态</th>
+						<th class="schoolAddress">操作</th>
+						<th class="schoolAddress">总计</th>
+                        <!-- <th class="userWrap"><span class="schoolAdmin">校管理员</span><span class="userName">用户名1</span></th>
+                        <th class="userName">用户名</th> -->
+                    </tr>
+					
+					<tr>
+                            <td class="schoolName">慧云</td>
+                            <td class="schoolAddress">龚</td>
+							<td class="schoolAddress">2018-10-22</td>
+							<td class="schoolAddress">已完成</td>
+							<td class="schoolAddress">已下单</td>
+							<td class="schoolAddress">2018-10-22</td>
+							<td class="schoolAddress">已入账</td>
+							
+							
+                             
+                            <td class="op" id="$!school.id"><a href="javascript:void(0)">删除/编辑</a></td>
+							<td class="schoolAddress">300</td>
+                        </tr>
+						
+					#foreach($school in $page.records)
+                        <tr>
+                            <td class="schoolName">$!school.name</td>
+                            <td class="schoolAddress">$!school.address</td>
+                            <td class="userWrap" id="$!school.id">
+                            <ul>
+								#foreach($admin in $school.admins)
+                                    <li class="cf">
+                                        <span class="schoolAdmin fl">$!admin.name</span>
+                                        <span class="userName fl">$!admin.loginName</span>
+                                        <a href="javascript:void(0)" class="del fl" attrId="$admin.id">删除</a>
+                                    </li>
+								#end
+                            </ul>
+                            </td>
+                            <td class="op" id="$!school.id"><a href="javascript:void(0)">添加</a></td>
+                        </tr>
+					#end
+                </table>
+            </div>
+			<!--<div class="bg"></div>-->
+			#pager($page,"schoolId")
         </div>
-        <div class="box1">
-            <h3><em>三天前</em>吕晓飞 <span>高三一班</span></h3>
-            <p>徐子佳同学近日表现成绩有明显提升，从上课中看到学习兴趣提高，希望继续女里！再接再厉</p>
-        </div>
-        <div class="box1">
-            <h3><em>三天前</em>吕晓飞 <span>高三一班</span></h3>
-            <p>徐子佳同学近日表现成绩有明显提升，从上课中看到学习兴趣提高，希望继续女里！再接再厉</p>
-        </div>
-        <div class="box1">
-            <h3><em>三天前</em>吕晓飞 <span>高三一班</span></h3>
-            <p>徐子佳同学近日表现成绩有明显提升，从上课中看到学习兴趣提高，希望继续女里！再接再厉</p>
-        </div>        
-    </div>    
-</div>
+    </div>
 	
 #end
 #override("javascript")
-	<script>
-					console.log($!video.cover);
-					</script>
     <script type="text/javascript" src="/js/lib/jquery/1.12.3/jquery.js"></script>
-	<script type="text/javascript" data-main="/js/admin/distric/dept/dept.js" src="/js/lib/require/2.1.11/require.js"></script>
-#end                                          
+    <script type="text/javascript" data-main="/js/admin/distric/school/school.js" src="/js/lib/require/2.1.11/require.js"></script>
+#end
+<script>
+</script>                                      
 #extends("common/ucenter/distric/index.vm")

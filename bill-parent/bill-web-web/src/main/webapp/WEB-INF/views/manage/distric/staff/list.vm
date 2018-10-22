@@ -1,6 +1,6 @@
 #set($d_manage_active="1")
 #set($d_staff_active="1")
-#override("title")区人员管理#end
+#override("title")人员管理#end
 #override("content")
 <div class="mainContent">
     <div class="screenBar bgw" style="border-bottom:1px solid #e9ecf7;margin-top:20px;">

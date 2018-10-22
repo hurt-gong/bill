@@ -1,6 +1,6 @@
 #set($d_manage_active="1")
 #set($d_school_active="1")
-#override("title")校区管理#end
+#override("title")企业管理#end
 #override("content")
 	<div class="mainContent schoolManage">
         <div class="adminTopBar cf">
@@ -15,9 +15,9 @@
             <div class="tableBox">
                 <table>
                     <tr>
-                        <th class="schoolName">学校名称</th>
-                        <th class="schoolAddress">校区地址</th>
-                        <th class="userWrap"><span class="schoolAdmin">校管理员</span><span class="userName">用户名</span></th>
+                        <th class="schoolName">企业名称</th>
+                        <th class="schoolAddress">企业地址</th>
+                        <th class="userWrap"><span class="schoolAdmin">管理员</span><span class="userName">用户名</span></th>
                         <!-- <th class="userName">用户名</th> -->
                         <th class="op">操作</th>
                     </tr>

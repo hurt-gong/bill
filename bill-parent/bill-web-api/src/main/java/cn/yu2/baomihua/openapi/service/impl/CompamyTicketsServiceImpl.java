@@ -7,10 +7,14 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+
 import cn.yu2.baomihua.core.service.BaseServiceImpl;
 import cn.yu2.baomihua.openapi.entity.CompanyTickets;
 import cn.yu2.baomihua.openapi.mapper.CompanyTicketsMapper;
 import cn.yu2.baomihua.openapi.service.ICompanyTicketService;
+import cn.yu2.baomihua.util.DateUtils;
 
 /**
  *
@@ -85,5 +89,33 @@ public class CompamyTicketsServiceImpl extends BaseServiceImpl<CompanyTicketsMap
 
 		return resultMap;
 
+	}
+	
+	/**
+	 * 保存数据
+	 * <p>Title: saveCompanyTickets</p>  
+	 * <p>Description: </p>  
+	 * @param companyTickets
+	 */
+	public void saveCompanyTickets(CompanyTickets companyTickets){
+		baseMapper.insert(companyTickets);
+	}
+	
+	/**
+	 * 保存推过来的数据
+	 * <p>Title: saveCompanyTickets</p>  
+	 * <p>Description: </p>  
+	 * @param companyTickets
+	 */
+	public void savePushData(JSONArray jsonArray,String msgId){
+		if(jsonArray !=null && jsonArray.size()>0){
+			for(int i=0;i<jsonArray.size();i++){
+				JSONObject jsonObject = jsonArray.getJSONObject(i);
+				CompanyTickets companyTickets = jsonObject.toJavaObject(CompanyTickets.class);
+				companyTickets.setInsertData(DateUtils.getCurrentDateTime("yyyy-MM-dd HH:mm:ss"));
+				companyTickets.setMsgId(msgId);
+				saveCompanyTickets(companyTickets);
+			}
+		}
 	}
 }

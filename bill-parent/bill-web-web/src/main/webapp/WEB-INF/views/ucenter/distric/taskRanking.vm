@@ -1,11 +1,11 @@
 #set($d_myCenter_active="1")
 #set($d_taskRanking_active="1")
-#override("title")全区学习大排名#end
+#override("title")结算管理#end
 #override("content")
 <div class="mainContent">
 	<div class="conCenter cf" id="conCenter">
         <div class="centerTit cf">
-            <h2>全区学习排名<i></i></h2>
+            <h2>结算管理<i></i></h2>
         </div>
         <div class="adminBody adminBody1" style="border:1px solid #e9ecf7;margin-top:0px;">
 			<form action="/ucenter/distric/ranking.html" id="taskForm" method="post">
@@ -13,12 +13,31 @@
                     <table class="peoTable">
                         <tbody>
 							<tr class="th th1" style="padding:0px;margin:0px;">
-                                <th class="center">编号</th>
-                                <th class="center">学校</th>
-                                <th class="center">当前进度</th>
-                                <th class="center">首名完成任务的同学</th>
+                                <th class="center">名称</th>
+                                <th class="center">联系人</th>
+            					<th class="center">下单时间</th>
+            					<th class="center">支付状态</th>
+            					<th class="center">订单状态</th>
+            					<th class="center">完成时间</th>
+            					<th class="center">入账状态</th>
+            					<th class="center">操作</th>
+            					<th class="center">总计</th>
 							</tr>
-						#foreach($task in $taskRankingPage.records)
+							<tr>
+                                <td class="center">慧云</td>
+                                <td class="center">龚</td>
+    							<td class="center">2018-10-22</td>
+    							<td class="center">已完成</td>
+    							<td class="center">已下单</td>
+    							<td class="center">2018-10-22</td>
+    							<td class="center">已入账</td>
+    							
+    							
+                                 
+                                <td class="center" ><a href="javascript:void(0)">删除/编辑</a></td>
+    							<td class="center">300</td>
+						  </tr>
+						<!-- #foreach($task in $taskRankingPage.records)
                     	  <tr>
                             <td class="peoNum" style="padding:0px;margin:0px;">$velocityCount</td>
                             <td class="center" style="padding:0px;margin:0px;">$!task.schoolName</td>
@@ -29,7 +48,7 @@
 								#end
 							</td>
 						  </tr>
-						#end
+						#end -->
                          </tbody>
 					</table>
                 </form>

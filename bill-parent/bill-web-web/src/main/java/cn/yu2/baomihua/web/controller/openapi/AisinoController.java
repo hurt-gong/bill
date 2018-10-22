@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 import cn.yu2.baomihua.constant.CompanyConstant;
@@ -32,28 +33,38 @@ public class AisinoController extends BaseController {
 	private ICompanyModule companyModule;
 
 	@ResponseBody
-	@RequestMapping(value = "/pushdata" , method = RequestMethod.POST)
+	@RequestMapping(value = "/pushdata", method = RequestMethod.POST)
 	public JsonResult pushdata() {
 		logger.info("pushdata-------------------->begin");
 		String param = "";
 		JsonResult result = null;
-		String msgId = ""; 
+		String msgId = "";
 		String channel = "";
 		try {
 			// 获取参数
 			param = getParamByReader();
 			logger.info(param);
-			
+
 			result = ParamValidate.pushdataValidate(param);
-			if(result != null){
+			if (result != null) {
 				return result;
 			}
-			
-			JSONObject json =  JSONObject.parseObject(param);
+
+			JSONObject json = JSONObject.parseObject(param);
 			channel = json.getString("channel");
 			msgId = json.getString("msgId");
-			 
+
 			/**************** 验证结束 ************************/
+
+			try {
+				JSONArray pushData = json.getJSONArray("pushData");
+				companyModule.savePushData(pushData, msgId);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+				result = retsuccess(1003, "pushData为空或者格式錯誤", "");
+				return result;
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -62,7 +73,7 @@ public class AisinoController extends BaseController {
 		}
 
 		// 查询
-		Map<String, Object> resultMap = companyModule.search("");
+		Map<String, Object> resultMap = new HashMap<String,Object>();
 		resultMap.put("msgId", msgId);
 		resultMap.put("channel", channel);
 

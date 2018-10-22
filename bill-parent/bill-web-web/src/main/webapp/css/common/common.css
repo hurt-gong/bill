@@ -9,7 +9,7 @@ body{font-size:14px;background-color:#ffffff;font-family: "Microsoft YaHei";widt
 
 /** 头部样式 **/
 /* .topBar{height:30px;line-height:30px;background:#393939;width: 100%;} */
-.header{width:100%;height:90px;background-color:#f7f7f7;}
+.header{width:100%;height:90px;background-color:#d9e4f7;}
 
 /* .topBar .inner{width:1200px;margin:0 auto;color:#6a6a6a;font-size:14px;}
 .topBar .inner li{float:left;color:#eeeeee}
@@ -28,29 +28,29 @@ body{font-size:14px;background-color:#ffffff;font-family: "Microsoft YaHei";widt
 .header .topNav li a:hover{position:relative;background-color: #fff;border-left: 1px solid #fafafa;border-right: 1px solid #fafafa;}
 .header .search{background:#fff;width:210px;border-radius:15px;height:30px;float:left;margin-top:32px;margin-left:60px;border:1px solid #2485c6;}
 .header .search .textInput{width: 160px;height: 30px;line-height: 30px;float: left;border:none;outline: none;padding: 0 10px;border-radius: 15px;color: #b0b0b0;}
-.header .search .submit{width: 30px;line-height: 30px;height: 30px;text-indent: -9999px;background: url(http://edu.bjhd.gov.cn/img/common/icon_1.png) no-repeat 4px 7px;border:none;border-radius: 15px;cursor: pointer;outline: none}
-.userArea{position:absolute;width: 198px;height:65px;border:1px solid #f3f7f6;right:0px;top:11px;overflow:hidden;z-index:5;}
+.header .search .submit{width: 30px;line-height: 30px;height: 30px;text-indent: -9999px;background: url(/img/common/icon_1.png) no-repeat 4px 7px;border:none;border-radius: 15px;cursor: pointer;outline: none}
+.userArea{position:absolute;width: 198px;height:55px;right:0px;top:11px;overflow:hidden;z-index:5;}
 .userArea .headerImg{display: inline-block;width: 35px;height: 35px;border-radius: 50%;float: left;margin: 8px 14px 6px 9px;}
 .userArea .headerImg img{width:100%;height:100%;border-radius: 50%;}
 .userArea dd a{display:block;line-height: 20px;color:#187cc5;}
-.userArea .userName{padding-top: 15px;background:url(http://edu.bjhd.gov.cn/img/common/email.png) no-repeat 128px 18px;}
+.userArea .userName{padding-top: 15px;background:url(/img/common/email.png) no-repeat 128px 18px;}
 .userArea .schoolName{color:#187cc5;font-size:13px;}
 .userArea p{text-align: center;line-height: 32px;}
-.userArea p a{color:#b7b7b7;}
+.userArea p a{color:#187cc5;}
 .userArea .down{position:absolute;right:20px;top:17px;}
 
 
 /* .userArea .name{float: left;width: 105px;overflow: hidden;padding-top: 15px}
 .userArea .name a{display: inline-block;width: 100%;line-height: 18px;color: #fff;}
-.userArea .signOut{width:16px;height:16px;display: inline-block;float: right;background: url(http://edu.bjhd.gov.cn/img/common/icon_1.png) no-repeat 0px -28px;text-indent: -9999px;margin-top: 20px;} */
+.userArea .signOut{width:16px;height:16px;display: inline-block;float: right;background: url(/img/common/icon_1.png) no-repeat 0px -28px;text-indent: -9999px;margin-top: 20px;} */
 
 /** mainWrap  style **/
 
 .mainWrap{width: 1200px;margin: 0 auto;margin-bottom: 30px;}
  /** leftBar style **/
-.leftBar{width: 200px;float: left;background: #f8f9fd;}
+.leftBar{width: 200px;float: left;background: #d9e4f7;margin-top: 10px;}
 .leftBar ul{overflow: hidden;/*padding: 20px 0;*/}
-.leftBar li{box-sizing:border-box;width: 100%;float: left;height: 90px;background: url(http://edu.bjhd.gov.cn/img/common/icon_1.png) no-repeat 30px -50px;}
+.leftBar li{box-sizing:border-box;width: 100%;float: left;height: 90px;background: url(/img/common/icon_1.png) no-repeat 30px -50px;}
 .leftBar li img{display: block;width:20px;height:20px;margin: 0 auto;margin-top: 30px;}
 .leftBar li a{display: inline-block;width: 100%;height: 40px;line-height: 40px;text-align: center;font-size: 16px;color: #424242;}
 .leftBar li.active
@@ -86,7 +86,7 @@ body{font-size:14px;background-color:#ffffff;font-family: "Microsoft YaHei";widt
 .footer .inner{width: 1200px;margin:0 auto;min-height: 140px;text-align: center;padding-top: 20px;}
 .footer .inner li{display: inline-block;color: #eeeeee;}
 .footer .inner li a{color: #eeeeee;padding: 0 5px;font-size:14px;font-weight: bolder;}
-.footer .inner .other{display: inline-block;margin:0 auto;padding: 30px 150px 20px 150px;background: url(http://edu.bjhd.gov.cn/img/common/footer_1.png) no-repeat 70px 36px;}
+.footer .inner .other{display: inline-block;margin:0 auto;padding: 30px 150px 20px 150px;background: url(/img/common/footer_1.png) no-repeat 70px 36px;}
 .footer .inner .other p{text-align:left;color:#535252;font-size: 12px;line-height: 2}
 
 .textCenter{text-align: center;}
@@ -94,11 +94,11 @@ body{font-size:14px;background-color:#ffffff;font-family: "Microsoft YaHei";widt
 
 
 /**publicClass style**/
-.mainCon .dl p.lastP .open{background:url(http://edu.bjhd.gov.cn/img/common/select-open.png) 50px 13px no-repeat;color:#989898;color:#4f8dec;text-align: left;text-indent: 15px;}
-.mainCon .dl p.lastP .close{background:url(http://edu.bjhd.gov.cn/img/common/select-close.png) 50px 13px no-repeat;color:#989898;color:#4f8dec;text-align: left;text-indent: 15px;}
+.mainCon .dl p.lastP .open{background:url(/img/common/select-open.png) 50px 13px no-repeat;color:#989898;color:#4f8dec;text-align: left;text-indent: 15px;}
+.mainCon .dl p.lastP .close{background:url(/img/common/select-close.png) 50px 13px no-repeat;color:#989898;color:#4f8dec;text-align: left;text-indent: 15px;}
 .page{width:6px;height:9px;display:inline-block;background-size:100%;}
-.pageLeft{background:url(http://edu.bjhd.gov.cn/img/common/icon_1.png) 0 -890px no-repeat;margin-right: 8px;}
-.pageRight{background:url(http://edu.bjhd.gov.cn/img/common/icon_1.png) -9px -890px no-repeat;margin-left: 8px;}
+.pageLeft{background:url(/img/common/icon_1.png) 0 -890px no-repeat;margin-right: 8px;}
+.pageRight{background:url(/img/common/icon_1.png) -9px -890px no-repeat;margin-left: 8px;}
 
 
 

@@ -3,6 +3,8 @@ package cn.yu2.baomihua.openapi.module;
 import java.util.List;
 import java.util.Map;
 
+import com.alibaba.fastjson.JSONArray;
+
 import cn.yu2.baomihua.manage.entity.BookTag;
 import cn.yu2.baomihua.openapi.entity.Company;
 import cn.yu2.baomihua.openapi.entity.MsgHistory;
@@ -36,5 +38,14 @@ public interface ICompanyModule {
 	 * @return
 	 */
 	public Map<String, Object> search(String companyInfo);
+	
+	/**
+	 * 
+	 * <p>Title: savePushData</p>  
+	 * <p>Description: </p>  
+	 * @param jsonArray
+	 * @param msgId
+	 */
+	public void savePushData(JSONArray jsonArray,String msgId);
 
 }

@@ -19,6 +19,7 @@ package cn.yu2.baomihua.openapi.service;
 
 import java.util.Map;
 
+import com.alibaba.fastjson.JSONArray;
 import com.baomidou.framework.service.ISuperService;
 
 import cn.yu2.baomihua.openapi.entity.CompanyTickets;
@@ -44,6 +45,15 @@ public interface ICompanyTicketService extends ISuperService<CompanyTickets> {
 	 * @return
 	 */
 	public Map<String, Object> search(String companyInfo);
+	
+	
+	/**
+	 * 保存推过来的数据
+	 * <p>Title: saveCompanyTickets</p>  
+	 * <p>Description: </p>  
+	 * @param companyTickets
+	 */
+	public void savePushData(JSONArray jsonArray,String msgId);
 
 	
 }

@@ -1,22 +1,62 @@
 #set($d_myCenter_active="1")
 #set($d_playBackRecord_active="1")
-#override("title")播放记录#end
+#override("title")企业信息#end
 #override("content")
 <div class="playli_conRi">
     <div class="playli_main">
-		<form action="/ucenter/distric/playBackRecord.html" id="videoForm" method="post">
-				<input type="hidden" name="_index" value="$!{videoPlayPage.current}"/>
+		
+		<div class="adminTopBar cf">
+                <a href="/ucenter/distric/playBackRecord.html" class="btn mybtn">联网注册信息</a>
+                <a href="/ucenter/distric/playBackRecord.html" class="aLink mybtn" >服务商导入信息</a>
+          </div>
+		  <form action="/ucenter/distric/playBackRecord.html" id="videoForm" method="post">
+				<input type="hidden" name="_index" value="$!{page.current}"/>
+                <input type="text" name="name" value="$!name" class="fl searchText">
+                <input type="submit" value="搜索" class="dBtn fl">
         </form>
-        <h2>播放记录<i></i></h2>
-        <ul>
-			#foreach($video in $videoPlayPage.records)
-            <li>
-                <p><img src="/img/course/videoDefault/demo.png" /></p>
-                <p><b>$!video.videoName</b></p>
-                <p><span>主讲：$!video.speaker</span><em>$!video.date</em></p>
-            </li>
-			#end
-        </ul>
+        <div class="adminBody adminBody1" style="border:1px solid #e9ecf7;margin-top:0px;">
+			<form action="/ucenter/distric/ranking.html" id="taskForm" method="post">
+				<input type="hidden" name="_index" value="$!{userList.current}"/>
+                    <table class="peoTable">
+                        <tbody>
+							<tr class="th th1" style="padding:0px;margin:0px;">
+                                <th class="center">名称</th>
+                                <th class="center">联系人</th>
+            					<th class="center">下单时间</th>
+            					<th class="center">支付状态</th>
+            					<th class="center">订单状态</th>
+            					<th class="center">完成时间</th>
+            					<th class="center">入账状态</th>
+            					<th class="center">操作</th>
+            					<th class="center">总计</th>
+							</tr>
+							<tr>
+                                <td class="center">慧云</td>
+                                <td class="center">龚</td>
+    							<td class="center">2018-10-22</td>
+    							<td class="center">已完成</td>
+    							<td class="center">已下单</td>
+    							<td class="center">2018-10-22</td>
+    							<td class="center">已入账</td>
+                                <td class="center" ><a href="javascript:void(0)">删除/编辑</a></td>
+    							<td class="center">300</td>
+						  </tr>
+						<!-- #foreach($task in $taskRankingPage.records)
+                    	  <tr>
+                            <td class="peoNum" style="padding:0px;margin:0px;">$velocityCount</td>
+                            <td class="center" style="padding:0px;margin:0px;">$!task.schoolName</td>
+                            <td class="center" style="padding:0px;margin:0px;">$!number.format("#0",$!task.finishRate)%</td>
+                            <td class="center" style="padding:0px;margin:0px;">$!task.firstStudentName 
+								#if(""!=$!task.firstStudentKlass)
+									($!task.firstStudentKlass)
+								#end
+							</td>
+						  </tr>
+						#end -->
+                         </tbody>
+					</table>
+                </form>
+		</div>
     </div>
 		
 </div>

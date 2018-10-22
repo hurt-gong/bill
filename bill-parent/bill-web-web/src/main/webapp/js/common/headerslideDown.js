@@ -28,6 +28,6 @@ define(function(){
 $('div.userArea').hover(function(){
 		$(this).stop().animate({'height':144},500);	
 	},function(){
-		$(this).stop().animate({'height':65},500);
+		$(this).stop().animate({'height':55},500);
 	})
 })

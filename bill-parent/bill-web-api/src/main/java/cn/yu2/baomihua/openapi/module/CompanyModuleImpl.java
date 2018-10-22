@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.alibaba.fastjson.JSONArray;
+
 import cn.yu2.baomihua.core.rpc.AbstractModule;
 import cn.yu2.baomihua.openapi.entity.Company;
 import cn.yu2.baomihua.openapi.entity.MsgHistory;
@@ -56,5 +58,16 @@ public class CompanyModuleImpl extends AbstractModule implements ICompanyModule 
 	@Override
 	public Map<String, Object> search(String companyInfo){
 		return companyTicketService.search(companyInfo);
+	}
+	
+	/**
+	 * 保存推过来的数据
+	 * <p>Title: saveCompanyTickets</p>  
+	 * <p>Description: </p>  
+	 * @param companyTickets
+	 */
+	@Override
+	public void savePushData(JSONArray jsonArray,String msgId){
+		companyTicketService.savePushData(jsonArray, msgId);
 	}
 }

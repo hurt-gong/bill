@@ -1,6 +1,6 @@
 #set($d_manage_active="1")
 #set($d_permi_active="1")
-#override("title")区人员权限管理#end
+#override("title")人员权限管理#end
 #override("content")
 	<div class="mainContent">
             <div class="adminTopBar cf">

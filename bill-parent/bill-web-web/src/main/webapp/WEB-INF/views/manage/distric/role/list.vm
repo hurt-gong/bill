@@ -1,6 +1,6 @@
 #set($d_manage_active="1")
 #set($d_dept_active="1")
-#override("title")区部门管理#end
+#override("title")部门管理#end
 #override("content")
         <div class="mainContent">
             <div class="adminTopBar">
