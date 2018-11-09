@@ -10,6 +10,7 @@ import com.alibaba.fastjson.JSONArray;
 import cn.yu2.baomihua.core.rpc.AbstractModule;
 import cn.yu2.baomihua.openapi.entity.Company;
 import cn.yu2.baomihua.openapi.entity.MsgHistory;
+import cn.yu2.baomihua.openapi.service.IBastPayService;
 import cn.yu2.baomihua.openapi.service.ICompanyService;
 import cn.yu2.baomihua.openapi.service.ICompanyTicketService;
 import cn.yu2.baomihua.openapi.service.IMsgHistoryService;
@@ -30,6 +31,10 @@ public class CompanyModuleImpl extends AbstractModule implements ICompanyModule 
 	
 	@Autowired
 	private IMsgHistoryService msgHistoryService;
+	
+	
+	@Autowired
+	private IBastPayService bastPayService;
  
 	@Override
 	public List<Company> getCompanyList() { 

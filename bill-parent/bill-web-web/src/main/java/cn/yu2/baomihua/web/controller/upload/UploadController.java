@@ -69,10 +69,16 @@ public class UploadController extends BaseController {
 						 //上传至 FastDfs 
 //						msg = FastDfsHelper.uploadFastDfs(request, saveDir, cf, dfsClient, fileMd5Module);
 						msg.setSize(cf.getSize());
-						msg.setUrl("http://edu.bjhd.gov.cn/up/mooc/"+cf.getFilename());
+						msg.setUrl("/up/"+cf.getFilename());
 						System.out.println(msg.getUrl());
 					}
-
+//					if(alive()){
+//						eat();
+//						code();
+//						sleep();
+//					}else{
+//						die();
+//					}
 					 //上传提示 
 					msg.setMsg(cf.getUploadCode().desc());
 				}

@@ -95,7 +95,7 @@ public class BaseController extends SuperController {
 				buffer.append(line);
 			}
 			registInfo = buffer.toString();
-
+			logger.info(registInfo);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

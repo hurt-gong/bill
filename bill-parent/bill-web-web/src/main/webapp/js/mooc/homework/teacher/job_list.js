@@ -2,7 +2,7 @@ define(['../../js/lib/layer/layer'],function(dialog){
 	//筛选作业
 	function screen_homework(){
 		$.ajax({
-			url:"http://edu.bjhd.gov.cn/homework/teaHomeworkList",
+			url:"/homework/teaHomeworkList",
 			type:"post",
 			data:{
 				"startDate":$("input[name='startDate']").val(),
@@ -18,14 +18,14 @@ define(['../../js/lib/layer/layer'],function(dialog){
 					var hwId = $(this).attr("data-id");
 					dialog.confirm("确认删除?",function(){
 						$.ajax({
-							url:"http://edu.bjhd.gov.cn/homework/delete",
+							url:"/homework/delete",
 							type:"post",
 							data:{"hwId":hwId},
 							success:function(result){
 								var json = eval("("+result+")");
 								if (json.success) {
 									dialog.msg("删除成功！",{time: 500, icon:1},function(){
-										window.location.href="http://edu.bjhd.gov.cn/homework/index.html";
+										window.location.href="/homework/index.html";
 									});
 									
 								}else{

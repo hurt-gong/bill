@@ -1,8 +1,8 @@
-require.config({　　　　
-	paths: {　　　　　　
+require.config({        
+	paths: {
 		"headerSlideDown": "../common/headerslideDown",
 		"dialog": "../../js/lib/layer/layer",　
-	}　　
+	}          
 });
 
 
@@ -22,14 +22,14 @@ require(['dialog'], function(dialog) {
 	    }
 	});
 	$('.pre_con>.floorone').find('.flooright').find('.check_jiexi').on('click',function(){
-	        $(this).parent().parent().find('.floor_jiexi').toggle();
+	$(this).parent().parent().find('.floor_jiexi').toggle();
 	    });
 
 	$(".datetimepicker").datetimepicker({lang:'ch'}); 
 
 	$('.pre_con>.floorone').find('.flooright').find('.aa').click(function(){
 		$.ajax({
-			url:"http://edu.bjhd.gov.cn/tiku/cancelSelect",
+			url:"/tiku/cancelSelect",
 			type:"post",
 			data:{"examId":$(this).attr("data-examid"),
 				  "typeId":$(this).attr("data-typeid"),
@@ -50,7 +50,7 @@ require(['dialog'], function(dialog) {
 
 	$('.pre_con>.floorone').find('.flooright').find('.bb').click(function(){
 		$.ajax({
-			url:"http://edu.bjhd.gov.cn/mooc/paper/teacher/cancelSelect",
+			url:"/mooc/paper/teacher/cancelSelect",
 			type:"post",
 			data:{"examId":$(this).attr("data-examid"),
 				  "typeId":$(this).attr("data-typeid"),
@@ -116,7 +116,7 @@ require(['dialog'], function(dialog) {
 		 var endDate = $("#endDate").val();
 		 if(examIds.length>0&&classIds.length>0&&title!=''&&startDate!=''&&endDate!=''){
 		 	$.ajax({
-				url:"http://edu.bjhd.gov.cn/homework/releaseHomework",
+				url:"/homework/releaseHomework",
 				data:JSON.stringify({
 					"examId":examIds,
 					"classId":classIds,
@@ -134,7 +134,7 @@ require(['dialog'], function(dialog) {
 					if(json.success){
 						$(".publishjob_box").hide();
 						layer.msg("发布成功！正在跳转详情页~",{time: 2000, icon:1},function(){
-							window.location.href="http://edu.bjhd.gov.cn/homework/teacher/answerDetail?hwId="+json.hwId;
+							window.location.href="/homework/teacher/answerDetail?hwId="+json.hwId;
 						})
 					}else{
 						layer.alert(json.errorMsg);
@@ -164,7 +164,7 @@ require(['dialog'], function(dialog) {
 
 		if(examIds.length>0){
 			$.ajax({
-				url:"http://edu.bjhd.gov.cn/mooc/paper/teacher/releasePaper",
+				url:"/mooc/paper/teacher/releasePaper",
 				data:JSON.stringify({
 					"examId":examIds,
 					"moocId":$("#moocId").val(),
@@ -177,7 +177,7 @@ require(['dialog'], function(dialog) {
 					var json = eval("("+result+")");
 					if(json.success){
 						dialog.msg("发布成功！正在跳转详情页~",{time: 2000, icon:1},function(){
-							window.location.href="http://edu.bjhd.gov.cn/mooc/course/details?id="+moocId+"&videoId="+periodId+"&listenUrl="+listenUrl;
+							window.location.href="/mooc/course/details?id="+moocId+"&videoId="+periodId+"&listenUrl="+listenUrl;
 						});
 						 
 					}else{

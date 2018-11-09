@@ -15,4 +15,6 @@
 	
 	<dubbo:service interface="cn.yu2.baomihua.openapi.module.ICompanyModule" ref="companyModule"/>
 	
+	<dubbo:service interface="cn.yu2.baomihua.openapi.module.IBastpayModule" ref="bastpayModule"/>
+	
 	</beans>

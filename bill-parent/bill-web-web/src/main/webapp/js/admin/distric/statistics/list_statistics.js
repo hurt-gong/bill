@@ -1,12 +1,12 @@
 /**区-区教学管理-课程管理
 */
-require.config({　　　　
-	paths: {　　　　　　
+require.config({        
+	paths: {
 		"jqtransform": "../../../lib/jqTransform/jqtransform",
 		"headerSlideDown": "../../../common/headerslideDown",
 		"highstock":"../../../lib/highstock/2.0.1/highstock",
 		"My97DatePicker": "../../../lib/My97DatePicker/WdatePicker"
-	}　　
+	}          
 });
 
 

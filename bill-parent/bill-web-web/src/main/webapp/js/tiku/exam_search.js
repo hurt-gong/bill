@@ -2,7 +2,7 @@
 	//筛选试题
 	function screen_exam(){
 		$.ajax({
-			url:"http://edu.bjhd.gov.cn/tiku/examList",
+			url:"/tiku/examList",
 			type:"post",
 			data:{
 				"phaseId":$("#phaseId").val(),

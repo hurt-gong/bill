@@ -1,11 +1,11 @@
 /**区-区教学管理-课程管理
 */
-require.config({　　　　
-	paths: {　　　　　　
-		"dialog": "../../../lib/layer/layer",　　　　
+require.config({        
+	paths: {
+		"dialog": "../../../lib/layer/layer",        
 		"jqtransform": "../../../lib/jqTransform/jqtransform",
 		"headerSlideDown": "../../../common/headerslideDown",　
-	}　　
+	}          
 });
 
 

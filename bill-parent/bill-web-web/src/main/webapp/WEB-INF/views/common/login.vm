@@ -3,11 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <title>登录</title>
-<link rel="stylesheet" type="text/css" href="/css/admin/admin.css">
+#*<link rel="stylesheet" type="text/css" href="/css/admin/admin.css"> *#
+<link href="/css/login/reset.css" rel="stylesheet" type="text/css" media="screen">
+<link href="/css/login/login.css" rel="stylesheet" type="text/css">
+		
 <script type="text/javascript" src="/js/common/inculde.js"></script>
+
 </head>
-<body class='login'>
-	<div class="mainWrap">
+<body class='login clearfix' onkeydown="javascript:if(event.keyCode==13)loginSubmit();">
+		<div class="secL">
+			<h2>慧云 <img src="/img/admin/icon.png" width="50px" height="50px"> 智能物联网云服务平台</h2>
+			<p>
+				连接成就智慧企业<br>致力于为企业构造电子票据云生态和个性化解决方案服务商
+			</p>
+		</div>
+		
+	<div class="secR">
 		#block("content")#end
 	</div>
 </body>

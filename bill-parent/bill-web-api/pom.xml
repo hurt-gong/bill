@@ -46,7 +46,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>bill-module-manage</finalName>
+		<finalName>bill-module-api</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/java</directory>

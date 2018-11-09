@@ -108,6 +108,7 @@ public class ParamUtil {
 		} catch (Exception e) {
 
 		}
+		System.out.println(sb.toString());
 		return sb.toString();
 	}
 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yu2.baomihua.openapi.mapper.BastCompanyDetilMapper">
+
+
+	<!-- 通用查询结果列 -->
+	<sql id="Base_Column_List">
+		`id`,
+		`productNo`,
+		`merchantName`,
+		`taxNumber`,
+		`areaCode`,
+		`registerType`,
+		`merchantType`,
+		`taxAuthorityCode`,
+		`enterpriseAddress`,
+		`machineCode`,
+		`invoicePhone`,
+		`email`,
+		`maxInvoiceNumber`,
+		`recordNumber`,
+		`cardNumber`,
+		`legalPhone`,
+		`contantName`,
+		`sorfwareCode`,
+		`insetDate`
+	</sql>
+
+
+
+	<select id="getBastCompanyDetail"
+		resultType="cn.yu2.baomihua.openapi.entity.bastpay.BastCompanyDetil">
+		SELECT
+		<include refid="Base_Column_List" />
+		from bast_company_detail where
+		productNo = #{productNo} 
+	</select>
+
+</mapper>

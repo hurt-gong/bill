@@ -27,7 +27,10 @@ public class IndexController extends BaseController {
 	public String index() {
 		return super.redirectTo("/account/login");
 	}
-
+	@RequestMapping("/")
+	public String rootIndex() {
+		return super.redirectTo("/account/login");
+	}
 
 	@RequestMapping("/idx")
 	public String idx() {
@@ -46,6 +49,8 @@ public class IndexController extends BaseController {
 				returnUrl = "/ucenter/parent/index.html";
 			}
 		}
+		
+		returnUrl = "/ucenter/distric/index.html";
 		return redirectTo(returnUrl);
 	}
 

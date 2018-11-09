@@ -13,7 +13,7 @@ $(".class_list").find("a").click(function(){
 
 function loadStudents(){
 	$.ajax({
-		url:"http://edu.bjhd.gov.cn/homework/getStudentListByKlass",
+		url:"/homework/getStudentListByKlass",
 		type:"post",
 		data:{
 			"hwId":$("#hwId").val(),
@@ -41,10 +41,10 @@ function loadStudents(){
 				$("._names").find("span").find("label").click(function(){
 			       
 					if(!$(this).siblings("input[type='radio']").is(':checked')){
-				        $(this).addClass('label_checked').parent().siblings().find('input[type="radio"]').siblings('label').removeClass('label_checked');
-				        $(this).siblings("input[type='radio']").prop('checked','checked').parent().siblings().find('input[type="radio"]').removeProp('checked');
+				$(this).addClass('label_checked').parent().siblings().find('input[type="radio"]').siblings('label').removeClass('label_checked');
+				$(this).siblings("input[type='radio']").prop('checked','checked').parent().siblings().find('input[type="radio"]').removeProp('checked');
 				    }
-			        loadAnswerDetails();
+			loadAnswerDetails();
 				})
 
 			}
@@ -57,7 +57,7 @@ function loadAnswerDetails(){
 	var studentId = $("input[name='studentId']:checked").val();
 	var hwId = $("#hwId").val();
 	$.ajax({
-		url:"http://edu.bjhd.gov.cn/homework/getReadOverList",
+		url:"/homework/getReadOverList",
 		type:"post",
 		data:{
 			"studentId":studentId,
@@ -86,7 +86,7 @@ function loadAnswerDetails(){
 function updateRightRate(rightRate,examId){
 
 	$.ajax({
-		url:"http://edu.bjhd.gov.cn/homework/updateRightRate",
+		url:"/homework/updateRightRate",
 		type:"post",
 		data:{
 			"hwId":$("#hwId").val(),

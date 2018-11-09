@@ -8504,36 +8504,36 @@ SWFUpload.prototype.displayDebugInfo = function () {
 			"Version: ", SWFUpload.version, "\n",
 			"Movie Name: ", this.movieName, "\n",
 			"Settings:\n",
-			"\t", "upload_url:               ", this.settings.upload_url, "\n",
-			"\t", "flash_url:                ", this.settings.flash_url, "\n",
-			"\t", "use_query_string:         ", this.settings.use_query_string.toString(), "\n",
-			"\t", "requeue_on_error:         ", this.settings.requeue_on_error.toString(), "\n",
-			"\t", "http_success:             ", this.settings.http_success.join(", "), "\n",
+			"\t", "upload_url:       ", this.settings.upload_url, "\n",
+			"\t", "flash_url:", this.settings.flash_url, "\n",
+			"\t", "use_query_string: ", this.settings.use_query_string.toString(), "\n",
+			"\t", "requeue_on_error: ", this.settings.requeue_on_error.toString(), "\n",
+			"\t", "http_success:     ", this.settings.http_success.join(", "), "\n",
 			"\t", "assume_success_timeout:   ", this.settings.assume_success_timeout, "\n",
-			"\t", "file_post_name:           ", this.settings.file_post_name, "\n",
-			"\t", "post_params:              ", this.settings.post_params.toString(), "\n",
-			"\t", "file_types:               ", this.settings.file_types, "\n",
+			"\t", "file_post_name:   ", this.settings.file_post_name, "\n",
+			"\t", "post_params:      ", this.settings.post_params.toString(), "\n",
+			"\t", "file_types:       ", this.settings.file_types, "\n",
 			"\t", "file_types_description:   ", this.settings.file_types_description, "\n",
-			"\t", "file_size_limit:          ", this.settings.file_size_limit, "\n",
-			"\t", "file_upload_limit:        ", this.settings.file_upload_limit, "\n",
-			"\t", "file_queue_limit:         ", this.settings.file_queue_limit, "\n",
-			"\t", "debug:                    ", this.settings.debug.toString(), "\n",
+			"\t", "file_size_limit:  ", this.settings.file_size_limit, "\n",
+			"\t", "file_upload_limit:", this.settings.file_upload_limit, "\n",
+			"\t", "file_queue_limit: ", this.settings.file_queue_limit, "\n",
+			"\t", "debug:    ", this.settings.debug.toString(), "\n",
 
 			"\t", "prevent_swf_caching:      ", this.settings.prevent_swf_caching.toString(), "\n",
 
 			"\t", "button_placeholder_id:    ", this.settings.button_placeholder_id.toString(), "\n",
 			"\t", "button_placeholder:       ", (this.settings.button_placeholder ? "Set" : "Not Set"), "\n",
-			"\t", "button_image_url:         ", this.settings.button_image_url.toString(), "\n",
-			"\t", "button_width:             ", this.settings.button_width.toString(), "\n",
-			"\t", "button_height:            ", this.settings.button_height.toString(), "\n",
-			"\t", "button_text:              ", this.settings.button_text.toString(), "\n",
-			"\t", "button_text_style:        ", this.settings.button_text_style.toString(), "\n",
+			"\t", "button_image_url: ", this.settings.button_image_url.toString(), "\n",
+			"\t", "button_width:     ", this.settings.button_width.toString(), "\n",
+			"\t", "button_height:    ", this.settings.button_height.toString(), "\n",
+			"\t", "button_text:      ", this.settings.button_text.toString(), "\n",
+			"\t", "button_text_style:", this.settings.button_text_style.toString(), "\n",
 			"\t", "button_text_top_padding:  ", this.settings.button_text_top_padding.toString(), "\n",
 			"\t", "button_text_left_padding: ", this.settings.button_text_left_padding.toString(), "\n",
-			"\t", "button_action:            ", this.settings.button_action.toString(), "\n",
-			"\t", "button_disabled:          ", this.settings.button_disabled.toString(), "\n",
+			"\t", "button_action:    ", this.settings.button_action.toString(), "\n",
+			"\t", "button_disabled:  ", this.settings.button_disabled.toString(), "\n",
 
-			"\t", "custom_settings:          ", this.settings.custom_settings.toString(), "\n",
+			"\t", "custom_settings:  ", this.settings.custom_settings.toString(), "\n",
 			"Event Handlers:\n",
 			"\t", "swfupload_loaded_handler assigned:  ", (typeof this.settings.swfupload_loaded_handler === "function").toString(), "\n",
 			"\t", "file_dialog_start_handler assigned: ", (typeof this.settings.file_dialog_start_handler === "function").toString(), "\n",
@@ -8544,7 +8544,7 @@ SWFUpload.prototype.displayDebugInfo = function () {
 			"\t", "upload_error_handler assigned:      ", (typeof this.settings.upload_error_handler === "function").toString(), "\n",
 			"\t", "upload_success_handler assigned:    ", (typeof this.settings.upload_success_handler === "function").toString(), "\n",
 			"\t", "upload_complete_handler assigned:   ", (typeof this.settings.upload_complete_handler === "function").toString(), "\n",
-			"\t", "debug_handler assigned:             ", (typeof this.settings.debug_handler === "function").toString(), "\n"
+			"\t", "debug_handler assigned:     ", (typeof this.settings.debug_handler === "function").toString(), "\n"
 		].join("")
 	);
 };
@@ -8555,16 +8555,16 @@ SWFUpload.prototype.displayDebugInfo = function () {
 // Public: (Deprecated) addSetting adds a setting value. If the value given is undefined or null then the default_value is used.
 SWFUpload.prototype.addSetting = function (name, value, default_value) {
     if (value == undefined) {
-        return (this.settings[name] = default_value);
+return (this.settings[name] = default_value);
     } else {
-        return (this.settings[name] = value);
+return (this.settings[name] = value);
 	}
 };
 
 // Public: (Deprecated) getSetting gets a setting. Returns an empty string if the setting was not found.
 SWFUpload.prototype.getSetting = function (name) {
     if (this.settings[name] != undefined) {
-        return this.settings[name];
+return this.settings[name];
 	}
 
     return "";

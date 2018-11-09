@@ -1,9 +1,9 @@
-require.config({　　　　
-	paths: {　　　　　　
-		"dialog": "../../../lib/layer/layer",　　　　
+require.config({        
+	paths: {
+		"dialog": "../../../lib/layer/layer",        
 		"jqtransform": "../../../lib/jqTransform/jqtransform",
 		"headerSlideDown": "../../../common/headerslideDown",　
-	}　　
+	}          
 });
 
 
@@ -85,7 +85,7 @@ require(['jqtransform','headerSlideDown','dialog'], function(jqtransform,aaaa,di
 			error:function(){
 			}
 		});
-        $(this).parent().hide();
+$(this).parent().hide();
 	});
 	//点击 添加部门确定按钮
 	$('.alertdept .sure').click(function(){
@@ -97,7 +97,7 @@ require(['jqtransform','headerSlideDown','dialog'], function(jqtransform,aaaa,di
 			});
 			return;
 		}
-        var param = {};
+var param = {};
  		var val = $('.alertdept input').val()
 		param.name = name;
 		param.pid = 0;
@@ -121,7 +121,7 @@ require(['jqtransform','headerSlideDown','dialog'], function(jqtransform,aaaa,di
 		}else{
 			
 		}
-        $(this).parent().hide();
+$(this).parent().hide();
     });
 
     //点击 添加岗位确定按钮
@@ -135,7 +135,7 @@ require(['jqtransform','headerSlideDown','dialog'], function(jqtransform,aaaa,di
 			return;
 		}
 		var pid = $('.dept .active').attr('id');
-        var param = {};
+var param = {};
 		param.name = name;
 		param.pid = pid;
  		if(name){
@@ -158,7 +158,7 @@ require(['jqtransform','headerSlideDown','dialog'], function(jqtransform,aaaa,di
 		}else{
 			
 		}
-        $(this).parent().hide();
+$(this).parent().hide();
     });
     //部门添加人员弹出
 	$('.addUsers').on('click',function(){

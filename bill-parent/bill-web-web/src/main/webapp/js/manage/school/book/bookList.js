@@ -51,9 +51,9 @@ $('.dBtnsure').click(function(){
 //点击学科
 $(function(){  
 	$(".highRow ul").each(function(){
-        //取出ul下的第一个li
-        var li= $(this).children().first();
-        li.addClass("active");
+//取出ul下的第一个li
+var li= $(this).children().first();
+li.addClass("active");
     });
     //alert("第二种方法。");  
 });

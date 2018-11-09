@@ -1,12 +1,12 @@
-require.config({　　
-	baseUrl: 'http://edu.bjhd.gov.cn/', 　　
-	paths: {　　　　　　
-		"dialog": "js/lib/layer/layer",　　　　
+require.config({          
+	baseUrl: '/',           
+	paths: {
+		"dialog": "js/lib/layer/layer",        
 		"jqtransform": "js/lib/jqTransform/jqtransform",
 		"headerSlideDown": "js/common/headerslideDown",
-        "webuploader": "js/lib/webuploader/webuploader",
-        "paper": "js/mooc/paper/teacher/admin",
-	}　　
+"webuploader": "js/lib/webuploader/webuploader",
+"paper": "js/mooc/paper/teacher/admin",
+	}          
 });
 
 
@@ -40,11 +40,11 @@ require(['jqtransform','js/admin/common/adminAlertBox','headerSlideDown','dialog
     var url = location.search; //获取url中"?"符后的字串
     var theRequest = new Object();
     if (url.indexOf("?") != -1) {
-        var str = url.substr(1);
-        strs = str.split("&");
-        for(var i = 0; i < strs.length; i ++) {
-            theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
-        }
+var str = url.substr(1);
+strs = str.split("&");
+for(var i = 0; i < strs.length; i ++) {
+    theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+}
     }
     return theRequest;
 	}
@@ -157,7 +157,7 @@ getInteractionList();
 						$(".sec_dl").html(html);
 						for(var i=0;i<replyCommentList.length;i++){
 							html+="<div class='my_pic'><img src='"+replyCommentList[i].headUrl+"'></div><div class='my_con'><h4>"+replyCommentList[i].userName+"<span>"+replyCommentList[i].klassName+"  "+replyCommentList[i].schoolName+"</span></h4>";
-							html+="<p class='p_text'>"+replyCommentList[i].content+"</p><p class='time_show'><span><a href=javascript:; value='"+replyCommentList[i].id+"' class='deleteSecComment'>删除</a></span></p></div>";                                                       
+							html+="<p class='p_text'>"+replyCommentList[i].content+"</p><p class='time_show'><span><a href=javascript:; value='"+replyCommentList[i].id+"' class='deleteSecComment'>删除</a></span></p></div>";       
 						}
 						$(".sec_dl").html(html);
 						dialog.msg('回复成功!',{time:1200,icon:1});
@@ -224,7 +224,7 @@ getInteractionList();
 						$(".sec_dl").html(html);
 						for(var i=0;i<replyCommentList.length;i++){
 							html+="<div class='my_alcon'><div class='my_pic'><img src='"+replyCommentList[i].headUrl+"'></div><div class='my_con'><h4>"+replyCommentList[i].userName+"<span>"+replyCommentList[i].klassName+"  "+replyCommentList[i].schoolName+"</span></h4>";
-							html+="<p class='p_text'>"+replyCommentList[i].content+"</p><p class='time_show'><span><a href=javascript:; value='"+replyCommentList[i].id+"' class='deleteSecComment'>删除</a></span></p></div></div>";                                                       
+							html+="<p class='p_text'>"+replyCommentList[i].content+"</p><p class='time_show'><span><a href=javascript:; value='"+replyCommentList[i].id+"' class='deleteSecComment'>删除</a></span></p></div></div>";       
 						}
 						$(".sec_dl").html(html);
 					}
@@ -251,7 +251,7 @@ getInteractionList();
 						$(".sec_dl").html(html);
 						for(var i=0;i<answerReplyCommentList.length;i++){
 							html+="<div class='my_pic'><img src='"+answerReplyCommentList[i].headUrl+"'></div><div class='my_con'><h4>"+answerReplyCommentList[i].userName+"<span>"+answerReplyCommentList[i].klassName+"  "+answerReplyCommentList[i].schoolName+"</span></h4>";
-							html+="<p class='p_text'>"+answerReplyCommentList[i].content+"</p><p class='time_show'><span><a href=javascript:; value='"+answerReplyCommentList[i].id+"' class='answerSecRep'>删除</a></span></p></div>";                                                       
+							html+="<p class='p_text'>"+answerReplyCommentList[i].content+"</p><p class='time_show'><span><a href=javascript:; value='"+answerReplyCommentList[i].id+"' class='answerSecRep'>删除</a></span></p></div>";       
 						}
 						$(".sec_dl").html(html);
 					}
@@ -290,7 +290,7 @@ getInteractionList();
 						$(".sec_dl").html(html);
 						for(var i=0;i<answerReplyCommentList.length;i++){
 							html+="<div class='my_pic'><img src='"+answerReplyCommentList[i].headUrl+"'></div><div class='my_con'><h4>"+answerReplyCommentList[i].userName+"<span>"+answerReplyCommentList[i].klassName+"  "+answerReplyCommentList[i].schoolName+"</span></h4>";
-							html+="<p class='p_text'>"+answerReplyCommentList[i].content+"</p><p class='time_show'><span><a href=javascript:; value='"+answerReplyCommentList[i].id+"'  class='answerSecRep'>删除</a></span></p></div>";                                                       
+							html+="<p class='p_text'>"+answerReplyCommentList[i].content+"</p><p class='time_show'><span><a href=javascript:; value='"+answerReplyCommentList[i].id+"'  class='answerSecRep'>删除</a></span></p></div>";       
 						}
 						$(".sec_dl").html(html);
 						dialog.msg('回复成功!',{time:1200,icon:1});
@@ -446,7 +446,7 @@ getInteractionList();
 				$(".sec_dl").html(html);
 				for(var i=0;i<replyCommentList.length;i++){
 					html+="<div class='my_alcon'><div class='my_pic'><img src='"+replyCommentList[i].headUrl+"'></div><div class='my_con'><h4>"+replyCommentList[i].userName+"<span>"+replyCommentList[i].klassName+"  "+replyCommentList[i].schoolName+"</span></h4>";
-					html+="<p class='p_text'>"+replyCommentList[i].content+"</p><p class='time_show'><span><a href=javascript:; value='"+replyCommentList[i].id+"' class='deleteSecComment'>删除</a></span></p></div></div>";                                                       
+					html+="<p class='p_text'>"+replyCommentList[i].content+"</p><p class='time_show'><span><a href=javascript:; value='"+replyCommentList[i].id+"' class='deleteSecComment'>删除</a></span></p></div></div>";       
 				}
 				$(".sec_dl").html(html);
 			}
@@ -504,9 +504,9 @@ getInteractionList();
 					html+="<h4>"+answerCommentList[i].userName+"<span>"+answerCommentList[i].klassName+"  "+answerCommentList[i].schoolName+"</span></h4><p class='p_text'>"+answerCommentList[i].content+"</p>";
 					html+="<div style='display:none' class='replyDiv'><div class='reply_od'><img src='"+answerCommentList[i].headUrl+"'><h5><textarea class='replyText' id='$velocityCount' name='content'></textarea>";
 					html+="<input type='hidden' name='isLeaf' id='isNotLeaf' value='0'/><p class=''><a href='javascript:;' class='answerReplyPublish'>回复</a></p></h5></div></div>";
-                    html+="<div style='display:none' class='sec_dl cf'>";
-                    html+="</div>";
-                    html+="<p class='time_show'><span><a href='javascript:;' class='answerReply'>回复</a><a href='javascript:;' class='deleteAnswerComment'>删除</a></span></p></dd></dl>";                          
+    html+="<div style='display:none' class='sec_dl cf'>";
+    html+="</div>";
+    html+="<p class='time_show'><span><a href='javascript:;' class='answerReply'>回复</a><a href='javascript:;' class='deleteAnswerComment'>删除</a></span></p></dd></dl>";  
 					}
 					$(".answer_item").html(html);
 				}
@@ -535,7 +535,7 @@ getInteractionList();
 					var evaluateCommentList = data.data;
 					for(var i=0;i<evaluateCommentList.length;i++){
 						html+="<dl><dt><img src='"+evaluateCommentList[i].headUrl+"'></dt><dd><h4><em><ul id='"+evaluateCommentList[i].id+"' class='starcon star'></ul>";
-						html+="</em>"+evaluateCommentList[i].userName+"<span>"+evaluateCommentList[i].klassName+"  "+evaluateCommentList[i].schoolName+"</span></h4><p class='p_text'>"+evaluateCommentList[i].content+"</p><p class='time_show'></p></dd></dl>";                          	
+						html+="</em>"+evaluateCommentList[i].userName+"<span>"+evaluateCommentList[i].klassName+"  "+evaluateCommentList[i].schoolName+"</span></h4><p class='p_text'>"+evaluateCommentList[i].content+"</p><p class='time_show'></p></dd></dl>";  	
 					}
 					$("#evaluate_item").html(html);
 					for(var i=0;i<evaluateCommentList.length;i++){
@@ -599,7 +599,7 @@ getInteractionList();
 });
 
 
-<!--习题部分-->
+ 
 require(['paper'], function(paper){
 	paper.paper_main();
 })

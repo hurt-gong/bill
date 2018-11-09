@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yu2.baomihua.openapi.mapper.BastCompanyFeePayMapper">
+
+	<!-- 通用查询结果列 -->
+	<sql id="Base_Column_List">
+		id,
+		productNo,
+		merchantNo,
+		outTradeNo,
+		tradeAmt,
+		goodsInfo,
+		opertionTime,
+		updatTime,
+		tradeStatus,
+		tradeprodNo,
+		tradeNo,
+		merchantOrderNo
+	</sql>
+
+
+
+	<select id="getBastCompanyFeePay"
+		resultType="cn.yu2.baomihua.openapi.entity.bastpay.BastCompanyFeePay">
+		SELECT
+		<include refid="Base_Column_List" />
+		from bast_fee_pay where  
+		merchantNo = #{merchantNo} and 
+		outTradeNo = #{outTradeNo} and 
+		tradeAmt = #{tradeAmt} and 
+		tradeNo = #{tradeNo}
+	</select>
+
+
+</mapper>

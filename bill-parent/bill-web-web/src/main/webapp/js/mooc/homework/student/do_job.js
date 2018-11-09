@@ -2,7 +2,7 @@ define(['../../js/lib/layer/layer'],function(dialog){
 	//提交作业
 	function submit_job(examIds,typeIds,answers){
 		$.ajax({
-			url:"http://edu.bjhd.gov.cn/homework/submitJob",
+			url:"/homework/submitJob",
 			type:"post",
 			data:JSON.stringify({
 				"hwId":$("#hwId").val(),
@@ -14,7 +14,7 @@ define(['../../js/lib/layer/layer'],function(dialog){
 			contentType:"application/json;charset=UTF-8",
 			success:function(hwId){
 				dialog.msg("提交成功！请等待发答案~",{time: 2000, icon:1},function(){
-					window.location.href="http://edu.bjhd.gov.cn/homework/index.html";
+					window.location.href="/homework/index.html";
 				});
 				
 			}

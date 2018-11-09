@@ -1,9 +1,9 @@
 /**校-任教管理-任课教师*/
-require.config({　　　　
+require.config({        
 	paths: {
 		"jqtransform": "../../../lib/jqTransform/jqtransform",
 		"headerSlideDown": "../../../common/headerslideDown"
-	}　　
+	}          
 });
 
 

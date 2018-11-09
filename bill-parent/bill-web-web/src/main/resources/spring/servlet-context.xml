@@ -58,7 +58,7 @@
 			<mvc:mapping path="/**" />
 			<mvc:exclude-mapping path="/captcha/**"/>
 			<mvc:exclude-mapping path="/account/**"/>
-			<mvc:exclude-mapping path="/openapi/**"/>
+			<mvc:exclude-mapping path="/bastpay/**"/>
 			<bean class="com.baomidou.kisso.web.interceptor.SSOSpringInterceptor" />
 		</mvc:interceptor>
 		<bean class="cn.yu2.baomihua.web.handler.PermissionInterceptor" />

@@ -1,10 +1,10 @@
-require.config({　　　　
-	paths: {　　　　　　
-		"dialog": "../lib/layer/layer",　　　　
+require.config({        
+	paths: {
+		"dialog": "../lib/layer/layer",        
 		"jqtransform": "../lib/jqTransform/jqtransform",
 		"My97DatePicker": "../lib/My97DatePicker/WdatePicker",　
-		"headerSlideDown": "../common/headerslideDown",　　　
-	}　　
+		"headerSlideDown": "../common/headerslideDown",          
+	}          
 });
 
 
@@ -12,7 +12,7 @@ require(['jqtransform','My97DatePicker','./common/adminAlertBox','headerSlideDow
 	
 $(".adminBody form").jqTransform();
 	 // a.alert1()
-	 require(['http://edu.bjhd.gov.cn/js/lib/My97DatePicker/WdatePicker.js'],function(){
+	 require(['/js/lib/My97DatePicker/WdatePicker.js'],function(){
 	 $("#time").on("click",function(){
 	 	WdatePicker({
 	 		el:'time',

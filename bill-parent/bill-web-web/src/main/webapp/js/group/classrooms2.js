@@ -1,28 +1,28 @@
 
 require.config({
-    baseUrl: 'http://edu.bjhd.gov.cn/', 　
-    paths: {　　　　　　
-        "dialog": "js/lib/layer/layer",　　　　
-        "jqtransform": "js/lib/jqTransform/jqtransform",
-        "My97DatePicker": "../lib/My97DatePicker/WdatePicker",
-        "headerSlideDown": "js/common/headerslideDown",
-        "webuploader": "js/lib/webuploader/webuploader",
-        　　　　
-    }　　
+    baseUrl: '/', 　
+    paths: {
+"dialog": "js/lib/layer/layer",        
+"jqtransform": "js/lib/jqTransform/jqtransform",
+"My97DatePicker": "../lib/My97DatePicker/WdatePicker",
+"headerSlideDown": "js/common/headerslideDown",
+"webuploader": "js/lib/webuploader/webuploader",
+        
+    }          
 });
-require(['http://edu.bjhd.gov.cn/js/lib/My97DatePicker/WdatePicker.js'],function(){
-         $("#time").on("click",function(){
-                WdatePicker({
-                el:'time',
-            })
-            
-            
-         });
-         $("#time1").on("click",function(){
-            WdatePicker({
-                el:'time1',
-            })
-         })
+require(['/js/lib/My97DatePicker/WdatePicker.js'],function(){
+ $("#time").on("click",function(){
+WdatePicker({
+el:'time',
+    })
+    
+    
+ });
+ $("#time1").on("click",function(){
+    WdatePicker({
+el:'time1',
+    })
+ })
 
 
 
@@ -81,13 +81,13 @@ require(['jqtransform','headerSlideDown','dialog'], function(jqtransform,aaaa,di
 
 	$('#set_checked').on('click',function(){
 		if($(this).siblings("input").is(':checked')){
-          $(this).removeClass('greade_checked');
-          $(this).siblings("input").removeProp('checked')
-        }
-        else{
-          $(this).addClass('greade_checked');
-          $(this).siblings("input").prop('checked','checked')
-        }
+  $(this).removeClass('greade_checked');
+  $(this).siblings("input").removeProp('checked')
+}
+else{
+  $(this).addClass('greade_checked');
+  $(this).siblings("input").prop('checked','checked')
+}
 		
 	})
 
@@ -116,12 +116,12 @@ require(['jqtransform','headerSlideDown','dialog'], function(jqtransform,aaaa,di
 	$(function () {
 	    $('.checkbox').on('click',function(){
 	      if($(this).siblings("input[type='radio']").is(':checked')){
-	        $(this).removeClass('cur');
-	        $(this).siblings("input[type='radio']").removeProp('checked')
+	$(this).removeClass('cur');
+	$(this).siblings("input[type='radio']").removeProp('checked')
 	      }
 	      else{
-	        $(this).addClass('cur');
-	        $(this).siblings("input[type='radio']").prop('checked','checked')
+	$(this).addClass('cur');
+	$(this).siblings("input[type='radio']").prop('checked','checked')
 	      }
 	    });
 	});
@@ -553,11 +553,11 @@ require(['jqtransform','headerSlideDown','dialog'], function(jqtransform,aaaa,di
 		} else{
 			var voteContent = '';
 			$("input[type=checkbox]:checked").each(function() {
-        		voteContent += $(this).attr('value')+',';
+		voteContent += $(this).attr('value')+',';
       		});
       		voteContent = voteContent.substring(0,voteContent.length-1);
-            //alert(voteContent);
-            //return;
+    //alert(voteContent);
+    //return;
 		}
 		
 		var voteId = $(this).attr('value');
@@ -644,45 +644,45 @@ require(['jqtransform','headerSlideDown','dialog'], function(jqtransform,aaaa,di
 	    var crTime = new Date();
 
 		if(voteTitle==""){
-         dialog.tips('标题不能为空！', '#titleVote', {
-          tips: [2, '#3595CC'],
-          time: 2000
-        });
-         return;
+ dialog.tips('标题不能为空！', '#titleVote', {
+  tips: [2, '#3595CC'],
+  time: 2000
+});
+ return;
        }
        if (typeof(voteType) == "undefined") { 
 		   dialog.msg('请选择投票类型',{time:1200,icon:6});
 		   return;
 		}
        if(voteContent==""){
-         dialog.tips('请输入内容！', '#conentVote', {
-          tips: [2, '#3595CC'],
-          time: 2000
-        });
-        return;
+ dialog.tips('请输入内容！', '#conentVote', {
+  tips: [2, '#3595CC'],
+  time: 2000
+});
+return;
        }
        if(allOption.replace(',','').trim()==''){
-        dialog.msg('您还未填写投票选项', {time: 1500, icon:6});
-        return;
+dialog.msg('您还未填写投票选项', {time: 1500, icon:6});
+return;
        }
        if(endTime==''){
-        dialog.msg('请选择截止日期', {time: 1500, icon:6});
-        return;
+dialog.msg('请选择截止日期', {time: 1500, icon:6});
+return;
        }
 	    $.post("/group/group/sendVoteTopic.html", {groupId:groupId,voteType:voteType,title:voteTitle,content:voteContent,allOption:allOption,endTime:endTime,crTime:crTime}
-              ,function(msg){
-                 var msg = jQuery.parseJSON(msg);
-                 if (msg.data=='对不起，您当前没有该权限') {
-                 	dialog.msg(msg.data,{time:1500,icon:2});
-                 } else{
-                 	dialog.msg('成功！',{time:1500,icon:1});
+      ,function(msg){
+ var msg = jQuery.parseJSON(msg);
+ if (msg.data=='对不起，您当前没有该权限') {
+ 	dialog.msg(msg.data,{time:1500,icon:2});
+ } else{
+ 	dialog.msg('成功！',{time:1500,icon:1});
 	     			$('.roomDl').html(msg.data);
 	     			$('#titleVote').val('');//投票标题
 	    			$('#conentVote').val('');//投票内容
 	    			//$('.roomBottom').hide();
 	    			window.location.href="#roomheader";
-                 }
-              }); 
+ }
+      }); 
 	});
 
 	//点击设为精华
@@ -690,11 +690,11 @@ require(['jqtransform','headerSlideDown','dialog'], function(jqtransform,aaaa,di
 		var flag = 1;
 		var topicId = $(this).attr('value');
 		$.post("/group/group/toDigest.html", {topicId:topicId,flag:flag}
-              ,function(msg){
-              	var msg = jQuery.parseJSON(msg);
-              	dialog.msg('成功！',{time:1500,icon:1});
-              	$('#toDigestClass').html(msg.data);
-              });
+      ,function(msg){
+      	var msg = jQuery.parseJSON(msg);
+      	dialog.msg('成功！',{time:1500,icon:1});
+      	$('#toDigestClass').html(msg.data);
+      });
 	});
 
 	//点击取消精华
@@ -702,11 +702,11 @@ require(['jqtransform','headerSlideDown','dialog'], function(jqtransform,aaaa,di
 		var flag = 2;
 		var topicId = $(this).attr('value');
 		$.post("/group/group/toDigest.html", {topicId:topicId,flag:flag}
-              ,function(msg){
-              	var msg = jQuery.parseJSON(msg);
-              	dialog.msg('成功！',{time:1500,icon:1});
-              	$('#toDigestClass').html(msg.data);
-              });
+      ,function(msg){
+      	var msg = jQuery.parseJSON(msg);
+      	dialog.msg('成功！',{time:1500,icon:1});
+      	$('#toDigestClass').html(msg.data);
+      });
 	});
 
 	//点击设为置顶
@@ -714,11 +714,11 @@ require(['jqtransform','headerSlideDown','dialog'], function(jqtransform,aaaa,di
 		var flag = 1;
 		var topicId = $(this).attr('value');
 		$.post("/group/group/toTop.html", {topicId:topicId,flag:flag}
-              ,function(msg){
-              	var msg = jQuery.parseJSON(msg);
-              	dialog.msg('成功！',{time:1500,icon:1});
-              	$('#toDigestClass').html(msg.data);
-              });
+      ,function(msg){
+      	var msg = jQuery.parseJSON(msg);
+      	dialog.msg('成功！',{time:1500,icon:1});
+      	$('#toDigestClass').html(msg.data);
+      });
 	});
 
 	//点击取消置顶
@@ -726,11 +726,11 @@ require(['jqtransform','headerSlideDown','dialog'], function(jqtransform,aaaa,di
 		var flag = 2;
 		var topicId = $(this).attr('value');
 		$.post("/group/group/toTop.html", {topicId:topicId,flag:flag}
-              ,function(msg){
-              	var msg = jQuery.parseJSON(msg);
-              	dialog.msg('成功！',{time:1500,icon:1});
-              	$('#toDigestClass').html(msg.data);
-              });
+      ,function(msg){
+      	var msg = jQuery.parseJSON(msg);
+      	dialog.msg('成功！',{time:1500,icon:1});
+      	$('#toDigestClass').html(msg.data);
+      });
 	});
 
 	//点击取消删除帖子
@@ -740,12 +740,12 @@ require(['jqtransform','headerSlideDown','dialog'], function(jqtransform,aaaa,di
 		var groupId = $(this).attr('name');
 		dialog.confirm('确定删除吗？',function(){
 			$.post("/group/group/cancelTopic.html", {topicId:topicId}
-              ,function(msg){
-              	dialog.alert(msg,function(){
-              		window.location.href='/group/group/list.html?groupId='+groupId;
-              	});
-              	
-              });
+      ,function(msg){
+      	dialog.alert(msg,function(){
+      		window.location.href='/group/group/list.html?groupId='+groupId;
+      	});
+      	
+      });
 		});
 		
 	});
@@ -762,10 +762,10 @@ require(['jqtransform','headerSlideDown','dialog'], function(jqtransform,aaaa,di
 		var userId = $(this).attr('name');
 		dialog.confirm('确定删除吗？',function(){
 			$.post("/group/group/cancelTopic.html", {topicId:topicId}
-              ,function(msg){
-              	
-              	window.location.href='/group/group/list.html?groupId='+groupId+"&userId="+userId;
-              });
+      ,function(msg){
+      	
+      	window.location.href='/group/group/list.html?groupId='+groupId+"&userId="+userId;
+      });
 		});
 	})
 

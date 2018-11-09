@@ -1,12 +1,12 @@
 // var base = (www_head == '' ? window.location.protocol+'//'+window.location.host : www_head);
-var baseDomain = "http://edu.bjhd.gov.cn/js";
+var baseDomain = "/js";
 var uploadDomain = "http://upload.bjhd.gov.cn";
 
 require.config({
 	baseUrl: baseDomain,
 	paths: {
 		"jquery": "lib/jquery/1.8.3/jquery",
-		"dialog": "lib/layer/layer",　　　　
+		"dialog": "lib/layer/layer",        
 		"jqtransform": "lib/jqTransform/jqtransform",
 		"headerSlideDown": "common/headerslideDown",
 		"popup_box": "common/popup_box"

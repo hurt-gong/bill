@@ -1,18 +1,18 @@
-require.config({　　　　
-	paths: {　　　　　　
-		"dialog": "../lib/layer/layer",　　　　
+require.config({        
+	paths: {
+		"dialog": "../lib/layer/layer",        
 		"jqtransform": "../lib/jqTransform/jqtransform",
 		"My97DatePicker": "../lib/My97DatePicker/WdatePicker",
 		"headerSlideDown": "../common/headerslideDown",
-		"job_list_tea":　"../mooc/homework/teacher/job_list",　　　　
-		"do_job":　"../mooc/homework/student/do_job",　　　
-	}　　
+		"job_list_tea":　"../mooc/homework/teacher/job_list",        
+		"do_job":　"../mooc/homework/student/do_job",          
+	}          
 });
 
 
 require(['jqtransform','headerSlideDown'], function(jqtransform,aaaa) {
 	 $(".adminBody form,.screenBar form").jqTransform();
-	 require(['http://edu.bjhd.gov.cn/js/lib/My97DatePicker/WdatePicker.js'],function(){
+	 require(['/js/lib/My97DatePicker/WdatePicker.js'],function(){
 		 $("#time").on("click",function(){
 		 		WdatePicker({
 		 		el:'time',
@@ -32,35 +32,35 @@ require(['jqtransform','headerSlideDown'], function(jqtransform,aaaa) {
 
 	 //查看解析
     $('#tidetail>.analysis').find('h3').find('.look_analysis').on('click',function(){
-        $(this).parent().parent().find('.look_analysis_box').toggle();
+$(this).parent().parent().find('.look_analysis_box').toggle();
     });
 
     //查看作答详情
     $('#tidetail>.analysis').find('h3').find('span').find('.look_respond').on('click',function(){
-        $('.look_respond_box').toggle().find('h2').find('.close_box').on('click',function(){
-            $('.look_respond_box').css('display','none')
-        });
-        $("#examId").val($(this).attr("data-examId"));
-        var options = $(this).attr("data-options");
-        options = options.replace('[','');
-        options = options.replace(']','');
-        var optionArray = options.split(',');
-        var li = '';
-        for (var i = 0; i < optionArray.length; i++) {
-        	li += '<li data-value="'+optionArray[i].replace(' ','')+'"><span>'+optionArray[i]+'</span></li>'
-        };
-        $('#options').empty();
-        $('#options').append(li);
-        $(".atudent_name").empty();
+$('.look_respond_box').toggle().find('h2').find('.close_box').on('click',function(){
+    $('.look_respond_box').css('display','none')
+});
+$("#examId").val($(this).attr("data-examId"));
+var options = $(this).attr("data-options");
+options = options.replace('[','');
+options = options.replace(']','');
+var optionArray = options.split(',');
+var li = '';
+for (var i = 0; i < optionArray.length; i++) {
+	li += '<li data-value="'+optionArray[i].replace(' ','')+'"><span>'+optionArray[i]+'</span></li>'
+};
+$('#options').empty();
+$('#options').append(li);
+$(".atudent_name").empty();
        
 
-        $(".look_respond_con").find("ul").find("li").on("click",function(){
+$(".look_respond_con").find("ul").find("li").on("click",function(){
 	    	$("#options li").each(function(){
 	    		$(this).removeClass("word_change");
 	    	});
 	    	$(this).addClass("word_change");
 	    	$.ajax({
-	    		url:"http://edu.bjhd.gov.cn/homework/getStudentList",
+	    		url:"/homework/getStudentList",
 	    		type:"post",
 	    		data:{
 	    			"hwId":$("#hwId").val(),
@@ -133,21 +133,21 @@ require(['job_list_tea','dialog'],function(list,dialog){
 require(['do_job','dialog'],function(job,dialog){
 
 	$('input[type="radio"]').siblings('label').on('click',function(){
-        if(!$(this).siblings("input[type='radio']").is(':checked')){
-           $(this).addClass('asncheck').parent().siblings().find('input[type="radio"]').siblings('label').removeClass('asncheck');
-           $(this).siblings("input[type='radio']").prop('checked','checked').parent().siblings().find('input[type="radio"]').removeProp('checked');
-        }
+if(!$(this).siblings("input[type='radio']").is(':checked')){
+   $(this).addClass('asncheck').parent().siblings().find('input[type="radio"]').siblings('label').removeClass('asncheck');
+   $(this).siblings("input[type='radio']").prop('checked','checked').parent().siblings().find('input[type="radio"]').removeProp('checked');
+}
      });
 
 	$('input[type="checkbox"]').siblings('label').on('click',function(){
-        if($(this).siblings("input[type='checkbox']").is(':checked')){
-          $(this).removeClass('asncheck');
-          $(this).siblings("input[type='checkbox']").removeProp('checked')
-        }
-        else{
-          $(this).addClass('asncheck');
-          $(this).siblings("input[type='checkbox']").prop('checked','checked')
-        }
+if($(this).siblings("input[type='checkbox']").is(':checked')){
+  $(this).removeClass('asncheck');
+  $(this).siblings("input[type='checkbox']").removeProp('checked')
+}
+else{
+  $(this).addClass('asncheck');
+  $(this).siblings("input[type='checkbox']").prop('checked','checked')
+}
     });
 
 	var questionTotal = $("#questionTotal").val();

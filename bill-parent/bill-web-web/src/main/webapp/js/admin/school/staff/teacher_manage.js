@@ -1,9 +1,9 @@
 /**校-课程管理-课程管理*/
-require.config({　　　　
+require.config({        
 	paths: {
 		"jqtransform": "../../../lib/jqTransform/jqtransform",
 		"headerSlideDown": "../../../common/headerslideDown",　
-	}　　
+	}          
 });
 
 

@@ -404,12 +404,12 @@ $('div.userArea').hover(function(){
 	})
 })
 ;
-require.config({　　　　
-	paths: {　　　　　　
-		"dialog": "../lib/layer/layer",　　　　
+require.config({        
+	paths: {
+		"dialog": "../lib/layer/layer",        
 		"jqtransform": "../lib/jqTransform/jqtransform",
-		 "headerSlideDown": "../common/headerslideDown",　　　　
-	}　　
+		 "headerSlideDown": "../common/headerslideDown",        
+	}          
 });
 
 

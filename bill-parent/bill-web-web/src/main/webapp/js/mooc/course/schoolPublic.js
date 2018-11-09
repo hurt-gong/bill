@@ -1,106 +1,106 @@
 require.config({
-    baseUrl: 'http://edu.bjhd.gov.cn/', 　
-    paths: {　　　　　　
-        "dialog": "js/lib/layer/layer",
-        "webuploader": "js/lib/webuploader/webuploader",
-        "headerSlideDown": "js/common/headerslideDown",
-        　　　　
-    }　　
+    baseUrl: '/', 　
+    paths: {
+"dialog": "js/lib/layer/layer",
+"webuploader": "js/lib/webuploader/webuploader",
+"headerSlideDown": "js/common/headerslideDown",
+        
+    }          
 });
 
 
 require(['js/admin/common/adminAlertBox','headerSlideDown','dialog'], function(adminAlertBox,aaaa,dialog) {
 	require(['webuploader'], function(webuploader) {
-        // 初始化Web Uploader
-        var uploader = webuploader.create({
+// 初始化Web Uploader
+var uploader = webuploader.create({
 
-            // 选完文件后，是否自动上传。
-            auto: true,
+    // 选完文件后，是否自动上传。
+    auto: true,
 
-            // swf文件路径
-            swf: 'http://edu.bjhd.gov.cn/js/lib/webuploader/Uploader.swf',
+    // swf文件路径
+    swf: '/js/lib/webuploader/Uploader.swf',
 
-            // 文件接收服务端。
-            server: 'http://webuploader.duapp.com/server/fileupload.php',
+    // 文件接收服务端。
+    server: 'http://webuploader.duapp.com/server/fileupload.php',
 
-            // 选择文件的按钮。可选。
-            // 内部根据当前运行是创建，可能是input元素，也可能是flash.
-            pick: '#filePicker',
+    // 选择文件的按钮。可选。
+    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+    pick: '#filePicker',
 
-            // 只允许选择图片文件。
-            accept: {
-                title: 'Images',
-                extensions: 'gif,jpg,jpeg,bmp,png',
-                mimeTypes: 'image/*'
-            }
-        });
-        var uploader = webuploader.create({
+    // 只允许选择图片文件。
+    accept: {
+title: 'Images',
+extensions: 'gif,jpg,jpeg,bmp,png',
+mimeTypes: 'image/*'
+    }
+});
+var uploader = webuploader.create({
 
-            // 选完文件后，是否自动上传。
-            auto: true,
+    // 选完文件后，是否自动上传。
+    auto: true,
 
-            // swf文件路径
-            swf: 'http://edu.bjhd.gov.cn/js/lib/webuploader/Uploader.swf',
+    // swf文件路径
+    swf: '/js/lib/webuploader/Uploader.swf',
 
-            // 文件接收服务端。
-            server: 'http://webuploader.duapp.com/server/fileupload.php',
+    // 文件接收服务端。
+    server: 'http://webuploader.duapp.com/server/fileupload.php',
 
-            // 选择文件的按钮。可选。
-            // 内部根据当前运行是创建，可能是input元素，也可能是flash.
-            pick: '#filePicker2',
+    // 选择文件的按钮。可选。
+    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+    pick: '#filePicker2',
 
-            // 只允许选择图片文件。
-            accept: {
-                title: 'Images',
-                extensions: 'gif,jpg,jpeg,bmp,png',
-                mimeTypes: 'image/*'
-            }
-        });
+    // 只允许选择图片文件。
+    accept: {
+title: 'Images',
+extensions: 'gif,jpg,jpeg,bmp,png',
+mimeTypes: 'image/*'
+    }
+});
 
-        var uploader = webuploader.create({
+var uploader = webuploader.create({
 
-            // 选完文件后，是否自动上传。
-            auto: true,
+    // 选完文件后，是否自动上传。
+    auto: true,
 
-            // swf文件路径
-            swf: 'http://edu.bjhd.gov.cn/js/lib/webuploader/Uploader.swf',
+    // swf文件路径
+    swf: '/js/lib/webuploader/Uploader.swf',
 
-            // 文件接收服务端。
-            server: 'http://webuploader.duapp.com/server/fileupload.php',
+    // 文件接收服务端。
+    server: 'http://webuploader.duapp.com/server/fileupload.php',
 
-            // 选择文件的按钮。可选。
-            // 内部根据当前运行是创建，可能是input元素，也可能是flash.
-            pick: '#filePicker3',
+    // 选择文件的按钮。可选。
+    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+    pick: '#filePicker3',
 
-            // 只允许选择图片文件。
-            accept: {
-                title: 'Images',
-                extensions: 'gif,jpg,jpeg,bmp,png',
-                mimeTypes: 'image/*'
-            }
-        });
-        var uploader = webuploader.create({
+    // 只允许选择图片文件。
+    accept: {
+title: 'Images',
+extensions: 'gif,jpg,jpeg,bmp,png',
+mimeTypes: 'image/*'
+    }
+});
+var uploader = webuploader.create({
 
-            // 选完文件后，是否自动上传。
-            auto: true,
+    // 选完文件后，是否自动上传。
+    auto: true,
 
-            // swf文件路径
-            swf: 'http://edu.bjhd.gov.cn/js/lib/webuploader/Uploader.swf',
+    // swf文件路径
+    swf: '/js/lib/webuploader/Uploader.swf',
 
-            // 文件接收服务端。
-            server: 'http://webuploader.duapp.com/server/fileupload.php',
+    // 文件接收服务端。
+    server: 'http://webuploader.duapp.com/server/fileupload.php',
 
-            // 选择文件的按钮。可选。
-            // 内部根据当前运行是创建，可能是input元素，也可能是flash.
-            pick: '#filePicker4',
+    // 选择文件的按钮。可选。
+    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+    pick: '#filePicker4',
 
-            // 只允许选择图片文件。
-            accept: {
-                title: 'Images',
-                extensions: 'gif,jpg,jpeg,bmp,png',
-                mimeTypes: 'image/*'
-            }
-        });
+    // 只允许选择图片文件。
+    accept: {
+title: 'Images',
+extensions: 'gif,jpg,jpeg,bmp,png',
+mimeTypes: 'image/*'
+    }
+});
 
     })
 
@@ -165,9 +165,9 @@ $('.mainCon').find('label').on('click',function(){
 	//下拉框选中事件
 	$("body").on('change','#mySelect',function(){
 		$("#schoolId").val($(this).val()); 
-        $("#phaseId").val("");
-        $("#gradeId").val("");
-        $("#subjectId").val("");
+$("#phaseId").val("");
+$("#gradeId").val("");
+$("#subjectId").val("");
 		$("#schoolPublic").submit();  
 	});
 
@@ -180,7 +180,7 @@ $('.mainCon').find('label').on('click',function(){
 		 		$("#schoolPublic").submit();
 		 	}
 		 });
-          dialog.msg('操作成功!',{time:2000,icon:1});
+  dialog.msg('操作成功!',{time:2000,icon:1});
 	 });
 
 
@@ -192,17 +192,17 @@ $('.mainCon').find('label').on('click',function(){
 		 		$("#schoolPublic").submit();
 		 	}
 		 });
-         dialog.msg('删除成功!',{time:2000,icon:1});
+ dialog.msg('删除成功!',{time:2000,icon:1});
 	 });
 
 
 	 //批量删除
 	 $('body').on('click','.batchdelete',function(){
 	 	var a = $('.asncheck').attr('class');
-        if(a==null){
-        dialog.msg('您尚未选择要删除的课程，请先选择!',{time:6000,icon:2});
-        return;
-        }
+if(a==null){
+dialog.msg('您尚未选择要删除的课程，请先选择!',{time:6000,icon:2});
+return;
+}
 	 	if (a=='asncheck') {
 	 		$('.asncheck').prev().attr('checked','checked');
 	 	};
@@ -212,19 +212,19 @@ $('.mainCon').find('label').on('click',function(){
 	 	})
 	 	var array = aar.substring(0,aar.length-1);
 	 	$.ajax({
-        url:"/mooc/course/batchDelete.html",
-        data:{array:array},
-        type:"post",
-        async:false,
-        dataType:"json",
-        success:function(data){
-             if(data.success){
-                dialog.msg(data.data,{time:2000,icon:1});
-                $("#schoolPublic").submit();
-                window.location.reload();
-            }
-        }
-        });
+url:"/mooc/course/batchDelete.html",
+data:{array:array},
+type:"post",
+async:false,
+dataType:"json",
+success:function(data){
+     if(data.success){
+dialog.msg(data.data,{time:2000,icon:1});
+$("#schoolPublic").submit();
+window.location.reload();
+    }
+}
+});
 	 });
 
 
@@ -245,20 +245,20 @@ $('.mainCon').find('label').on('click',function(){
 	 		$('.video').html(html);
 	 		for(var i=0;i<videoList.length;i++){
 	 		var time=videoList[i].video.duration;
-            var h=Math.floor(time/3600);
-            var m=Math.floor((time-h*3600)/60);
-            var s=(time-h*3600)%60;
-            if(h<10){
-                h="0"+h;
-            }
-            if(m<10){
-                m="0"+m;
-            }
-            if(s<10){
-                s="0"+s;
-            }
+    var h=Math.floor(time/3600);
+    var m=Math.floor((time-h*3600)/60);
+    var s=(time-h*3600)%60;
+    if(h<10){
+h="0"+h;
+    }
+    if(m<10){
+m="0"+m;
+    }
+    if(s<10){
+s="0"+s;
+    }
 	 			html+="<li class='cf'><p class='leftP'><span class='classOne'>课时"+(i+1)+"</span><span>《"+videoList[i].video.title+"》</span></p>";
-                html+="<p class='rightP'><b>时长:"+h+":"+m+":"+s+"</b><a href='/mooc/course/details.html?id="+videoList[i].video.courseNo+"&listenUrl="+videoList[i].video.listenUrl+"&videoId="+videoList[i].video.id+"'>查看</a><a href='javascript:;' class='delVideo' value='"+videoList[i].video.id+"'>删除课程</a></p></li>";
+html+="<p class='rightP'><b>时长:"+h+":"+m+":"+s+"</b><a href='/mooc/course/details.html?id="+videoList[i].video.courseNo+"&listenUrl="+videoList[i].video.listenUrl+"&videoId="+videoList[i].video.id+"'>查看</a><a href='javascript:;' class='delVideo' value='"+videoList[i].video.id+"'>删除课程</a></p></li>";
 	 		}
 	 		$('.video').html(html);
 	 	});
@@ -287,26 +287,26 @@ $('.mainCon').find('label').on('click',function(){
 	 		$('.video').html(html);
 	 		for(var i=0;i<videoList.length;i++){
 	 		var time=videoList[i].video.duration;
-            var h=Math.floor(time/3600);
-            var m=Math.floor((time-h*3600)/60);
-            var s=(time-h*3600)%60;
-            if(h<10){
-                h="0"+h;
-            }
-            if(m<10){
-                m="0"+m;
-            }
-            if(s<10){
-                s="0"+s;
-            }
+    var h=Math.floor(time/3600);
+    var m=Math.floor((time-h*3600)/60);
+    var s=(time-h*3600)%60;
+    if(h<10){
+h="0"+h;
+    }
+    if(m<10){
+m="0"+m;
+    }
+    if(s<10){
+s="0"+s;
+    }
 	 			html+="<li class='cf'><p class='leftP'><span class='classOne'>课时"+(i+1)+"</span><span>《"+videoList[i].video.title+"》</span></p>";
-	            html+="<p class='rightP'><b>时长:"+h+":"+m+":"+s+"</b><a href='/mooc/course/details.html?id="+videoList[i].video.courseNo+"&listenUrl="+videoList[i].video.listenUrl+"&videoId="+videoList[i].video.id+"'>查看</a><a href='javascript:;' class='delVideo' value='"+videoList[i].id+"'>删除该课时</a></p></li>";
+	    html+="<p class='rightP'><b>时长:"+h+":"+m+":"+s+"</b><a href='/mooc/course/details.html?id="+videoList[i].video.courseNo+"&listenUrl="+videoList[i].video.listenUrl+"&videoId="+videoList[i].video.id+"'>查看</a><a href='javascript:;' class='delVideo' value='"+videoList[i].id+"'>删除该课时</a></p></li>";
 	 		}
 	 		$('.video').html(html);
 		 	});
     },
     error:function(){
-        return false;
+return false;
     }
     });
 dialog.msg('删除成功!',{time:2000,icon:1});

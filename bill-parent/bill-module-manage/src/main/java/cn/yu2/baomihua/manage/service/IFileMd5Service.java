@@ -1,6 +1,6 @@
 /**
  * ISMSService.java cn.bjjh.comment.service Copyright (c) 2015,
- * 北京微课创景教育科技有限公司版权所有.
+ *           .
  */
 
 package cn.yu2.baomihua.manage.service;

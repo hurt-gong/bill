@@ -1,12 +1,12 @@
 /**区-区教学管理-年级配课
 *  校-课程管理-年级配课
 */
-require.config({　　　　
-	paths: {　　　　　　
-		"dialog": "../../../lib/layer/layer",　　　　
+require.config({        
+	paths: {
+		"dialog": "../../../lib/layer/layer",        
 		"jqtransform": "../../../lib/jqTransform/jqtransform",
 		"headerSlideDown": "../../../common/headerslideDown",　
-	}　　
+	}          
 });
 
 

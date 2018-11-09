@@ -487,11 +487,11 @@ $('div.userArea').hover(function(){
 	})
 })
 ;
-require.config({　　　　
-	paths: {　　　　　　
+require.config({        
+	paths: {
 		"dialog": "../lib/layer/layer",
-		"headerSlideDown": "../common/headerslideDown",　　　　
-	}　　
+		"headerSlideDown": "../common/headerslideDown",        
+	}          
 });
 
 

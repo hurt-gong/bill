@@ -4,7 +4,7 @@ define(['../../js/lib/layer/layer'],function(dialog){
 
 	function paper_main(){
 		$.ajax({
-			url:"http://edu.bjhd.gov.cn/mooc/paper/teacher/transferPaper",
+			url:"/mooc/paper/teacher/transferPaper",
 			type:"post",
 			data:{"moocId":$("#moocId").val(),
 				  "periodId":$("#periodId").val()
@@ -16,36 +16,36 @@ define(['../../js/lib/layer/layer'],function(dialog){
 
 				 //查看解析
 			    $('#tidetail>.analysis').find('h3').find('.look_analysis').on('click',function(){
-			        $(this).parent().parent().find('.look_analysis_box').toggle();
+			$(this).parent().parent().find('.look_analysis_box').toggle();
 			    });
 
 			    //查看作答详情
 			    $('#tidetail>.analysis').find('h3').find('span').find('.look_respond').on('click',function(){
-			        $('.look_respond_box').toggle().find('h2').find('.close_box').on('click',function(){
-			            $('.look_respond_box').css('display','none')
-			        });
-			        $("#examId").val($(this).attr("data-examId"));
-			        var options = $(this).attr("data-options");
-			        options = options.replace('[','');
-			        options = options.replace(']','');
-			        var optionArray = options.split(',');
-			        var li = '';
-			        for (var i = 0; i < optionArray.length; i++) {
-			        	li += '<li data-value="'+optionArray[i].replace(' ','')+'"><span>'+optionArray[i]+'</span></li>'
-			        };
+			$('.look_respond_box').toggle().find('h2').find('.close_box').on('click',function(){
+			    $('.look_respond_box').css('display','none')
+			});
+			$("#examId").val($(this).attr("data-examId"));
+			var options = $(this).attr("data-options");
+			options = options.replace('[','');
+			options = options.replace(']','');
+			var optionArray = options.split(',');
+			var li = '';
+			for (var i = 0; i < optionArray.length; i++) {
+				li += '<li data-value="'+optionArray[i].replace(' ','')+'"><span>'+optionArray[i]+'</span></li>'
+			};
 			       $('#options').empty();
 			       $('#options').append(li);
-			        $(".atudent_name").empty();
+			$(".atudent_name").empty();
 			       
 
-			        $(".look_respond_con").find("ul").find("li").on("click",function(){
+			$(".look_respond_con").find("ul").find("li").on("click",function(){
 			    	
 				    	$("#options li").each(function(){
 				    		$(this).removeClass("word_change");
 				    	});
 				    	$(this).addClass("word_change");
 				    	$.ajax({
-				    		url:"http://edu.bjhd.gov.cn/mooc/paper/teacher/getStudentListByOption",
+				    		url:"/mooc/paper/teacher/getStudentListByOption",
 				    		type:"post",
 				    		data:{
 				    			"paperId":$("#paperId").val(),
@@ -90,13 +90,13 @@ define(['../../js/lib/layer/layer'],function(dialog){
 								$("._names").find("span").find("label").click(function(){
 						       
 									if(!$(this).siblings("input[type='radio']").is(':checked')){
-								        $(this).addClass('label_checked').parent().siblings().find('input[type="radio"]').siblings('label').removeClass('label_checked');
-								        $(this).siblings("input[type='radio']").prop('checked','checked').parent().siblings().find('input[type="radio"]').removeProp('checked');
+								$(this).addClass('label_checked').parent().siblings().find('input[type="radio"]').siblings('label').removeClass('label_checked');
+								$(this).siblings("input[type='radio']").prop('checked','checked').parent().siblings().find('input[type="radio"]').removeProp('checked');
 								    }
 
 
 
-							        loadAnswerDetails();
+							loadAnswerDetails();
 								})
 
 						    }
@@ -109,21 +109,21 @@ define(['../../js/lib/layer/layer'],function(dialog){
 			   
 				<!--做作业-->
 				$('.options input[type="radio"]').siblings('label').on('click',function(){
-			        if(!$(this).siblings("input[type='radio']").is(':checked')){
-			            $(this).addClass('asncheck').parent().siblings().find('input[type="radio"]').siblings('label').removeClass('asncheck');
-			            $(this).siblings("input[type='radio']").prop('checked','checked').parent().siblings().find('input[type="radio"]').removeProp('checked');
-			        }
+			if(!$(this).siblings("input[type='radio']").is(':checked')){
+			    $(this).addClass('asncheck').parent().siblings().find('input[type="radio"]').siblings('label').removeClass('asncheck');
+			    $(this).siblings("input[type='radio']").prop('checked','checked').parent().siblings().find('input[type="radio"]').removeProp('checked');
+			}
 			     });
 
 				$('input[type="checkbox"]').siblings('label').on('click',function(){
-			        if($(this).siblings("input[type='checkbox']").is(':checked')){
-			          $(this).removeClass('asncheck');
-			          $(this).siblings("input[type='checkbox']").removeProp('checked')
-			        }
-			        else{
-			          $(this).addClass('asncheck');
-			          $(this).siblings("input[type='checkbox']").prop('checked','checked')
-			        }
+			if($(this).siblings("input[type='checkbox']").is(':checked')){
+			  $(this).removeClass('asncheck');
+			  $(this).siblings("input[type='checkbox']").removeProp('checked')
+			}
+			else{
+			  $(this).addClass('asncheck');
+			  $(this).siblings("input[type='checkbox']").prop('checked','checked')
+			}
 			    });
 
 				var questionTotal = $("#questionTotal").val();
@@ -190,7 +190,7 @@ define(['../../js/lib/layer/layer'],function(dialog){
 	//提交作业
 	function submit_job(examIds,typeIds,answers){
 		$.ajax({
-			url:"http://edu.bjhd.gov.cn/mooc/paper/studentpaper/submitJob",
+			url:"/mooc/paper/studentpaper/submitJob",
 			type:"post",
 			data:JSON.stringify({
 				"paperId":$("#paperId").val(),
@@ -207,7 +207,7 @@ define(['../../js/lib/layer/layer'],function(dialog){
 					$(".exercisesLeft").append(json.data);
 					 //查看解析
 				    $('#tidetail>.analysis').find('h3').find('.look_analysis').unbind('click').on('click',function(){
-				        $(this).parent().parent().find('.look_analysis_box').toggle();
+				$(this).parent().parent().find('.look_analysis_box').toggle();
 				    });
 				});
 			}
@@ -221,7 +221,7 @@ function loadAnswerDetails(){
 	var paperId = $("#paperId").val();
 	if(studentId!=''&&studentId!=null){
 		$.ajax({
-			url:"http://edu.bjhd.gov.cn/mooc/paper/teacher/getReadOverList",
+			url:"/mooc/paper/teacher/getReadOverList",
 			type:"post",
 			data:{
 				"studentId":studentId,
@@ -252,7 +252,7 @@ function loadAnswerDetails(){
 function updateRightRate(rightRate,examId){
 
 	$.ajax({
-		url:"http://edu.bjhd.gov.cn/mooc/paper/teacher/updateRightRate",
+		url:"/mooc/paper/teacher/updateRightRate",
 		type:"post",
 		data:{
 			"paperId":$("#paperId").val(),

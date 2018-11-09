@@ -12,7 +12,7 @@
 		<!-- <module>hd-module-mooc</module>
 		<module>hd-module-statistics</module>
 		<module>hd-module-group</module>-->
-		<module>hd-web-api</module>
+		<module>bill-web-api</module>
 		<module>bill-module-manage</module> 
 		<module>bill-web-web</module>
 	</modules>

@@ -1,14 +1,14 @@
-require.config({　　
-	baseUrl: 'http://edu.bjhd.gov.cn/', 　　
-	paths: {　　　　　　
-		"dialog": "js/lib/layer/layer",　　　　
+require.config({          
+	baseUrl: '/',           
+	paths: {
+		"dialog": "js/lib/layer/layer",        
 		"jqtransform": "js/lib/jqTransform/jqtransform",
 		"headerSlideDown": "js/common/headerslideDown",
 
-        　　　　
         
-        "webuploader": "js/lib/webuploader/webuploader",　　　
-	}　　
+
+"webuploader": "js/lib/webuploader/webuploader",          
+	}          
 });
 
 
@@ -86,96 +86,96 @@ $(function(){
 	
 })
 	require(['webuploader'], function(webuploader) {
-        // 初始化Web Uploader
-        var uploader = webuploader.create({
+// 初始化Web Uploader
+var uploader = webuploader.create({
 
-            // 选完文件后，是否自动上传。
-            auto: true,
+    // 选完文件后，是否自动上传。
+    auto: true,
 
-            // swf文件路径
-            swf: 'http://edu.bjhd.gov.cn/js/lib/webuploader/Uploader.swf',
+    // swf文件路径
+    swf: '/js/lib/webuploader/Uploader.swf',
 
-            // 文件接收服务端。
-            server: 'http://webuploader.duapp.com/server/fileupload.php',
+    // 文件接收服务端。
+    server: 'http://webuploader.duapp.com/server/fileupload.php',
 
-            // 选择文件的按钮。可选。
-            // 内部根据当前运行是创建，可能是input元素，也可能是flash.
-            pick: '#filePicker',
+    // 选择文件的按钮。可选。
+    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+    pick: '#filePicker',
 
-            // 只允许选择图片文件。
-            accept: {
-                title: 'Images',
-                extensions: 'gif,jpg,jpeg,bmp,png',
-                mimeTypes: 'image/*'
-            }
-        });
-        var uploader = webuploader.create({
+    // 只允许选择图片文件。
+    accept: {
+title: 'Images',
+extensions: 'gif,jpg,jpeg,bmp,png',
+mimeTypes: 'image/*'
+    }
+});
+var uploader = webuploader.create({
 
-            // 选完文件后，是否自动上传。
-            auto: true,
+    // 选完文件后，是否自动上传。
+    auto: true,
 
-            // swf文件路径
-            swf: 'http://edu.bjhd.gov.cn/js/lib/webuploader/Uploader.swf',
+    // swf文件路径
+    swf: '/js/lib/webuploader/Uploader.swf',
 
-            // 文件接收服务端。
-            server: 'http://webuploader.duapp.com/server/fileupload.php',
+    // 文件接收服务端。
+    server: 'http://webuploader.duapp.com/server/fileupload.php',
 
-            // 选择文件的按钮。可选。
-            // 内部根据当前运行是创建，可能是input元素，也可能是flash.
-            pick: '#filePicker1',
+    // 选择文件的按钮。可选。
+    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+    pick: '#filePicker1',
 
-            // 只允许选择图片文件。
-            accept: {
-                title: 'Images',
-                extensions: 'gif,jpg,jpeg,bmp,png',
-                mimeTypes: 'image/*'
-            }
-        });
+    // 只允许选择图片文件。
+    accept: {
+title: 'Images',
+extensions: 'gif,jpg,jpeg,bmp,png',
+mimeTypes: 'image/*'
+    }
+});
 
-        var uploader = webuploader.create({
+var uploader = webuploader.create({
 
-            // 选完文件后，是否自动上传。
-            auto: true,
+    // 选完文件后，是否自动上传。
+    auto: true,
 
-            // swf文件路径
-            swf: 'http://edu.bjhd.gov.cn/js/lib/webuploader/Uploader.swf',
+    // swf文件路径
+    swf: '/js/lib/webuploader/Uploader.swf',
 
-            // 文件接收服务端。
-            server: 'http://webuploader.duapp.com/server/fileupload.php',
+    // 文件接收服务端。
+    server: 'http://webuploader.duapp.com/server/fileupload.php',
 
-            // 选择文件的按钮。可选。
-            // 内部根据当前运行是创建，可能是input元素，也可能是flash.
-            pick: '#filePicker2',
+    // 选择文件的按钮。可选。
+    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+    pick: '#filePicker2',
 
-            // 只允许选择图片文件。
-            accept: {
-                title: 'Images',
-                extensions: 'gif,jpg,jpeg,bmp,png',
-                mimeTypes: 'image/*'
-            }
-        });
-        /*var uploader = webuploader.create({
+    // 只允许选择图片文件。
+    accept: {
+title: 'Images',
+extensions: 'gif,jpg,jpeg,bmp,png',
+mimeTypes: 'image/*'
+    }
+});
+/*var uploader = webuploader.create({
 
-            // 选完文件后，是否自动上传。
-            auto: true,
+    // 选完文件后，是否自动上传。
+    auto: true,
 
-            // swf文件路径
-            swf: 'http://edu.bjhd.gov.cn/js/lib/webuploader/Uploader.swf',
+    // swf文件路径
+    swf: '/js/lib/webuploader/Uploader.swf',
 
-            // 文件接收服务端。
-            server: 'http://webuploader.duapp.com/server/fileupload.php',
+    // 文件接收服务端。
+    server: 'http://webuploader.duapp.com/server/fileupload.php',
 
-            // 选择文件的按钮。可选。
-            // 内部根据当前运行是创建，可能是input元素，也可能是flash.
-            pick: '#filePicker4',
+    // 选择文件的按钮。可选。
+    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+    pick: '#filePicker4',
 
-            // 只允许选择图片文件。
-            accept: {
-                title: 'Images',
-                extensions: 'gif,jpg,jpeg,bmp,png',
-                mimeTypes: 'image/*'
-            }
-        });*/
+    // 只允许选择图片文件。
+    accept: {
+title: 'Images',
+extensions: 'gif,jpg,jpeg,bmp,png',
+mimeTypes: 'image/*'
+    }
+});*/
 
     });
 	//图片轮播
@@ -217,7 +217,7 @@ $('#play_btn').on('click',function(){
 		$('.play_moveleft').stop().animate({
 			"width":"910px"
 		},900)
-		$('.play_movecenter>img').attr('src','http://edu.bjhd.gov.cn/img/admin/play_04.jpg')
+		$('.play_movecenter>img').attr('src','/img/admin/play_04.jpg')
 		$playFlag = false;
 	}else{
 		$('.play_moveright').stop().animate({
@@ -226,12 +226,12 @@ $('#play_btn').on('click',function(){
 		$('.play_moveleft').stop().animate({
 			"width":"1090px"
 		},900)
-		$('.play_movecenter>img').attr('src','http://edu.bjhd.gov.cn/img/admin/play_04a.jpg');
+		$('.play_movecenter>img').attr('src','/img/admin/play_04a.jpg');
 		$playFlag = true;
 	}
 });
 flowplayer("player", {
-					src : 'http://edu.bjhd.gov.cn/js/lib/flowplayer/flowplayer.commercial-3.2.18.swf',
+					src : '/js/lib/flowplayer/flowplayer.commercial-3.2.18.swf',
 					bgcolor : '#000000',
 					width : '100%',
 					height : '100%',
@@ -242,73 +242,73 @@ flowplayer("player", {
 					SeamlessTabbing : 'false'
 				},{
 					clip :  {
-			        	autoPlay : false,
-			        	autoBuffering : true
+				autoPlay : false,
+				autoBuffering : true
 				    	},
 			    	playlist : [ // playlist is an array of Clips, hence [...]
 			    		
 					    {
-					        url : 'http://play.abc.com/2.mp4',
-					        // url : 'http://192.168.1.184:8080/mp4/123.mp4?start=238.88',
-					        // url : "http://192.168.1.184:8080/flv/rBAXzVamT4SABat1BmKKHQmPGpc006.flv",
-					        autoPlay : true,
-					        title : '一休',
-					        details : {
-					            date : '03/24/2008',
-					            creator : 'John Doe',
-					            subject : ['culture', 'traveling', 'scandinavia']
-					        }
+					url : 'http://play.abc.com/2.mp4',
+					// url : 'http://192.168.1.184:8080/mp4/123.mp4?start=238.88',
+					// url : "http://192.168.1.184:8080/flv/rBAXzVamT4SABat1BmKKHQmPGpc006.flv",
+					autoPlay : true,
+					title : '一休',
+					details : {
+					    date : '03/24/2008',
+					    creator : 'John Doe',
+					    subject : ['culture', 'traveling', 'scandinavia']
+					}
 					    },
 					    {
-					        url : 'http://play.abc.com/3.mp4',
-					        autoPlay: true,
-					        title : '一休',
-					        details : {
-					            date : '03/24/2008',
-					            creator : 'John Doe',
-					            subject : ['culture', 'traveling', 'scandinavia']
-					        }
+					url : 'http://play.abc.com/3.mp4',
+					autoPlay: true,
+					title : '一休',
+					details : {
+					    date : '03/24/2008',
+					    creator : 'John Doe',
+					    subject : ['culture', 'traveling', 'scandinavia']
+					}
 					    },
 					    {
-					        // "standard" flowplayer properties
-					        url : 'http://static.bjjh.org.cn/group1/M00/00/08/rBAXzVamT4SABat1BmKKHQmPGpc006.flv',
-					        autoPlay : true,
-					        // custom property
-					        title : '一休',
-					        // custom properties can also be objects such as here
-					        details : {
-					            date : '03/24/2008',
-					            creator : 'John Doe',
-					            subject : ['culture', 'traveling', 'scandinavia']
-					        }
+					// "standard" flowplayer properties
+					url : 'http://static.bjjh.org.cn/group1/M00/00/08/rBAXzVamT4SABat1BmKKHQmPGpc006.flv',
+					autoPlay : true,
+					// custom property
+					title : '一休',
+					// custom properties can also be objects such as here
+					details : {
+					    date : '03/24/2008',
+					    creator : 'John Doe',
+					    subject : ['culture', 'traveling', 'scandinavia']
+					}
 					    }
 			      	],
 			      	plugins: { // load one or more plugins
-			          controls: { // load the controls plugin
+			  controls: { // load the controls plugin
 			 
-			              // always: where to find the Flash object
-			              url : 'http://edu.bjhd.gov.cn/js/lib/flowplayer/flowplayer.controls-3.2.16.swf',
+			      // always: where to find the Flash object
+			      url : '/js/lib/flowplayer/flowplayer.controls-3.2.16.swf',
 			 
-			              // now the custom options of the Flash object
-			              playlist : false,
-			              backgroundColor : '#000000',
-			              tooltips : { // this plugin object exposes a 'tooltips' object
-			                  buttons : true,
-			                  fullscreen : '全屏',
-			                  fullscreenExit : '退出',
-			                  play : '播放',
-			                  pause : '暂停',
-			                  mute : '静音',
-			                  unmute : '声音',
-			                  stop : '停止',
-			                  previous : '上一个',
-			                  next : '下一个',
-			                  scrubber : 'scrubber',
-			                  volume : 'volume'
-			              }
-			        	}
+			      // now the custom options of the Flash object
+			      playlist : false,
+			      backgroundColor : '#000000',
+			      tooltips : { // this plugin object exposes a 'tooltips' object
+			  buttons : true,
+			  fullscreen : '全屏',
+			  fullscreenExit : '退出',
+			  play : '播放',
+			  pause : '暂停',
+			  mute : '静音',
+			  unmute : '声音',
+			  stop : '停止',
+			  previous : '上一个',
+			  next : '下一个',
+			  scrubber : 'scrubber',
+			  volume : 'volume'
+			      }
+				}
       				},
       				onFinish: function() {
-			          	//alert("Click Player to start video again");
+			  	//alert("Click Player to start video again");
 			      	}
 			});

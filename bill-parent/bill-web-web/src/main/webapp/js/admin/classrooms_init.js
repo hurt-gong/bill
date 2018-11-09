@@ -1,30 +1,30 @@
-require.config({　　　　
-	paths: {　　　　　　
-		"dialog": "../lib/layer/layer",　　　　
+require.config({        
+	paths: {
+		"dialog": "../lib/layer/layer",        
 		"jqtransform": "../lib/jqTransform/jqtransform",
 		"My97DatePicker": "../lib/My97DatePicker/WdatePicker",
-		"headerSlideDown": "../common/headerslideDown",　　　　　
-　　　　
-	}　　
+		"headerSlideDown": "../common/headerslideDown",        　
+        
+	}          
 });
 
-require(['http://edu.bjhd.gov.cn/js/lib/My97DatePicker/WdatePicker.js'],function(){
-         $("#time").on("click",function(){
-                WdatePicker({
-                el:'time',
-            })
-            
-            
-         });
-         $("#time1").on("click",function(){
-            WdatePicker({
-                el:'time1',
-            })
-         })
+require(['/js/lib/My97DatePicker/WdatePicker.js'],function(){
+ $("#time").on("click",function(){
+WdatePicker({
+el:'time',
+    })
+    
+    
+ });
+ $("#time1").on("click",function(){
+    WdatePicker({
+el:'time1',
+    })
+ })
      });
 require(['jqtransform','headerSlideDown'], function(jqtransform,aaaa) {
 	/* $(".adminBody form,.screenBar form").jqTransform();
-	 require(['http://edu.bjhd.gov.cn/js/lib/My97DatePicker/WdatePicker.js'],function(){
+	 require(['/js/lib/My97DatePicker/WdatePicker.js'],function(){
 		 $("#time").on("click",function(){
 		 		WdatePicker({
 		 		el:'time',
@@ -59,13 +59,13 @@ require(['jqtransform','headerSlideDown'], function(jqtransform,aaaa) {
 	 });
 	$('#set_checked').on('click',function(){
 		if($(this).siblings("input").is(':checked')){
-          $(this).removeClass('greade_checked');
-          $(this).siblings("input").removeProp('checked')
-        }
-        else{
-          $(this).addClass('greade_checked');
-          $(this).siblings("input").prop('checked','checked')
-        }
+  $(this).removeClass('greade_checked');
+  $(this).siblings("input").removeProp('checked')
+}
+else{
+  $(this).addClass('greade_checked');
+  $(this).siblings("input").prop('checked','checked')
+}
 		
 	})
 	$('.tieziall').on('click',function(){

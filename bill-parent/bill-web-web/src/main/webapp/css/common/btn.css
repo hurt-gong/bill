@@ -35,7 +35,7 @@
 .sub{width:60px;height:36px;background:#4f8dec;color:#fff;border:none;outline: none;display:inline-block;float:right;}
 
 
-.timeChange a em{background: url(http://edu.bjhd.gov.cn/img/common/icon_1.png) 0 -1183px no-repeat;}
+.timeChange a em{background: url(/img/common/icon_1.png) 0 -1183px no-repeat;}
 .timeChange a.change{background:#4f8dec;}
 .timeChange a.change b{color:#fff;}
 .timeChange a.change em{background-position: -1px -1106px;}

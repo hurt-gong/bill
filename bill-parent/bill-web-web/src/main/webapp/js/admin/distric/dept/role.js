@@ -1,9 +1,9 @@
-require.config({　　　　
-	paths: {　　　　　　
-		"dialog": "../../../lib/layer/layer",　　　　
+require.config({        
+	paths: {
+		"dialog": "../../../lib/layer/layer",        
 		"jqtransform": "../../../lib/jqTransform/jqtransform",
 		"headerSlideDown": "../../../common/headerslideDown",
-	}　　
+	}          
 });
 
 
@@ -158,7 +158,7 @@ require(['jqtransform','headerSlideDown','dialog'], function(jqtransform,aaaa,di
 		}else{
 			
 		}
-        $(this).parent().hide();	
+$(this).parent().hide();	
 	 });
 	 //修改角色 确定
 	 $('.updateAlert .sure').on('click',function(){
@@ -187,7 +187,7 @@ require(['jqtransform','headerSlideDown','dialog'], function(jqtransform,aaaa,di
 		}else{
 			alert('请输入名称!');
 		}
-        $(this).parent().hide();	
+$(this).parent().hide();	
 	 });
 
 	 //添加确认 点击事件

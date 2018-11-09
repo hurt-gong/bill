@@ -1,10 +1,10 @@
 /**区-区教学管理-年级设置
 */
-require.config({　　　　
-	paths: {　　　　　　
-		"dialog": "../../../lib/layer/layer",　　　　
+require.config({        
+	paths: {
+		"dialog": "../../../lib/layer/layer",        
 		"headerSlideDown": "../../../common/headerslideDown",　
-	}　　
+	}          
 });
 
 

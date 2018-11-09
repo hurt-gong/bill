@@ -1,11 +1,11 @@
-require.config({　　
-	baseUrl: 'http://edu.bjhd.gov.cn/', 　　
-	paths: {　　　　　　
-		"dialog": "js/lib/layer/layer",　　　　
+require.config({          
+	baseUrl: '/',           
+	paths: {
+		"dialog": "js/lib/layer/layer",        
 		"jqtransform": "js/lib/jqTransform/jqtransform",
 		"headerSlideDown": "js/common/headerslideDown",
-        "webuploader": "js/lib/webuploader/webuploader",
-	}　　
+"webuploader": "js/lib/webuploader/webuploader",
+	}          
 });
 
 

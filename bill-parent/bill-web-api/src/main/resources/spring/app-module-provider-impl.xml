@@ -7,5 +7,7 @@
        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
        
        <bean id="companyModule" class="cn.yu2.baomihua.openapi.module.CompanyModuleImpl" lazy-init="true"/>
+       
+       <bean id="bastpayModule" class="cn.yu2.baomihua.openapi.module.BastPayModuleImpl" lazy-init="true"/>
      
  </beans>

@@ -1,6 +1,6 @@
 /**
  * CaptchaController.java net.yunxiaoyuan.sso.controller Copyright (c) 2014,
- * 北京微课创景教育科技有限公司版权所有.
+ *           .
  */
 
 package cn.yu2.baomihua.web.controller.ucenter;

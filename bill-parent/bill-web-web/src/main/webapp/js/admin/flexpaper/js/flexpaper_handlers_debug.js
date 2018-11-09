@@ -28,8 +28,8 @@ jQuery(function() {
      * @param String link
      */
     jQuery('#documentViewer').bind('onExternalLinkClicked',function(e,link){
-        jQuery("#txt_eventlog").val('onExternalLinkClicked:' + link + '\n' + jQuery("#txt_eventlog").val());
-        window.open(link,'_flexpaper_exturl');
+jQuery("#txt_eventlog").val('onExternalLinkClicked:' + link + '\n' + jQuery("#txt_eventlog").val());
+window.open(link,'_flexpaper_exturl');
     });
 
     /**
@@ -41,7 +41,7 @@ jQuery(function() {
      * @param int total
      */
     jQuery('#documentViewer').bind('onProgress',function(e,loadedBytes,totalBytes){
-        jQuery("#txt_progress").val('onProgress:' + loadedBytes + '/' + totalBytes + '\n');
+jQuery("#txt_progress").val('onProgress:' + loadedBytes + '/' + totalBytes + '\n');
     });
 
     /**
@@ -49,7 +49,7 @@ jQuery(function() {
      *
      */
     jQuery('#documentViewer').bind('onDocumentLoading',function(e){
-        jQuery("#txt_eventlog").val('onDocumentLoading' + '\n' + jQuery("#txt_eventlog").val());
+jQuery("#txt_eventlog").val('onDocumentLoading' + '\n' + jQuery("#txt_eventlog").val());
     });
 
     /**
@@ -57,7 +57,7 @@ jQuery(function() {
      *
      */
     jQuery('#documentViewer').bind('onPageLoading',function(e,pageNumber){
-        jQuery("#txt_eventlog").val('onPageLoading:' + pageNumber + '\n' + jQuery("#txt_eventlog").val());
+jQuery("#txt_eventlog").val('onPageLoading:' + pageNumber + '\n' + jQuery("#txt_eventlog").val());
     });
 
     /**
@@ -68,7 +68,7 @@ jQuery(function() {
      * @param int pagenum
      */
     jQuery('#documentViewer').bind('onCurrentPageChanged',function(e,pagenum){
-        jQuery("#txt_eventlog").val('onCurrentPageChanged:' + pagenum + '\n' + jQuery("#txt_eventlog").val());
+jQuery("#txt_eventlog").val('onCurrentPageChanged:' + pagenum + '\n' + jQuery("#txt_eventlog").val());
     });
 
     /**
@@ -79,7 +79,7 @@ jQuery(function() {
      * @param int totalPages
      */
     jQuery('#documentViewer').bind('onDocumentLoaded',function(e,totalPages){
-        jQuery("#txt_eventlog").val('onDocumentLoaded:' + totalPages + '\n' + jQuery("#txt_eventlog").val());
+jQuery("#txt_eventlog").val('onDocumentLoaded:' + totalPages + '\n' + jQuery("#txt_eventlog").val());
     });
 
     /**
@@ -90,7 +90,7 @@ jQuery(function() {
      * @param int pageNumber
      */
     jQuery('#documentViewer').bind('onPageLoaded',function(e,pageNumber){
-        jQuery("#txt_eventlog").val('onPageLoaded:' + pageNumber + '\n' + jQuery("#txt_eventlog").val());
+jQuery("#txt_eventlog").val('onPageLoaded:' + pageNumber + '\n' + jQuery("#txt_eventlog").val());
     });
 
     /**
@@ -101,7 +101,7 @@ jQuery(function() {
      * @param int pageNumber
      */
     jQuery('#documentViewer').bind('onErrorLoadingPage',function(e,pageNumber){
-        jQuery("#txt_eventlog").val('onErrorLoadingPage:' + pageNumber + '\n' + jQuery("#txt_eventlog").val());
+jQuery("#txt_eventlog").val('onErrorLoadingPage:' + pageNumber + '\n' + jQuery("#txt_eventlog").val());
     });
 
     /**
@@ -112,7 +112,7 @@ jQuery(function() {
      * @param String errorMessage
      */
     jQuery('#documentViewer').bind('onDocumentLoadedError',function(e,errMessage){
-        jQuery("#txt_eventlog").val('onDocumentLoadedError:' + errMessage + '\n' + jQuery("#txt_eventlog").val());
+jQuery("#txt_eventlog").val('onDocumentLoadedError:' + errMessage + '\n' + jQuery("#txt_eventlog").val());
     });
 
     /**
@@ -122,6 +122,6 @@ jQuery(function() {
      *
      */
     jQuery('#documentViewer').bind('onDocumentPrinted',function(e,numPages){
-        jQuery("#txt_eventlog").val('onDocumentPrinted\n' + jQuery("#txt_eventlog").val());
+jQuery("#txt_eventlog").val('onDocumentPrinted\n' + jQuery("#txt_eventlog").val());
     });
 });

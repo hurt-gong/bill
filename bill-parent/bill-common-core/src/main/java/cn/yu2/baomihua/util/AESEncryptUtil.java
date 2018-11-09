@@ -51,15 +51,19 @@ public class AESEncryptUtil {
      * @throws Exception
      */
     public static byte[] aesEncryptToBytes(String content, String encryptKey) throws Exception {
+    	SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
+        random.setSeed(encryptKey.getBytes());
         KeyGenerator kgen = KeyGenerator.getInstance("AES");
-        kgen.init(128, new SecureRandom(encryptKey.getBytes()));
+        kgen.init(128, random);
         Cipher cipher = Cipher.getInstance("AES");
         cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(kgen.generateKey().getEncoded(), "AES"));
         return cipher.doFinal(content.getBytes("utf-8"));
     }
     public static byte[] aesEncryptToBytes(String content, byte[] encryptKey) throws Exception {
+    	SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
+        random.setSeed(encryptKey);
         KeyGenerator kgen = KeyGenerator.getInstance("AES");
-        kgen.init(128, new SecureRandom(encryptKey));
+        kgen.init(128, random);
         Cipher cipher = Cipher.getInstance("AES");
         cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(kgen.generateKey().getEncoded(), "AES"));
         return cipher.doFinal(content.getBytes("utf-8"));
@@ -85,16 +89,20 @@ public class AESEncryptUtil {
      * @throws Exception
      */
     public static String aesDecryptByBytes(byte[] encryptBytes, String decryptKey) throws Exception {
+    	SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
+        random.setSeed(decryptKey.getBytes());
         KeyGenerator kgen = KeyGenerator.getInstance("AES");
-        kgen.init(128, new SecureRandom(decryptKey.getBytes()));
+        kgen.init(128, random);
         Cipher cipher = Cipher.getInstance("AES");
         cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(kgen.generateKey().getEncoded(), "AES"));
         byte[] decryptBytes = cipher.doFinal(encryptBytes);
         return new String(decryptBytes,"utf-8");
     }
     public static String aesDecryptByBytes(byte[] encryptBytes, byte[] decryptKey) throws Exception {
+    	SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
+        random.setSeed(decryptKey);
         KeyGenerator kgen = KeyGenerator.getInstance("AES");
-        kgen.init(128, new SecureRandom(decryptKey));
+        kgen.init(128, random);
         Cipher cipher = Cipher.getInstance("AES");
         cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(kgen.generateKey().getEncoded(), "AES"));
         byte[] decryptBytes = cipher.doFinal(encryptBytes);
@@ -118,8 +126,8 @@ public class AESEncryptUtil {
         return array;
     }
     public static void main(String[] args) throws Exception {
-        String encodingAESKey = "f93dba8a123f4b5b";
-        String content = "hello world!";
+        String encodingAESKey = "bastpay";
+        String content = "11010101";
         String encrypt =  aesEncrypt(content,getAESKey(encodingAESKey));
         System.out.println("encrypt string：" + encrypt);
         String decrypt = aesDecrypt(encrypt, getAESKey(encodingAESKey));

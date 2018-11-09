@@ -26,12 +26,13 @@
 			#end
 		</ul>-->
 		<ul class="topNav">
-                         #if($user.schoolId != 0)<li><a class="#if($d_publiccourse_active) active #end" href="/mooc/course/list.html"><img src="/img/common/topbar_class.png" alt="区公开课" width="17px" height="17px">区公开课</a></li>
+                       #*   #if($user.schoolId != 0)<li><a class="#if($d_publiccourse_active) active #end" href="/mooc/course/list.html"><img src="/img/common/topbar_class.png" alt="区公开课" width="17px" height="17px">区公开课</a></li>
                        
                                 <li><a class="#if($d_schoolcourse_active) active #end" href="/mooc/course/ownSchoolPublic.html"><img src="/img/common/topbar_school.png" alt="本校课程" width="17px" height="17px">本校课程</a></li>
                         #end
-                        <li><a href="/idx.html" class="#if($d_myCenter_active) active #end">#if($user.schoolId == 0)<img src="/img/common/topbar_home1.png" alt="首页" width="17px" height="17px">首页 #else <img src="/img/common/topbar_home.png" alt="个人中心" width="17px" height="17px">个人中心 #end</a></li>
-										<li><a href="/manage/distric/school/list.html" class="#if($d_manage_active) active #end"><img src="/img/common/topbar_manage.png" alt="区管理平台" width="17px" height="17px">管理平台</a></li>
+						*#
+                        <li><a href="/idx.html" class="#if($d_myCenter_active) active #end"> <img src="/img/common/topbar_home1.png" alt="首页" width="17px" height="17px">首页  </a></li>
+						#if($user.schoolId == 0)<li><a href="/manage/distric/school/list.html" class="#if($d_manage_active) active #end"><img src="/img/common/topbar_manage.png" alt="管理平台" width="17px" height="17px">管理平台</a></li>#end
                        #* 
 					   #permission($permiConstant.districManage)
                                 <li><a href="/manage/distric/school/list.html" class="#if($d_manage_active) active #end"><img src="/img/common/topbar_manage.png" alt="区管理平台" width="17px" height="17px">区管理平台</a></li>

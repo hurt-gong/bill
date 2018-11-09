@@ -404,14 +404,14 @@ $('div.userArea').hover(function(){
 	})
 })
 ;
-require.config({　　　　
-	paths: {　　　　　　
-		"dialog": "../lib/layer/layer",　　　　
+require.config({        
+	paths: {
+		"dialog": "../lib/layer/layer",        
 		"jqtransform": "../lib/jqTransform/jqtransform",
 		"My97DatePicker": "../lib/My97DatePicker/WdatePicker",
-		"headerSlideDown": "../common/headerslideDown",　　　　　
-　　　　
-	}　　
+		"headerSlideDown": "../common/headerslideDown",        　
+        
+	}          
 });
 
 

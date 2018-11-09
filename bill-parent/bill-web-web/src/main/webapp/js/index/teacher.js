@@ -1,78 +1,78 @@
 require.config({
-    baseUrl: 'http://edu.bjhd.gov.cn/', 　
-    paths: {　　　　　　
-         "dialog": "js/lib/layer/layer",　　　　
-        "jqtransform": "js/lib/jqTransform/jqtransform",
-        "My97DatePicker": "../lib/My97DatePicker/WdatePicker",
-        "headerSlideDown": "js/common/headerslideDown",
-        "webuploader": "js/lib/webuploader/webuploader",
-    }　　
+    baseUrl: '/', 　
+    paths: {
+ "dialog": "js/lib/layer/layer",        
+"jqtransform": "js/lib/jqTransform/jqtransform",
+"My97DatePicker": "../lib/My97DatePicker/WdatePicker",
+"headerSlideDown": "js/common/headerslideDown",
+"webuploader": "js/lib/webuploader/webuploader",
+    }          
 });
 
 
 require(['jqtransform', 'js/admin/common/adminAlertBox','headerSlideDown','dialog'], function(jqtransform, adminAlertBox,aaaa,dialog) {
     $(".adminBody form,.screenBar form").jqTransform();
      $(function () {
-        $('.checkbox').on('click',function(){
-          if($(this).siblings("input[type='radio']").is(':checked')){
-            $(this).removeClass('cur');
-            $(this).siblings("input[type='radio']").removeProp('checked');
-          }
-          else{
-            $(this).addClass('cur').parent().siblings('span').find('label').removeClass('cur');
-            $(this).siblings("input[type='radio']").prop('checked','checked');
-            $(this).parent().siblings('span').find('input').removeProp('checked');
-            
-          }
-        });
+$('.checkbox').on('click',function(){
+  if($(this).siblings("input[type='radio']").is(':checked')){
+    $(this).removeClass('cur');
+    $(this).siblings("input[type='radio']").removeProp('checked');
+  }
+  else{
+    $(this).addClass('cur').parent().siblings('span').find('label').removeClass('cur');
+    $(this).siblings("input[type='radio']").prop('checked','checked');
+    $(this).parent().siblings('span').find('input').removeProp('checked');
+    
+  }
+});
     });
 
 
      $('#tit a').on('click',function(){
-        $(this).addClass('checked').siblings().removeClass('checked');
-        $(this).parents('.discussion_box').find('.obedient_box_con').children().eq($(this).index()).show().siblings().hide();
+$(this).addClass('checked').siblings().removeClass('checked');
+$(this).parents('.discussion_box').find('.obedient_box_con').children().eq($(this).index()).show().siblings().hide();
      })
      $('.close_discussion_box').on('click',function(){
-        $(this).parent().parent().hide();
+$(this).parent().parent().hide();
      })
      $('#tit1 a').on('click',function(){
-        $(this).addClass('btn').removeClass('aLink').siblings().removeClass('btn').addClass('aLink');
-        $(this).parents('.myCenter_con').find('.adminBody').children().eq($(this).index()).show().siblings().hide();
+$(this).addClass('btn').removeClass('aLink').siblings().removeClass('btn').addClass('aLink');
+$(this).parents('.myCenter_con').find('.adminBody').children().eq($(this).index()).show().siblings().hide();
      });
      
      $('.close_discussion_box').on('click',function(){
-        $(this).parent().parent().hide();
+$(this).parent().parent().hide();
      });
      $('#discussion').on('click',function(){
-        $('.discussion_box').show();
+$('.discussion_box').show();
      });
      $('#case').on('click',function(){
 
-        $('.learning_case_box').show();
+$('.learning_case_box').show();
      });
      $('body').on('click','.exeCheck',function(){
-        if($(this).siblings("input[type='checkbox']").is(':checked')){
-          $(this).removeClass('cur');
-          $(this).siblings("input[type='checkbox']").removeProp('checked')
-        }
-        else{
-          $(this).addClass('cur');
-          $(this).siblings("input[type='checkbox']").prop('checked','checked')
-        }
+if($(this).siblings("input[type='checkbox']").is(':checked')){
+  $(this).removeClass('cur');
+  $(this).siblings("input[type='checkbox']").removeProp('checked')
+}
+else{
+  $(this).addClass('cur');
+  $(this).siblings("input[type='checkbox']").prop('checked','checked')
+}
     });
-     require(['http://edu.bjhd.gov.cn/js/lib/My97DatePicker/WdatePicker.js'],function(){
-         $("#time").on("click",function(){
-                WdatePicker({
-                el:'time',
-            })
-            
-            
-         });
-         $("#time1").on("click",function(){
-            WdatePicker({
-                el:'time1',
-            })
-         })
+     require(['/js/lib/My97DatePicker/WdatePicker.js'],function(){
+ $("#time").on("click",function(){
+WdatePicker({
+el:'time',
+    })
+    
+    
+ });
+ $("#time1").on("click",function(){
+    WdatePicker({
+el:'time1',
+    })
+ })
      });
    
 
@@ -87,12 +87,12 @@ require(['jqtransform', 'js/admin/common/adminAlertBox','headerSlideDown','dialo
     window.onload=Tevaluate();
     function Tevaluate(){
       $.post("/teacher/teacherIdx.html", {}
-                      ,function(msg){
-                        var msg = jQuery.parseJSON(msg);
-                        //alert(msg.data);
-                        $('.centerMain').html(msg.data);
+      ,function(msg){
+var msg = jQuery.parseJSON(msg);
+//alert(msg.data);
+$('.centerMain').html(msg.data);
 
-                      });
+      });
     }
  
 
@@ -105,47 +105,47 @@ require(['jqtransform', 'js/admin/common/adminAlertBox','headerSlideDown','dialo
 
     //过程评价--点击更多
     $('#more').on('click',function(){
-        //跳转到过程评价页面
-        window.location.href="/teacher/evaluation.html?klassName=全部";
-        $("#districtCourse").hide();
+//跳转到过程评价页面
+window.location.href="/teacher/evaluation.html?klassName=全部";
+$("#districtCourse").hide();
     });
 
     //（老师）选择班级进行评价筛选
     $('body').on('click','#evaluationSubmit',function(){
        var klassName = $('#klassName option:selected').text();
        $.post("/teacher/teacherMore.html", {klassName:klassName}
-              ,function(msg){
-                var msg = jQuery.parseJSON(msg);
-                $('.box_content').html(msg.data);
-                $('#klassName option:selected').text(klassName);
-                $(".adminBody form,.screenBar form").jqTransform();
-              });
+      ,function(msg){
+var msg = jQuery.parseJSON(msg);
+$('.box_content').html(msg.data);
+$('#klassName option:selected').text(klassName);
+$(".adminBody form,.screenBar form").jqTransform();
+      });
        
       });
   
     //过程评价--点击去评价
     $('body').on('click','#goEvaluate',function(){
       
-        $.post("/teacher/goEvalute.html", {}
-              ,function(msg){
-                var msg = jQuery.parseJSON(msg);
-                //alert(msg.data)
-                $('.newBox').html(msg.data);
-                //获取星星等级
-                var oLis = $('.starcon>li');
-                oLis.on('click',function(){
-                  $('#stars').attr('value',$(this).index()+1);  //给隐藏域赋值
-                  for(var i=0;i<=$(this).index();i++){
-                    oLis.eq(i).addClass('starheigh');
-                  }
-                  for(var i=($(this).index()+1);i<=oLis.length;i++){
-                    oLis.eq(i).removeClass('starheigh');
-                  }
-                })
+$.post("/teacher/goEvalute.html", {}
+      ,function(msg){
+var msg = jQuery.parseJSON(msg);
+//alert(msg.data)
+$('.newBox').html(msg.data);
+//获取星星等级
+var oLis = $('.starcon>li');
+oLis.on('click',function(){
+  $('#stars').attr('value',$(this).index()+1);  //给隐藏域赋值
+  for(var i=0;i<=$(this).index();i++){
+    oLis.eq(i).addClass('starheigh');
+  }
+  for(var i=($(this).index()+1);i<=oLis.length;i++){
+    oLis.eq(i).removeClass('starheigh');
+  }
+})
 
 
-                $('.gg_box').show();
-              });
+$('.gg_box').show();
+      });
       
     });
 
@@ -154,24 +154,24 @@ require(['jqtransform', 'js/admin/common/adminAlertBox','headerSlideDown','dialo
       var klassName = $('#chooseKlass option:selected').text();
       //alert(klassName);
       $.post("/teacher/goEvalute.html", {klassName:klassName}
-              ,function(msg){
-                var msg = jQuery.parseJSON(msg);
-                //alert(msg.data);
-                $('.newBox').html(msg.data);
-                //获取星星等级
-                var oLis = $('.starcon>li');
-                oLis.on('click',function(){
-                 // alert($(this).index()+1);
-                  $('#stars').attr('value',$(this).index()+1);  //给隐藏域赋值
-                  for(var i=0;i<=$(this).index();i++){
-                    oLis.eq(i).addClass('starheigh');
-                  }
-                  for(var i=($(this).index()+1);i<=oLis.length;i++){
-                    oLis.eq(i).removeClass('starheigh');
-                  }
-                })
-                $('#chooseKlass option:selected').text(klassName);
-              });
+      ,function(msg){
+var msg = jQuery.parseJSON(msg);
+//alert(msg.data);
+$('.newBox').html(msg.data);
+//获取星星等级
+var oLis = $('.starcon>li');
+oLis.on('click',function(){
+ // alert($(this).index()+1);
+  $('#stars').attr('value',$(this).index()+1);  //给隐藏域赋值
+  for(var i=0;i<=$(this).index();i++){
+    oLis.eq(i).addClass('starheigh');
+  }
+  for(var i=($(this).index()+1);i<=oLis.length;i++){
+    oLis.eq(i).removeClass('starheigh');
+  }
+})
+$('#chooseKlass option:selected').text(klassName);
+      });
     });
 
     //点击发起评价
@@ -187,51 +187,51 @@ require(['jqtransform', 'js/admin/common/adminAlertBox','headerSlideDown','dialo
       //获取并设置学生姓名，id 
       var ids = '';  
       $("input[type=checkbox]:checked").each(function() {
-        ids += $(this).attr('value')+',';
+ids += $(this).attr('value')+',';
       });
       ids=ids.substring(0,ids.length-1);
       if(ids.replace(',','').trim()==''){
-        dialog.msg('请选择学生', {time:1200,icon:6});
-        return;
+dialog.msg('请选择学生', {time:1200,icon:6});
+return;
       }
       if(content==''){
-        dialog.msg('请填写评价内容', {time:1200,icon:6});
-        return;
+dialog.msg('请填写评价内容', {time:1200,icon:6});
+return;
       }
       if(stars==''){
-        dialog.msg('请选择星级!', {time:1200,icon:6});
-        return;
+dialog.msg('请选择星级!', {time:1200,icon:6});
+return;
       }
       
       $.post("/teacher/addEvaluation.html", {klassName:klassName,content:content,ids:ids,star:stars}
-              ,function(msg){
-                var msg = jQuery.parseJSON(msg);
-                dialog.msg(msg.data,{time:1500,icon:1})
-                $.post("/teacher/teacherIdx.html", {}
-                      ,function(msg){
-                        var msg = jQuery.parseJSON(msg);
-                        $('.centerMain').html(msg.data);
-                        
-                      });
-                $('.gg_box').hide();
-              });
+      ,function(msg){
+var msg = jQuery.parseJSON(msg);
+dialog.msg(msg.data,{time:1500,icon:1})
+$.post("/teacher/teacherIdx.html", {}
+      ,function(msg){
+var msg = jQuery.parseJSON(msg);
+$('.centerMain').html(msg.data);
+
+      });
+$('.gg_box').hide();
+      });
     });
 
 
     //点击删除评价
     $('body').on('click','#deleteEvaluation',function(){
       var evaluationId = $(this).attr('value');
-        dialog.confirm('确定要删除吗？',function(){
-          $.post("/teacher/deleteEvaluation.html", {evaluationId:evaluationId}
-                        ,function(msg){
-                          dialog.msg(msg,{time:1500,icon:1});
-                            $.post("/teacher/teacherIdx.html", {}
-                              ,function(msg){
-                              var msg = jQuery.parseJSON(msg);
-                              $('.centerMain').html(msg.data);
-                            });
-                        });
-        });
+dialog.confirm('确定要删除吗？',function(){
+  $.post("/teacher/deleteEvaluation.html", {evaluationId:evaluationId}
+,function(msg){
+  dialog.msg(msg,{time:1500,icon:1});
+    $.post("/teacher/teacherIdx.html", {}
+      ,function(msg){
+      var msg = jQuery.parseJSON(msg);
+      $('.centerMain').html(msg.data);
+    });
+});
+});
     });
 
     //点击过程评价
@@ -254,11 +254,11 @@ require(['jqtransform', 'js/admin/common/adminAlertBox','headerSlideDown','dialo
     window.onload=newPlan();
     function newPlan(){
       $.post("/learnplan/newLearnPlan.html", {}
-                      ,function(msg){
-                        var msg = jQuery.parseJSON(msg);
-                        $('.learnPlanClass').html(msg.data);
-                        $(".adminBody form,.screenBar form").jqTransform();
-                      });
+      ,function(msg){
+var msg = jQuery.parseJSON(msg);
+$('.learnPlanClass').html(msg.data);
+$(".adminBody form,.screenBar form").jqTransform();
+      });
     }
 
 
@@ -267,59 +267,59 @@ require(['jqtransform', 'js/admin/common/adminAlertBox','headerSlideDown','dialo
 
       var subjectName = $('#subjectClass option:selected').text()
       if(subjectName=='--请选择--'){
-        //alert('请选择学案学科');
-        dialog.tips('请选择学案学科!', '#subjectClass', {
-          tips: [2, '#3595CC'],
-          time: 2000
-        });
-        return;
+//alert('请选择学案学科');
+dialog.tips('请选择学案学科!', '#subjectClass', {
+  tips: [2, '#3595CC'],
+  time: 2000
+});
+return;
       }
       var forKlassName = $('#planClass option:selected').text();
       if(forKlassName=='--请选择--'){
-        dialog.msg('请选择推荐班级', {time: 1500, icon:6});
-        return;
+dialog.msg('请选择推荐班级', {time: 1500, icon:6});
+return;
       }
       
       var fileName = $('#fileUp').val();
       //后缀名
       var smallName = fileName.substring(fileName.lastIndexOf('.'));
       if (smallName != '.pdf' && smallName != '.doc' && smallName != '.docx' && smallName != '.xls' && smallName != '.xlsx' && smallName != '.ppt' && smallName != '.pptx' ) {
-        //alert('抱歉，目前仅支持pdf格式的文件');
-        dialog.tips('抱歉，目前仅支持.pdf .doc .docx .xls .xlsx .ppt .pptx 格式的文件', '#fileUp', {
-          tips: [2, '#3595CC'],
-          time: 2000
-        });
-        return;
+//alert('抱歉，目前仅支持pdf格式的文件');
+dialog.tips('抱歉，目前仅支持.pdf .doc .docx .xls .xlsx .ppt .pptx 格式的文件', '#fileUp', {
+  tips: [2, '#3595CC'],
+  time: 2000
+});
+return;
       };
 
       var storeUrl='';  
       //上传
       var formData = new FormData($( "#uploadForm" )[0]);
       $.ajax({  
-          url: '/DocUpload/file.html' ,  
-          type: 'POST',  
-          data: formData,  
-          async: false,  
-          cache: false,  
-          contentType: false,  
-          processData: false,  
-          success: function (returndata) {  
-              var msg = jQuery.parseJSON(returndata);
-              storeUrl=msg.url; 
-          }  
+  url: '/DocUpload/file.html' ,  
+  type: 'POST',  
+  data: formData,  
+  async: false,  
+  cache: false,  
+  contentType: false,  
+  processData: false,  
+  success: function (returndata) {  
+      var msg = jQuery.parseJSON(returndata);
+      storeUrl=msg.url; 
+  }  
       }); 
       
       $.post("/learnplan/sendNewPlan.html", {forKlassName:forKlassName,subjectName:subjectName,fileName:fileName,storeUrl:storeUrl}
-                      ,function(msg){
-                        msg = jQuery.parseJSON(msg);
-                        //弹窗
-                        dialog.msg(msg.data, {time: 3000, icon:1});
-                        $('.learning_case_box').hide();
-                        $.post("/learnplan/newLearnPlan.html", {}
-                              ,function(msg){
-                                var msg = jQuery.parseJSON(msg);
-                                $('.learnPlanClass').html(msg.data);
-                              });
+      ,function(msg){
+msg = jQuery.parseJSON(msg);
+//弹窗
+dialog.msg(msg.data, {time: 3000, icon:1});
+$('.learning_case_box').hide();
+$.post("/learnplan/newLearnPlan.html", {}
+      ,function(msg){
+var msg = jQuery.parseJSON(msg);
+$('.learnPlanClass').html(msg.data);
+      });
       });
  
 
@@ -344,20 +344,20 @@ require(['jqtransform', 'js/admin/common/adminAlertBox','headerSlideDown','dialo
 //===========发起讨论帖（教师） start==================================================================================
  
   $('#discussion').on('click',function(){
-        $.post("/group/group/getGroupList.html", {}
-              ,function(msg){
-                var msg = jQuery.parseJSON(msg);
-                $('.chooseGroup').html(msg.data);
-                $.post("/group/group/getGroupList2.html", {}
-                      ,function(msg){
-                        var msg = jQuery.parseJSON(msg);
-                        $('.chooseGroup2').html(msg.data);
-                      });
-              });
-        
-        $('.discussion_box').show();
+$.post("/group/group/getGroupList.html", {}
+      ,function(msg){
+var msg = jQuery.parseJSON(msg);
+$('.chooseGroup').html(msg.data);
+$.post("/group/group/getGroupList2.html", {}
+      ,function(msg){
+var msg = jQuery.parseJSON(msg);
+$('.chooseGroup2').html(msg.data);
+      });
+      });
 
-        
+$('.discussion_box').show();
+
+
      });
 
 
@@ -367,30 +367,30 @@ require(['jqtransform', 'js/admin/common/adminAlertBox','headerSlideDown','dialo
       var content = $('#topicContent').val();
       var groupName = $('#sendChoose option:selected').text();
       if(title==""){
-        dialog.tips('标题不能为空！', '#topicTitle', {
-          tips: [2, '#3595CC'],
-          time: 2000
-        });
-        return;
+dialog.tips('标题不能为空！', '#topicTitle', {
+  tips: [2, '#3595CC'],
+  time: 2000
+});
+return;
       }
       if(content==""){
-        dialog.tips('内容不能为空！', '#topicContent', {
-          tips: [2, '#3595CC'],
-          time: 2000
-        });
-        return;
+dialog.tips('内容不能为空！', '#topicContent', {
+  tips: [2, '#3595CC'],
+  time: 2000
+});
+return;
       }
       if(groupName=="请选择"){
-        dialog.msg('请选择班群', {time: 1500, icon:6});
-        return;
+dialog.msg('请选择班群', {time: 1500, icon:6});
+return;
       }
       $.post("/group/group/sendTopic.html", {title:title,content:content,groupName:groupName}
-              ,function(msg){
-                dialog.msg(msg, {time: 1500, icon:1});
-                $('.discussion_box').hide();
-                $('#topicTitle').val('');
-                $('#topicContent').val('');
-              });
+      ,function(msg){
+dialog.msg(msg, {time: 1500, icon:1});
+$('.discussion_box').hide();
+$('#topicTitle').val('');
+$('#topicContent').val('');
+      });
   });
 
   //点击添加投票选项
@@ -424,42 +424,42 @@ require(['jqtransform', 'js/admin/common/adminAlertBox','headerSlideDown','dialo
     var crTime = new Date();
     var groupName = $('#sendChoose2 option:selected').text();
       if(voteTitle==""){
-        dialog.tips('标题不能为空！', '#voteTitle', {
-          tips: [2, '#3595CC'],
-          time: 2000
-        });
-        return;
+dialog.tips('标题不能为空！', '#voteTitle', {
+  tips: [2, '#3595CC'],
+  time: 2000
+});
+return;
       }
       if (typeof(voteType) == "undefined") { 
        dialog.msg('请选择投票类型',{time:1200,icon:6});
        return;
       }
       if(voteContent==""){
-        dialog.tips('请输入内容！', '#voteContent', {
-          tips: [2, '#3595CC'],
-          time: 2000
-        });
-        return;
+dialog.tips('请输入内容！', '#voteContent', {
+  tips: [2, '#3595CC'],
+  time: 2000
+});
+return;
       }
        if(groupName=="请选择"){
-        dialog.msg('请选择班群', {time: 1500, icon:6});
-        return;
+dialog.msg('请选择班群', {time: 1500, icon:6});
+return;
       }
       if(allOption.replace(',','').trim()==''){
-        dialog.msg('您还未填写投票选项', {time: 1500, icon:6});
-        return;
+dialog.msg('您还未填写投票选项', {time: 1500, icon:6});
+return;
       }
       if(endTime==''){
-        dialog.msg('请选择截止日期', {time: 1500, icon:6});
-        return;
+dialog.msg('请选择截止日期', {time: 1500, icon:6});
+return;
       }
       $.post("/group/group/sendVoteTopic.html", {groupName:groupName,voteType:voteType,title:voteTitle,content:voteContent,allOption:allOption,endTime:endTime,crTime:crTime}
-              ,function(msg){
-                 dialog.msg('成功！', {time: 1500, icon:1});
-                 $('.discussion_box').hide();
-                 $('#voteTitle').val('');//投票标题
-                 $('#voteContent').val('');//投票内容
-              }); 
+      ,function(msg){
+ dialog.msg('成功！', {time: 1500, icon:1});
+ $('.discussion_box').hide();
+ $('#voteTitle').val('');//投票标题
+ $('#voteContent').val('');//投票内容
+      }); 
 
   });
 
@@ -572,37 +572,37 @@ function directCourseList(){
 });
 //===========区推荐课程结束==================================================================================
 /********学案预览******************/  
-require(['http://edu.bjhd.gov.cn/js/admin/flexpaper/js/flexpaper.js','http://edu.bjhd.gov.cn/js/admin/flexpaper/js/flexpaper_handlers.js'],function(){
+require(['/js/admin/flexpaper/js/flexpaper.js','/js/admin/flexpaper/js/flexpaper_handlers.js'],function(){
   var url = $('#viewerPlaceHolder').attr('value');
   
   $('#viewerPlaceHolder').FlexPaperViewer(
     { 
-        config : {      
-           //SWFFile : 'http://edu.bjhd.gov.cn/js/lib/flexpaper/2.swf',
+config : {      
+   //SWFFile : '/js/lib/flexpaper/2.swf',
    //SWFFile : 'http://js.bjjh.org.cn/sea-modules/flexpaper/pdf/11.swf',
    SWFFile : url,
-   jsDirectory:'http://edu.bjhd.gov.cn/js/lib/flexpaper/js/',
-           Scale : 0.6,
-           ZoomTransition : 'easeOut',
-           ZoomTime : 0.5,
-           ZoomInterval : 0.2,
-           FitPageOnLoad : true,
-           FitWidthOnLoad : false,
-           FullScreenAsMaxWindow : false,
-           ProgressiveLoading : false,
-           MinZoomSize : 0.2,
-           MaxZoomSize : 5,
-           SearchMatchAll : false,
-           InitViewMode : 'Portrait',
-           RenderingOrder : 'flash',
-           StartAtPage : '',
-           ViewModeToolsVisible : true,
-           ZoomToolsVisible : true,
-           NavToolsVisible : true,
-           CursorToolsVisible : true,
-           SearchToolsVisible : true,
-           WMode : 'window',
-           localeChain: 'en_US'
+   jsDirectory:'/js/lib/flexpaper/js/',
+   Scale : 0.6,
+   ZoomTransition : 'easeOut',
+   ZoomTime : 0.5,
+   ZoomInterval : 0.2,
+   FitPageOnLoad : true,
+   FitWidthOnLoad : false,
+   FullScreenAsMaxWindow : false,
+   ProgressiveLoading : false,
+   MinZoomSize : 0.2,
+   MaxZoomSize : 5,
+   SearchMatchAll : false,
+   InitViewMode : 'Portrait',
+   RenderingOrder : 'flash',
+   StartAtPage : '',
+   ViewModeToolsVisible : true,
+   ZoomToolsVisible : true,
+   NavToolsVisible : true,
+   CursorToolsVisible : true,
+   SearchToolsVisible : true,
+   WMode : 'window',
+   localeChain: 'en_US'
        }
      });
 

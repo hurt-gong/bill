@@ -60,4 +60,6 @@
 	 <!-- openapi -->
 	<dubbo:reference id="companyModule" interface="cn.yu2.baomihua.openapi.module.ICompanyModule" url="${service.url.openapi}" />
 
+	<dubbo:reference id="bastpayModule" interface="cn.yu2.baomihua.openapi.module.IBastpayModule" url="${service.url.openapi}" />
+
 </beans>

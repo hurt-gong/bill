@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
@@ -44,10 +45,10 @@ public class TestCallApi {
 	 * 
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main1(String[] args) {
 		// TODO Auto-generated method stub
 
-		String url = "http://192.168.10.148:8080/openapi/pushdata";
+		String url = "http://192.168.10.148:8080/qiantai/pay";
 
 		JSONObject json = new JSONObject();
 
@@ -58,9 +59,46 @@ public class TestCallApi {
 			json.put("secretkey", AESEncryptUtil.aesEncrypt("11010101", AESEncryptUtil.getAESKey("bastpay"))); // AES(channel)aeskey双方协调
 			json.put("timeStamp", System.currentTimeMillis() + ""); // 时间戳
 			Map map = json.toJavaObject(Map.class);
-			json.put("signature", ParamUtil.toParam(map)); // 签名
-			json.put("pushData", getParam());// 推送的数据，
+			json.put("signature", ParamUtilForPay.getSign(map, "11010101")); // 签名
 													// 想了一下不放在签名内，数据量太大的话太消耗性能。
+			String ret = HttpUtil.post(url, json.toJSONString());
+			System.out.println(ret);
+		} catch (KeyManagementException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		//String url = "http://127.0.0.1/bastpay/addDetailInfo";
+		String url = "https://yzf.cloudlinkin.cn/bastpay/editDetailInfo";
+
+		JSONObject json = new JSONObject();
+		JSONArray jarray = new JSONArray();
+
+		try {
+			json.put("channel", "11010101"); // 慧云给提供的渠道ID
+			json.put("version", "1.0"); // 当前为1.0
+			json.put("msgId", UUID.randomUUID().toString().replace("-", "")); // Id生成1个32位
+			json.put("secretkey", AESEncryptUtil.aesEncrypt("11010101", AESEncryptUtil.getAESKey("bastpay"))); // AES(channel)aeskey双方协调
+			json.put("timeStamp", System.currentTimeMillis() + ""); // 时间戳
+			//json.put("paramData",  JSONArray.parseArray(JSON.toJSONString(getParam())));// 推送的数据，
+			getDetailParamForJSONObject(json);
+			Map map = json.toJavaObject(Map.class);
+			json.put("signature", ParamUtil.toParam(map)); // 签名
 			String ret = HttpUtil.post(url, json.toJSONString());
 			System.out.println(ret);
 		} catch (KeyManagementException e) {
@@ -88,7 +126,7 @@ public class TestCallApi {
 		for (int i = 0; i < month.length; i++) {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("openData", month[i]);
-			map.put("province", "北京");
+			map.put("province", "123");
 			map.put("companyName", "HuiYun");
 			map.put("companyCode", month[i] + "" + i);
 			map.put("ticketsNumber", "1209120" + i);
@@ -102,6 +140,45 @@ public class TestCallApi {
 		}
 
 		return paramData;
+	}
+	
+	
+	public static JSONObject getParamForJSONObject(JSONObject json) {
+		json.put("productNo", "productNo");
+		json.put("addressee", "addressee");
+		json.put("address", "address");
+		json.put("province", "province");
+		json.put("phone", "phone");
+		json.put("companyName", "companyName");
+		json.put("serviceCharge", "1");
+		json.put("expressFee", "expressFee");
+		json.put("effectDateFrom", "effectDateFrom");
+		json.put("effectDateTo", "effectDateTo");
+		return json;
+	}
+	
+	
+	
+	public static JSONObject getDetailParamForJSONObject(JSONObject json) {
+		json.put("productNo", "12000000000001");
+		json.put("merchantName", "merchantName1");
+		json.put("taxNumber", "taxNumber2");
+		json.put("areaCode", "areaCode3");
+		json.put("registerType", "registerType111");
+		json.put("merchantType", "merchantType");
+		json.put("taxAuthorityCode", "taxAuthorityCode");
+		json.put("enterpriseAddress", "enterpriseAddress");
+		json.put("machineCode", "machineCode");
+		json.put("invoicePhone", "invoicePhone33");
+		json.put("email", "email");
+		json.put("maxInvoiceNumber", "maxInvoiceNumber");
+		json.put("recordNumber", "recordNumber");
+		json.put("cardNumber", "cardNumber");
+		json.put("legalPhone", "legalPhone");
+		json.put("contantName", "contantName");
+		json.put("sorfwareCode", "sorfwareCode");
+		 
+		return json;
 	}
 
 }

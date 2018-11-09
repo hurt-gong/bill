@@ -383,12 +383,12 @@ define('headerSlideDown',[],function(){
 })
 ;
 require.config({
-	baseUrl: 'http://edu.bjhd.gov.cn/',　　　
-	paths: {　　　　　　
-		"dialog": "../js/lib/layer/layer",　　　　
+	baseUrl: '/',          
+	paths: {
+		"dialog": "../js/lib/layer/layer",        
 		"jqtransform": "../lib/jqTransform/jqtransform",
-		"headerSlideDown": "../common/headerslideDown",　　　　
-	}　　
+		"headerSlideDown": "../common/headerslideDown",        
+	}          
 });
 
 

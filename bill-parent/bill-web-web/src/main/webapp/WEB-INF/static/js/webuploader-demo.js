@@ -12,8 +12,8 @@ uploader = WebUploader.create({
     swf: 'http://cdn.staticfile.org/webuploader/0.1.0/Uploader.swf',
 
     // 文件接收服务端。
-     server: 'http://edu.bjhd.gov.cn/upload/file.html',
-     //server: 'http://edu.bjhd.gov.cn/test.html',
+     server: '/upload/file.html',
+     //server: '/test.html',
     
      // server: 'http://upload.bjjh.org.cn/upload/file.html?shape=center&width=300&height=300',
 
@@ -52,8 +52,8 @@ uploader.on( 'fileQueued', function( file ) {
 	});
 
     $list.append( '<div id="' + file.id + '" class="item">' +
-        '<h4 class="info">' + file.name + '</h4>' +
-        '<p class="state">等待上传...</p>' +
+'<h4 class="info">' + file.name + '</h4>' +
+'<p class="state">等待上传...</p>' +
     '</div>' );
 });
 
@@ -70,14 +70,14 @@ uploader.on( 'fileQueued', function( file ) {
 //文件上传过程中创建进度条实时显示。
 uploader.on( 'uploadProgress', function( file, percentage ) {
     var $li = $( '#'+file.id ),
-        $percent = $li.find('.progress .progress-bar');
+$percent = $li.find('.progress .progress-bar');
 
     // 避免重复创建
     if ( !$percent.length ) {
-        $percent = $('<div class="progress progress-striped active">' +
-          '<div class="progress-bar" role="progressbar" style="width: 0%">' +
-          '</div>' +
-        '</div>').appendTo( $li ).find('.progress-bar');
+$percent = $('<div class="progress progress-striped active">' +
+  '<div class="progress-bar" role="progressbar" style="width: 0%">' +
+  '</div>' +
+'</div>').appendTo( $li ).find('.progress-bar');
     }
 
     $li.find('p.state').text('上传中');
@@ -101,26 +101,26 @@ uploader.on( 'uploadComplete', function( file ) {
 
 uploader.on( 'all', function( type ) {
     if ( type === 'startUpload' ) {
-        state = 'uploading';
+state = 'uploading';
     } else if ( type === 'stopUpload' ) {
-        state = 'paused';
+state = 'paused';
     } else if ( type === 'uploadFinished' ) {
-        state = 'done';
+state = 'done';
     }
 
     if ( state === 'uploading' ) {
-        $btn.text('暂停上传');
+$btn.text('暂停上传');
     } else {
-        $btn.text('开始上传');
+$btn.text('开始上传');
     }
 });
 
 $btn.on( 'click', function() {
 	if(md5Finish){
 	    if ( state === 'uploading' ) {
-	        uploader.stop();
+	uploader.stop();
 	    } else {
-	        uploader.upload();
+	uploader.upload();
 	    }
 	} else {
 		alert('正在计算md5值，请稍等...');

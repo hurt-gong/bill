@@ -35,86 +35,86 @@ var small_question_index=4;
 //阅读题添加小题
 $(".addqus").click(function(){
 	var dl = '<dl>'
-                +'<dt>'
-                    +'<h4>'
++'<dt>'
+    +'<h4>'
 							+'问题'+small_question_index+'：'
-                    +'</h4>'
+    +'</h4>'
 					+'<div>'
-                    +'<span><input type="radio" name="'+small_question_index+'" checked="checked" value="1"><label for="1" class="tigan_class labelChecked"></label><b class="se1">单选</b></span>'
-                    +'<span><input type="radio" name="'+small_question_index+'" value="2"><label for="2" class="tigan_class"></label><b class="se2">多选</b></span>'
-                    +'<span><input type="radio" name="'+small_question_index+'" value="3"><label for="3" class="tigan_class"></label><b class="se3">文本</b></span>'
-                    +'</div>'
-                +'</dt>'
+    +'<span><input type="radio" name="'+small_question_index+'" checked="checked" value="1"><label for="1" class="tigan_class labelChecked"></label><b class="se1">单选</b></span>'
+    +'<span><input type="radio" name="'+small_question_index+'" value="2"><label for="2" class="tigan_class"></label><b class="se2">多选</b></span>'
+    +'<span><input type="radio" name="'+small_question_index+'" value="3"><label for="3" class="tigan_class"></label><b class="se3">文本</b></span>'
+    +'</div>'
++'</dt>'
 				+'<dd class="tigan_dan">'
-                    +'<div class="read_dan">' 
-                        +'<h5>答案：</h5>'
-                        +'<span><input type="radio"  name="radio_'+small_question_index+'" checked="checked" value="A"><label for="A" class="asncheck"></label><b>A</b></span>'
-                        +'<span><input type="radio"  name="radio_'+small_question_index+'" value="B"><label for="B"></label><b>B</b></span>'
-                        +'<span><input type="radio"  name="radio_'+small_question_index+'" value="C"><label for="C"></label><b>C</b></span>'
-                        +'<span><input type="radio"  name="radio_'+small_question_index+'" value="D"><label for="D"></label><b>D</b></span>'
-                        +'<a href="javascript:;" class="add_change small">添加选项</a>'
-                    +'</div>'
-                +'</dd>'
-                +'<dd class="tigan_duo">'
-                    +'<div  class="read_duo">'
-                        +'<h5>答案：</h5>'
-                        +'<span><input type="checkbox"  name="checkbox_'+small_question_index+'" value="A"><label for="A"></label><b>A</b></span>'
-                        +'<span><input type="checkbox" name="checkbox_'+small_question_index+'" value="B"><label for="B"></label><b>B</b></span>'
-                        +'<span><input type="checkbox" name="checkbox_'+small_question_index+'" value="C"><label for="C"></label><b>C</b></span>'
-                        +'<span><input type="checkbox" name="checkbox_'+small_question_index+'" value="D"><label for="D"></label><b>D</b></span>'
-                        +'<a href="javascript:;" class="add_change small">添加选项</a>'
-                    +'</div>'
-                +'</dd>'
-                +'<dd class="tigan_txt">'
-                        +'<h5>答案：</h5>'
-                        +'<textarea  name="textarea_'+small_question_index+'">李白（701年-762年），字太白，号青莲居士，又号“谪仙人”，汉族，绵州昌隆县（今四川省江油市）人，是唐代伟大的浪漫主义诗人，被后人誉为“诗仙”。</textarea>'
-                +'</dd>'
-            +'</dl>';
+    +'<div class="read_dan">' 
++'<h5>答案：</h5>'
++'<span><input type="radio"  name="radio_'+small_question_index+'" checked="checked" value="A"><label for="A" class="asncheck"></label><b>A</b></span>'
++'<span><input type="radio"  name="radio_'+small_question_index+'" value="B"><label for="B"></label><b>B</b></span>'
++'<span><input type="radio"  name="radio_'+small_question_index+'" value="C"><label for="C"></label><b>C</b></span>'
++'<span><input type="radio"  name="radio_'+small_question_index+'" value="D"><label for="D"></label><b>D</b></span>'
++'<a href="javascript:;" class="add_change small">添加选项</a>'
+    +'</div>'
++'</dd>'
++'<dd class="tigan_duo">'
+    +'<div  class="read_duo">'
++'<h5>答案：</h5>'
++'<span><input type="checkbox"  name="checkbox_'+small_question_index+'" value="A"><label for="A"></label><b>A</b></span>'
++'<span><input type="checkbox" name="checkbox_'+small_question_index+'" value="B"><label for="B"></label><b>B</b></span>'
++'<span><input type="checkbox" name="checkbox_'+small_question_index+'" value="C"><label for="C"></label><b>C</b></span>'
++'<span><input type="checkbox" name="checkbox_'+small_question_index+'" value="D"><label for="D"></label><b>D</b></span>'
++'<a href="javascript:;" class="add_change small">添加选项</a>'
+    +'</div>'
++'</dd>'
++'<dd class="tigan_txt">'
++'<h5>答案：</h5>'
++'<textarea  name="textarea_'+small_question_index+'">李白（701年-762年），字太白，号青莲居士，又号“谪仙人”，汉族，绵州昌隆县（今四川省江油市）人，是唐代伟大的浪漫主义诗人，被后人誉为“诗仙”。</textarea>'
++'</dd>'
+    +'</dl>';
     $(".addqus").before(dl);
     small_question_index++;
 
   $('.read .tigan').find('.tigan_class').unbind('click').on('click',function(){
 
-        if($(this).siblings("input[type='radio']").is(':checked')){
-          if($(this).siblings('b').hasClass('se1')){
-            $(this).parent().parent().parent().siblings('.tigan_dan').css('display','none');
-          }else if($(this).siblings('b').hasClass('se2')){
-            $(this).parent().parent().parent().siblings('.tigan_duo').css('display','none');
-            }else if($(this).siblings('b').hasClass('se3')){
-                $(this).parent().parent().parent().siblings('.tigan_txt').css('display','none');
-            }
-        }
-        else{
-          $(this).addClass('labelChecked').parent().siblings('span').find('label').removeClass('labelChecked');
-          $(this).siblings("input[type='radio']").prop('checked','checked').parent().siblings('span').find("input[type='radio']").removeProp('checked');
-          
-          if($(this).siblings('b').hasClass('se1')){
-            $(this).parent().parent().parent().siblings('.tigan_dan').css('display','block').siblings('dd').css('display','none');
-          }else if($(this).siblings('b').hasClass('se2')){
-            $(this).parent().parent().parent().siblings('.tigan_duo').css('display','block').siblings('dd').css('display','none');
-            }else if($(this).siblings('b').hasClass('se3')){
-                $(this).parent().parent().parent().siblings('.tigan_txt').css('display','block').siblings('dd').css('display','none');
-            }
-        }
-        
+if($(this).siblings("input[type='radio']").is(':checked')){
+  if($(this).siblings('b').hasClass('se1')){
+    $(this).parent().parent().parent().siblings('.tigan_dan').css('display','none');
+  }else if($(this).siblings('b').hasClass('se2')){
+    $(this).parent().parent().parent().siblings('.tigan_duo').css('display','none');
+    }else if($(this).siblings('b').hasClass('se3')){
+$(this).parent().parent().parent().siblings('.tigan_txt').css('display','none');
+    }
+}
+else{
+  $(this).addClass('labelChecked').parent().siblings('span').find('label').removeClass('labelChecked');
+  $(this).siblings("input[type='radio']").prop('checked','checked').parent().siblings('span').find("input[type='radio']").removeProp('checked');
+  
+  if($(this).siblings('b').hasClass('se1')){
+    $(this).parent().parent().parent().siblings('.tigan_dan').css('display','block').siblings('dd').css('display','none');
+  }else if($(this).siblings('b').hasClass('se2')){
+    $(this).parent().parent().parent().siblings('.tigan_duo').css('display','block').siblings('dd').css('display','none');
+    }else if($(this).siblings('b').hasClass('se3')){
+$(this).parent().parent().parent().siblings('.tigan_txt').css('display','block').siblings('dd').css('display','none');
+    }
+}
+
     })
 
 	$('.tigan_dan').find('input[type="radio"]').siblings('label').unbind('click').on('click',function(){
 	    if($(this).siblings("input[type='radio']").is(':checked')){
 	    }else{
-	        $(this).addClass('asncheck').parent().siblings().find('input[type="radio"]').siblings('label').removeClass('asncheck');
-	        $(this).siblings("input[type='radio']").prop('checked','checked').parent().siblings().find('input[type="radio"]').removeProp('checked');
+	$(this).addClass('asncheck').parent().siblings().find('input[type="radio"]').siblings('label').removeClass('asncheck');
+	$(this).siblings("input[type='radio']").prop('checked','checked').parent().siblings().find('input[type="radio"]').removeProp('checked');
 	    }
 	});
 	$('.read_duo').find('input[type="checkbox"]').siblings('label').unbind('click').on('click',function(){
-        if($(this).siblings("input[type='checkbox']").is(':checked')){
-          $(this).removeClass('asncheck');
-          $(this).siblings("input[type='checkbox']").removeProp('checked')
-        }
-        else{
-          $(this).addClass('asncheck');
-          $(this).siblings("input[type='checkbox']").prop('checked','checked')
-        }
+if($(this).siblings("input[type='checkbox']").is(':checked')){
+  $(this).removeClass('asncheck');
+  $(this).siblings("input[type='checkbox']").removeProp('checked')
+}
+else{
+  $(this).addClass('asncheck');
+  $(this).siblings("input[type='checkbox']").prop('checked','checked')
+}
     });
     $('.small').unbind('click').click(function(){
 		var obj = $(this).parent().find('span').last().find('input');
@@ -126,20 +126,20 @@ $(".addqus").click(function(){
 		$('.tigan_dan').find('input[type="radio"]').siblings('label').unbind('click').on('click',function(){
 		    if($(this).siblings("input[type='radio']").is(':checked')){
 		    }else{
-		        $(this).addClass('asncheck').parent().siblings().find('input[type="radio"]').siblings('label').removeClass('asncheck');
-		        $(this).siblings("input[type='radio']").prop('checked','checked').parent().siblings().find('input[type="radio"]').removeProp('checked');
+		$(this).addClass('asncheck').parent().siblings().find('input[type="radio"]').siblings('label').removeClass('asncheck');
+		$(this).siblings("input[type='radio']").prop('checked','checked').parent().siblings().find('input[type="radio"]').removeProp('checked');
 		    }
 		});
 		$('.read_duo').find('input[type="checkbox"]').siblings('label').unbind('click').on('click',function(){
-	        if($(this).siblings("input[type='checkbox']").is(':checked')){
-	          $(this).removeClass('asncheck');
-	          $(this).siblings("input[type='checkbox']").removeProp('checked')
-	        }
+	if($(this).siblings("input[type='checkbox']").is(':checked')){
+	  $(this).removeClass('asncheck');
+	  $(this).siblings("input[type='checkbox']").removeProp('checked')
+	}
 
-	        else{
-	          $(this).addClass('asncheck');
-	          $(this).siblings("input[type='checkbox']").prop('checked','checked')
-	        }
+	else{
+	  $(this).addClass('asncheck');
+	  $(this).siblings("input[type='checkbox']").prop('checked','checked')
+	}
 	    });
 
 })
@@ -174,8 +174,8 @@ $("#single_add_option").click(function(){
 		$('.solution').find('input[type="radio"]').siblings('label').unbind('click').on('click',function(){
 		    if($(this).siblings("input[type='radio']").is(':checked')){
 		    }else{
-		        $(this).addClass('asncheck').parent().siblings().find('input[type="radio"]').siblings('label').removeClass('asncheck');
-		        $(this).siblings("input[type='radio']").prop('checked','checked').parent().siblings().find('input[type="radio"]').removeProp('checked');
+		$(this).addClass('asncheck').parent().siblings().find('input[type="radio"]').siblings('label').removeClass('asncheck');
+		$(this).siblings("input[type='radio']").prop('checked','checked').parent().siblings().find('input[type="radio"]').removeProp('checked');
 		    }
 		});
 		option_index++;
@@ -210,14 +210,14 @@ $("#multi_add_option").click(function(){
 			option_index_multi--;
 		})
 		$('.solution').find('input[type="checkbox"]').siblings('label').unbind('click').on('click',function(){
-	        if($(this).siblings("input[type='checkbox']").is(':checked')){
-	          $(this).removeClass('asncheck');
-	          $(this).siblings("input[type='checkbox']").removeProp('checked')
-	        }
-	        else{
-	          $(this).addClass('asncheck');
-	          $(this).siblings("input[type='checkbox']").prop('checked','checked')
-	        }
+	if($(this).siblings("input[type='checkbox']").is(':checked')){
+	  $(this).removeClass('asncheck');
+	  $(this).siblings("input[type='checkbox']").removeProp('checked')
+	}
+	else{
+	  $(this).addClass('asncheck');
+	  $(this).siblings("input[type='checkbox']").prop('checked','checked')
+	}
 	    });
 		option_index_multi++;
 	}else{
@@ -238,20 +238,20 @@ $('.small').click(function(){
 	$('.tigan_dan').find('input[type="radio"]').siblings('label').on('click',function(){
 	    if($(this).siblings("input[type='radio']").is(':checked')){
 	    }else{
-	        $(this).addClass('asncheck').parent().siblings().find('input[type="radio"]').siblings('label').removeClass('asncheck');
-	        $(this).siblings("input[type='radio']").prop('checked','checked').parent().siblings().find('input[type="radio"]').removeProp('checked');
+	$(this).addClass('asncheck').parent().siblings().find('input[type="radio"]').siblings('label').removeClass('asncheck');
+	$(this).siblings("input[type='radio']").prop('checked','checked').parent().siblings().find('input[type="radio"]').removeProp('checked');
 	    }
 	});
 	$('.read_duo').find('input[type="checkbox"]').siblings('label').unbind('click');
 	$('.read_duo').find('input[type="checkbox"]').siblings('label').on('click',function(){
-        if($(this).siblings("input[type='checkbox']").is(':checked')){
-          $(this).removeClass('asncheck');
-          $(this).siblings("input[type='checkbox']").removeProp('checked')
-        }
-        else{
-          $(this).addClass('asncheck');
-          $(this).siblings("input[type='checkbox']").prop('checked','checked')
-        }
+if($(this).siblings("input[type='checkbox']").is(':checked')){
+  $(this).removeClass('asncheck');
+  $(this).siblings("input[type='checkbox']").removeProp('checked')
+}
+else{
+  $(this).addClass('asncheck');
+  $(this).siblings("input[type='checkbox']").prop('checked','checked')
+}
     });
 
 })
@@ -267,11 +267,11 @@ KindEditor.ready(function(K){
 				'insertorderedlist','insertunorderedlist','formatblock','fontname','fontsize','bold','italic','underline','|',
 				'image','hr','lineheight'],
 		afterCreate : function() { 
-        	this.sync(); 
-        }, 
-        afterBlur:function(){ 
-            this.sync(); 
-        }             
+	this.sync(); 
+}, 
+afterBlur:function(){ 
+    this.sync(); 
+}     
 	});
    
 });
@@ -407,7 +407,7 @@ $('.course_right').find('p>button').eq(0).on('click',function(){
 	var periodId = $("#periodId").val();
 	var listenUrl = $("#listenUrl").val();
 	if(total>0){
-		 var url = "http://edu.bjhd.gov.cn/mooc/paper/teacher/previewExam?moocId="+moocId+"&periodId="+periodId+"&listenUrl="+listenUrl;
+		 var url = "/mooc/paper/teacher/previewExam?moocId="+moocId+"&periodId="+periodId+"&listenUrl="+listenUrl;
 		 for(examId in examMap){ 
 			 if(examMap[examId]!=null){
 			 	url=url+"&examId="+examId;
@@ -433,7 +433,7 @@ $('.course_right').find('p>button').eq(1).on('click',function(){
 
 	if(examIds.length>0){
 		$.ajax({
-			url:"http://edu.bjhd.gov.cn/mooc/paper/teacher/releasePaper",
+			url:"/mooc/paper/teacher/releasePaper",
 			data:JSON.stringify({
 				"examId":examIds,
 				"moocId":moocId,
@@ -446,7 +446,7 @@ $('.course_right').find('p>button').eq(1).on('click',function(){
 				var json = eval("("+result+")");
 				if(json.success){
 					layer.msg("发布成功！正在跳转详情页~",{time: 2000, icon:1},function(){
-						window.location.href="http://edu.bjhd.gov.cn/mooc/course/details?id="+moocId+"&videoId="+periodId+"&listenUrl="+listenUrl;
+						window.location.href="/mooc/course/details?id="+moocId+"&videoId="+periodId+"&listenUrl="+listenUrl;
 					})
 				}else{
 					layer.alert("发布失败！");
@@ -488,7 +488,7 @@ function uploadExam(data){
 	
 	if(data.content!=''&&data.answer!=undefined&&data.answer!=''&&data.analysis!=''){
 		$.ajax({
-			url:"http://edu.bjhd.gov.cn/tiku/uploadExam",
+			url:"/tiku/uploadExam",
 			type:"post",
 			data:data,
 			success:function(examId){

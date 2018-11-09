@@ -9,7 +9,7 @@ $('.navClass li').on('click',function(){
 //筛选作业
 function screen_homework(){
 	$.ajax({
-		url:"http://edu.bjhd.gov.cn/homework/stuHomeworkList",
+		url:"/homework/stuHomeworkList",
 		type:"post",
 		data:{
 			"subjectId":$("#subjectId").val(),
@@ -25,7 +25,7 @@ function screen_homework(){
 				var endDate = new Date($(this).attr('data-enddate')).getTime();
 				var now = new Date().getTime();
 				if(now>endDate){
-					window.location.href="http://edu.bjhd.gov.cn/homework/student/answerDetail?hwId="+hwId;
+					window.location.href="/homework/student/answerDetail?hwId="+hwId;
 				}else{
 					layer.alert("请等待发答案~");
 				}

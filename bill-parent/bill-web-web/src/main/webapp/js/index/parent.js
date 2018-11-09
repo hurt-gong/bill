@@ -1,13 +1,13 @@
 require.config({
-    baseUrl: 'http://edu.bjhd.gov.cn/', 　
-    paths: {　　　　　　
-        "dialog": "../lib/layer/layer",　　　　
-        "jqtransform": "js/lib/jqTransform/jqtransform",
-        "My97DatePicker": "../lib/My97DatePicker/WdatePicker",
-        "headerSlideDown": "js/common/headerslideDown",
-        "webuploader": "js/lib/webuploader/webuploader",
-        　　　　
-    }　　
+    baseUrl: '/', 　
+    paths: {
+"dialog": "../lib/layer/layer",        
+"jqtransform": "js/lib/jqTransform/jqtransform",
+"My97DatePicker": "../lib/My97DatePicker/WdatePicker",
+"headerSlideDown": "js/common/headerslideDown",
+"webuploader": "js/lib/webuploader/webuploader",
+        
+    }          
 });
 require(['jqtransform', 'js/admin/common/adminAlertBox','headerSlideDown'], function(jqtransform, adminAlertBox,aaaa) {
 	$(".adminBody form,.screenBar form").jqTransform();
@@ -17,11 +17,11 @@ require(['jqtransform', 'js/admin/common/adminAlertBox','headerSlideDown'], func
     window.onload=Pevaluate();
     function Pevaluate(){
       $.post("/parent/parentIdx.html", {}
-                      ,function(msg){
-                        var msg = jQuery.parseJSON(msg);
-                        //alert(msg.data);
-                        $('.centerMain').html(msg.data);
-                      });
+      ,function(msg){
+var msg = jQuery.parseJSON(msg);
+//alert(msg.data);
+$('.centerMain').html(msg.data);
+      });
     }
   //点击更多
 	$('body').on('click','#parentMore',function(){
@@ -29,7 +29,7 @@ require(['jqtransform', 'js/admin/common/adminAlertBox','headerSlideDown'], func
 	})
 	//点击X 关闭弹窗
 	$('.close_discussion_box').on('click',function(){
-        $(this).parent().parent().hide();
+$(this).parent().parent().hide();
      })
 
 	//（家长）选择学科进行评价筛选
@@ -37,12 +37,12 @@ require(['jqtransform', 'js/admin/common/adminAlertBox','headerSlideDown'], func
        var subjectName = $('#subjectName option:selected').text();
        //alert(subjectName);
        $.post("/parent/parentMore.html", {subjectName:subjectName}
-              ,function(msg){
-                var msg = jQuery.parseJSON(msg);
-                $('.box_content').html(msg.data);
-                $('#subjectName option:selected').text(subjectName);
-                $(".adminBody form,.screenBar form").jqTransform();
-              });
+      ,function(msg){
+var msg = jQuery.parseJSON(msg);
+$('.box_content').html(msg.data);
+$('#subjectName option:selected').text(subjectName);
+$(".adminBody form,.screenBar form").jqTransform();
+      });
        
       });
     //点击学科
@@ -51,19 +51,19 @@ require(['jqtransform', 'js/admin/common/adminAlertBox','headerSlideDown'], func
     	$(this).attr('class','aStyle');
     	var name =$(this).attr('value');
     	$.post("/parent/parentIdx.html", {subjetName:name}
-                      ,function(msg){
-                        var msg = jQuery.parseJSON(msg);
-                        //alert(msg.data);
-                        $('.centerMain').html(msg.data);
-                      });
+      ,function(msg){
+var msg = jQuery.parseJSON(msg);
+//alert(msg.data);
+$('.centerMain').html(msg.data);
+      });
     })
 
       //点击过程评价
      $('body').on('click','#subjectSubmit',function(){
-        var klassName = $('#subjectName option:selected').text();
-        $('#subjectNameId').attr('value',klassName);
-        $('#evaluationFormId').submit();
-        $('#subjectNameId').attr('value',klassName);
+var klassName = $('#subjectName option:selected').text();
+$('#subjectNameId').attr('value',klassName);
+$('#evaluationFormId').submit();
+$('#subjectNameId').attr('value',klassName);
      })
 //===========过程评价（家长） end==================================================================================
 

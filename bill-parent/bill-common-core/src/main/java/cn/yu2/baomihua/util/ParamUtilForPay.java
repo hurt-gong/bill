@@ -94,5 +94,23 @@ public class ParamUtilForPay {
 		
 	}
 	 
+	/**
+	 * 生成签名
+	 * <p>Title: getSign</p>  
+	 * <p>Description: </p>  
+	 * @param map
+	 * @param keys
+	 * @return
+	 */
+	public static String getSign(Map<String, Object> map,String keys){
+		String param = "";
+		try {
+			param = MD5Util.getMD5(accessParam(map,keys));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return param;
+	}
 
 }
