@@ -76,7 +76,7 @@ public class BastpayController extends BaseController {
 	@RequestMapping(value = "/addCompany", method = RequestMethod.POST)
 	public JsonResult addCompany() {
 
-		logger.info("search");
+		logger.info("addCompany");
 		String param = "";
 
 		JsonResult result = null;
@@ -90,6 +90,8 @@ public class BastpayController extends BaseController {
 			param = getParamByReader();
 			result = ParamValidate.addCompanyValidate(param);
 			if (result != null) {
+				logger.info("参数错误了" + result.getMsg());
+				new MsgHistoryTask(channel, msgId, param, result.getMsg(), "", 0, companyModule).run();
 				return result;
 			}
 
@@ -134,6 +136,8 @@ public class BastpayController extends BaseController {
 			param = getParamByReader();
 			result = ParamValidate.pushdataValidate(param);
 			if (result != null) {
+				logger.info("参数错误了" + result.getMsg());
+				new MsgHistoryTask(channel, msgId, param, result.getMsg(), "", 0, companyModule).run();
 				return result;
 			}
 
@@ -176,6 +180,8 @@ public class BastpayController extends BaseController {
 			param = getParamByReader();
 			result = ParamValidate.addDetailInfoValidate(param);
 			if (result != null) {
+				logger.info("参数错误了" + result.getMsg());
+				new MsgHistoryTask(channel, msgId, param, result.getMsg(), "", 0, companyModule).run();
 				return result;
 			}
 
@@ -219,6 +225,8 @@ public class BastpayController extends BaseController {
 			param = getParamByReader();
 			result = ParamValidate.addDetailInfoValidate(param);
 			if (result != null) {
+				logger.info("参数错误了" + result.getMsg());
+				new MsgHistoryTask(channel, msgId, param, result.getMsg(), "", 0, companyModule).run();
 				return result;
 			}
 
@@ -254,15 +262,10 @@ public class BastpayController extends BaseController {
 
 		logger.info("paycallback");
 		String param = "";
-
 		Map<String, Object> result = new HashMap<String, Object>();
-
-		String msgId = "";
-		String channel = "";
 		try {
 			// 获取参数
 			param = getParamByReader();
-
 			logger.info("paycallback--------------" + param);
 			result = ParamValidate.callBackValidate(param);
 
@@ -282,9 +285,7 @@ public class BastpayController extends BaseController {
 			result = ParamValidate.returnInfo(true, "API505", "参数错误", ret);
 			return result;
 		}
-
 		// 记录查询日志
-		new MsgHistoryTask(channel, msgId, param, JSONObject.toJSON(result).toString(), "", 0, companyModule).run();
 		return result;
 	}
 

@@ -9,5 +9,9 @@
        <bean id="companyModule" class="cn.yu2.baomihua.openapi.module.CompanyModuleImpl" lazy-init="true"/>
        
        <bean id="bastpayModule" class="cn.yu2.baomihua.openapi.module.BastPayModuleImpl" lazy-init="true"/>
+       
+       <bean id="qtPayModule" class="cn.yu2.baomihua.openapi.module.QtPayModuleImpl" lazy-init="true"/>
+       
+        <bean id="hxapiModule" class="cn.yu2.baomihua.openapi.module.HxapiModuleImpl" lazy-init="true"/>
      
  </beans>

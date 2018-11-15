@@ -84,7 +84,7 @@ public class TestCallApi {
 		// TODO Auto-generated method stub
 
 		//String url = "http://127.0.0.1/bastpay/addDetailInfo";
-		String url = "https://yzf.cloudlinkin.cn/bastpay/editDetailInfo";
+		String url = "https://yzf.cloudlinkin.cn/bastpay/addCompany";
 
 		JSONObject json = new JSONObject();
 		JSONArray jarray = new JSONArray();
@@ -96,7 +96,7 @@ public class TestCallApi {
 			json.put("secretkey", AESEncryptUtil.aesEncrypt("11010101", AESEncryptUtil.getAESKey("bastpay"))); // AES(channel)aeskey双方协调
 			json.put("timeStamp", System.currentTimeMillis() + ""); // 时间戳
 			//json.put("paramData",  JSONArray.parseArray(JSON.toJSONString(getParam())));// 推送的数据，
-			getDetailParamForJSONObject(json);
+			getParamForJSONObject(json);
 			Map map = json.toJavaObject(Map.class);
 			json.put("signature", ParamUtil.toParam(map)); // 签名
 			String ret = HttpUtil.post(url, json.toJSONString());
@@ -149,7 +149,7 @@ public class TestCallApi {
 		json.put("address", "address");
 		json.put("province", "province");
 		json.put("phone", "phone");
-		json.put("companyName", "companyName");
+		json.put("companyName", "");
 		json.put("serviceCharge", "1");
 		json.put("expressFee", "expressFee");
 		json.put("effectDateFrom", "effectDateFrom");

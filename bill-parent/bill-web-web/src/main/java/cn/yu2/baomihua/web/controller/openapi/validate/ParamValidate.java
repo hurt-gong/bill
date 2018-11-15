@@ -361,11 +361,11 @@ public class ParamValidate {
 				return result;
 			}
 
-			String companyName = json.getString("companyName");
-			if (StringUtils.isEmpty(companyName)) {
-				result = retsuccess(1002, "companyName为空", "");
-				return result;
-			}
+//			String companyName = json.getString("companyName");
+//			if (StringUtils.isEmpty(companyName)) {
+//				result = retsuccess(1002, "companyName为空", "");
+//				return result;
+//			}
 
 			String serviceCharge = json.getString("serviceCharge");
 			if (StringUtils.isEmpty(serviceCharge)) {

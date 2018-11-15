@@ -1,9 +1,8 @@
 package cn.yu2.baomihua.web.controller.openapi;
 
-import java.io.BufferedReader;
+import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,10 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
 
-import cn.yu2.baomihua.constant.CompanyConstant;
 import cn.yu2.baomihua.openapi.module.ICompanyModule;
-import cn.yu2.baomihua.util.AESEncryptUtil;
-import cn.yu2.baomihua.util.ParamUtil;
+import cn.yu2.baomihua.openapi.module.IQtPayModule;
 import cn.yu2.baomihua.web.JsonResult;
 import cn.yu2.baomihua.web.controller.BaseController;
 import cn.yu2.baomihua.web.controller.openapi.task.MsgHistoryTask;
@@ -27,6 +24,9 @@ public class QiantaiPayController extends BaseController {
 
 	@Autowired
 	private ICompanyModule companyModule;
+
+	@Autowired
+	private IQtPayModule qtPayModule;
 
 	@ResponseBody
 	@RequestMapping(value = "/paycallback", method = RequestMethod.POST)
@@ -40,14 +40,18 @@ public class QiantaiPayController extends BaseController {
 		String msgId = "";
 		String channel = "";
 		try {
+
+			String appCode = this.request.getHeader("X-QF-APPCODE");
+			String sign = this.request.getHeader("X-QF-SIGN");
+			System.out.println(appCode + "------------------------appCode");
+			System.out.println(sign + "------------------------sign");
 			// 获取参数
 			param = getParamByReader();
-			result = ParamValidate.pushdataValidate(param);
-			if(result != null){
-				return result;
-			}
-			
-			JSONObject json =  JSONObject.parseObject(param);
+			JSONObject json = JSONObject.parseObject(param);
+			Map<String, Object> repmap = json.toJavaObject(Map.class);
+
+			Map<String, Object> respmap = qtPayModule.callBack(repmap, sign);
+
 			channel = json.getString("channel");
 			msgId = json.getString("msgId");
 
@@ -69,34 +73,30 @@ public class QiantaiPayController extends BaseController {
 		new MsgHistoryTask(channel, msgId, param, JSONObject.toJSON(resultMap).toString(), "", 0, companyModule).run();
 		return result;
 	}
-	
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/pay", method = RequestMethod.POST)
 	public JsonResult pay() {
 
-		logger.info("search");
+		logger.info("pay");
 		String param = "";
-
 		JsonResult result = null;
 
-		 
 		try {
-			
 			String appCode = this.request.getHeader("X-QF-APPCODE");
 			String sign = this.request.getHeader("X-QF-SIGN");
-			
-			System.out.println(appCode+"------------------------appCode");
-			System.out.println(sign+"------------------------sign");
+			System.out.println(appCode + "------------------------appCode");
+			System.out.println(sign + "------------------------sign");
 			// 获取参数
 			param = getParamByReader();
+			Map<String, Object> parmap = new HashMap<String, Object>();
+			qtPayModule.proCreateOrder(parmap);
 			result = ParamValidate.pushdataValidate(param);
-			if(result != null){
+			if (result != null) {
 				return result;
 			}
-			
-			JSONObject json =  JSONObject.parseObject(param);
-		 
+
+			JSONObject json = JSONObject.parseObject(param);
 
 			/**************** 验证结束 ************************/
 
@@ -107,7 +107,7 @@ public class QiantaiPayController extends BaseController {
 		}
 
 		// 查询
-	 
+
 		return result;
 	}
 

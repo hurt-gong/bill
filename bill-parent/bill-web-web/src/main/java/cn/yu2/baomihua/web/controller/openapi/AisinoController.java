@@ -1,12 +1,8 @@
 package cn.yu2.baomihua.web.controller.openapi;
 
-import java.io.BufferedReader;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,71 +12,73 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
-import cn.yu2.baomihua.constant.CompanyConstant;
-import cn.yu2.baomihua.openapi.module.ICompanyModule;
-import cn.yu2.baomihua.util.AESEncryptUtil;
-import cn.yu2.baomihua.util.ParamUtil;
+import cn.yu2.baomihua.openapi.module.IHxapiModule;
+import cn.yu2.baomihua.util.MD5Util;
 import cn.yu2.baomihua.web.JsonResult;
 import cn.yu2.baomihua.web.controller.BaseController;
 import cn.yu2.baomihua.web.controller.openapi.task.MsgHistoryTask;
 import cn.yu2.baomihua.web.controller.openapi.validate.ParamValidate;
 
 @Controller
-@RequestMapping("/openapi/")
+@RequestMapping("/billapi/")
 public class AisinoController extends BaseController {
 
 	@Autowired
-	private ICompanyModule companyModule;
+	private IHxapiModule hxapiModule;
+	// 第三方平台系统测试虚拟税号
+	public static String userName = "1101011010DSF00002";
+	// 平台注册码（无对应字段，用于password校验和Hmac校验）
+	public static String hxpassword = "29829998";
+	// 第三方平台编码（RequestCode）：
+	public static String requestCode = "DSF00002";
+	// 测试税号（TaxpayerId）
+	// public static String taxpayerId = "911403016666666666";
+	// 纳税人授权码（AuthorizationCode）：
+	public static String authorizationCode = "W1K02MHO69";
 
-	@ResponseBody
-	@RequestMapping(value = "/pushdata", method = RequestMethod.POST)
-	public JsonResult pushdata() {
-		logger.info("pushdata-------------------->begin");
+	public static String redirectUrl = "http://60.194.106.83:10000/login.htm";
+
+	@RequestMapping(value = "/openbill")
+	public String openbill(String taxpayerId,String sign) {
+		logger.info("openbill-------------------->begin"+taxpayerId+"----"+sign);
 		String param = "";
 		JsonResult result = null;
-		String msgId = "";
-		String channel = "";
+
+		/**************** 验证结束 ************************/
+		String token = "";
 		try {
-			// 获取参数
-			param = getParamByReader();
-			logger.info(param);
-
-			result = ParamValidate.pushdataValidate(param);
-			if (result != null) {
-				return result;
+			if(taxpayerId == null || "".equals(taxpayerId)){
+				return super.redirectTo("/error/404.html");
 			}
-
-			JSONObject json = JSONObject.parseObject(param);
-			channel = json.getString("channel");
-			msgId = json.getString("msgId");
-
-			/**************** 验证结束 ************************/
-
-			try {
-				JSONArray pushData = json.getJSONArray("pushData");
-				companyModule.savePushData(pushData, msgId);
-
-			} catch (Exception e) {
-				e.printStackTrace();
-				result = retsuccess(1003, "pushData为空或者格式錯誤", "");
-				return result;
+			if(sign == null || "".equals(sign)){
+				return super.redirectTo("/error/404.html");
 			}
+			
+			String password_temp = MD5Util.getMD5(taxpayerId+"gxcloudlinkin");
+			logger.info("openbill-------------------->begin"+password_temp);
+			if(!sign.equals(password_temp)){
+				return super.redirectTo("/error/404.html");
+			}
+			
+			Map<String, Object> map = hxapiModule.getToken(userName, hxpassword, requestCode, taxpayerId,
+					authorizationCode);
+			if (map.get("token") == null || "".equals((String) map.get("token")) ) {
+				return super.redirectTo("/error/404.html");
+			}
+			token = (String) map.get("token");
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			result = this.retsuccess(1001, "解析数据有误", "");
-			return result;
+			result = retsuccess(1003, "pushData为空或者格式錯誤", "");
+		}
+		
+		if (token== null || "".equals(token) ) {
+			return super.redirectTo("/error/404.html");
 		}
 
-		// 查询
-		Map<String, Object> resultMap = new HashMap<String,Object>();
-		resultMap.put("msgId", msgId);
-		resultMap.put("channel", channel);
-
-		result = this.retsuccess(0, "success", resultMap);
+		result = this.retsuccess(0, "success", "");
 		// 记录查询日志
-		new MsgHistoryTask(channel, msgId, param, JSONObject.toJSON(resultMap).toString(), "", 0, companyModule).run();
-		return result;
+		return super.redirectTo(redirectUrl + "?token=" + token);
 	}
 
 }

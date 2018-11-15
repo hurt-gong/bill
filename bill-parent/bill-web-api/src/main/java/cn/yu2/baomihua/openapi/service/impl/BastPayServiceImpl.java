@@ -225,6 +225,7 @@ public class BastPayServiceImpl extends BaseServiceImpl<BastServerCompanyMapper,
 					}
 
 					retmap = resultJson.toJavaObject(Map.class);
+					retmap.put("merchantPass", PropertiesUtil.getValueByKey("properties/common.properties", "bastpay.passwd"));
 
 				}
 

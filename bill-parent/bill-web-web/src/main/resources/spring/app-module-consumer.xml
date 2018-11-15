@@ -6,60 +6,92 @@
        http://code.alibabatech.com/schema/dubbo
        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-	<dubbo:application name="${dubbo.application.name}" logger="slf4j" />
+	<dubbo:application name="${dubbo.application.name}"
+		logger="slf4j" />
 	<!-- 使用zookeeper暴露服务地址 -->
 	<dubbo:registry protocol="zookeeper" address="${dubbo.zookeeper}" />
 	<!-- 超时时间和重试次数 -->
-	<dubbo:consumer timeout="${dubbo.timeout}" retries="0" lazy="true" check="false" />
+	<dubbo:consumer timeout="${dubbo.timeout}" retries="0"
+		lazy="true" check="false" />
 	<!-- 用dubbo协议暴露服务 -->
 	<dubbo:protocol name="dubbo" port="${dubbo.port}" />
 
 	<!-- manage -->
-	<dubbo:reference id="userModule" interface="cn.yu2.baomihua.manage.module.IUserModule" url="${service.url.manage}" />
-	
-	<dubbo:reference id="schoolModule" interface="cn.yu2.baomihua.manage.module.ISchoolModule" url="${service.url.manage}" />
-	
-	<dubbo:reference id="deptModule" interface="cn.yu2.baomihua.manage.module.IDeptModule" url="${service.url.manage}" />
-	
-	<dubbo:reference id="bookModule" interface="cn.yu2.baomihua.manage.module.IBookModule" url="${service.url.manage}" />
-	
-	<dubbo:reference id="sectionModule" interface="cn.yu2.baomihua.manage.module.ISectionModule" url="${service.url.manage}" />
-	
-	<dubbo:reference id="userLoginModuleImpl" interface="cn.yu2.baomihua.manage.module.IUserLoginModule" url="${service.url.manage}" />
-	
-	<dubbo:reference id="teachModuleImpl" interface="cn.yu2.baomihua.manage.module.ITeachModule" url="${service.url.manage}" />
-	
-	<dubbo:reference id="subjectModuleImpl" interface="cn.yu2.baomihua.manage.module.ISubjectModule" url="${service.url.manage}" />
-	
-	<dubbo:reference id="gradeModuleImpl" interface="cn.yu2.baomihua.manage.module.IGradeModule" url="${service.url.manage}" />
+	<dubbo:reference id="userModule"
+		interface="cn.yu2.baomihua.manage.module.IUserModule" url="${service.url.manage}" />
 
-	<dubbo:reference id="staffModuleImpl" interface="cn.yu2.baomihua.manage.module.IStaffModule" url="${service.url.manage}" />
-	
-	<dubbo:reference id="permissionModuleImpl" interface="cn.yu2.baomihua.manage.module.IPermissionModule" url="${service.url.manage}" />
+	<dubbo:reference id="schoolModule"
+		interface="cn.yu2.baomihua.manage.module.ISchoolModule" url="${service.url.manage}" />
 
-	<dubbo:reference id="phaseModuleImpl" interface="cn.yu2.baomihua.manage.module.IPhaseModule" url="${service.url.manage}" />
-	
-	<dubbo:reference id="fileMd5ModuleImpl" interface="cn.yu2.baomihua.manage.module.IFileMd5Module" url="${service.url.manage}" />
-	
-	<dubbo:reference id="klassModuleImpl" interface="cn.yu2.baomihua.manage.module.IKlassModule" url="${service.url.manage}" />
-	
-	<dubbo:reference id="knowledgeModuleImpl" interface="cn.yu2.baomihua.manage.module.IKnowledgeModule" url="${service.url.manage}" />
-	
-	<dubbo:reference id="klassStudentModuleImpl" interface="cn.yu2.baomihua.manage.module.IKlassStudentModule" url="${service.url.manage}" />
-	
-	<dubbo:reference id="klassTeacherModuleImpl" interface="cn.yu2.baomihua.manage.module.IKlassTeacherModule" url="${service.url.manage}" />
-	
-	<dubbo:reference id="studentParentModuleImpl" interface="cn.yu2.baomihua.manage.module.IStudentParentModule" url="${service.url.manage}" />
-	
-	<dubbo:reference id="statisticsModuleImpl" interface="cn.yu2.baomihua.manage.module.IStatisticsModule" url="${service.url.manage}" />
+	<dubbo:reference id="deptModule"
+		interface="cn.yu2.baomihua.manage.module.IDeptModule" url="${service.url.manage}" />
 
-	<dubbo:reference id="gradeSubjectModuleImpl" interface="cn.yu2.baomihua.manage.module.IGradeSubjectModule" url="${service.url.manage}" />
-	
-	<dubbo:reference id="personalCenterModuleImpl" interface="cn.yu2.baomihua.manage.module.IPersonalCenterModule" url="${service.url.manage}" />
-	
-	 <!-- openapi -->
-	<dubbo:reference id="companyModule" interface="cn.yu2.baomihua.openapi.module.ICompanyModule" url="${service.url.openapi}" />
+	<dubbo:reference id="bookModule"
+		interface="cn.yu2.baomihua.manage.module.IBookModule" url="${service.url.manage}" />
 
-	<dubbo:reference id="bastpayModule" interface="cn.yu2.baomihua.openapi.module.IBastpayModule" url="${service.url.openapi}" />
+	<dubbo:reference id="sectionModule"
+		interface="cn.yu2.baomihua.manage.module.ISectionModule" url="${service.url.manage}" />
+
+	<dubbo:reference id="userLoginModuleImpl"
+		interface="cn.yu2.baomihua.manage.module.IUserLoginModule" url="${service.url.manage}" />
+
+	<dubbo:reference id="teachModuleImpl"
+		interface="cn.yu2.baomihua.manage.module.ITeachModule" url="${service.url.manage}" />
+
+	<dubbo:reference id="subjectModuleImpl"
+		interface="cn.yu2.baomihua.manage.module.ISubjectModule" url="${service.url.manage}" />
+
+	<dubbo:reference id="gradeModuleImpl"
+		interface="cn.yu2.baomihua.manage.module.IGradeModule" url="${service.url.manage}" />
+
+	<dubbo:reference id="staffModuleImpl"
+		interface="cn.yu2.baomihua.manage.module.IStaffModule" url="${service.url.manage}" />
+
+	<dubbo:reference id="permissionModuleImpl"
+		interface="cn.yu2.baomihua.manage.module.IPermissionModule" url="${service.url.manage}" />
+
+	<dubbo:reference id="phaseModuleImpl"
+		interface="cn.yu2.baomihua.manage.module.IPhaseModule" url="${service.url.manage}" />
+
+	<dubbo:reference id="fileMd5ModuleImpl"
+		interface="cn.yu2.baomihua.manage.module.IFileMd5Module" url="${service.url.manage}" />
+
+	<dubbo:reference id="klassModuleImpl"
+		interface="cn.yu2.baomihua.manage.module.IKlassModule" url="${service.url.manage}" />
+
+	<dubbo:reference id="knowledgeModuleImpl"
+		interface="cn.yu2.baomihua.manage.module.IKnowledgeModule" url="${service.url.manage}" />
+
+	<dubbo:reference id="klassStudentModuleImpl"
+		interface="cn.yu2.baomihua.manage.module.IKlassStudentModule" url="${service.url.manage}" />
+
+	<dubbo:reference id="klassTeacherModuleImpl"
+		interface="cn.yu2.baomihua.manage.module.IKlassTeacherModule" url="${service.url.manage}" />
+
+	<dubbo:reference id="studentParentModuleImpl"
+		interface="cn.yu2.baomihua.manage.module.IStudentParentModule" url="${service.url.manage}" />
+
+	<dubbo:reference id="statisticsModuleImpl"
+		interface="cn.yu2.baomihua.manage.module.IStatisticsModule" url="${service.url.manage}" />
+
+	<dubbo:reference id="gradeSubjectModuleImpl"
+		interface="cn.yu2.baomihua.manage.module.IGradeSubjectModule" url="${service.url.manage}" />
+
+	<dubbo:reference id="personalCenterModuleImpl"
+		interface="cn.yu2.baomihua.manage.module.IPersonalCenterModule" url="${service.url.manage}" />
+
+	<!-- openapi -->
+	<dubbo:reference id="companyModule"
+		interface="cn.yu2.baomihua.openapi.module.ICompanyModule" url="${service.url.openapi}" />
+
+	<!-- 翼支付 -->
+	<dubbo:reference id="bastpayModule"
+		interface="cn.yu2.baomihua.openapi.module.IBastpayModule" url="${service.url.openapi}" />
+	<!-- 钱台支付 -->
+	<dubbo:reference id="qtPayModule"
+		interface="cn.yu2.baomihua.openapi.module.IQtPayModule" url="${service.url.openapi}" />
+
+	<dubbo:reference interface="cn.yu2.baomihua.openapi.module.IHxapiModule"
+		id="hxapiModule" url="${service.url.openapi}" />
 
 </beans>

@@ -17,4 +17,8 @@
 	
 	<dubbo:service interface="cn.yu2.baomihua.openapi.module.IBastpayModule" ref="bastpayModule"/>
 	
+	<dubbo:service interface="cn.yu2.baomihua.openapi.module.IQtPayModule" ref="qtPayModule"/>
+	
+	<dubbo:service interface="cn.yu2.baomihua.openapi.module.IHxapiModule" ref="hxapiModule"/>
+	
 	</beans>
